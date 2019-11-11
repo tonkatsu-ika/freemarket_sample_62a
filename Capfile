@@ -1,6 +1,7 @@
 # Load the SCM plugin appropriate to your project:
-#
+require "capistrano/setup"
 # require "capistrano/scm/hg"
+require "capistrano/deploy"
 # install_plugin Capistrano::SCM::Hg
 # or
 # require "capistrano/scm/svn"
