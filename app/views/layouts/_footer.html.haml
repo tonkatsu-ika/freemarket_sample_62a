@@ -1,4 +1,13 @@
 .app-download
+  .app-download__wrapper
+    .app-download__wrapper__left
+      .app-download__wrapper__left__first-sentence スマホでかんたんフリマアプリ
+      .app-download__wrapper__left__second-sentence 今すぐ無料ダウンロード！
+      .app-download__wrapper__left__third-sentence
+        = image_tag  'logo_red.svg', size: '100x100'
+    .app-download__wrapper__right
+      = image_tag  'footer_image.png'
+
 .footer
   .footer__upper
     .footer__upper__detail
@@ -15,8 +24,12 @@
             = link_to '公式ブログ', '#', class: 'footer__upper__detail__list'
           %li
             = link_to 'メルカリロゴ利用ガイドライン', '#', class: 'footer__upper__detail__list'
-      .footer__upper__detail__icon--twitter つ
-      .footer__upper__detail__icon--facebook ふ
+      .footer__upper__detail__icon--twitter
+        = link_to "#" do
+          %i.fa.fa-twitter
+      .footer__upper__detail__icon--facebook
+        = link_to "#" do
+          %i.fa.fa-facebook-square
 
     .footer__upper__detail
       .footer__upper__detail__index ヘルプ＆ガイド
@@ -71,4 +84,10 @@
             = link_to 'United States', '#', class: 'footer__upper__detail__list'
   .footer__bottom
     .footer__bottom--icon
+      = link_to (image_tag "fmarket_logo_white.svg", size: "50x50", alt: "Fmarket"), :root
     .footer__bottom--copy-writing
+      %small.copyright
+        &copy;
+        = succeed "." do
+          %span#copyright_year
+        2019 fmarket
