@@ -1,0 +1,22 @@
+.header
+  .header__upper
+    .header__upper__title-logo
+      = link_to (image_tag "fmarket_logo_red.svg", size: "134x36", alt: "Fmarket"), :root            
+    %form.header__upper__form
+      %input.header__upper__form__search{:name => "", :placeholder => "何かお探しですか？", :type => "text", :value => ""}/
+
+  .header__bottom
+    %ul.header__bottom__search-items
+      %li.header__bottom__search-items__li
+        カテゴリーから探す
+      %li.header__bottom__search-items__li
+        ブランドから探す
+    %ul.header__bottom__user-menu
+      %li.header__bottom__user-menu__li
+        いいね一覧
+      %li.header__bottom__user-menu__li
+        お知らせ
+      %li.header__bottom__user-menu__li
+        やることリスト
+      %li.header__bottom__user-menu__li
+        マイページ
