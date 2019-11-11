@@ -1,0 +1,66 @@
+.app-download {
+  height: 260px;
+  width: 100%;
+  background-image: image-url("mercari.jpg");
+}
+
+.footer {
+  height: 400px;
+  width: 100%;
+  background-color: rgb(34, 34, 34);
+  &__upper {
+    width: 1020px;
+    height: 300px;
+    margin: 0 auto;
+    display: flex;
+    &__detail {
+      width: auto;
+      height: calc(100%-18px);
+      margin-top: 18px;
+      margin-right: 25px;
+      &:first-child {
+        position: relative;
+      }
+      &:nth-child(3) {
+        width: 384px;
+      }
+      &__index {
+        font-size: 16px;
+        font-weight: bold;
+        color: rgb(255, 255, 255);
+      }
+      &__list {
+        font-size: 12px;
+        color: #999999;
+        text-decoration: none;
+        display: flex;
+        & ul li {
+          line-height: 15px;
+          list-style: none;
+          margin-top: 16px;
+        }
+        &__right ul li {
+          width: 189.3px;
+        }
+        &__left {
+          margin-left: 15px;
+        }
+      }
+      &__icon {
+        &--twitter {
+          font-size: 30px;
+          position: absolute;
+          bottom: 55px;
+          color: rgb(255, 255, 255);
+        }
+        &--facebook {
+          font-size: 30px;
+          position: absolute;
+          bottom: 55px;
+          left: 40px;
+          color: rgb(255, 255, 255);
+        }
+      }
+    }
+  }
+}
