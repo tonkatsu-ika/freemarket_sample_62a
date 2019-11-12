@@ -2,6 +2,24 @@
   height: 260px;
   width: 100%;
   background-image: image-url("mercari.jpg");
+  &__wrapper {
+    width: 760px;
+    margin: 0 auto;
+    display: flex;
+    &__left {
+      width: 60%;
+      margin-top: 50px;
+      color: rgb(255, 255, 255);
+      &__first-sentence {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      &__second-sentence {
+        font-size: 30px;
+        margin: 10px 0 15px 0;
+      }
+    }
+  }
 }
 
 .footer {
@@ -48,19 +66,33 @@
       }
       &__icon {
         &--twitter {
-          font-size: 30px;
+          font-size: 35px;
           position: absolute;
-          bottom: 55px;
-          color: rgb(255, 255, 255);
+          bottom: 50px;
+          & .fa-twitter {
+            color: rgb(255, 255, 255);
+          }
         }
         &--facebook {
-          font-size: 30px;
+          font-size: 35px;
           position: absolute;
-          bottom: 55px;
-          left: 40px;
-          color: rgb(255, 255, 255);
+          bottom: 50px;
+          left: 50px;
+          & .fa-facebook-square {
+            color: rgb(255, 255, 255);
+          }
         }
       }
+    }
+  }
+  &__bottom {
+    width: 1020px;
+    margin: 30px auto 20px;
+    display: flex;
+    color: rgb(255, 255, 255);
+    &--copy-writing {
+      margin: 0 auto;
+      line-height: 50px;
     }
   }
 }
