@@ -7,7 +7,7 @@
 
 # DB設計
 
-## userテーブル
+## users table
 
 |Column|Type|Options|
 |------|----|-------|
@@ -23,7 +23,7 @@
 |birthday|date|null: false|
 |telephone|integer|null: false|
 |post_code|integer|null: false|
-|prefecuture_id|reference|null: false,index: true, foreign_key: true|
+|prefecuture|references|foreign_key: true|
 |address|string|null: false|
 |building|string|null: false|
 
@@ -32,8 +32,10 @@
 - has_many :likes
 - has_many :items
 - has_many :transaction
+- has_many :buyers, class_name: User, foreign_key: "seller_id"
+- has_many :sellers, class_name: User, foreign_key: "buyer_id"
 - belongs_to :prefecutre
-- belongs_to :credit_info
+- belongs_to :credit_card
 
 
 ## prefectures table
@@ -45,34 +47,36 @@
 - has_many :users
 
 
-## credit_cardテーブル
+## credit_cards table
 |Column|Type|Options|
 |------|----|-------|
-|user_id|reference|null: false,foreign_key: true|
+|user_id|references|foreign_key: true|
 |number|integer|null: false|
-|expired_date_month|date|null: false|
-|expired_date_year|year|null: false|
+|expiration_month|date|null: false|
+|expiration_year|year|null: false|
 |security_code|integer|null: false|
-|main_card_flag|boolean|
+|main_card_flag|boolean|null: false|
 
 ### Association
 - belongs_to :user
 
-## likeテーブル
+
+## likes 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|reference|null: false, foreign_key: true|
-|item_id|reference|null: false, foreign_key: true|
+|user|references|foreign_key: true|
+|item|references|foreign_key: true|
 
 ### Association
 - belongs_to :user
 - belongs_to :item
 
-## commentテーブル
+
+## comments table
 |Column|Type|Options|
 |------|----|-------|
-|user_id|reference|null: false, foreign_key: true|
-|item_id|reference|null: false, foreign_key: true|
+|user|references|foreign_key: true|
+|item|references|foreign_key: true|
 |comment|text|null: false|
 
 ### Association
@@ -80,56 +84,58 @@
 - belongs_to :item
 
 
-## transactionsテーブル
+## transactions table
+購入者(buyer)と出品者(buyer)とはusersテーブルを自己結合で関連づける
 
 |Column|Type|Options|
 |------|----|-------|
-|buy_user_id|references|null: false, foreign_key: true|
-|sell_user_id|references|null: false, foreign_key: true|
-|grade_id|references|null: false, foreign_key: true|
-|item_id|references|null: false, foreign_key: true|
-|to_buy_user_grade|references|null: false, foreign_key: true|
-|to_buy_user_comment|string|
-|to_sell_user_grade|references|null: false, foreign_key: true|
-|to_sell_user_comment|string|
-|item_status|references|null: false, foreign_key: true|
-|payment|references|null: false, foreign_key: true|
+|buyer_id|references|foreign_key: true|
+|seller_id|references|foreign_key: true|
+|item_id|references|foreign_key: true|
+|grade_by_buyer|references|foreign_key: true|
+|comment_by_buyer|string||
+|grade_by_seller|references|foreign_key: true|
+|comment_by_seller|string||
+|transaction_status|references|foreign_key: true|
+|payment_method|references|foreign_key: true|
 
 ### Association
 - belongs_to :grade
-- belongs_to :buy_user, class_name: User
-- belongs_to :sell_user, class_name: User
-- belongs_to :status
-- belongs_to :payment
+- belongs_to :buyer, class_name: User
+- belongs_to :seller, class_name: User
+- belongs_to :transaction_status
+- belongs_to :payment_method
 - has_many :items
 
-## gradesテーブル
+
+## grades table
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
+|grade|string|null: false, unique: true|
 
 ### Association
 - has_many :transactions
 
-## statusテーブル
+
+## transaction_status table
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
+|status|string|null: false, unique: true|
 
 ### Association
 - has_many :transactions
 
-## paymentsテーブル
+
+## payment_methods table
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
+|method_name|string|null: false, unique: true|
 
 ### Association
 - has_many :transactions
-
 
 
 ## items table
@@ -158,9 +164,9 @@
 - belongs_to :brand, optional: true
 - belongs_to :category
 
-- has_many :item_images, dependent: destroy
-- has_many :likes, dependent: destroy
-- has_many :comments, dependent: destroy
+- has_many :item_images, dependent: :destroy
+- has_many :likes, dependent: :destroy
+- has_many :comments, dependent: :destroy
 
 
 ## item_images table
@@ -178,7 +184,7 @@
 
 |Field|Type|Options|
 |---|:---:|---|
-|item_condition|string|null: false|
+|item_condition|string|null: false, unique: true|
 
 ### Association
 - has_many :items
@@ -188,7 +194,7 @@
 
 |Field|Type|Options|
 |---|:---:|---|
-|ship_fee_bearer|string|null: false|
+|ship_fee_bearer|string|null: false, unique: true|
 
 ### Association
 - has_many :items
@@ -198,7 +204,7 @@
 
 |Field|Type|Options|
 |---|:---:|---|
-|days_before_ship|string|null: false|
+|days_before_ship|string|null: false, unique: true|
 
 ### Association
 - has_many :items
@@ -208,7 +214,7 @@
 
 |Field|Type|Options|
 |---|:---:|---|
-|delivery_method|string|null: false|
+|delivery_method|string|null: false, unique: true|
 
 ### Association
 - has_many :items
@@ -218,7 +224,7 @@
 
 |Field|Type|Options|
 |---|:---:|---|
-|brand_name|string|null: false, index: true|
+|brand_name|string|null: false, index: true, unique: true|
 
 ### Association
 - has_many :items
@@ -234,7 +240,26 @@
 
 ### Association
 - belongs_to :category_tree
+- belongs_to :category_size, optional: true
 - has_many :items
+
+
+## categorie_tree table
+商品カテゴリーのツリー構造については、クエリのパフォーマンスが
+「隣接リスト」より高い「閉包テーブル」を採用。
+本テーブルは「閉包テーブル」を採用したことにより必要となるテーブル。
+
+|Field|Type|Options|
+|---|:---:|---|
+|ancestor_id|integer|null: false|
+|descendant_id|integer|null: false|
+|generations|integer|null: false|
+
+
+### Association
+- belongs_to :category_tree, optional: true
+- has_many :items
+
 
 
 ## category_sizes table
@@ -244,20 +269,17 @@
 |category|references|foreign_key: true|
 |size|reference|foreign_key: true|
 
-
 ### Association
 - belongs_to :category
-- belongs_to :size
+- belongs_to :size, dependent: :destroy
 
 
 ## sizes table
 
 |Field|Type|Options|
 |---|:---:|---|
-|size|string|null: false, index: true|
+|size|string|null: false, index: true, unique: true|
 
 
 ### Association
 - has_many :category_size
-
-
