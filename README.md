@@ -202,3 +202,14 @@
 
 ### Association
 - has_many :items
+
+
+## brands table
+
+|Field|Type|Options|
+|---|:---:|---|
+|brand_name|string|null: false, index: true|
+
+### Association
+- has_many :items
+
