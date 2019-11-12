@@ -38,5 +38,12 @@
 - has_many :comments, dependent: destroy
 
 
+## item_images table
 
+|Field|Type|Options|
+|---|:---:|---|
+|image_url|string|null: false|
+|item|references|foreign_key: true|
 
+### Association
+- belongs_to :item
