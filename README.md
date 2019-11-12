@@ -1,24 +1,57 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Versions
+- Rails 5.2.3
+- Ruby 2.5.1
 
-Things you may want to cover:
 
-* Ruby version
+# DB設計
 
-* System dependencies
+## messages table
 
-* Configuration
+|Field|Type|Key|Options|
+|---|:---:|:---:|---|
+|content|text|||
+|image|string|||
+|group_id|integer|fk|null: false|
+|user_id|integer|fk|null: false|
 
-* Database creation
+### Association
+- belongs_to :group
+- belongs_to :user
 
-* Database initialization
 
-* How to run the test suite
+## groups table
 
-* Services (job queues, cache servers, search engines, etc.)
+|Field|Type|Key|Options|
+|---|:---:|:---:|---|
+|name|string||null: false|
 
-* Deployment instructions
+### Association
+- has_many :users, through: :groups_users
+- has_many :messages
+- has_many :groups_users
 
-* ...
+## users table
+
+|Field|Type|Key|Options|
+|---|:---:|:---:|---|
+|name|string||null: false|
+|email|string||null: false|
+
+### Association
+- has_many :groups, through: :groups_users
+- has_many :messages
+- has_many :groups_users
+
+## groups_users table
+
+|Field|Type|Key|Options|
+|---|:---:|:---:|---|
+|group_id|integer|fk|null: false|
+|user_id|integer|fk|null: false|
+
+### Association
+- belongs_to :group
+- belongs_to :user
+
