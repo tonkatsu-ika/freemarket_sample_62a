@@ -22,3 +22,7 @@ before_script:
 script:
   - bundle exec rake db:create
   - bundle exec rake db:migrate
+
+notification:
+# slackへの通知（作成中)
+#  slack: '<account>:<token>'
