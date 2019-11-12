@@ -71,7 +71,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'haml-rails'
-gem "font-awesome-rails"
+gem 'font_awesome5_rails'
 gem 'devise'
 gem 'erb2haml'
 gem 'carrierwave'
