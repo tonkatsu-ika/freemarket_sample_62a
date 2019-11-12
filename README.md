@@ -59,4 +59,11 @@
 - has_many :items
 
 
+## ship_fee_bearers table
 
+|Field|Type|Options|
+|---|:---:|---|
+|ship_fee_bearer|string|null: false|
+
+### Association
+- has_many :items
