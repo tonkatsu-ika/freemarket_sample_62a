@@ -33,9 +33,9 @@
 - belongs_to :brand, optional: true
 - belongs_to :category
 
-- has_many :item_images
+- has_many :item_images, dependent: destroy
 - has_many :likes, dependent: destroy
-- has_many :comments
+- has_many :comments, dependent: destroy
 
 
 
