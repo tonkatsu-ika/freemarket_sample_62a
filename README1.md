@@ -10,8 +10,8 @@
 |first_name_kana|string|null: false|
 |nickname|string|null: false|
 |profile_image|string|
-|profile|text|
-|mailaddress|string||null: false|
+|profile|text||null: false|
+|mail_address|string||null: false|
 |password|string||null: false|
 |birthday|date|null: false|
 |telephone|integer|null: false|
