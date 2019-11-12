@@ -7,51 +7,36 @@
 
 # DB設計
 
-## messages table
+## items table
 
-|Field|Type|Key|Options|
-|---|:---:|:---:|---|
-|content|text|||
-|image|string|||
-|group_id|integer|fk|null: false|
-|user_id|integer|fk|null: false|
+|Field|Type|Options|
+|---|:---:|---|
+|name|string|null: false, index: true|
+|description|text|null: false|
+|price|integer|null: false, index: true|
+|item_condition|references|foreign_key: true|
+|ship_fee_bearer|references|foreign_key: true|
+|days_before_ship|references|foreign_key: true|
+|delivery_method|references|foreign_key: true|
+|user|references|foreign_key: true|
+|brand|references|foreign_key: true|
+|category|references|foreign_key: true|
+
 
 ### Association
-- belongs_to :group
+- has_one :item_condition
+- has_one :ship_fee_bearer
+- has_one :days_before_ship
+- has_one :delivery_method
+
 - belongs_to :user
+- belongs_to :brand, optional: true
+- belongs_to :category
+
+- has_many :item_images
+- has_many :likes, dependent: destroy
+- has_many :comments
 
 
-## groups table
 
-|Field|Type|Key|Options|
-|---|:---:|:---:|---|
-|name|string||null: false|
-
-### Association
-- has_many :users, through: :groups_users
-- has_many :messages
-- has_many :groups_users
-
-## users table
-
-|Field|Type|Key|Options|
-|---|:---:|:---:|---|
-|name|string||null: false|
-|email|string||null: false|
-
-### Association
-- has_many :groups, through: :groups_users
-- has_many :messages
-- has_many :groups_users
-
-## groups_users table
-
-|Field|Type|Key|Options|
-|---|:---:|:---:|---|
-|group_id|integer|fk|null: false|
-|user_id|integer|fk|null: false|
-
-### Association
-- belongs_to :group
-- belongs_to :user
 
