@@ -70,6 +70,57 @@
 - belongs_to :item
 
 
+## transactionsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|buy_user_id|references|null: false, foreign_key: true|
+|sell_user_id|references|null: false, foreign_key: true|
+|grade_id|references|null: false, foreign_key: true|
+|item_id|references|null: false, foreign_key: true|
+|to_buy_user_grade|references|null: false, foreign_key: true|
+|to_buy_user_comment|string|
+|to_sell_user_grade|references|null: false, foreign_key: true|
+|to_sell_user_comment|string|
+|item_status|references|null: false, foreign_key: true|
+|payment|references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :grade
+- belongs_to :buy_user, class_name: User
+- belongs_to :sell_user, class_name: User
+- belongs_to :status
+- belongs_to :payment
+- has_many :items
+
+## gradesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+
+### Association
+- has_many :transactions
+
+## statusテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+
+### Association
+- has_many :transactions
+
+## paymentsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+
+### Association
+- has_many :transactions
+
+
 
 ## items table
 
