@@ -35,6 +35,16 @@
 - belongs_to :prefecutre
 - belongs_to :credit_info
 
+
+## prefectures table
+|Column|Type|Options|
+|------|----|-------|
+|prefecture|string|null: false, unique: true, index: true|
+
+### Association
+- has_many :users
+
+
 ## credit_cardテーブル
 |Column|Type|Options|
 |------|----|-------|
