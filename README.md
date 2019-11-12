@@ -213,3 +213,41 @@
 ### Association
 - has_many :items
 
+
+## categories table
+
+|Field|Type|Options|
+|---|:---:|---|
+|category_name|string|null: false, index: true|
+|parent_id|integer|null: false|
+
+
+### Association
+- belongs_to :category_tree
+- has_many :items
+
+
+## category_sizes table
+
+|Field|Type|Options|
+|---|:---:|---|
+|category|references|foreign_key: true|
+|size|reference|foreign_key: true|
+
+
+### Association
+- belongs_to :category
+- belongs_to :size
+
+
+## sizes table
+
+|Field|Type|Options|
+|---|:---:|---|
+|size|string|null: false, index: true|
+
+
+### Association
+- has_many :category_size
+
+
