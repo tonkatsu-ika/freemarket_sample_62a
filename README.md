@@ -182,3 +182,23 @@
 
 ### Association
 - has_many :items
+
+
+## days_before_ship table
+
+|Field|Type|Options|
+|---|:---:|---|
+|days_before_ship|string|null: false|
+
+### Association
+- has_many :items
+
+
+## delivery_methods table
+
+|Field|Type|Options|
+|---|:---:|---|
+|delivery_method|string|null: false|
+
+### Association
+- has_many :items
