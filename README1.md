@@ -33,7 +33,7 @@
 |------|----|-------|
 |user_id|reference|null: false,foreign_key: true|
 |number|integer|null: false|
-|expired_date_month||null: false|
+|expired_date_month|date|null: false|
 |expired_date_year|year|null: false|
 |security_code|integer|null: false|
 |main_card_flag|boolean|
