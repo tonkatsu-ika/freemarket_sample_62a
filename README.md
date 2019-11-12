@@ -47,3 +47,16 @@
 
 ### Association
 - belongs_to :item
+
+
+## item_conditions table
+
+|Field|Type|Options|
+|---|:---:|---|
+|item_condition|string|null: false|
+
+### Association
+- has_many :items
+
+
+
