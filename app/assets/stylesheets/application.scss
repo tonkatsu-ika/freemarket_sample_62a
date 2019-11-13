@@ -14,10 +14,19 @@
  *= require_tree .
  *= require_self
  */
- @import 'font_awesome5_webfont';
- @import "./reset";
- @import "./config/valiables";
- @import "./mixin/mixin";
- @import "./modules/header";
- @import "./modules/footer";
- @import "./modules/index";
+
+// common settings
+@import 'font_awesome5_webfont';
+@import './reset';
+@import './config/valiables';
+@import './mixin/mixin';
+
+// index
+@import './modules/header';
+@import './modules/footer';
+@import './modules/index';
+
+// mypage
+@import './modules/mypage/mypage_common';
+@import './modules/mypage/sidebar';
+@import './modules/mypage/logout';
