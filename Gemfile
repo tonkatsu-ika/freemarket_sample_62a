@@ -50,8 +50,10 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
 
-  # Rubocop
+  # lint
   gem 'rubocop', require: false
+  gem 'scss_lint', require: false
+  gem 'haml_lint', require: false
 end
 
 group :development do
