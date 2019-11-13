@@ -24,14 +24,15 @@
 |telephone|integer|null: false|
 
 ### Association
-- has_many :comments
-- has_many :likes
-- has_many :items
+- has_many :comments, dependent: :destroy
+- has_many :likes, dependent: :destroy
+- has_many :items, dependent: :destroy
 - has_many :transaction
 - has_many :buyers, class_name: User, foreign_key: "seller_id"
 - has_many :sellers, class_name: User, foreign_key: "buyer_id"
 - belongs_to :prefecutre
-- has_one :credit_card
+- has_one :credit_card, dependent: :destroy
+- has_one :address, dependent: destroy
 
 
 ## addresses table
