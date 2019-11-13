@@ -3,8 +3,8 @@
     .header__upper__title-logo
       = link_to (image_tag "fmarket_logo_red.svg", size: "134x36", alt: "Fmarket"), :root            
     %form.header__upper__form
-      %input.header__upper__form__search{:name => "", :placeholder => "何かお探しですか？", :type => "text", :value => ""}/
-      %input{type: "submit"}
+      %input.header__upper__form__search{:name => "", :placeholder => "何かお探しですか？", :type => "search", :value => ""}/
+      = link_to "#" do
         %i.fas.fa-search
 
   .header__bottom
