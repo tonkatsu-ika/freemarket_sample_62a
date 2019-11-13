@@ -18,11 +18,10 @@ module FreemarketSample62a
 
     # 不要なファイルを生成しないように設定
     config.generators do |g|
-      g.test_framework nil
-      g.assets false
-      g.helper false
-      g.javascripts false
       g.stylesheets false
+      g.javascripts false
+      g.helper false
+      g.test_framework false
     end
 
   end
