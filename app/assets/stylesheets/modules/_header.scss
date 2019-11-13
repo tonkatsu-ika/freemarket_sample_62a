@@ -7,6 +7,7 @@ header{
   height: 100px;
 }
 
+
 .header{
   width: 1020px;
   height: 100px;
@@ -72,14 +73,25 @@ header{
           color: #5D99FF;
           cursor: pointer;
         }
+        &:hover > i{
+          color: #5D99FF;
+        }
+        &:hover > .gray{
+          color: #cccccc;
+        }
         & i {
           font-size: 20px;
           color: #cccccc;
+          position: relative;
+          top:2px;
+          margin-right: 10px;
+          width: 19px;
         }
       }
     }
   }
 }
+
 
 a .fas.fa-search {
   color:rgb(34, 34, 34);
@@ -97,3 +109,4 @@ a:visited .fas.fa-search{
 a:hover .fas.fa-search{
   color: rgb(34, 34, 34);
 }
+
