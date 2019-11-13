@@ -22,10 +22,6 @@
 |password|string|null: false|
 |birthday|date|null: false|
 |telephone|integer|null: false|
-|post_code|integer|null: false|
-|prefecuture|references|foreign_key: true|
-|address|string|null: false|
-|building|string|null: false|
 
 ### Association
 - has_many :comments
@@ -38,13 +34,19 @@
 - belongs_to :credit_card
 
 
-## prefectures table
+## addresses table
+
 |Column|Type|Options|
 |------|----|-------|
-|prefecture|string|null: false, unique: true, index: true|
+|post_code|integer|null: false|
+|prefecuture|string|null: false|
+|address|string|null: false|
+|building|string|null: false|
+|user|references|foreign_key: true|
+
 
 ### Association
-- has_many :users
+- belongs_to :user
 
 
 ## credit_cards table
