@@ -24,5 +24,9 @@ module FreemarketSample62a
       g.test_framework false
     end
 
+    # locale & timezoneの設定
+    config.i18n.default_locale = :ja
+    config.time_zone = 'Tokyo'
+    
   end
 end
