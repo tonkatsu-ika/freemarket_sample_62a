@@ -98,7 +98,7 @@
 |comment_by_buyer|string||
 |grade_by_seller|references|foreign_key: true|
 |comment_by_seller|string||
-|transaction_status|references|foreign_key: true|
+|transaction_status|integer|null: false|
 |payment_method|references|foreign_key: true|
 
 ### Association
@@ -115,16 +115,6 @@
 |Column|Type|Options|
 |------|----|-------|
 |grade|string|null: false, unique: true|
-
-### Association
-- has_many :transactions
-
-
-## transaction_status table
-
-|Column|Type|Options|
-|------|----|-------|
-|status|string|null: false, unique: true|
 
 ### Association
 - has_many :transactions
