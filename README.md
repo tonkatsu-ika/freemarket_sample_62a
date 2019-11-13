@@ -31,7 +31,7 @@
 - has_many :buyers, class_name: User, foreign_key: "seller_id"
 - has_many :sellers, class_name: User, foreign_key: "buyer_id"
 - belongs_to :prefecutre
-- belongs_to :credit_card
+- has_one :credit_card
 
 
 ## addresses table
