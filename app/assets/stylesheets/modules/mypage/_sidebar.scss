@@ -27,10 +27,17 @@
           opacity: 0.3;
         }
       }
-      & .hover {
-        background-color: red;
-        &　.mypage-sidebar__list__item__link__arrow {
-          transform: translate(4px, -50%);
+      &--hover {
+        background-color: $bg-sidebar-hover;
+        .mypage-sidebar__list__item__link__arrow {
+          transform: translate(4px);
+          opacity: 1;
+        }
+      }
+      &--this-page {
+        font-weight: bold;
+        background-color: #eee;
+        .mypage-sidebar__list__item__link__arrow {
           opacity: 1;
         }
       }
