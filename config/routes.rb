@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'items#index'
-  resources :mypages, only: [:index, :update] do
+  resources :mypage, only: [:index, :update] do
     collection do
       get :profile
       get :card
