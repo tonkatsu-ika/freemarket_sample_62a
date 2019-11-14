@@ -2,7 +2,7 @@
   "name": "freemarket_sample_62a",
   "private": true,
   "scripts": {
-    "lint": "eslint src"
+    "eslint": "eslint"
   },
   "dependencies": {},
   "devDependencies": {
