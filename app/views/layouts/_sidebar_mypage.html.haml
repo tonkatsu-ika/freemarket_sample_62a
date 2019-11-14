@@ -1,11 +1,19 @@
 .mypage-sidebar
   %ul.mypage-sidebar__list
     %li.mypage-sidebar__list__item
-      = link_to "#", class: "mypage-sidebar__list__item--link" do
-        マイページ
-        %i.icon-arrow-right
+      = link_to "#", class: "mypage-sidebar__list__item__link" do
+        %span.mypage-sidebar__list__item__link__menu-name マイページ
+        = fa_icon "chevron-right", class: "mypage-sidebar__list__item__link__arrow"
+    %li.mypage-sidebar__list__item
+      = link_to "#", class: "mypage-sidebar__list__item__link" do
+        %span.mypage-sidebar__list__item__link__menu-name お知らせ
+        = fa_icon "chevron-right", class: "mypage-sidebar__list__item__link__arrow"
   %h3.mypage-sidebar__header
     メルペイ
   %ul.mypage-sidebar__list
+    %li.mypage-sidebar__list__item
+      = link_to "#", class: "mypage-sidebar__list__item__link" do
+        %span.mypage-sidebar__list__item__link__menu-name マイページ
+        = fa_icon "chevron-right", class: "mypage-sidebar__list__item__link__arrow"
   %h3.mypage-sidebar__header 設定
   %ul.mypage-sidebar__list

@@ -1,0 +1,43 @@
+@import "../../config/variables";
+
+.mypage-sidebar {
+  &__list {
+      width: 100%;
+    &__item {
+      display: block;
+      height: $height-sidebar-item;
+      line-height: $height-sidebar-item;
+      padding: 0 16px;
+      border-bottom: solid 1px #eee;
+      background-color: #fff;
+      &__link {
+        justify-content: space-between;
+        text-decoration: none;
+        color: $f-color-base;
+        display: flex;
+        position: relative;
+        &__menu-name {
+          line-height: $height-sidebar-item;;
+        }
+        &__arrow {
+          postion: fixed;
+          right: 16px;
+          line-height: $height-sidebar-item;
+          font-weight: bold;
+          opacity: 0.3;
+        }
+      }
+      & .hover {
+        background-color: red;
+        &　.mypage-sidebar__list__item__link__arrow {
+          transform: translate(4px, -50%);
+          opacity: 1;
+        }
+      }
+    }
+  }
+  &__header {
+    margin-top: 40px;
+    margin-bottom: 8px;
+  }
+}
