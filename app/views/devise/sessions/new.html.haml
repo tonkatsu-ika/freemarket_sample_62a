@@ -1,48 +1,52 @@
-.login-header
-  .login-header__upper
-    .login-header__upper__title-logo
+.user-login
+  .login-header
+    .login-header__title
+      .login-header__title_logo
       = link_to (image_tag "fmarket_logo_red.svg", size: "185x49", alt: "Fmarket",class: "login-header__upper__title-logo__link"), :root            
-.login-main
-  .login-main__container
-    .login-main__container-registration
-      新規会員登録  
-    .login-main__container-form
-      %ul.login-main__container-form__content
-        %li.login-main__container-form__content_btn
-          %a.fa.fa-envelope
-          %button{:name => "button4", :type => "button",:class =>'complete-button'} メールアドレスで登録する
-        %li.login-main__container-form__content_btn  
-          %a.fa.fa-facebook-square
-          %button{:name => "button4", :type => "button",:class =>'complete-button'} Facebookで登録する
-        %li.login-main__container-form__content_btn    
-          %a.fa.fa-google
-          %button{:name => "button4", :type => "button",:class =>'complete-button'} Googleで登録する
-.login-footer
-  %ul.login-footer__container
-    %li.login-footer__container__link
-    = link_to 'プライバシーポリシー', "#",class: 'btn-square-little-rich', method: :delete          
-    %li.login-footer__container__link
-    = link_to 'メルカリ利用規約', "#",class: 'btn-square-little-rich', method: :delete         
-    %li.login-footer__container__link
-    = link_to '特定商取引に関する表記', "#",class: 'btn-square-little-rich', method: :delete
-  .login-_footer__title-logo
-    = link_to (image_tag "fmarket_logo_red.svg", size: "185x49", alt: "Fmarket",class: "login-header__upper__title-logo__link"), :root                     
+  .login-main
+    .login-main__container
+      .login-main__container-registration
+        新規会員登録  
+      .login-main__container-form
+        %ul.login-main__container-form__list 
+          %li.login-main__container-form__list__btn-mail
+            %a.fa.fa-envelope
+            メールアドレスで登録する
+          %li.login-main__container-form__list__btn-facebook  
+            %a.fa.fa-facebook-square
+            Facebookで登録する
+          %li.login-main__container-form__list__btn-google 
+            %a.fa.fa-google
+            Googleで登録する
+  .login-footer
+    .login-footer__list
+      %ul
+        %li
+        = link_to 'プライバシーポリシー', "#",class: 'btn-square-little-rich', method: :get         
+        %li
+        = link_to 'Fmarket利用規約', "#",class: 'btn-square-little-rich', method: :get      
+        %li
+        = link_to '特定商取引に関する表記', "#",class: 'btn-square-little-rich', method: :get
+    .login-footer__title-logo
+      = link_to (image_tag "fmarket_logo_white.svg", size: "185x49", alt: "Fmarket",class: "login-header__upper__title-logo__link"), :root      
+    .login-footer__copyright
+      © ︎2019 Fmarket               
 
--# %h2 Log in
--# = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  
--#   .field
--#     = f.label :email
--#     %br/
--#     = f.email_field :email, autofocus: true, autocomplete: "email"
--#   .field
--#     = f.label :password
--#     %br/
--#     = f.password_field :password, autocomplete: "current-password"
--#   - if devise_mapping.rememberable?
--#     .field
--#       = f.check_box :remember_me
--#       = f.label :remember_me
--#   .actions
--#     = f.submit "Log in"
--# = render "devise/shared/links"
+  -# %h2 Log in
+  -# = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    
+  -#   .field
+  -#     = f.label :email
+  -#     %br/
+  -#     = f.email_field :email, autofocus: true, autocomplete: "email"
+  -#   .field
+  -#     = f.label :password
+  -#     %br/
+  -#     = f.password_field :password, autocomplete: "current-password"
+  -#   - if devise_mapping.rememberable?
+  -#     .field
+  -#       = f.check_box :remember_me
+  -#       = f.label :remember_me
+  -#   .actions
+  -#     = f.submit "Log in"
+  -# = render "devise/shared/links"
