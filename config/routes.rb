@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     passwords: 'users/passwords',
     registrations: 'users/registrations',
-    confirmations: 'users/confirmations' 
+    confirmations: 'users/confirmations'
   }
   root 'items#index'
   resources :mypages, only: [:index, :update] do
