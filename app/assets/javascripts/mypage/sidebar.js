@@ -10,8 +10,4 @@ $(document).on('turbolinks:load', function() {
     $(this).addClass('mypage-sidebar__list__item');
   });
 
-
-
-
-
 });
