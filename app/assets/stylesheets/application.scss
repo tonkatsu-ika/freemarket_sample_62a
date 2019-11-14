@@ -31,6 +31,12 @@
 @import './modules/index';
 
 // mypage
+// 共通パーツ
 @import './modules/mypage/mypage_common';
 @import './modules/mypage/sidebar';
+// 各ページのコンテンツ
+@import './modules/mypage/card';
+@import './modules/mypage/identification';
+@import './modules/mypage/index';
 @import './modules/mypage/logout';
+@import './modules/mypage/profile';
