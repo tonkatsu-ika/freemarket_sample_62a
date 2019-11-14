@@ -18,12 +18,15 @@
 // common settings
 @import 'font_awesome5_webfont';
 @import './reset';
-@import './config/valiables';
+@import './config/variables';
 @import './mixin/mixin';
 
-// index
+// common layout parts
 @import './modules/header';
 @import './modules/footer';
+@import './modules/breadcrumb';
+
+// index
 @import './modules/index';
 
 // mypage

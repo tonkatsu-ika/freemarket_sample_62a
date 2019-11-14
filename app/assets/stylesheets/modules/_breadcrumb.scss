@@ -1,0 +1,11 @@
+@import './config/variables';
+
+.bread-crumb-list {
+  width: $width-content-pc;
+  height: $height-breadcrumb;
+  margin: 0 auto;
+  padding: 16px 0;
+  %__item {
+
+  }
+}
