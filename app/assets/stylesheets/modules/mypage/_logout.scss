@@ -1,4 +1,5 @@
 @import '../../mixin/mixin';
+@import '../../config/variables';
 
 .contents-wrapper{
   width: 700px;
@@ -7,10 +8,11 @@
   flex-direction: column; 
   justify-content: center; 
   align-items: center;  
+  background-color: #fff;
   &__form{
     width: 320px;
     height: 50px;
-    background-color:rgb(234, 53, 45) ;
+    background-color: $fm-red;
     text-align: center;
     line-height: 50px;
     &__btn{
@@ -23,7 +25,9 @@
       font-family: inherit;
       &:hover {
         cursor: pointer;
+        background-color: #e62017;
       }
     }
   }
 }
+
