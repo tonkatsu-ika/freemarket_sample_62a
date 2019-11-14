@@ -11,7 +11,7 @@
         %ul.login-main__container-form__list 
           %li.login-main__container-form__list__btn-mail
             %a.fas.fa-envelope
-            メールアドレスで登録する
+            = link_to 'メールアドレスで登録する', "/signup/registlation", method: :get 
           %li.login-main__container-form__list__btn-facebook  
             %a.fab.fa-facebook-square
             Facebookで登録する
@@ -22,7 +22,7 @@
     .login-footer__list
       %ul
         %li
-        = link_to 'プライバシーポリシー', "#",class: 'btn-square-little-rich', method: :get         
+        = link_to 'プライバシーポリシー', "#",class: 'btn-square-little-rich', method: :get
         %li
         = link_to 'Fmarket利用規約', "#",class: 'btn-square-little-rich', method: :get      
         %li

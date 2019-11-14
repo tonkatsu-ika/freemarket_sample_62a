@@ -1,0 +1,11 @@
+
+電話番号の確認
+= form_for @user, url: address_signup_index_path, method: :get, html: {class: 'first-main__box'} do |f|
+  = f.label '携帯電話の番号' ,class: 'telephone' 
+  .form_required-box
+    必須
+  本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。  
+  = f.text_field :telephone, placeholder: '携帯電話の番号を入力'
+  ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+  = f.submit class: 'mixinを指定',value:'SMSを送信する'
+=link_to '電話番号の確認が必要な理由','#' ,method: :get
