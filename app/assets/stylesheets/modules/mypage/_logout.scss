@@ -1,0 +1,29 @@
+@import '../../mixin/mixin';
+
+.contents-wrapper{
+  width: 700px;
+  height: 179px;
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center;  
+  &__form{
+    width: 320px;
+    height: 50px;
+    background-color:rgb(234, 53, 45) ;
+    text-align: center;
+    line-height: 50px;
+    &__btn{
+      @include form_button();
+      width: 320px;
+      height: 50px;
+      border: none;
+      font-size: 13px;
+      letter-spacing:1px;
+      font-family: inherit;
+      &:hover {
+        cursor: pointer;
+      }
+    }    
+  }
+}
