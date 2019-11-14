@@ -1,0 +1,12 @@
+@import './variables';
+
+// アプリの全体に関わるスタイル設定
+
+@font-face {
+  font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+}
+
+* {
+  font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+  font-size: $f-size-base; 
+}
