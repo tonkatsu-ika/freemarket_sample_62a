@@ -39,7 +39,6 @@
         padding-top: 20px;
         &__list{
           margin: 0 auto;
-          
           width: 350px;
           list-style: none;
           line-height: 48px;
@@ -57,7 +56,6 @@
             color: #fff;
             cursor: pointer;
             border-radius: 4px;
-            
           }
           &__btn-google{
             margin: 16px 0 0;
@@ -66,7 +64,6 @@
             color: #333;
             cursor: pointer;
             border-radius: 4px;
-            
           }
           .fa{
             font-size: 24px;
@@ -77,7 +74,6 @@
             float: left;
           }
         }
-
       }
     }
   }
@@ -115,15 +111,12 @@
         } 
       }
     }
-    
-    
     &__container{
       display: block;
       margin: 10 auto;
       color: grey;
       display: flex;
       align-items:center;
-      
       &__link{  
         color: #333;  
         text-decoration: none;  
@@ -135,7 +128,6 @@
     &__title-logo{
       margin-top: 70px;
       text-align: center;
-      
       &__link{
         margin: 0 auto;
         text-align: center;
