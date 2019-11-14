@@ -50,8 +50,10 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
 
-  # Rubocop
+  # lint
   gem 'rubocop', require: false
+  gem 'scss_lint', require: false
+  gem 'haml_lint', require: false
 end
 
 group :development do
@@ -71,7 +73,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'haml-rails'
-gem "font-awesome-rails"
+gem 'font_awesome5_rails'
 gem 'devise'
 gem 'erb2haml'
 gem 'carrierwave'
@@ -79,3 +81,4 @@ gem 'mini_magick'
 gem 'pry-byebug'
 gem 'jquery-rails'
 gem 'fog-aws'
+gem 'rails-i18n', '~> 5.1'

@@ -6,6 +6,13 @@ Rails.application.routes.draw do
     confirmations: 'users/confirmations' 
     }
   root 'items#index'
+  resources :mypages, only: [:index, :update] do
+    collection do
+      get :profile
+      get :card
+      get :identification
+    end
+  end
   get 'itmes/index'
 
 

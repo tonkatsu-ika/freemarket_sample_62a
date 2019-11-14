@@ -1,0 +1,148 @@
+.top-page__image {
+  height: 390px;
+  width: 100%;
+  // background-image: image-url("mercari.jpg");
+  &__wrapper {
+    // width: 760px;
+    height: 100%;
+    margin: 0 auto;
+    &--index {
+      font-size: 60px;
+      line-height: 1.4;
+      padding: 40px 0 20px 0;
+    }
+    &--sentence {
+      font-size: 18px;
+      line-height: 1.8;
+    }
+  }
+}
+
+.favorite-category {
+  padding: 56px 0 30px;
+  &__headding {
+    font-size: 28px;
+    text-align: center;
+  }
+  &__bottom {
+    width: auto;
+    // width: 575px;
+    // height: 100%;
+    margin: 20px auto 0;
+    & ul {
+      width: 100vw;
+      text-align: center;
+      & li {
+        margin: 10px 20px 0 0;
+        padding: 10px;
+        font-size: 14px;
+        background-color: rgb(239, 239, 239);
+        border-radius: 17px;
+        list-style: none;
+        display: inline-block;
+      }
+    }
+    &__list {
+      color: #111111;
+      text-decoration: none;
+    }
+  }
+}
+
+.new-items-by-category {
+  width: 100%;
+  background-color: rgb(239, 239, 239);
+  &__wrapper {
+    width: 1050px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 42px 0 50px;
+    & ul li {
+      height: auto;
+      width: 100%;
+      margin-bottom: 50px;
+      list-style: none;
+    }
+    &--list{
+      &__upper {
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        &__index {
+          font-size: 33px;
+        }
+        &__more-watch {
+          font-size: 14px;
+          line-height: 33px;
+          margin-right: 10px;
+          color: rgb(0, 149, 238);
+          text-decoration: none;
+        }
+      }
+      &__bottom {
+        & ul li {
+          width: 188px;
+          height: 252px;
+          margin: 10px;
+          box-shadow: 0px 2px 2px 2px rgba(0,0,0,0.1);
+          background-color: white;
+          float: left;
+          &:hover {
+            outline: 1px solid blue;
+          }
+        }
+        &__link{
+          text-decoration: none;
+        }
+        &__image {
+          width: 100%;
+          height: 192px;
+          position: relative;
+          & span {
+            line-height: 25px;
+            font-size: 17px;
+            color: #fff;
+            background-color: rgba(0,0,0,.4);
+            border-radius: 0 14px 14px 0;
+            padding: 0 12px;
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+          }
+        }
+        &__item-name {
+          color: rgb(0,0,0);
+          font-size: 14px;
+          width: calc(100% - 10px);
+          height: 50px;
+          padding: 5px;
+          line-height: 20px;
+          word-wrap: break-word;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+}
+
+.exhibit-btn {
+  width: 170px;
+  height: 170px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  border-radius: 85px;
+  background-color: red;
+  color: #fff;
+  text-decoration: none;
+  &__sentence {
+    font-size: 25px;
+    text-align: center;
+    margin-top: 30px;
+  }
+  &__camera {
+    font-size: 60px;
+    text-align: center;
+    margin-top: 10px;
+  }
+}

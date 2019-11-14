@@ -5,15 +5,14 @@ body{
 header{
   width: 100%;
   height: 100px;
-  background-color: aquamarine;
 }
+
 
 .header{
   width: 1020px;
   height: 100px;
   margin: 0px auto;
   padding: 8px 0px 0px;
-  background-color: burlywood;
   box-sizing: border-box;
   &__upper{
     display: flex;  
@@ -23,31 +22,91 @@ header{
     }
     &__form{
       width: 100%;
+      position: relative;
       &__search {
-        border-image: initial;
-        border-radius:4px;
-        width: 830px;
+        font-size: 16px;
+        border-radius:5px;
+        width: 100%;
         height: 40px;
+        padding-left: 10px;
+        padding-right: 40px;
+        background-color: rgb(245, 245, 245);
+        border-width: 1px;
+        border-style: solid;
+        border-color: rgb(204, 204, 204);
+      }
+      & i {
+        position: absolute;
+        top: 12px;
+        right: 15px;
       }
     }
   }
   &__bottom{
     width: 100%;
     display: flex;
+    justify-content: space-between;
+    line-height: 60px;
     &__search-items{
       list-style: none;
+      font-weight: bold;
+      box-sizing: border-box;
       &__li{
+        font-size: 14px;
+        margin-right: 25px;
+        margin-left: 10px;
         float: left;
+        & i {
+          color: red;
+        }
       }
     }
-
     &__user-menu{
       list-style: none;
-        &__li{
-          float: left;
+      &__li{
+        color: black;
+        font-size: 14px;
+        margin-left: 14px;
+        float: left;
+        text-decoration: none;
+        &:hover {
+          color: #5D99FF;
+          cursor: pointer;
         }
+        &:hover > i{
+          color: #5D99FF;
+        }
+        &:hover > .gray{
+          color: #cccccc;
+        }
+        & i {
+          font-size: 20px;
+          color: #cccccc;
+          position: relative;
+          top:2px;
+          margin-right: 10px;
+          width: 19px;
+        }
+      }
     }
   }
 }
-  
+
+
+a .fas.fa-search {
+  color:rgb(34, 34, 34);
+  font-size: 14px;
+}
+
+a:link .fas.fa-search{
+  color: rgb(34, 34, 34);
+}
+
+a:visited .fas.fa-search{
+  color: rgb(34, 34, 34);
+}
+
+a:hover .fas.fa-search{
+  color: rgb(34, 34, 34);
+}
 
