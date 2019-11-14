@@ -1,3 +1,10 @@
-%h1 Mypage#logout
-%p Find me in app/views/mypage/logout.html.haml
-%p ログアウトボタン表示
+.mypage
+  %nav.mypage__breadcrumb
+    = render "layouts/breadcrumb"
+  .mypage__main
+    .mypage__main__wrapper
+      %article.mypage__main__wrapper__main
+        = render "logout"
+      %nav.mypage__main__wrapper__sidebar
+        = render "layouts/sidebar_mypage"
+    
