@@ -5,7 +5,23 @@
   height: $height-breadcrumb;
   margin: 0 auto;
   padding: 16px 0;
-  %__item {
-
+  display: flex;
+  letter-spacing: 1px;
+  padding-left: 14px;
+  &__item {
+    &__link{
+      margin-right: 3px;
+      text-decoration: none;
+      color: $f-color-base;
+    }
+    &__icon{
+      color: #888;
+      margin: 0px 8px;
+      font-size: 0.7rem;
+    }
+  }
+  &__item--bold{
+    font-weight: bold;
   }
 }
+
