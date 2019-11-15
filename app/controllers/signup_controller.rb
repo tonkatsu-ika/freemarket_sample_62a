@@ -20,6 +20,7 @@ class SignupController < ApplicationController
   #支払い方法入力
   def payment
     @user = User.new
+    @user.build_credit_card
   end
   
   #会員情報登録完了

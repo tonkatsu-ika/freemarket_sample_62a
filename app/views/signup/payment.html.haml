@@ -1,7 +1,15 @@
-= form_for @user ,url: payment_signup_index_path, method: :get, html: {class: 'first-main__box'} do |f|
+-# = form_for @user ,url: payment_signup_index_path, method: :get, html: {class: 'first-main__box'} do |f|
   
-  = f.fields_for :credit_cards do |i|
-    = i.label '郵便番号' ,class: 'post_code' 
-    %span.form_required-box 必須
-    %br/
-    = i.text_field :post_code, placeholder: '例）123456'
+-#   = f.fields_for :credit_cards do |i|
+-#     = i.label 'カード番号' ,class: 'number' 
+-#     %span.form_required-box 必須
+-#     %br/
+-#     = i.text_field :number, placeholder: '半角数字のみ'
+-#     = i.label '有効期限' ,class: 'expiration_month' 
+-#     %span.form_required-box 必須
+-#     %br/
+-#     =sprintf(i.date_select(:expiration_month,with_css_classes:'XXXXX', order:[:month,:year,:day], use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, date_separator:'%s'),'月') + '年'
+-#     = i.label 'セキリュティコード' ,class: 'n' 
+-#     %span.form_required-box 
+-#     %br/
+-#     = i.text_field :number, placeholder: '半角数字のみ'  
