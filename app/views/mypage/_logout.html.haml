@@ -1,3 +1,4 @@
 .contents-wrapper
-  = form_with(url: "#", method: :POST, class: "contents-wrapper__form") do |f|
-    = f.submit 'ログアウト', class: "contents-wrapper__form__btn"
+  .logout-contents
+    = form_with(url: "#", method: :POST, class: "logouts-contents__form") do |f|
+      = f.submit 'ログアウト', class: "logout-contents__form__btn"
