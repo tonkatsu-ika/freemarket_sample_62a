@@ -1,0 +1,7 @@
+= form_for @user ,url: payment_signup_index_path, method: :get, html: {class: 'first-main__box'} do |f|
+  
+  = f.fields_for :credit_cards do |i|
+    = i.label '郵便番号' ,class: 'post_code' 
+    %span.form_required-box 必須
+    %br/
+    = i.text_field :post_code, placeholder: '例）123456'

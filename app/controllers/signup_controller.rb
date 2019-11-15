@@ -14,7 +14,7 @@ class SignupController < ApplicationController
   #住所入力
   def address
     @user = User.new
-    @address = @user.address
+    @user.build_address
   end
 
   #支払い方法入力
@@ -27,5 +27,10 @@ class SignupController < ApplicationController
     @user = User.new
   end
   
+  private
+
+  def user_params
+    params.require(:user).permit(:name, address_attributes:[:id, :post_code, :prefecture, :address,:building])
+  end
 
 end

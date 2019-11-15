@@ -7,4 +7,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          has_one :address, dependent: :destroy       
          belongs_to_active_hash :prefecture
+
 end
