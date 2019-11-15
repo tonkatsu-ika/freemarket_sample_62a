@@ -1,0 +1,32 @@
+@import '../../config/variables';
+
+.slide-brands-wrapper {
+  position: relative;
+  & active {
+    display: block;
+  }
+  & .brands-list {
+    position: absolute;
+    list-style: none;
+    & .brands-list__item {
+      width: 224px;
+      height: 44px;
+      line-height: 44px;
+      & .brands-list__item__link {
+        display: block;
+        padding: 0 16px;
+        text-decoration: none;
+        color: $f-color-base;
+        background-color: #fff;
+        & .brands-list__item__link__brand-name {
+          font-weight: 300;
+        }
+        &:hover {
+          background-color: $fm-red;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+    
