@@ -13,17 +13,18 @@ class SignupController < ApplicationController
 
   #住所入力
   def address
-    
+    @user = User.new
+    @address = @user.address
   end
 
   #支払い方法入力
   def payment
-    
+    @user = User.new
   end
   
   #会員情報登録完了
   def done
-    
+    @user = User.new
   end
   
 

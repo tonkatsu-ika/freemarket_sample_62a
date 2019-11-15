@@ -9,4 +9,6 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     %main
-      = yield
+      .user-login
+        = yield
+        = render 'devise/shared/userlogin_footer'
