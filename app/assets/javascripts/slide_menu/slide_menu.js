@@ -2,10 +2,10 @@
 $(document).on('turbolinks:load', function () {
 
   $('#slide_brands').mouseover(function() {
-    console.log('in');
+    $(this).find('.slide-brands-wrapper').addClass('active');
   });
   $('#slide_brands').mouseout(function() {
-    console.log('out');
+    $(this).find('.slide-brands-wrapper').removeClass('active');
   });
 
 });

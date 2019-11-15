@@ -2,12 +2,16 @@
 
 .slide-brands-wrapper {
   position: relative;
-  & active {
-    display: block;
+  visibility: hidden;
+  &.active {
+    visibility: visible;
   }
   & .brands-list {
     position: absolute;
     list-style: none;
+    border-left: solid 1px #fafafa;
+    border-right: solid 1px #fafafa;
+    box-shadow: 0px 2px 4px #ddd;
     & .brands-list__item {
       width: 224px;
       height: 44px;
