@@ -1,3 +1,5 @@
+@import '../config/variables';
+
 body{
   margin: 0;
   padding: 0%;
@@ -56,8 +58,16 @@ header{
         margin-right: 25px;
         margin-left: 10px;
         float: left;
-        & i {
-          color: red;
+        &__link {
+          text-decoration: none;
+          color: $f-color-base;
+          display: block;
+          & i {
+            color: red;
+          }
+          &:hover {
+            color: #5D99FF;
+          }
         }
       }
     }

@@ -1,16 +1,29 @@
 .contents-wrapper
   %section.contents-wrapper__user
-    %figure.contents-wrapper__user__icon-container
-      = image_tag "", alt: "user icon"
-    %h2.contents-wrapper__user__name
-    .contents-wrapper__user__kpis
-      .cotents-wrapper__user__kpis__item
-        評価
-        %span.contents-wrapper__user__kpis__number
-          51
-      .cotents-wrapper__user__kpis__item
-        出品数
-        %span.contents-wrapper__user__kpis__number
-          100      
+    = link_to "#", class: "contents-wrapper__user__link"
+      %figure.contents-wrapper__user__link__icon-container
+        = image_tag "", alt: "user icon"
+      %h2.contents-wrapper__user__link__name
+      .contents-wrapper__user__link__kpis
+        .cotents-wrapper__user__link__kpis__item
+          評価
+          %span.contents-wrapper__user__link__kpis__number
+            51
+        .cotents-wrapper__user__link__kpis__item
+          出品数
+          %span.contents-wrapper__user__link__kpis__number
+            100
+            
   %section.contents-wrapper__tab-container
+    %ul.contents-wrapper__tab-container__tabs
+    .contents-wrapper__tab-container__tab-content
+      %ul.contents-wrapper__tab-container__tab-content__item-list
+        %li.contents-wrapper__tab-container__tab-content__item-list__item
+        %li.contents-wrapper__tab-container__tab-content__item-list__item.contents-wrapper__tab-container__tab-content__item-list__item__btn
+
   %section.contents-wrapper__tab-container
+    %h2.contents-wrapper__tab-container__tab-header
+      購入した商品
+    %ul.contents-wrapper__tab-container__tabs
+    .contents-wrapper__tab-container__tab-content
+      %ul.contents-wrapper__tab-container__tab-content__item-list

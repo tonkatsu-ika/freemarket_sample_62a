@@ -10,11 +10,13 @@
   .header__bottom
     %ul.header__bottom__search-items
       %li.header__bottom__search-items__li
-        %i.fas.fa-list-ul
-        カテゴリーから探す
-      %li.header__bottom__search-items__li
-        %i.fas.fa-tag
-        ブランドから探す
+        = link_to "#", class: "header__bottom__search-items__li__link" do
+          %i.fas.fa-list-ul
+          カテゴリーから探す
+      %li.header__bottom__search-items__li#slide_brands
+        = link_to "#", class: "header__bottom__search-items__li__link" do
+          %i.fas.fa-tag
+          ブランドから探す
     %ul.header__bottom__user-menu
       %li.header__bottom__user-menu__li
         = link_to "#", class: "header__bottom__user-menu__li" do
