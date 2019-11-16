@@ -1,4 +1,5 @@
 @import '../../config/variables';
+@import "../../mixin/mixin";
 
 .card-contents{
   height: 365px;
@@ -45,7 +46,7 @@
             margin-top: 8px;
           }
           &__btn{
-            border: 1px solid #ea352d;
+            border: 1px solid $fm-red;
             border-radius: 3px;
             color: $fm-red;
             padding: 1.5px 6px;
@@ -66,14 +67,13 @@
         &__text{
           font-size: 14px;
           text-decoration: none;
-          color:#0099e8;
+          color: $link-color;
           position: absolute;
           right: 0px;
           bottom: 0px;
           line-height: initial;
           &:hover{
-            text-decoration: underline;
-            color: #45c7fa;
+            @include link_hover();
           }
           &__icon{
             font-size: 1rem;
