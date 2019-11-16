@@ -1,0 +1,107 @@
+@import "../../config/variables";
+@import "../../mixin/mixin";
+
+.identification-contents{
+  width: 700px;
+  height: 1202px;
+  background-color: #fff;
+  &__header{
+    width: 652px;
+    height: 33px;
+    padding: 8px 24px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 33px;
+    border-bottom: 2px solid #f5f5f5;
+  }
+  &__form{
+    width: 572px;
+    height: 1023px;
+    padding: 64px;
+    position: relative;
+    &__head{
+        height: 71px;
+        position: relative;
+      &__text{
+        margin-top: 7px;
+        margin-bottom: 10px;
+        line-height: 1.5;
+      }
+      &__link{
+        text-decoration: none;
+        position: absolute;
+        right: 0px;
+        color: $link-color;
+        &:hover{
+          @include link_hover();
+        }
+        &__icon{
+          margin-left: -4px;
+        }
+      }
+    }
+    &__person{
+      height: 43px;
+      list-style: none;
+      &__li{ 
+        margin-top: 41px;
+        &__icon{
+          font-size: 18px;
+          color: #888;         
+          position: absolute;
+          right: 80px;
+          bottom: 564px;
+        }
+        &__label{
+          font-weight: bold;
+        }
+        &__profile{
+          margin-top: 10px;
+          letter-spacing: 0.2px;
+        }
+        &__span{
+          margin-left: 8px;
+          background-color: #ccc;
+          color: #fff;
+          font-size: 12px;
+          padding:2px 4px;
+          border-radius: 2px;
+          vertical-align: top;
+        }
+        &__code{
+          margin-top: 8px;
+          height: 28px;
+          width: 537px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+          font-size: 16px;
+          padding: 10px 16px 8px;
+        }
+        &__btn{
+          @include form_button;
+          border: 1px solid #ea352d;
+          line-height: 48px;
+          width: 100%;
+          &:hover{
+            cursor: pointer;
+            background-color: #e62017;
+          }
+        }
+        &__link{
+          color: $link-color;
+          position: absolute;
+          right: 64px;
+          bottom: 64px;
+          text-decoration: none;
+          &:hover{
+            @include link_hover();
+          }
+          &__icon{
+            margin-left: -4px;
+          }
+        }
+      }
+    }
+  }
+}

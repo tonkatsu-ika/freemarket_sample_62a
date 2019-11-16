@@ -8,3 +8,10 @@
   background-color: $b_color;
   color: $color;
 }
+
+// link_etc
+
+@mixin link_hover($l_decoration: underline, $l-color: #45c7fa){
+  text-decoration: $l_decoration;
+  color: $l-color;
+}

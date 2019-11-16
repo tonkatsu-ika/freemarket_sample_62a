@@ -1,1 +1,63 @@
 .contents-wrapper
+  .identification-contents
+    .identification-contents__header
+      本人情報の登録
+    = form_with(url: "#", method: :POST, class: "identification-contents__form") do |f|
+      .identification-contents__form__head
+        %p.identification-contents__form__head__text
+          お客さまの本人情報をご登録ください。
+          %br 登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+        = link_to("#", class: "identification-contents__form__head__link") do
+          本人確認書類のアップロードについて
+          = fa_icon "chevron-right", class: "identification-contents__form__head__link__icon"
+      %ul.identification-contents__form__person
+        %li.identification-contents__form__person__li
+          = f.label "お名前", class: "identification-contents__form__person__li__label"
+          %p.identification-contents__form__person__li__profile
+            山田 太郎
+        %li.identification-contents__form__person__li
+          = f.label "お名前カナ", class: "identification-contents__form__person__li__label"
+          %p.identification-contents__form__person__li__profile
+            ヤマダ タロウ
+        %li.identification-contents__form__person__li
+          = f.label "生年月日", class: "identification-contents__form__person__li__label" 
+          %p.identification-contents__form__person__li__profile
+            2000/11/16
+        %li.identification-contents__form__person__li
+          = f.label "郵便番号", class: "identification-contents__form__person__li__label"
+          %span.identification-contents__form__person__li__span
+            任意
+          %br= f.text_field :post_code, placeholder: "例) 123456", class: "identification-contents__form__person__li__code"
+        %li.identification-contents__form__person__li
+          = f.label "都道府県", class: "identification-contents__form__person__li__label"
+          %span.identification-contents__form__person__li__span
+            任意
+          %br= f.text_field :prefecture, placeholder: "例) 北海道", class: "identification-contents__form__person__li__code"
+          = fa_icon "chevron-down", class: "identification-contents__form__person__li__icon"
+        %li.identification-contents__form__person__li
+          = f.label "市区町村", class: "identification-contents__form__person__li__label"
+          %span.identification-contents__form__person__li__span
+            任意
+          %br= f.text_field :address, placeholder: "例) 横浜市緑区", class: "identification-contents__form__person__li__code"
+        %li.identification-contents__form__person__li
+          = f.label "番地", class: "identification-contents__form__person__li__label"
+          %span.identification-contents__form__person__li__span
+            任意
+          %br= f.text_field :address, placeholder: "例) 青山1−1−1", class: "identification-contents__form__person__li__code"
+        %li.identification-contents__form__person__li
+          = f.label "建物名", class: "identification-contents__form__person__li__label"
+          %span.identification-contents__form__person__li__span
+            任意
+          %br= f.text_field :building, placeholder: "例) 柳ビル103", class: "identification-contents__form__person__li__code"
+        %li.identification-contents__form__person__li
+          = f.submit "登録する", class: "identification-contents__form__person__li__btn"
+        %li.identification-contents__form__person__li
+          = link_to("#", class: "identification-contents__form__person__li__link" ) do
+            本人情報の登録について
+            = fa_icon "chevron-right", class: "identification-contents__form__person__li__link__icon"
+
+
+
+
+
+          
