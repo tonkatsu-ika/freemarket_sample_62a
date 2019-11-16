@@ -8,5 +8,6 @@ class User < ApplicationRecord
          has_one :address, dependent: :destroy       
          belongs_to_active_hash :prefecture
          belongs_to :user
-         has_one :credit_card, dependent: :destroy       
+         has_one :credit_card, dependent: :destroy   
+         accepts_nested_attributes_for :address    
 end

@@ -13,11 +13,17 @@
 -#     %span.form_required-box 
 -#     %br/
 -#     = i.text_field :number, placeholder: '半角数字のみ'  
-= form_tag(pay_card_index_path, method: :post, id: 'charge-form',  name: "inputForm") do
+
+支払い方法
+= form_tag(done_signup_index_path, method: :post, id: 'charge-form',  name: "inputForm") do
   %label カード番号
+  %span.form_required-box 必須
+  %br/
   = text_field_tag "number", "", class: "number", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
   %br
   %label 有効期限
+  %span.form_required-box 必須
+  %br/
   %select#exp_month{name: "exp_month", type: "text"}
     %option{value: ""} --
     %option{value: "1"}01
@@ -49,6 +55,10 @@
   %span 年
   %br
   %label セキュリティコード
-  = text_field_tag "cvc", "", class: "cvc", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc"
+  %br/
+  %span.form_required-box 必須
+  = text_field_tag "cvc", "", class: "cvc", placeholder: "カード背面4桁もしくは３桁の番号", maxlength: "4", id: "cvc"
   #card_token
-  = submit_tag "追加する", id: "token_submit"
+
+  =link_to 'カード裏面の番号とは？','#'
+  = submit_tag "次へ進む", id: "token_submit"

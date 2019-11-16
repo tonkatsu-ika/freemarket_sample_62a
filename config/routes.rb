@@ -23,8 +23,8 @@ Rails.application.routes.draw do
         get 'sms' #電話認証のページ
       end
       get 'address'
-      get 'payment' 
-      get 'done' 
+      post 'payment' 
+      post 'done' 
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

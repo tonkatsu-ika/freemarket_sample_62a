@@ -1,6 +1,6 @@
 住所入力
 
-= form_for @user ,url: payment_signup_index_path, method: :get, html: {class: 'first-main__box'} do |f|
+= form_for @user ,url: payment_signup_index_path, method: :post, html: {class: 'first-main__box'} do |f|
   = f.label 'お名前' ,class: 'last_name' 
   %span.form_required-box 必須
   %br/
@@ -19,10 +19,10 @@
     %br/
     = i.text_field :post_code, placeholder: '例）123456'
 
-    = i.label '都道府県', class: 'prefecuture' 
+    = i.label '都道府県', class: 'prefecture' 
     %span.form_required-box 必須
     %br/
-    = i.text_field :prefecuture, placeholder: '例）北海道'
+    = i.text_field :prefecture, placeholder: '例）北海道'
 
     = i.label '市区町村', class: 'address' 
     %span.form_required-box 必須
