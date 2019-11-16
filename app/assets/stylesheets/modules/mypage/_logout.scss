@@ -1,0 +1,33 @@
+@import '../../mixin/mixin';
+@import '../../config/variables';
+
+.logout-contents{
+  width: 700px;
+  height: 179px;
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center;  
+  background-color: #fff;
+  &__form{
+    width: 320px;
+    height: 50px;
+    background-color: $fm-red;
+    text-align: center;
+    line-height: 50px;
+    &__btn{
+      @include form_button();
+      width: 320px;
+      height: 50px;
+      border: none;
+      font-size: 13px;
+      letter-spacing:1px;
+      font-family: inherit;
+      &:hover {
+        cursor: pointer;
+        background-color: #e62017;
+      }
+    }
+  }
+}
+
