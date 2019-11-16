@@ -98,12 +98,12 @@
         }
         &__btn{
           @include form_button;
-          border: 1px solid #ea352d;
+          border: 1px solid $fm-red;
           line-height: 48px;
           width: 100%;
           &:hover{
             cursor: pointer;
-            background-color: #e62017;
+            background-color: $hover-red;
           }
         }
         &__link{
