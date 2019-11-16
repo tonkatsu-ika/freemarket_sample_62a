@@ -32,7 +32,7 @@
           = f.label "都道府県", class: "identification-contents__form__person__li__label"
           %span.identification-contents__form__person__li__span
             任意
-          %br= f.text_field :prefecture, placeholder: "例) 北海道", class: "identification-contents__form__person__li__code"
+          %br= f.select :prefecture, ['--','北海道','北海道','北海道','北海道','北海道','北海道'],{}, class: "identification-contents__form__person__li__select"
           = fa_icon "chevron-down", class: "identification-contents__form__person__li__icon"
         %li.identification-contents__form__person__li
           = f.label "市区町村", class: "identification-contents__form__person__li__label"
