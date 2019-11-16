@@ -1,6 +1,6 @@
 $(function(){
 
-  var selectbox = `<select class='sell-wrapper__form__detail__right__upper__select' name='example'>
+  var selectbox = `<select class='sell-wrapper__form__detail__right__upper__select1' name='example'>
                     <option selected='selected' value=''>---</option>
                     <option value='選択肢1'>選択肢1</option>
                     <option value='選択肢2'>選択肢2</option>
@@ -12,6 +12,11 @@ $(function(){
     console.log(parent_category);
     $('.sell-wrapper__form__detail__right__upper').append(selectbox);
   })
+
+  $(document).on("change", ".sell-wrapper__form__detail__right__upper__select1", function () {
+    var child_category = $(this).val(); // 子カテゴリーのvalue属性値を取得
+    $('.sell-wrapper__form__detail__right__upper').append(selectbox);
+  });
 
   // 販売手数料と利益を計算して表示
   $('.sell-wrapper__form__price__first__wrapper__right__money').keyup(function(){
