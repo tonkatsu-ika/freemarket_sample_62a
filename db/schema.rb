@@ -200,7 +200,10 @@ ActiveRecord::Schema.define(version: 2019_11_18_060053) do
   add_foreign_key "credit_cards", "users"
   add_foreign_key "item_images", "items"
   add_foreign_key "likes", "items"
+  add_foreign_key "transactions", "grades", column: "grade_by_buyer_id"
+  add_foreign_key "transactions", "grades", column: "grade_by_seller_id"
   add_foreign_key "transactions", "items"
+  add_foreign_key "transactions", "payment_methods"
   add_foreign_key "transactions", "users", column: "buyer_id"
   add_foreign_key "transactions", "users", column: "seller_id"
 end

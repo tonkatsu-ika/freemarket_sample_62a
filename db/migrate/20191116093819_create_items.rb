@@ -4,15 +4,22 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string :name, null: false, index: true
       t.text :description, null: false
       t.integer :price, null: false, index: true
-      t.bigint :item_condition, foreign_key: true
-      t.bigint :ship_fee_bearer, foreign_key: true
-      t.bigint :days_before_ship, foreign_key: true
-      t.bigint :delivery_method, foreign_key: true
-      t.bigint :user, foreign_key: true
-      t.bigint :brand, foreign_key: true
-      t.bigint :category, foreign_key: true
+      t.bigint :item_condition_id
+      t.bigint :ship_fee_bearer_id
+      t.bigint :days_before_ship_id
+      t.bigint :delivery_method_id
+      t.bigint :user_id
+      t.bigint :brand_id
+      t.bigint :category_id
 
       t.timestamps
     end
+    add_foreign_key :items, :item_conditions, column: :item_condition_id
+    add_foreign_key :items, :ship_fee_bearers, column: :ship_fee_bearer_id
+    add_foreign_key :items, :days_before_ships, column: :days_before_ship_id
+    add_foreign_key :items, :delivery_methods, column: :delivery_method_id
+    add_foreign_key :items, :users, column: :user_id
+    add_foreign_key :items, :brands, column: :brand_id
+    add_foreign_key :items, :categories, column: :category_id
   end
 end
