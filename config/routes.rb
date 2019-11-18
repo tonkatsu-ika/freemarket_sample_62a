@@ -16,17 +16,23 @@ Rails.application.routes.draw do
     end
   end
   get 'itmes/index'
-  resources :signup do
+  resources :signup, only: [:show] do
     collection do
       get 'registlation'
       get 'sms_confirmation' do
         get 'sms' #電話認証のページ
       end
       get 'address'
-      get 'payment' 
+      post 'payment'
       post 'done'
     end
   end
-  resources :credit_card ,only: [:new, :show]
+  resources :credit_card ,only: [:new, :show] do
+    collection do
+      post 'show', to: 'credit_card#show'
+      post 'pay', to: 'credit_card#pay'
+      post 'delete', to: 'credit_card#delete'
+    end
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

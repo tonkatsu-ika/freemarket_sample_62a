@@ -21,12 +21,12 @@ class SignupController < ApplicationController
 
   #支払い方法入力
   def payment
-    
+    binding.pry
     session[:address_attributes] = user_params[:address_attributes]
     session[:user_params].merge!(user_params)
     @user = User.new(session[:user_params])
     @user.build_address(user_params[:address_attributes])
-
+    binding.pry
     if @user.save
       session[:id] = @user.id
       
