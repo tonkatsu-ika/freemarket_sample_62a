@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_16_093954) do
+ActiveRecord::Schema.define(version: 2019_11_16_093819) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "post_code", null: false
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 2019_11_16_093954) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "item_id"
+    t.text "comment", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_comments_on_item_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -35,12 +45,6 @@ ActiveRecord::Schema.define(version: 2019_11_16_093954) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_credit_cards_on_user_id"
-  end
-
-  create_table "item_conditions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "item_condition", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -58,6 +62,14 @@ ActiveRecord::Schema.define(version: 2019_11_16_093954) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_items_on_name"
     t.index ["price"], name: "index_items_on_price"
+  end
+
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user"
+    t.bigint "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_likes_on_item_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -82,5 +94,8 @@ ActiveRecord::Schema.define(version: 2019_11_16_093954) do
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "comments", "items"
+  add_foreign_key "comments", "users"
   add_foreign_key "credit_cards", "users"
+  add_foreign_key "likes", "items"
 end
