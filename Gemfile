@@ -86,4 +86,8 @@ gem 'active_hash'
 gem 'payjp'
 gem 'dotenv-rails'
 
+# 閉包テーブル
 gem 'closure_tree'
+
+# seed data作成
+gem 'seed-fu', '~> 2.3'
