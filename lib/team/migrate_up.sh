@@ -32,7 +32,6 @@ bundle exec rails db:migrate:up VERSION=20191118060053
 # categories_hierarchies (closure_treeで自動作成されるテーブル)
 bundle exec rails db:migrate:up VERSION=20191118053904
 
-
 # category_sizes
 bundle exec rails db:migrate:up VERSION=20191116094602
 # sizes
@@ -47,12 +46,11 @@ bundle exec rails db:migrate:up VERSION=20191115092531
 bundle exec rails db:migrate:up VERSION=20191116092740
 # comments
 bundle exec rails db:migrate:up VERSION=20191116092905
-# transactions
-bundle exec rails db:migrate:up VERSION=20191116093209
 # grades
 bundle exec rails db:migrate:up VERSION=20191116093534
 # payment_methods
 bundle exec rails db:migrate:up VERSION=20191116093624
-
+# transactions
+bundle exec rails db:migrate:up VERSION=20191116093209
 
 

@@ -156,7 +156,7 @@ ActiveRecord::Schema.define(version: 2019_11_18_060053) do
   create_table "transactions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "buyer_id"
     t.bigint "seller_id"
-    t.bigint "item"
+    t.bigint "item_id"
     t.bigint "grade_by_buyer_id"
     t.string "comment_by_buyer"
     t.bigint "grade_by_seller_id"
@@ -168,6 +168,7 @@ ActiveRecord::Schema.define(version: 2019_11_18_060053) do
     t.index ["buyer_id"], name: "index_transactions_on_buyer_id"
     t.index ["grade_by_buyer_id"], name: "index_transactions_on_grade_by_buyer_id"
     t.index ["grade_by_seller_id"], name: "index_transactions_on_grade_by_seller_id"
+    t.index ["item_id"], name: "fk_rails_37b3ea4e18"
     t.index ["payment_method_id"], name: "index_transactions_on_payment_method_id"
     t.index ["seller_id"], name: "index_transactions_on_seller_id"
   end
@@ -199,6 +200,7 @@ ActiveRecord::Schema.define(version: 2019_11_18_060053) do
   add_foreign_key "credit_cards", "users"
   add_foreign_key "item_images", "items"
   add_foreign_key "likes", "items"
+  add_foreign_key "transactions", "items"
   add_foreign_key "transactions", "users", column: "buyer_id"
   add_foreign_key "transactions", "users", column: "seller_id"
 end
