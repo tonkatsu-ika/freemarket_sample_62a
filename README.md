@@ -30,9 +30,11 @@
 - has_many :transaction
 - has_many :buyers, class_name: User, foreign_key: "seller_id"
 - has_many :sellers, class_name: User, foreign_key: "buyer_id"
-- belongs_to :prefecutre
-- has_one :credit_card, dependent: :destroy
+
 - has_one :address, dependent: destroy
+- belongs_to_active_has :prefecutre
+- accepts_nested_attributes_for :address
+- has_one :credit_card, dependent: :destroy
 
 
 ## addresses table
