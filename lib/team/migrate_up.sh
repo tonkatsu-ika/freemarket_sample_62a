@@ -3,19 +3,21 @@
 #
 # users関連
 #
-# remove_profile_to_user
-#bundle exec rails db:migrate:up VERSION=20191116072934
-# remove_profle_to_user
-#bundle exec rails db:migrate:up VERSION=20191116074025
-# add_profle_to_user
-#bundle exec rails db:migrate:up VERSION=20191116074523
-# change_telephone_to_user
-#bundle exec rails db:migrate:up VERSION=20191117103339
-
+# devise_create_users
+bundle exec rails db:migrate:up VERSION=20191114071843
 # addresses
 bundle exec rails db:migrate:up VERSION=20191114073028
 # credit_cards
 bundle exec rails db:migrate:up VERSION=20191115092531
+# remove_profile_to_user
+bundle exec rails db:migrate:up VERSION=20191116072934
+# remove_profle_to_user
+bundle exec rails db:migrate:up VERSION=20191116074025
+# add_profle_to_user
+bundle exec rails db:migrate:up VERSION=20191116074523
+# change_telephone_to_user
+bundle exec rails db:migrate:up VERSION=20191117103339
+
 
 #
 # items 関連
