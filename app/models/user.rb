@@ -9,7 +9,7 @@ class User < ApplicationRecord
   belongs_to_active_hash :prefecture
   has_one :credit_card, dependent: :destroy   
   accepts_nested_attributes_for :address    
-  validates :telephone, :numericality => { :allow_blank => true }
+  validates :telephone, numericality: { allow_blank: true }
   validates :nickname, presence: true
   validates :last_name, presence: true
   validates :last_name_kana, presence: true

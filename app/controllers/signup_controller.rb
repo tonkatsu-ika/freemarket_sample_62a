@@ -24,6 +24,15 @@ class SignupController < ApplicationController
     
     session[:address_attributes] = user_params[:address_attributes]
     session[:user_params].merge!(user_params)
+    @user = User.new(session[:user_params])
+    @user.build_address(user_params[:address_attributes])
+
+    if @user.save
+      session[:id] = @user.id
+      
+    else
+      redirect_to payment_signup_index_path
+    end
 
     @card = CreditCard.new
     @user = User.new
@@ -32,15 +41,9 @@ class SignupController < ApplicationController
   
   #会員情報登録完了
   def done
-    @user = User.new(session[:user_params])
-    @user.build_address(user_params[:address_attributes])
-
-    if @user.save
-      session[:id] = @user.id
-      
-    else
-      redirect_to done_signup_index_path
-    end
+    
+    @user = User.new
+    
   end
   
   private
