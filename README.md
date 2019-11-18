@@ -228,7 +228,7 @@
 |Field|Type|Options|
 |---|:---:|---|
 |category_name|string|null: false, index: true|
-|parent_id|integer|null: false|
+|parent_id|integer||
 
 
 ### Association
