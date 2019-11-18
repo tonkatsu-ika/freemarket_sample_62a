@@ -17,16 +17,28 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'itmes/index'
+  resources :signup, only: [:show] do
 
-  resources :signup do
+
+
+
+
     collection do
       get 'registlation'
       get 'sms_confirmation' do
         get 'sms' #電話認証のページ
       end
       get 'address'
-      post 'payment' 
-      post 'done' 
+      post 'payment'
+      post 'done'
+    end
+  end
+  resources :credit_card ,only: [:new, :show] do
+    collection do
+      post 'show', to: 'credit_card#show'
+      post 'pay', to: 'credit_card#pay'
+      post 'delete', to: 'credit_card#delete'
     end
   end
 
