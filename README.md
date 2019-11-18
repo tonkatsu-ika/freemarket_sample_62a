@@ -40,7 +40,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |post_code|integer|null: false|
-|prefecuture|string|null: false|
+|prefecture|string|null: false|
 |address|string|null: false|
 |building|string|null: false|
 |user|references|foreign_key: true|

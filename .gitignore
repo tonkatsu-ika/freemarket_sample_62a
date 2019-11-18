@@ -25,6 +25,8 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/.env
+
 
 # node_moduleを除外
 /node_modules
