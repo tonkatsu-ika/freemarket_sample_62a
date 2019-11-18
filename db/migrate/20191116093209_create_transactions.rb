@@ -3,7 +3,7 @@ class CreateTransactions < ActiveRecord::Migration[5.2]
     create_table :transactions do |t|
       t.references :buyer
       t.references :seller
-      t.bigint :item, foreign_key: true
+      t.bigint :item_id, foreign_key: true
       t.references :grade_by_buyer
       t.string :comment_by_buyer
       t.references :grade_by_seller
