@@ -89,6 +89,12 @@ ActiveRecord::Schema.define(version: 2019_11_18_060053) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "grades", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "grade", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "item_conditions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "item_condition", null: false
     t.datetime "created_at", null: false
@@ -126,6 +132,12 @@ ActiveRecord::Schema.define(version: 2019_11_18_060053) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_likes_on_item_id"
+  end
+
+  create_table "payment_methods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "method_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "ship_fee_bearers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
