@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(version: 2019_11_18_060053) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["brand_id"], name: "fk_rails_36708b3aa6"
+    t.index ["category_id"], name: "fk_rails_89fb86dc8b"
     t.index ["days_before_ship_id"], name: "fk_rails_91824208cc"
     t.index ["delivery_method_id"], name: "fk_rails_f42c764bc6"
     t.index ["item_condition_id"], name: "fk_rails_94da58617d"
@@ -211,6 +212,7 @@ ActiveRecord::Schema.define(version: 2019_11_18_060053) do
   add_foreign_key "credit_cards", "users"
   add_foreign_key "item_images", "items"
   add_foreign_key "items", "brands"
+  add_foreign_key "items", "categories"
   add_foreign_key "items", "days_before_ships"
   add_foreign_key "items", "delivery_methods"
   add_foreign_key "items", "item_conditions"

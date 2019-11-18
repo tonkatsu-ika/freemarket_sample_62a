@@ -32,10 +32,6 @@ bundle exec rails db:migrate:up VERSION=20191116094116
 bundle exec rails db:migrate:up VERSION=20191116094213
 # brands
 bundle exec rails db:migrate:up VERSION=20191116094241
-# items 
-bundle exec rails db:migrate:up VERSION=20191116093819
-# item_imgages
-bundle exec rails db:migrate:up VERSION=20191116093921
 # categories
 bundle exec rails db:migrate:up VERSION=20191116094335
 # categoris_trees
@@ -49,6 +45,10 @@ bundle exec rails db:migrate:up VERSION=20191118053904
 bundle exec rails db:migrate:up VERSION=20191116094636
 # category_sizes
 bundle exec rails db:migrate:up VERSION=20191116094602
+# items 
+bundle exec rails db:migrate:up VERSION=20191116093819
+# item_imgages
+bundle exec rails db:migrate:up VERSION=20191116093921
 
 #
 # usersとitemsができたあとにつくるもの(likes, comments, transactions)
