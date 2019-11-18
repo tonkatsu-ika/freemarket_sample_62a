@@ -69,7 +69,7 @@
 ## likes 
 |Column|Type|Options|
 |------|----|-------|
-|user|references|foreign_key: true|
+|user|bigint|foreign_key: true|
 |item|references|foreign_key: true|
 
 ### Association
@@ -94,9 +94,9 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|buyer_id|references|foreign_key: true|
-|seller_id|references|foreign_key: true|
-|item_id|references|foreign_key: true|
+|buyer_id|bigint|foreign_key: true|
+|seller_id|bigint|foreign_key: true|
+|item_id|bigint|foreign_key: true|
 |grade_by_buyer|references|foreign_key: true|
 |comment_by_buyer|string||
 |grade_by_seller|references|foreign_key: true|
@@ -140,13 +140,13 @@
 |name|string|null: false, index: true|
 |description|text|null: false|
 |price|integer|null: false, index: true|
-|item_condition|references|foreign_key: true|
-|ship_fee_bearer|references|foreign_key: true|
-|days_before_ship|references|foreign_key: true|
-|delivery_method|references|foreign_key: true|
-|user|references|foreign_key: true|
-|brand|references|foreign_key: true|
-|category|references|foreign_key: true|
+|item_condition|bigint|foreign_key: true|
+|ship_fee_bearer|bigint|foreign_key: true|
+|days_before_ship|bigint|foreign_key: true|
+|delivery_method|bigint|foreign_key: true|
+|user|bigint|foreign_key: true|
+|brand|bigint|foreign_key: true|
+|category|bigint|foreign_key: true|
 
 
 ### Association
@@ -261,8 +261,8 @@ add_index :category_hierarchies, [:ancestor_id, :descendant_id,     :generations
 
 |Field|Type|Options|
 |---|:---:|---|
-|category|references|foreign_key: true|
-|size|reference|foreign_key: true|
+|category|bigint|foreign_key: true|
+|size|bigint|foreign_key: true|
 
 ### Association
 - belongs_to :category
