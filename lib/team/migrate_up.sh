@@ -21,7 +21,6 @@ bundle exec rails db:migrate:up VERSION=20191116094213
 # brands
 bundle exec rails db:migrate:up VERSION=20191116094241
 
-# ここから下は順番まだ考え中
 # categories
 bundle exec rails db:migrate:up VERSION=20191116094335
 # categoris_trees
@@ -40,6 +39,7 @@ bundle exec rails db:migrate:up VERSION=20191116094602
 bundle exec rails db:migrate:up VERSION=20191116094636
 
 
+# ここから下は順番まだ考え中
 # transactions
 #bundle exec rails db:migrate:up VERSION=20191116093209
 # addresses
