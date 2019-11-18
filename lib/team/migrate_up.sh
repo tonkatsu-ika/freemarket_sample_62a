@@ -24,10 +24,6 @@ bundle exec rails db:migrate:up VERSION=20191117103339
 #
 # item_conditions
 bundle exec rails db:migrate:up VERSION=20191116093954
-# items 
-bundle exec rails db:migrate:up VERSION=20191116093819
-# item_imgages
-bundle exec rails db:migrate:up VERSION=20191116093921
 # ship_fee_bearers
 bundle exec rails db:migrate:up VERSION=20191116094031
 # days_before_ships
@@ -36,6 +32,10 @@ bundle exec rails db:migrate:up VERSION=20191116094116
 bundle exec rails db:migrate:up VERSION=20191116094213
 # brands
 bundle exec rails db:migrate:up VERSION=20191116094241
+# items 
+bundle exec rails db:migrate:up VERSION=20191116093819
+# item_imgages
+bundle exec rails db:migrate:up VERSION=20191116093921
 # categories
 bundle exec rails db:migrate:up VERSION=20191116094335
 # categoris_trees
@@ -45,10 +45,10 @@ bundle exec rails db:migrate:up VERSION=20191116094446
 bundle exec rails db:migrate:up VERSION=20191118060053
 # categories_hierarchies (closure_treeで自動作成されるテーブル)
 bundle exec rails db:migrate:up VERSION=20191118053904
-# category_sizes
-bundle exec rails db:migrate:up VERSION=20191116094602
 # sizes
 bundle exec rails db:migrate:up VERSION=20191116094636
+# category_sizes
+bundle exec rails db:migrate:up VERSION=20191116094602
 
 #
 # usersとitemsができたあとにつくるもの(likes, comments, transactions)

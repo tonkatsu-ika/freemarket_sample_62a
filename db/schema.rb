@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2019_11_18_060053) do
-
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "post_code", null: false
@@ -49,10 +47,12 @@ ActiveRecord::Schema.define(version: 2019_11_18_060053) do
   end
 
   create_table "category_sizes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "category"
-    t.bigint "size"
+    t.bigint "category_id"
+    t.bigint "size_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "fk_rails_5c759a07f8"
+    t.index ["size_id"], name: "fk_rails_4c4742a874"
   end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -115,25 +115,31 @@ ActiveRecord::Schema.define(version: 2019_11_18_060053) do
     t.string "name", null: false
     t.text "description", null: false
     t.integer "price", null: false
-    t.bigint "item_condition"
-    t.bigint "ship_fee_bearer"
-    t.bigint "days_before_ship"
-    t.bigint "delivery_method"
-    t.bigint "user"
-    t.bigint "brand"
-    t.bigint "category"
+    t.bigint "item_condition_id"
+    t.bigint "ship_fee_bearer_id"
+    t.bigint "days_before_ship_id"
+    t.bigint "delivery_method_id"
+    t.bigint "user_id"
+    t.bigint "brand_id"
+    t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["days_before_ship_id"], name: "fk_rails_91824208cc"
+    t.index ["delivery_method_id"], name: "fk_rails_f42c764bc6"
+    t.index ["item_condition_id"], name: "fk_rails_94da58617d"
     t.index ["name"], name: "index_items_on_name"
     t.index ["price"], name: "index_items_on_price"
+    t.index ["ship_fee_bearer_id"], name: "fk_rails_b1da0ee207"
+    t.index ["user_id"], name: "fk_rails_d4b6334db2"
   end
 
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user"
+    t.bigint "user_id"
     t.bigint "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_likes_on_item_id"
+    t.index ["user_id"], name: "fk_rails_1e09b5dabf"
   end
 
   create_table "payment_methods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -189,19 +195,27 @@ ActiveRecord::Schema.define(version: 2019_11_18_060053) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.text "profile"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "category_sizes", "categories"
+  add_foreign_key "category_sizes", "sizes"
   add_foreign_key "comments", "items"
   add_foreign_key "comments", "users"
   add_foreign_key "credit_cards", "users"
   add_foreign_key "item_images", "items"
+  add_foreign_key "items", "days_before_ships"
+  add_foreign_key "items", "delivery_methods"
+  add_foreign_key "items", "item_conditions"
+  add_foreign_key "items", "ship_fee_bearers"
+  add_foreign_key "items", "users"
   add_foreign_key "likes", "items"
+  add_foreign_key "likes", "users"
   add_foreign_key "transactions", "grades", column: "grade_by_buyer_id"
   add_foreign_key "transactions", "grades", column: "grade_by_seller_id"
   add_foreign_key "transactions", "items"
