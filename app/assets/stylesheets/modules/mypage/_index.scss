@@ -1,0 +1,45 @@
+@import '../../config/variables';
+
+.contents-wrapper {
+
+  &__user {
+    &__icon-container {
+    }
+    &__name {
+    }
+    &__kpis {
+      &__item {
+        &__number {
+
+        }
+      }
+
+    }
+  }
+
+  &__tab-container {
+    &__header {
+
+    }
+    &__tabs {
+      &__tab {
+        &__link {
+
+          .active {
+
+          }
+        }
+
+      }
+    }
+    &__contents {
+      &__transaction-now {
+
+      }
+      &__transaction-old {
+
+      }
+    }
+  }
+}
+

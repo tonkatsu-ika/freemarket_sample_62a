@@ -6,11 +6,26 @@
     .contents-wrapper__user__kpis
       .cotents-wrapper__user__kpis__item
         評価
-        %span.contents-wrapper__user__kpis__number
+        %span.contents-wrapper__user__kpis__item__number
           51
       .cotents-wrapper__user__kpis__item
         出品数
-        %span.contents-wrapper__user__kpis__number
+        %span.contents-wrapper__user__kpis__item__number
           100      
   %section.contents-wrapper__tab-container
   %section.contents-wrapper__tab-container
+    .contents-wrapper__tab-container__header
+    %ul.contents-wrapper__tab-container__tabs
+      %li.contents-wrapper__tab-container__tabs__tab
+        %h3
+          = link_to "#", class: "contents-wrapper__tab-container__tabs__tab__link active" do
+            取引中
+      %li.contents-wrapper__tab-container__tabs__tab
+        %h3
+          = link_to "#", class: "contents-wrapper__tab-container__tabs__tab__link" do
+            過去の取引
+    .contents-wrapper__tab-container__contents
+      %ul.contents-wrapper__tab-container__contents__transaction-now
+      %ul.contents-wrapper__tab-container__contents__transaction-old
+
+
