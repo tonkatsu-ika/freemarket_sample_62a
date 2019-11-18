@@ -21,18 +21,29 @@ bundle exec rails db:migrate:up VERSION=20191116094213
 # brands
 bundle exec rails db:migrate:up VERSION=20191116094241
 
+# ここから下は順番まだ考え中
 # transactions
-bundle exec rails db:migrate:up VERSION=20191116093209
+#bundle exec rails db:migrate:up VERSION=20191116093209
+# addresses
+bundle exec rails db:migrate:up VERSION=20191114073028
+# credit_cards
+bundle exec rails db:migrate:up VERSION=20191115092531
+# likes
+bundle exec rails db:migrate:up VERSION=20191116092740
+# comments
+bundle exec rails db:migrate:up VERSION=20191116092905
+# grades
+bundle exec rails db:migrate:up VERSION=20191116093534
+# payment_methods
+bundle exec rails db:migrate:up VERSION=20191116093624
 
-#20191114073028_create_addresses.rb
-#20191115092531_create_credit_cards.rb
-#20191116092740_create_likes.rb
-#20191116092905_create_comments.rb
-#_create_transactions.rb
-#20191116093534_create_grades.rb
-#20191116093624_create_payment_methods.rb
+# categories
+bundle exec rails db:migrate:up VERSION=20191116094335
+# categoris_trees
+bundle exec rails db:migrate:up VERSION=20191116094446
+# category_sizes
+bundle exec rails db:migrate:up VERSION=20191116094602
+# sizes
+bundle exec rails db:migrate:up VERSION=20191116094636
 
-#20191116094335_create_categories.rb
-#20191116094446_create_categories_trees.rb
-#20191116094602_create_category_sizes.rb
-#20191116094636_create_sizes.rb
+
