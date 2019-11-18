@@ -1,0 +1,10 @@
+.mypage
+  %nav.mypage__breadcrumb
+    = render "layouts/breadcrumb"
+  .mypage__main
+    .mypage__main__wrapper
+      %article.mypage__main__wrapper__main
+        = render "profile"
+      %nav.mypage__main__wrapper__sidebar
+        = render "layouts/sidebar_mypage"
+    

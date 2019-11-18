@@ -1,4 +1,4 @@
-class MypagesController < ApplicationController
+class MypageController < ApplicationController
   def index
   end
 
@@ -12,5 +12,8 @@ class MypagesController < ApplicationController
   end
 
   def identification
+  end
+
+  def logout
   end
 end

@@ -30,9 +30,11 @@
 - has_many :transaction
 - has_many :buyers, class_name: User, foreign_key: "seller_id"
 - has_many :sellers, class_name: User, foreign_key: "buyer_id"
-- belongs_to :prefecutre
-- has_one :credit_card, dependent: :destroy
+
 - has_one :address, dependent: destroy
+- belongs_to_active_has :prefecutre
+- accepts_nested_attributes_for :address
+- has_one :credit_card, dependent: :destroy
 
 
 ## addresses table
@@ -40,7 +42,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |post_code|integer|null: false|
-|prefecuture|string|null: false|
+|prefecture|string|null: false|
 |address|string|null: false|
 |building|string|null: false|
 |user|references|foreign_key: true|
@@ -67,7 +69,7 @@
 ## likes 
 |Column|Type|Options|
 |------|----|-------|
-|user|references|foreign_key: true|
+|user|bigint|foreign_key: true|
 |item|references|foreign_key: true|
 
 ### Association
@@ -92,9 +94,9 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|buyer_id|references|foreign_key: true|
-|seller_id|references|foreign_key: true|
-|item_id|references|foreign_key: true|
+|buyer_id|bigint|foreign_key: true|
+|seller_id|bigint|foreign_key: true|
+|item_id|bigint|foreign_key: true|
 |grade_by_buyer|references|foreign_key: true|
 |comment_by_buyer|string||
 |grade_by_seller|references|foreign_key: true|
@@ -138,13 +140,13 @@
 |name|string|null: false, index: true|
 |description|text|null: false|
 |price|integer|null: false, index: true|
-|item_condition|references|foreign_key: true|
-|ship_fee_bearer|references|foreign_key: true|
-|days_before_ship|references|foreign_key: true|
-|delivery_method|references|foreign_key: true|
-|user|references|foreign_key: true|
-|brand|references|foreign_key: true|
-|category|references|foreign_key: true|
+|item_condition|bigint|foreign_key: true|
+|ship_fee_bearer|bigint|foreign_key: true|
+|days_before_ship|bigint|foreign_key: true|
+|delivery_method|bigint|foreign_key: true|
+|user|bigint|foreign_key: true|
+|brand|bigint|foreign_key: true|
+|category|bigint|foreign_key: true|
 
 
 ### Association
@@ -228,7 +230,7 @@
 |Field|Type|Options|
 |---|:---:|---|
 |category_name|string|null: false, index: true|
-|parent_id|integer|null: false|
+|parent_id|integer||
 
 
 ### Association
@@ -237,30 +239,30 @@
 - has_many :items
 
 
-## categorie_tree table
+## categorie_hierarchies table
 商品カテゴリーのツリー構造については、クエリのパフォーマンスが
-「隣接リスト」より高い「閉包テーブル」を採用。
-本テーブルは「閉包テーブル」を採用したことにより必要となるテーブル。
+「隣接リスト」より高い「閉包テーブル」(closure_tree)を採用。
+本テーブルは「閉包テーブル」を採用したことにより自動作成されるテーブル。
 
 |Field|Type|Options|
 |---|:---:|---|
 |ancestor_id|integer|null: false|
-|descendant_id|integer|null: false|
+|descendant_id|integer|null: false, index: true|
 |generations|integer|null: false|
 
 
 ### Association
-- belongs_to :category_tree, optional: true
-- has_many :items
+none
 
-
+### Addtional index
+add_index :category_hierarchies, [:ancestor_id, :descendant_id,     :generations], unique: true, name: "category_anc_desc_idx"
 
 ## category_sizes table
 
 |Field|Type|Options|
 |---|:---:|---|
-|category|references|foreign_key: true|
-|size|reference|foreign_key: true|
+|category|bigint|foreign_key: true|
+|size|bigint|foreign_key: true|
 
 ### Association
 - belongs_to :category
