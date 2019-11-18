@@ -21,14 +21,14 @@ bundle exec rails db:migrate:up VERSION=20191116094213
 # brands
 bundle exec rails db:migrate:up VERSION=20191116094241
 
-# brands
-bundle exec rails db:migrate:up VERSION=20191116094241
+# transactions
+bundle exec rails db:migrate:up VERSION=20191116093209
 
 #20191114073028_create_addresses.rb
 #20191115092531_create_credit_cards.rb
 #20191116092740_create_likes.rb
 #20191116092905_create_comments.rb
-#20191116093209_create_transactions.rb
+#_create_transactions.rb
 #20191116093534_create_grades.rb
 #20191116093624_create_payment_methods.rb
 
