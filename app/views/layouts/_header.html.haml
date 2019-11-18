@@ -9,12 +9,15 @@
 
   .header__bottom
     %ul.header__bottom__search-items
-      %li.header__bottom__search-items__li
-        %i.fas.fa-list-ul
-        カテゴリーから探す
-      %li.header__bottom__search-items__li
-        %i.fas.fa-tag
-        ブランドから探す
+      %li.header__bottom__search-items__li#slide_categories
+        = link_to "#", class: "header__bottom__search-items__li__link" do
+          %i.fas.fa-list-ul
+          カテゴリーから探す
+      %li.header__bottom__search-items__li#slide_brands
+        = link_to "#", class: "header__bottom__search-items__li__link" do
+          %i.fas.fa-tag
+          ブランドから探す
+        = render 'layouts/slide_menu/slide_brands'
     %ul.header__bottom__user-menu
       %li.header__bottom__user-menu__li
         = link_to "#", class: "header__bottom__user-menu__li" do
@@ -29,6 +32,6 @@
           %i.fas.fa-check
           やることリスト
       %li.header__bottom__user-menu__li
-        = link_to "#", class: "header__bottom__user-menu__li" do
+        = link_to :mypage_index, class: "header__bottom__user-menu__li" do
           %i.far.fa-user-circle.gray
           マイページ

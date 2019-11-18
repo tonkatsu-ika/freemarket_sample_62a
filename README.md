@@ -30,9 +30,11 @@
 - has_many :transaction
 - has_many :buyers, class_name: User, foreign_key: "seller_id"
 - has_many :sellers, class_name: User, foreign_key: "buyer_id"
-- belongs_to :prefecutre
-- has_one :credit_card, dependent: :destroy
+
 - has_one :address, dependent: destroy
+- belongs_to_active_has :prefecutre
+- accepts_nested_attributes_for :address
+- has_one :credit_card, dependent: :destroy
 
 
 ## addresses table
@@ -40,7 +42,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |post_code|integer|null: false|
-|prefecuture|string|null: false|
+|prefecture|string|null: false|
 |address|string|null: false|
 |building|string|null: false|
 |user|references|foreign_key: true|
@@ -228,7 +230,7 @@
 |Field|Type|Options|
 |---|:---:|---|
 |category_name|string|null: false, index: true|
-|parent_id|integer|null: false|
+|parent_id|integer||
 
 
 ### Association
@@ -237,23 +239,23 @@
 - has_many :items
 
 
-## categorie_tree table
+## categorie_hierarchies table
 商品カテゴリーのツリー構造については、クエリのパフォーマンスが
-「隣接リスト」より高い「閉包テーブル」を採用。
-本テーブルは「閉包テーブル」を採用したことにより必要となるテーブル。
+「隣接リスト」より高い「閉包テーブル」(closure_tree)を採用。
+本テーブルは「閉包テーブル」を採用したことにより自動作成されるテーブル。
 
 |Field|Type|Options|
 |---|:---:|---|
 |ancestor_id|integer|null: false|
-|descendant_id|integer|null: false|
+|descendant_id|integer|null: false, index: true|
 |generations|integer|null: false|
 
 
 ### Association
-- belongs_to :category_tree, optional: true
-- has_many :items
+none
 
-
+### Addtional index
+add_index :category_hierarchies, [:ancestor_id, :descendant_id,     :generations], unique: true, name: "category_anc_desc_idx"
 
 ## category_sizes table
 

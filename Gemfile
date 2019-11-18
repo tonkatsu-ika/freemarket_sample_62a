@@ -85,3 +85,5 @@ gem 'rails-i18n', '~> 5.1'
 gem 'active_hash'
 gem 'payjp'
 gem 'dotenv-rails'
+
+gem 'closure_tree'
