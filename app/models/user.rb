@@ -8,9 +8,13 @@ class User < ApplicationRecord
          has_many :comments, dependent: :destroy
          has_many :likes, dependent: :destroy
          has_many :items, dependent: :destroy
-         has_many :transactions
-         has_many :buyers, class_name: "User", foreign_key: "id"
-         has_many :sellers, class_name: "User", foreign_key: "id"
+
+         has_many :sold_to, class_name: "Transaction", foreign_key: "buyer_id", dependent: :destroy
+         has_many :buyers, through: :bought_from
+
+         has_many :bought_from, class_name: "Transaction", foreign_key: "seller_id"
+         has_many :sellers, through: :sold_to
+
          has_one :address, dependent: :destroy
          belongs_to_active_hash :prefecture
          accepts_nested_attributes_for :address
