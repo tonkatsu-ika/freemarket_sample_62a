@@ -140,13 +140,13 @@
 |name|string|null: false, index: true|
 |description|text|null: false|
 |price|integer|null: false, index: true|
-|item_condition|bigint|foreign_key: true|
-|ship_fee_bearer|bigint|foreign_key: true|
-|days_before_ship|bigint|foreign_key: true|
-|delivery_method|bigint|foreign_key: true|
-|user|bigint|foreign_key: true|
-|brand|bigint|foreign_key: true|
-|category|bigint|foreign_key: true|
+|item_condition_id|bigint|foreign_key: true|
+|ship_fee_bearer_id|bigint|foreign_key: true|
+|days_before_ship_id|bigint|foreign_key: true|
+|delivery_method_id|bigint|foreign_key: true|
+|user_id|bigint|foreign_key: true|
+|brand_id|bigint|foreign_key: true|
+|category_id|bigint|foreign_key: true|
 
 
 ### Association
