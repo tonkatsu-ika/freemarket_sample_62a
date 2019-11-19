@@ -1,3 +1,5 @@
+@import '../config/variables';
+
 body{
   margin: 0;
   padding: 0%;
@@ -44,20 +46,31 @@ header{
   }
   &__bottom{
     width: 100%;
+    height: 52px;
+    line-height: 52px;
     display: flex;
     justify-content: space-between;
-    line-height: 60px;
     &__search-items{
       list-style: none;
       font-weight: bold;
       box-sizing: border-box;
       &__li{
+        height: 100%;
         font-size: 14px;
         margin-right: 25px;
         margin-left: 10px;
         float: left;
-        & i {
-          color: red;
+        position: relative;
+        &__link {
+          text-decoration: none;
+          color: $f-color-base;
+          display: block;
+          & i {
+            color: red;
+          }
+          &:hover {
+            color: #5D99FF;
+          }
         }
       }
     }
