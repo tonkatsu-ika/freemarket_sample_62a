@@ -18,7 +18,7 @@
 |nickname|string|null: false|
 |profile_image|string|
 |profile|text|null: false|
-|mail_address|string|null: false|
+|email|string|null: false|
 |password|string|null: false|
 |birthday|date|null: false|
 |telephone|integer|null: false|
