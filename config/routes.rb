@@ -19,9 +19,6 @@ Rails.application.routes.draw do
 
   get 'itmes/index'
   resources :signup, only: [:show] do
-
-  resources :signup do
-
     collection do
       get 'registlation'
       get 'sms_confirmation' do
