@@ -240,6 +240,7 @@
 
 
 ### Association
+- has_many :sizes, through: :category_sizes
 - has_many :category_sizes
 - has_many :items
 
@@ -282,4 +283,5 @@ add_index :category_hierarchies, [:ancestor_id, :descendant_id,     :generations
 
 
 ### Association
+- has_many :categories, through: :category_sizes
 - has_many :category_sizes
