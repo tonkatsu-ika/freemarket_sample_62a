@@ -11,17 +11,20 @@
 
 |Column|Type|Options|
 |------|----|-------|
+|email|string|default: "", null: false, unique: true|
+|encrypted_password|string|default: "", null: false|
 |last_name|string|null: false|
 |first_name|string|null: false|
 |last_name_kana|string|null: false|
 |first_name_kana|string|null: false|
 |nickname|string|null: false|
-|profile_image|string|
-|profile|text|null: false|
-|mail_address|string|null: false|
-|password|string|null: false|
+|profile_image|string||
 |birthday|date|null: false|
-|telephone|integer|null: false|
+|telephone|string|null: false|
+|reset_password_token|string|unique: true|
+|reset_password_sent_at|datetime||
+|remember_created_at|datetime||
+|profile|text|null: false|
 
 ### Association
 - has_many :comments, dependent: :destroy
@@ -45,7 +48,7 @@
 |prefecture|string|null: false|
 |address|string|null: false|
 |building|string|null: false|
-|user|references|foreign_key: true|
+|user_id|bigint|foreign_key: true|
 
 
 ### Association
@@ -55,7 +58,9 @@
 ## credit_cards table
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|foreign_key: true|
+|user_id|bigint|foreign_key: true|
+|customer_id|string||
+|card_id|string||
 |number|integer|null: false|
 |expiration_month|date|null: false|
 |expiration_year|year|null: false|
@@ -80,8 +85,8 @@
 ## comments table
 |Column|Type|Options|
 |------|----|-------|
-|user|references|foreign_key: true|
-|item|references|foreign_key: true|
+|user_id|bigint|foreign_key: true|
+|item_id|bigint|foreign_key: true|
 |comment|text|null: false|
 
 ### Association
@@ -97,12 +102,12 @@
 |buyer_id|bigint|foreign_key: true|
 |seller_id|bigint|foreign_key: true|
 |item_id|bigint|foreign_key: true|
-|grade_by_buyer|references|foreign_key: true|
+|grade_by_buyer_id|bigint|foreign_key: true|
 |comment_by_buyer|string||
-|grade_by_seller|references|foreign_key: true|
+|grade_by_seller_id|bigint|foreign_key: true|
 |comment_by_seller|string||
 |transaction_status|integer|null: false|
-|payment_method|references|foreign_key: true|
+|payment_method_id|bigint|foreign_key: true|
 
 ### Association
 - belongs_to :grade
@@ -117,7 +122,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|grade|string|null: false, unique: true|
+|grade|string|null: false|
 
 ### Association
 - has_many :transactions
@@ -127,7 +132,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|method_name|string|null: false, unique: true|
+|method_name|string|null: false|
 
 ### Association
 - has_many :transactions
@@ -169,7 +174,7 @@
 |Field|Type|Options|
 |---|:---:|---|
 |image_url|string|null: false|
-|item|references|foreign_key: true|
+|item_id|bigint|foreign_key: true|
 
 ### Association
 - belongs_to :item
@@ -179,7 +184,7 @@
 
 |Field|Type|Options|
 |---|:---:|---|
-|item_condition|string|null: false, unique: true|
+|item_condition|string|null: false|
 
 ### Association
 - has_many :items
@@ -189,7 +194,7 @@
 
 |Field|Type|Options|
 |---|:---:|---|
-|ship_fee_bearer|string|null: false, unique: true|
+|ship_fee_bearer|string|null: false|
 
 ### Association
 - has_many :items
@@ -199,7 +204,7 @@
 
 |Field|Type|Options|
 |---|:---:|---|
-|days_before_ship|string|null: false, unique: true|
+|days_before_ship|string|null: false|
 
 ### Association
 - has_many :items
@@ -209,7 +214,7 @@
 
 |Field|Type|Options|
 |---|:---:|---|
-|delivery_method|string|null: false, unique: true|
+|delivery_method|string|null: false|
 
 ### Association
 - has_many :items
@@ -261,8 +266,8 @@ add_index :category_hierarchies, [:ancestor_id, :descendant_id,     :generations
 
 |Field|Type|Options|
 |---|:---:|---|
-|category|bigint|foreign_key: true|
-|size|bigint|foreign_key: true|
+|category_id|bigint|foreign_key: true|
+|size_id|bigint|foreign_key: true|
 
 ### Association
 - belongs_to :category
@@ -273,7 +278,7 @@ add_index :category_hierarchies, [:ancestor_id, :descendant_id,     :generations
 
 |Field|Type|Options|
 |---|:---:|---|
-|size|string|null: false, index: true, unique: true|
+|size|string|null: false, index: true|
 
 
 ### Association
