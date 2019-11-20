@@ -117,7 +117,7 @@ ActiveRecord::Schema.define(version: 2019_11_18_060053) do
     t.integer "price", null: false
     t.bigint "item_condition_id"
     t.bigint "ship_fee_bearer_id"
-    t.bigint "pref_ship_from_id"
+    t.bigint "prefecture"
     t.bigint "days_before_ship_id"
     t.bigint "delivery_method_id"
     t.bigint "user_id"
