@@ -87,3 +87,5 @@ gem 'payjp'
 gem 'dotenv-rails'
 
 gem 'closure_tree'
+
+gem "recaptcha", require: "recaptcha/rails"

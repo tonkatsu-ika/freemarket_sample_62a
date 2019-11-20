@@ -10,6 +10,9 @@ class SignupController < ApplicationController
 
   #電話番号入力
   def sms_confirmation
+    unless verify_recaptcha
+      redirect_to action: registlation ,alert: 'ユーザ認証をしてください'
+    end
     session[:user_params] = user_params
     @user = User.new
   end
