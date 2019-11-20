@@ -153,6 +153,8 @@
 |user_id|bigint|foreign_key: true|
 |brand_id|bigint|foreign_key: true|
 |category_id|bigint|foreign_key: true|
+|size_id|bigint|foreign_key: true|
+
 
 
 ### Association
@@ -164,6 +166,7 @@
 - belongs_to :user
 - belongs_to :brand, optional: true
 - belongs_to :category
+- belongs_to :size
 
 - has_many :item_images, dependent: :destroy
 - has_many :likes, dependent: :destroy
@@ -283,5 +286,6 @@ add_index :category_hierarchies, [:ancestor_id, :descendant_id,     :generations
 
 
 ### Association
+- has_many :items
 - has_many :categories, through: :category_sizes
 - has_many :category_sizes
