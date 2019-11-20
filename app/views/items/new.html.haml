@@ -1,17 +1,32 @@
 .sell-wrapper
   %h2.sell-wrapper__index 商品の情報を入力
-  %form
+  = form_with(local: true) do |f|
     .sell-wrapper__form.sell-wrapper__form__image
       .sell-wrapper__form__image__content
         .sell-wrapper__form__image__title 出品画像
         %span.sell-wrapper__form--must.sell-wrapper__form__image__must 必須
       .sell-wrapper__form__image__explanation 最大10枚までアップロードできます
-      .sell-wrapper__form__image__upload-box
-        .sell-wrapper__form__image__upload-box__sentence
-          %span.sell-wrapper__form__image__upload-box__sentence__span
-            ドラッグアンドドロップ
-            %br
-            またはクリックしてファイルをアップロード
+      = f.fields_for :item_image do |i|
+        .dropzone-container.clearfix
+          #preview
+          .dropzone-area
+            = i.label :image_url, class: "dropzone-box", for: "upload-image" do
+              .input_area
+                = i.file_field :image_url, multiple: true, name: 'item_image[image_url][]', id: "upload-image", class: "upload-image dropzone", 'data-image': 0
+                .boxFileSelect
+                  %p
+                    ドロップ&amp;ドラッグ
+                    %br
+                    もしくはクリックしてください
+          #preview2
+          .dropzone-area2
+            = i.label :image_url, class: "dropzone-box", for: "upload-image" do
+              .boxFileSelect
+                %p
+                  ドロップ&amp;ドラッグ
+                  %br
+                  もしくはクリックしてください
+        .clearfix
 
     .sell-wrapper__form.sell-wrapper__form__content
       .sell-wrapper__form__content__name
@@ -19,13 +34,14 @@
           .sell-wrapper__form__content__name__title 商品名
           %span.sell-wrapper__form--must.sell-wrapper__form__content__must 必須
         .sell-wrapper__form__content__name__bottom
-          %input.sell-wrapper__form__content__name__bottom__text-box{name: "", type: "text", placeholder: "商品名（必須 40文字まで）"}
+          = f.text_field :name, class: 'sell-wrapper__form__content__name__bottom__text-box', placeholder: '商品名（必須 40文字まで）'
       .sell-wrapper__form__content__explain
         .sell-wrapper__form__content__name__upper
           .sell-wrapper__form__content__name__title 商品の説明
           %span.sell-wrapper__form--must.sell-wrapper__form__content__must 必須
         .sell-wrapper__form__content__name__bottom
-          %textarea.sell-wrapper__form__content__explain__bottom__text-box{name: "", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"}
+          = f.text_area :description, class: 'sell-wrapper__form__content__explain__bottom__text-box', placeholder: '商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'
+          
 
     .sell-wrapper__form.sell-wrapper__form__detail
       %h3.sell-wrapper__form__detail__left 商品の詳細
@@ -34,20 +50,12 @@
           .sell-wrapper__form__detail__right__upper__category
             .sell-wrapper__form__content__name__title カテゴリー
             %span.sell-wrapper__form--must.sell-wrapper__form__content__must 必須
-          %select.sell-wrapper__form__detail__right__upper__select{name: "example"}
-            %option{value: "", selected: "selected"} ---
-            %option{value: "選択肢1"} 選択肢1
-            %option{value: "選択肢2"} 選択肢2
-            %option{value: "選択肢3"} 選択肢3
+          = f.collection_select :category_id, Prefecture.all, :id, :name, {prompt: true}, {class: 'sell-wrapper__form__detail__right__upper__select'}
         .sell-wrapper__form__detail__right__bottom
           .sell-wrapper__form__detail__right__upper__category
             .sell-wrapper__form__content__name__title 商品の状態
             %span.sell-wrapper__form--must.sell-wrapper__form__content__must 必須
-          %select{name: "example"}
-            %option{value: "", selected: "selected"} ---
-            %option{value: "選択肢1"} 選択肢1
-            %option{value: "選択肢2"} 選択肢2
-            %option{value: "選択肢3"} 選択肢3
+          = f.collection_select :item_condition_id, Prefecture.all, :id, :name, prompt: true
 
 
     .sell-wrapper__form.sell-wrapper__form__delivery
@@ -55,31 +63,19 @@
       .sell-wrapper__form__detail__right
         .sell-wrapper__form__delivery__right__upper
           .sell-wrapper__form__detail__right__upper__category
-            .sell-wrapper__form__content__name__title 配送量の負担
+            .sell-wrapper__form__content__name__title 配送料の負担
             %span.sell-wrapper__form--must.sell-wrapper__form__content__must 必須
-          %select{name: "example"}
-            %option{value: "", selected: "selected"} ---
-            %option{value: "選択肢1"} 選択肢1
-            %option{value: "選択肢2"} 選択肢2
-            %option{value: "選択肢3"} 選択肢3
+          = f.collection_select :ship_fee_bearer_id, Prefecture.all, :id, :name, prompt: true
         .sell-wrapper__form__detail__right__bottom
           .sell-wrapper__form__detail__right__upper__category
             .sell-wrapper__form__content__name__title 発送元の地域
             %span.sell-wrapper__form--must.sell-wrapper__form__content__must 必須
-          %select{name: "example"}
-            %option{value: "", selected: "selected"} ---
-            %option{value: "選択肢1"} 選択肢1
-            %option{value: "選択肢2"} 選択肢2
-            %option{value: "選択肢3"} 選択肢3
+          = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: true
         .sell-wrapper__form__detail__right__bottom
           .sell-wrapper__form__detail__right__upper__category
             .sell-wrapper__form__content__name__title 発送までの日数
             %span.sell-wrapper__form--must.sell-wrapper__form__content__must 必須
-          %select{name: "example"}
-            %option{value: "", selected: "selected"} ---
-            %option{value: "選択肢1"} 選択肢1
-            %option{value: "選択肢2"} 選択肢2
-            %option{value: "選択肢3"} 選択肢3
+          = f.collection_select :days_before_ship_id, Prefecture.all, :id, :name, prompt: true
 
     .sell-wrapper__form.sell-wrapper__form__price
       %h3.sell-wrapper__form__detail__left 販売価格(300〜9,999,999)
@@ -93,7 +89,7 @@
                   %span.sell-wrapper__form--must 必須
               .sell-wrapper__form__price__first__wrapper__right
                 ¥
-                %input.sell-wrapper__form__price__first__wrapper__right__money{name: "", type: "text", placeholder: "例）300"}/
+                = f.text_field :price, class: 'sell-wrapper__form__price__first__wrapper__right__money', placeholder: '例）300'
           %li.sell-wrapper__form__price__second
             .sell-wrapper__form__price__second__left 販売手数料(10%)
             .sell-wrapper__form__price__second__right -
@@ -107,5 +103,5 @@
         またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。
         %br
         また、出品をもちまして加盟店規約に同意したことになります。
-      %button.sell-wrapper__form__sell-btn__sent{type: 'submit'} 出品する
+      = f.submit '出品する', class: 'sell-wrapper__form__sell-btn__sent'
       .sell-wrapper__form__sell-btn__back もどる
