@@ -7,7 +7,6 @@ class CreditCardController < ApplicationController
     end
   
     def pay #payjpとCardのデータベース作成を実施します。
-      binding.pry
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       if params['payjp-token'].blank?
         redirect_to action: "new"
@@ -18,8 +17,12 @@ class CreditCardController < ApplicationController
         card: params['payjp-token'],
         # metadata: {user_id: current_user.id}
         ) #念の為metadataにuser_idを入れましたがなくてもOK
+        binding.pry
+        
         @card = CreditCard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
+        
         if @card.save
+          binding.pry
           redirect_to done_signup_index_path
         else
           redirect_to action: "pay"
@@ -49,5 +52,11 @@ class CreditCardController < ApplicationController
         @default_card_information = customer.cards.retrieve(card.card_id)
       end
     end
+
+    private
+  # 許可するキーを設定
+  def user_params
+    params.require(:credit_card).permit()
+  end
   
 end

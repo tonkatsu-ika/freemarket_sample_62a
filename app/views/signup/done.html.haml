@@ -1,6 +1,39 @@
-会員登録完了
+.registration-header
+  .registration__title
+    .registration__title_logo
+      = link_to (image_tag "fmarket_logo_red.svg", size: "185x49", alt: "Fmarket",class: "login-header__upper__title-logo__link"), :root
+  .sub-header
+    .progss-bar
+      %ul.progss-bar__ul
+        %li.progss-bar__item
+          .fifth
+            完了
+            .progss-bar__maru-first
+        %li.progss-bar__item#second
+          .fourth
+            支払い情報
+            .progss-bar__maru
+        %li.progss-bar__item
+          .third
+            住所入力
+            .progss-bar__maru
+        %li.progss-bar__item
+          .second
+            電話番号認証
+            .progss-bar__maru
+        %li.progss-bar__item
+          .first
+            会員情報
+            .progss-bar__maru
 
-ありがとうございます。
-会員登録が完了しました。
-
-=link_to 'メルカリを始める','#'
+.login-header-done 
+  .login-header-done__index 
+    %b
+      会員登録完了
+  .login-header-registration__form
+    .login-header-done__form-content
+      ありがとうございます。
+      %br/
+      会員登録が完了しました。
+  = link_to root_path, class: "done-button" do
+    Fmarketを始める

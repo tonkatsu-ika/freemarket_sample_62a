@@ -1,9 +1,11 @@
 class SignupController < ApplicationController
+  require "payjp"
   layout 'users'
   
   #会員情報入力
   def registlation
     @user = User.new
+    
   end
 
   #電話番号入力
@@ -21,18 +23,30 @@ class SignupController < ApplicationController
 
   #支払い方法入力
   def payment
-    binding.pry
+    
     session[:address_attributes] = user_params[:address_attributes]
     session[:user_params].merge!(user_params)
+
     @user = User.new(session[:user_params])
     @user.build_address(user_params[:address_attributes])
     binding.pry
     if @user.save
       session[:id] = @user.id
-      
+
+      if user_signed_in?
+      #ユーザーログイン
+        session[:user_id] = nil
+    # 　  sign_in User.find(session[:id])  
+        binding.pry
+      else  
+        sign_in User.find(session[:id]) unless user_signed_in?   
+      end
+      binding.pry
+      sign_in User.find(session[:id]) unless user_signed_in?  
     else
       redirect_to payment_signup_index_path
     end
+    
 
     @card = CreditCard.new
     @user = User.new
@@ -42,7 +56,26 @@ class SignupController < ApplicationController
   #会員情報登録完了
   def done
     
-    @user = User.new
+
+    # Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    #   if params['payjp-token'].blank?
+    #     redirect_to action: "new"
+    #   else
+    #     customer = Payjp::Customer.create(
+    #     # description: '登録テスト', #なくてもOK
+    #     # email: current_user.email, #なくてもOK
+    #     card: params['payjp-token'],
+    #     # metadata: {user_id: current_user.id}
+    #     ) #念の為metadataにuser_idを入れましたがなくてもOK
+    #     binding.pry
+    #     @card = CreditCard.new(user_id: session[:id], customer_id: customer.id, card_id: customer.default_card)
+        
+    #     if @card.save
+    #       redirect_to done_signup_index_path
+    #     else
+    #       redirect_to action: "payment"
+    #     end
+    #   end
     
   end
   
@@ -61,7 +94,7 @@ class SignupController < ApplicationController
       :birthday,
       :telephone,
       address_attributes:[:id, :post_code, :prefecture, :address,:building]
-  )
+    )
   end
 
 end

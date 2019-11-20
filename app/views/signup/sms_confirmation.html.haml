@@ -1,13 +1,48 @@
+.registration-header
+  .registration__title
+    .registration__title_logo
+      = link_to (image_tag "fmarket_logo_red.svg", size: "185x49", alt: "Fmarket",class: "login-header__upper__title-logo__link"), :root
+  .sub-header
+    .progss-bar
+      %ul.progss-bar__ul
+        %li.progss-bar__item
+          .fifth
+            完了
+            .progss-bar__maru-first
+        %li.progss-bar__item#second
+          .fourth
+            支払い情報
+            .progss-bar__maru
+        %li.progss-bar__item
+          .third
+            住所入力
+            .progss-bar__maru
+        %li.progss-bar__item
+          .second
+            電話番号認証
+            .progss-bar__maru
+        %li.progss-bar__item
+          .first
+            会員情報
+            .progss-bar__maru
 
-電話番号の確認
-= form_for @user, url: address_signup_index_path, method: :get, html: {class: 'first-main__box'} do |f|
-  = f.label '携帯電話の番号' ,class: 'telephone' 
-  %span.form_required-box 必須
-  %br/
-  %p.form__into-text
-    本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。  
-  = f.text_field :telephone, placeholder: '携帯電話の番号を入力'
-  %p.form__into-text
-    ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
-  = f.submit class: 'mixinを指定',value:'SMSを送信する'
-=link_to '電話番号の確認が必要な理由','#' ,method: :get
+
+.login-header-sms
+  .login-header-sms__index 
+    %b          
+      電話番号の確認
+  .login-header-sms__form
+    = form_for @user, url: address_signup_index_path, method: :get, html: {class: 'first-main__box'} do |f|
+      .login-header-sms__form-content
+        .form-group
+          = f.label '携帯電話の番号' ,class: 'login-header-sms__label'
+          %span.login-header-sms__form--must 必須
+          %br/
+          %p.userloginform-into__sub-sms
+            本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。  
+          = f.text_field :telephone, placeholder: '携帯電話の番号を入力',class: 'input-default'
+          = f.submit class: 'btn-default',value:'SMSを送信する'
+          %p.sms_form__into-text
+            ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+        .link-block  
+          =link_to '電話番号の確認が必要な理由 >','#' ,method: :get

@@ -1,0 +1,73 @@
+.registration-header{
+  display: flex;
+  margin: auto;
+  display: block;
+  .registration__title{
+      position: absolute;
+    .registration__title_logo{
+      position: relative;
+      right: 350px;
+    }
+  }
+  .sub-header{
+    width: 700px;
+    height: 128px;
+    margin: 0 auto 0px;
+    .progss-bar{
+      padding: 20px 0 0 44px;
+      
+      &__ul{
+        overflow: hidden;
+        color: #888;
+        list-style: none;
+      }
+      &__item{
+        float: right;
+        line-height: 50px;
+        padding: 0 18px;
+        font-size: 12px;
+        
+      }
+      #red{
+        color: red;
+      }
+      #second{
+        margin-right:20px;
+      }
+      #point-red{
+        background-color: red;
+      }
+      &__maru{
+        height: 11px;
+        width: 11px;
+        border-radius: 50px;
+        background-color: #ccc;
+        margin: 0 auto;
+        position: relative;
+        &:after{
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 5px;
+          border-bottom: 2px solid #ccc;
+          width: 100px;
+          height: 100px;
+          z-index: -2;
+        }
+        &-first{
+          height: 11px;
+          width: 11px;
+          border-radius: 50px;
+          background-color: #ccc;
+          margin: 0 auto;
+          position: relative;
+        }
+      }
+    }
+  }
+
+}
+  
+    
+
