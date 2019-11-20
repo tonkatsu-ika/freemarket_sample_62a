@@ -166,26 +166,6 @@ ActiveRecord::Schema.define(version: 2019_11_18_060053) do
     t.index ["size"], name: "index_sizes_on_size"
   end
 
-  create_table "transactions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "buyer_id"
-    t.bigint "seller_id"
-    t.bigint "item_id"
-    t.bigint "grade_by_buyer_id"
-    t.string "comment_by_buyer"
-    t.bigint "grade_by_seller_id"
-    t.string "comment_by_seller"
-    t.integer "transaction_status", null: false
-    t.bigint "payment_method_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["buyer_id"], name: "index_transactions_on_buyer_id"
-    t.index ["grade_by_buyer_id"], name: "index_transactions_on_grade_by_buyer_id"
-    t.index ["grade_by_seller_id"], name: "index_transactions_on_grade_by_seller_id"
-    t.index ["item_id"], name: "fk_rails_37b3ea4e18"
-    t.index ["payment_method_id"], name: "index_transactions_on_payment_method_id"
-    t.index ["seller_id"], name: "index_transactions_on_seller_id"
-  end
-
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -224,10 +204,4 @@ ActiveRecord::Schema.define(version: 2019_11_18_060053) do
   add_foreign_key "items", "users"
   add_foreign_key "likes", "items"
   add_foreign_key "likes", "users"
-  add_foreign_key "transactions", "grades", column: "grade_by_buyer_id"
-  add_foreign_key "transactions", "grades", column: "grade_by_seller_id"
-  add_foreign_key "transactions", "items"
-  add_foreign_key "transactions", "payment_methods"
-  add_foreign_key "transactions", "users", column: "buyer_id"
-  add_foreign_key "transactions", "users", column: "seller_id"
 end
