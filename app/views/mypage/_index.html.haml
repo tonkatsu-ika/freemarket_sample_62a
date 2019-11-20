@@ -1,34 +1,35 @@
-.contents-wrapper
-  .index-contents
-    %section.index-contents__user
-      %figure.index-contents__user__icon-container
-        = image_tag "", alt: "user icon"
-      %h2.index-contents__user__name
-      .index-contents__user__kpis
-        .index-contents__user__kpis__item
-          評価
-          %span.index-contents__user__kpis__item__number
-            51
-        .index-contents__user__kpis__item
-          出品数
-          %span.index-contents__user__kpis__item__number
-            100      
-    %section.index-contents__tab-container
-    %section.index-contents__tab-container
-      .index-contents__tab-container__header
-        %h2.index-contents__tab-container__header__caption
-          購入した商品
-      %ul.index-contents__tab-container__tabs
-        %li.index-contents__tab-container__tabs__tab
-          %h3
-            = link_to "#", class: "index-contents__tab-container__tabs__tab__link active" do
-              取引中
-        %li.index-contents__tab-container__tabs__tab
-          %h3
-            = link_to "#", class: "index-contents__tab-container__tabs__tab__link" do
-              過去の取引
-      .index-contents__tab-container__contents
-        %ul.index-contents__tab-container__contents__transaction-now
-        %ul.index-contents__tab-container__contents__transaction-old
+.index-contents
+  %section.index-contents__user
+    %figure.index-contents__user__icon-container
+      = image_tag "", alt: "user icon"
+    %h2.index-contents__user__name
+    .index-contents__user__kpis
+      .index-contents__user__kpis__item
+        評価
+        %span.index-contents__user__kpis__item__number
+          51
+      .index-contents__user__kpis__item
+        出品数
+        %span.index-contents__user__kpis__item__number
+          100      
+  %section.index-contents__tab-container
+  %section.index-contents__tab-container
+    .index-contents__tab-container__header
+      %h2.index-contents__tab-container__header__caption
+        購入した商品
+    %ul.index-contents__tab-container__tabs
+      %li.index-contents__tab-container__tabs__tab.active
+        %h3
+          = link_to "#", class: "index-contents__tab-container__tabs__tab__link" do
+            取引中
+      %li.index-contents__tab-container__tabs__tab
+        %h3
+          = link_to "#", class: "index-contents__tab-container__tabs__tab__link" do
+            過去の取引
+    .index-contents__tab-container__contents
+      %ul.index-contents__tab-container__contents__transaction-now
+        %li.index-contents__tab-container__contents__transaction-now--item-not-found
+          取引中の商品がありません。
+      %ul.index-contents__tab-container__contents__transaction-old
 
 
