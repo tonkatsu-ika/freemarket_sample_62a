@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   belongs_to :user
   belongs_to :brand, optional: true
   belongs_to :category
+  belongs_to :size
   has_many :item_images, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy

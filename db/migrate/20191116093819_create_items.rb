@@ -11,6 +11,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.bigint :user_id
       t.bigint :brand_id
       t.bigint :category_id
+      t.bigint :size_id
 
       t.timestamps
     end
@@ -21,5 +22,6 @@ class CreateItems < ActiveRecord::Migration[5.2]
     add_foreign_key :items, :users, column: :user_id
     add_foreign_key :items, :brands, column: :brand_id
     add_foreign_key :items, :categories, column: :category_id
+    add_foreign_key :items, :sizes, column: :size_id
   end
 end
