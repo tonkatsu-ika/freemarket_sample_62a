@@ -4,6 +4,6 @@ class Category < ApplicationRecord
   has_closure_tree
 
   #belongs_to :category_tree
-  has_many :category_size
+  has_many :category_sizes
   has_many :items
 end
