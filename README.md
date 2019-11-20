@@ -69,8 +69,8 @@
 ## likes 
 |Column|Type|Options|
 |------|----|-------|
-|user|bigint|foreign_key: true|
-|item|references|foreign_key: true|
+|user_id|bigint|foreign_key: true|
+|item_id|bigint|foreign_key: true|
 
 ### Association
 - belongs_to :user
