@@ -148,6 +148,7 @@
 |price|integer|null: false, index: true|
 |item_condition_id|bigint|foreign_key: true|
 |ship_fee_bearer_id|bigint|foreign_key: true|
+|pref_ship_from_id|bigint|foreign_key: true|
 |days_before_ship_id|bigint|foreign_key: true|
 |delivery_method_id|bigint|foreign_key: true|
 |user_id|bigint|foreign_key: true|
@@ -160,6 +161,7 @@
 ### Association
 - has_one :item_condition
 - has_one :ship_fee_bearer
+- has_one :pref_ship_from, class_name: "Prefecture", source: :prefecture
 - has_one :days_before_ship
 - has_one :delivery_method
 
