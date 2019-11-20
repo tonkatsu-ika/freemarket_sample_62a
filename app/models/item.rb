@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   has_one :item_condition
   has_one :ship_fee_bearer
+  has_one :pref_ship_from, class_name: "Prefecture", source: :prefecture
   has_one :days_before_ship
   has_one :delivery_method
   belongs_to :user
