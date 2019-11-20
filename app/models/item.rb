@@ -18,7 +18,7 @@ class Item < ApplicationRecord
   validates :description, length: { minimum: 1, maximum: 1000 }
   validates :item_condition_id, presence: true
   validates :ship_fee_bearer_id, presence: true
-  validates :prefecture_id, presence: true
+  # validates :prefecture_id, presence: true
   validates :days_before_ship_id, presence: true
   validates :category_id, presence: true
   validates :price, presence: true
