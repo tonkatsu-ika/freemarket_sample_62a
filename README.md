@@ -250,7 +250,7 @@
 - has_many :items
 
 
-## categorie_hierarchies table
+## category_hierarchies table
 商品カテゴリーのツリー構造については、クエリのパフォーマンスが
 「隣接リスト」より高い「閉包テーブル」(closure_tree)を採用。
 本テーブルは「閉包テーブル」を採用したことにより自動作成されるテーブル。
