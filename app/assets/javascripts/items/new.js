@@ -1,14 +1,14 @@
 $(function(){
   function appendOption(category){
-    var html = `<option value="${category.id}">${category.name}</option>`;
+    var html = `<option value="${category.id}">${category.category_name}</option>`;
     return html;
   }
 
   // 子カテゴリーの選択フォーム
   function appendChidrenBox(insertHTML){
     var selectbox1 = `<div class='sell-wrapper__form__detail__right__upper__select__child'>
-                        <select class='sell-wrapper__form__detail__right__upper__child'>
-                        <option selected='selected'>---</option>
+                        <select class='sell-wrapper__form__detail__right__upper__child' name='category_id'>
+                        <option selected='selected' value="---">---</option>
                         ${insertHTML}
                         </select>
                       </div>`;
@@ -16,58 +16,83 @@ $(function(){
   }
 
   // 孫カテゴリーの選択フォーム
-  var selectbox2 = `<div class='sell-wrapper__form__detail__right__upper__select__grandchild'>
-                      <select class='sell-wrapper__form__detail__right__upper__grandchild' name='category_id'>
-                      <option selected='selected' value=''>---</option>
-                      <option value='選択肢1'>選択肢1</option>
-                      <option value='選択肢2'>選択肢2</option>
-                      <option value='選択肢3'>選択肢3</option>
-                      </select>
-                    </div>`;
+  function appendChidrenBox2(insertHTML){
+    var selectbox2 = `<div class='sell-wrapper__form__detail__right__upper__select__grandchild'>
+                        <select class='sell-wrapper__form__detail__right__upper__grandchild' name='category_id'>
+                        <option selected='selected' value=''>---</option>
+                        ${insertHTML}
+                        </select>
+                      </div>`;
+    $('.sell-wrapper__form__detail__right__upper__select__child').append(selectbox2);
+  }
+  // var selectbox2 = `<div class='sell-wrapper__form__detail__right__upper__select__grandchild'>
+  //                     <select class='sell-wrapper__form__detail__right__upper__grandchild' name='category_id'>
+  //                     <option selected='selected' value=''>---</option>
+  //                     <option value='選択肢1'>選択肢1</option>
+  //                     <option value='選択肢2'>選択肢2</option>
+  //                     <option value='選択肢3'>選択肢3</option>
+  //                     </select>
+  //                   </div>`;
 
   // 親カテゴリーのセレクトがチェンジされたら
   $('.sell-wrapper__form__detail__right__upper__select').change(function(){
-    var parent_category = $(this).val(); // 親カテゴリーのvalue属性値を取得
+    var parent_category = $('.sell-wrapper__form__detail__right__upper__select option:selected').text(); // 親カテゴリーのvalue属性値を取得
     console.log(parent_category);
 
     $.ajax({
-      type: 'get',
-      url: 'items#get_category_children {:format=>"json"}',
-      data: { parent_id: parent_category },
+      type: 'GET',
+      url: '/items/get_category_children',
+      data: { parent_name: parent_category },
       dataType: 'json'
-    });
-
+    })
     .done(function(data){
       $('.sell-wrapper__form__detail__right__upper').children('.sell-wrapper__form__detail__right__upper__select__child').remove();
       var insertHTML = '';
+      console.log(data);
       data.forEach(function(child){
         insertHTML += appendOption(child);
       });
       appendChidrenBox(insertHTML);
-      
-      // $('.sell-wrapper__form__detail__right__upper').append(selectbox1);
-    });
+    })
     .fail(function(){
       $('.sell-wrapper__form__detail__right__upper').children('.sell-wrapper__form__detail__right__upper__select__child').remove();
     });
-
-    
-    
-  })
+  });
 
   // 子カテゴリーのセレクトがチェンジされたら
   $(document).on("change", ".sell-wrapper__form__detail__right__upper__select__child", function () {
-    var child_category = $(this).val(); // 子カテゴリーのvalue属性値を取得
-    console.log(child_category);
-    $('.sell-wrapper__form__detail__right__upper__select__child').children('.sell-wrapper__form__detail__right__upper__select__grandchild').remove();
-    $('.sell-wrapper__form__detail__right__upper__select__child').append(selectbox2);
+    // var child_category = $('.sell-wrapper__form__detail__right__upper__select__child option:selected').text(); // 子カテゴリーのvalue属性値を取得
+    var child_category_id = $('.sell-wrapper__form__detail__right__upper__select__child option:selected').val();
+    console.log(child_category_id);
+    if (child_category_id != "---"){
+      $.ajax({
+        type: 'GET',
+        url: '/items/get_category_grandchildren',
+        data: { child_id: child_category_id},
+        dataType: 'json'
+      })
+      .done(function(data){
+        $('.sell-wrapper__form__detail__right__upper__select__child').children('.sell-wrapper__form__detail__right__upper__select__grandchild').remove();
+        var insertHTML = '';
+        console.log(data);
+        data.forEach(function(child){
+          insertHTML += appendOption(child);
+        });
+        appendChidrenBox2(insertHTML);
+      })
+      .fail(function(){
+        $('.sell-wrapper__form__detail__right__upper__select__child').children('.sell-wrapper__form__detail__right__upper__select__grandchild').remove();
+      });
+    }else {
+      $('.sell-wrapper__form__detail__right__upper__select__child').children('.sell-wrapper__form__detail__right__upper__select__grandchild').remove();
+    }
   });
 
   // 孫カテゴリーのセレクトがチェンジされたら
-  $(document).on("change", ".sell-wrapper__form__detail__right__upper__select__grandchild", function () {
-    var grandchild_category = $(this).val(); // 孫カテゴリーのvalue属性値を取得
-    console.log(grandchild_category);
-  });
+  // $(document).on("change", ".sell-wrapper__form__detail__right__upper__select__grandchild", function () {
+  //   var grandchild_category = $(this).val(); // 孫カテゴリーのvalue属性値を取得
+  //   console.log(grandchild_category);
+  // });
 
 
   // 販売手数料と利益を計算して表示↓
