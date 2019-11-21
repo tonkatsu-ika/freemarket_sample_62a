@@ -10,9 +10,36 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require font_awesome5_webfont
  *= require_tree .
  *= require_self
  */
 
- @import "./reset";
- @import "./modules/footer"
+// common settings
+@import 'font_awesome5_webfont';
+@import './reset';
+@import './config/variables';
+@import './config/common_settings';
+@import './mixin/mixin';
+
+// common layout parts
+@import './modules/header';
+@import './modules/footer';
+@import './modules/breadcrumb';
+
+// index
+@import './modules/index';
+
+// mypage
+// 共通パーツ
+@import './modules/mypage/mypage_common';
+@import './modules/mypage/sidebar';
+// 各ページのコンテンツ
+@import './modules/mypage/card';
+@import './modules/mypage/identification';
+@import './modules/mypage/index';
+@import './modules/mypage/logout';
+@import './modules/mypage/profile';
+
+// devise
+@import "./modules/userlogin";
