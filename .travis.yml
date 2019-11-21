@@ -16,12 +16,9 @@ before_install:
 
 
 before_script:
-  - mysql -e 'CREATE DATABASE freemarket_sample_62a_development;'
 
 
 script:
-  - bundle exec rake db:create
-  - bundle exec rake db:migrate
 
 notification:
 # slackへの通知（作成中)
