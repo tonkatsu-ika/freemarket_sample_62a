@@ -1,18 +1,19 @@
 .index-contents
   %section.index-contents__user
-    %figure.index-contents__user__icon-container
-      = image_tag "mypage/user-icon-test.jpg", alt: "user icon", class: "index-contents__user__icon-container__icon"
-    %h2.index-contents__user__name
-      うに太郎
-    .index-contents__user__kpis
-      .index-contents__user__kpis__item
-        評価
-        %span.index-contents__user__kpis__item__number
-          51
-      .index-contents__user__kpis__item
-        出品数
-        %span.index-contents__user__kpis__item__number
-          100      
+    = link_to "#", class: "index-contents__user__link" do
+      %figure.index-contents__user__link__icon-container
+        = image_tag "mypage/user-icon-test.jpg", alt: "user icon", class: "index-contents__user__link__icon-container__icon"
+      %h2.index-contents__user__link__name
+        うに太郎
+      .index-contents__user__link__kpis
+        .index-contents__user__link__kpis__item
+          評価
+          %span.index-contents__user__link__kpis__item__number
+            51
+        .index-contents__user__link__kpis__item.right
+          出品数
+          %span.index-contents__user__link__kpis__item__number
+            100      
   %section.index-contents__tab-container
     %ul.index-contents__tab-container__tabs
       %li.index-contents__tab-container__tabs__tab.active
