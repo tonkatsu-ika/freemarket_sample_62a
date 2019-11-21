@@ -106,7 +106,7 @@
         display: block;
       }
       // お知らせ
-      &__item {
+      &__notice {
         border-bottom: 1px solid #eee;
         height: 48px;
         line-height: 48px;
@@ -179,7 +179,7 @@
         }
       }
       // やることリスト
-      &__todo-now {
+      &__todo {
         background-color: #fff;
         padding: 160px 0 60px;
         list-style: none;
@@ -194,18 +194,21 @@
     // 下部のタブコンテナ内のコンンテンツ
     &__contents {
       background-color: #fff;
-      &__transaction-now {
+      &__transactions {
         padding: 160px 0 60px;
         list-style: none;
         text-align: center;
-        &--item-not-found {
-          color: #ccc;
-          font-size: 16px;
-          font-weight: 600;
+        display: none;
+        &__transaction-now {
+          &--item-not-found {
+            color: #ccc;
+            font-size: 16px;
+            font-weight: 600;
+          }
         }
-      }
-      &__transaction-old {
-
+        &.active {
+          display: block;
+        }
       }
     }
   }
