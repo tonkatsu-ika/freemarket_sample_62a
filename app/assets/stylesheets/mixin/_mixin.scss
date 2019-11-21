@@ -7,4 +7,5 @@
 @mixin form_button($b_color:rgb(234, 53, 45), $color:#fff) {
   background-color: $b_color;
   color: $color;
+  text-align: center;
 }
