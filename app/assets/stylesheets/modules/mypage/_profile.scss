@@ -1,0 +1,214 @@
+@import '../../config/variables';
+@import '../../mixin/mixin';
+
+.profile-contents {
+  width: 100%;
+
+  // ユーザ情報（アイコンや出品数、評価など）
+  &__user {
+    height: 160px;
+    padding: 20px;
+    text-align: center;
+    background-image: image-url('mypage/bg-mypage-user.jpg');
+    margin-bottom: -40px;
+    position: relative;
+    &__link {
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-20px, -50%);
+      display: block;
+      text-decoration: none;
+      color: $f-color-base;
+      &:hover {
+        opacity: .7;
+        text-decoration-line: underline;
+      }
+      &__icon-container {
+        padding: 0;
+        height: 60px;
+        &__icon {
+          width: 60px;
+          height: 60px;
+          border-radius: 30px;
+        }
+      }
+      &__name {
+        margin-top: 8px;
+        height: 19px;
+      }
+      &__kpis {
+        width: 100%;
+        height: 16px;
+        margin-top: 8px;
+        &__item {
+          display: inline-block;
+          margin: 0 auto;
+          &__number {
+            margin-left: 8px;
+            font-size: 16px;
+            font-weight: 600;
+          }
+          &.right {
+            margin-left: 8px;
+          }
+        }
+      }
+    }
+  }
+  
+  // ユーザ情報以下の2つのタブコンテナ
+  &__tab-container {
+    margin-top: 40px;
+    // 各タブの上部にあるヘッダ（下部のタブコンテナのみ）
+    &__header {
+      width: 100%;
+      font-size: 16px;
+      &__caption {
+        height: 72px;
+        line-height: 72px;
+        display: block;
+        padding: 0 16px;
+        background-color: $bg-mypage-tab-container-header;
+      }
+    }
+    // 各タブ（上部、下部共通）
+    &__tabs {
+      display: flex;
+      justify-content: space-between;
+      list-style: none;
+      font-size: 16px;
+      &__tab {
+        width: 50%;
+        text-align: center;
+        &__link {
+          height: 72px;
+          line-height: 72px;
+          display: block;
+          text-decoration: none;
+          background-color: $bg-mypage-tab-non-active;
+          color: $f-color-base;
+          &:hover {
+            opacity: .7;
+          }
+          &.active {
+            border-top: 2px solid $fm-red;
+            background-color: #fff;
+          }
+        }
+      }
+    }
+    // 上部のタブコンテナ内のコンンテンツ
+    &__items {
+      list-style: none;
+      display: none;
+      &.active {
+        display: block;
+      }
+      // お知らせ
+      &__notice {
+        border-bottom: 1px solid #eee;
+        height: 48px;
+        line-height: 48px;
+        display: block;
+        padding: 16px;
+        background-color: #fff;
+        &:hover {
+          background-color: #fafafa;
+        }
+        &.go-to-btn {
+          height: 56px;
+          line-height: 56px;
+        }
+        &__link {
+          display: flex;
+          text-decoration: none;
+          color: $f-color-base;
+          position: relative;
+          &__image-wrapper {
+            width: 48px;
+            height: 48px;
+            padding: 0 3px;
+            background-color: #eee;
+            text-align: center;
+            position: relative;
+            &__user-icon {
+              position: absolute;
+              bottom: 0;
+              left: 8px;
+              font-size: 36px;
+              color: #ccc;
+            }
+            &__fm-logo {
+              width: 36px;
+              height: 36px;
+              position: absolute;
+              top: 6px;
+              left: 6px;
+            }
+          }
+          &__content-wrapper {
+            margin: 0 16px 0;
+            width: 100%;
+            height: 48px;
+            line-height: 1.5;
+            &__time {
+              &__clock-icon {
+                margin-right: 8px;
+                color: #888;
+              }
+              &__desc {
+                color: #888;
+              }
+            }
+          }
+          & .fa-chevron-right {
+            position: absolute;
+            right: 0;
+            line-height: 48px;
+            font-size: 16px;
+          }
+          &.go-to-btn {
+            display: block;
+            text-align: center;
+            @include form_button($b-color: #eee, $color: #333);
+            &:hover {
+              background-color: #fafafa;
+            }
+          }
+        }
+      }
+      // やることリスト
+      &__todo {
+        background-color: #fff;
+        padding: 160px 0 60px;
+        list-style: none;
+        text-align: center;
+        &--todo-not-found {
+          color: #ccc;
+          font-size: 16px;
+          font-weight: 600;
+        }
+      }
+    }
+    // 下部のタブコンテナ内のコンンテンツ
+    &__contents {
+      background-color: #fff;
+      &__transactions {
+        padding: 160px 0 60px;
+        list-style: none;
+        text-align: center;
+        display: none;
+        &--item-not-found {
+          color: #ccc;
+          font-size: 16px;
+          font-weight: 600;
+        }
+        &.active {
+          display: block;
+        }
+      }
+    }
+  }
+}
+

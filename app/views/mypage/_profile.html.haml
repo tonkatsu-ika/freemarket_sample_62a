@@ -1,1 +1,12 @@
-.contents-wrapper
+.profile-contents
+  = form_with model: User.update, local: true do |f|
+    %h2.profile-contents__header
+      プロフィール
+    .profile-contents__user
+      %figure.profile-contents__user__icon-container
+        = image_tag "mypage/user-icon-test.jpg", alt: "user icon", class: "profile-contents__user__icon-container__icon"
+      = f.text_field :nickname, html: { class: "profile-contents__user__form-nickname" } do
+        = current_user.nickname
+    .profile-contents__profile
+      = f.text_area :profile, html: { class: "profile-contents__profile__form-profile" }
+      = f.submit "変更する", html: { class: "profile-contents__profile__form-button" }
