@@ -81,19 +81,19 @@
       &__tab {
         width: 50%;
         text-align: center;
-        background-color: $bg-mypage-tab-non-active;
-        &.active {
-          border-top: 2px solid $fm-red;
-          background-color: #fff;
-        }
         &__link {
           height: 72px;
           line-height: 72px;
           display: block;
           text-decoration: none;
+          background-color: $bg-mypage-tab-non-active;
           color: $f-color-base;
           &:hover {
             opacity: .7;
+          }
+          &.active {
+            border-top: 2px solid $fm-red;
+            background-color: #fff;
           }
         }
       }
@@ -199,12 +199,10 @@
         list-style: none;
         text-align: center;
         display: none;
-        &__transaction-now {
-          &--item-not-found {
-            color: #ccc;
-            font-size: 16px;
-            font-weight: 600;
-          }
+        &--item-not-found {
+          color: #ccc;
+          font-size: 16px;
+          font-weight: 600;
         }
         &.active {
           display: block;
