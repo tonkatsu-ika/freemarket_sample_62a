@@ -24,7 +24,7 @@
         %h3
           = link_to "#", class: "index-contents__tab-container__tabs__tab__link" do
             やることリスト
-    %ul.index-contents__tab-container__items
+    %ul.index-contents__tab-container__items.active
       %li.index-contents__tab-container__items__item
         = link_to "#", class: "index-contents__tab-container__items__item__link" do
           .index-contents__tab-container__items__item__link__image-wrapper
@@ -50,6 +50,10 @@
       %li.index-contents__tab-container__items__item.go-to-btn
         = link_to "#", class: "index-contents__tab-container__items__item__link go-to-btn" do
           一覧を見る
+    %ul.index-contents__tab-container__items
+      %ul.index-contents__tab-container__items__todo-now
+        %li.index-contents__tab-container__items__todo-now--todo-not-found
+          現在、やることリストはありません
   %section.index-contents__tab-container
     .index-contents__tab-container__header
       %h2.index-contents__tab-container__header__caption
@@ -66,7 +70,7 @@
     .index-contents__tab-container__contents
       %ul.index-contents__tab-container__contents__transaction-now
         %li.index-contents__tab-container__contents__transaction-now--item-not-found
-          取引中の商品がありません。
+          取引中の商品がありません
       %ul.index-contents__tab-container__contents__transaction-old
 
 

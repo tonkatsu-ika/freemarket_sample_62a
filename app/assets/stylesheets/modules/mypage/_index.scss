@@ -4,6 +4,7 @@
 .index-contents {
   width: 100%;
 
+  // ユーザ情報（アイコンや出品数、評価など）
   &__user {
     height: 160px;
     padding: 20px;
@@ -11,7 +12,6 @@
     background-image: image-url('mypage/bg-mypage-user.jpg');
     margin-bottom: -40px;
     position: relative;
-
     &__link {
       width: 100%;
       position: absolute;
@@ -33,7 +33,6 @@
           border-radius: 30px;
         }
       }
-
       &__name {
         margin-top: 8px;
         height: 19px;
@@ -42,7 +41,6 @@
         width: 100%;
         height: 16px;
         margin-top: 8px;
-
         &__item {
           display: inline-block;
           margin: 0 auto;
@@ -58,9 +56,11 @@
       }
     }
   }
-
+  
+  // ユーザ情報以下の2つのタブコンテナ
   &__tab-container {
     margin-top: 40px;
+    // 各タブの上部にあるヘッダ（下部のタブコンテナのみ）
     &__header {
       width: 100%;
       font-size: 16px;
@@ -72,6 +72,7 @@
         background-color: $bg-mypage-tab-container-header;
       }
     }
+    // 各タブ（上部、下部共通）
     &__tabs {
       display: flex;
       justify-content: space-between;
@@ -97,9 +98,14 @@
         }
       }
     }
+    // 上部のタブコンテナ内のコンンテンツ
     &__items {
       list-style: none;
-      
+      display: none;
+      &.active {
+        display: block;
+      }
+      // お知らせ
       &__item {
         border-bottom: 1px solid #eee;
         height: 48px;
@@ -172,7 +178,20 @@
           }
         }
       }
+      // やることリスト
+      &__todo-now {
+        background-color: #fff;
+        padding: 160px 0 60px;
+        list-style: none;
+        text-align: center;
+        &--todo-not-found {
+          color: #ccc;
+          font-size: 16px;
+          font-weight: 600;
+        }
+      }
     }
+    // 下部のタブコンテナ内のコンンテンツ
     &__contents {
       background-color: #fff;
       &__transaction-now {
