@@ -25,3 +25,6 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# 開発用の商品画像を除外
+/app/assets/images/item_images/*
