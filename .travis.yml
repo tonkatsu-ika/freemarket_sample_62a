@@ -16,7 +16,7 @@ before_install:
 
 
 before_script:
-  - mysql -e 'CREATE DATABASE freemarket_sample_62a_test;'
+  - mysql -e 'CREATE DATABASE freemarket_sample_62a_development;'
 
 
 script:
