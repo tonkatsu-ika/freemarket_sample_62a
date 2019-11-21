@@ -22,6 +22,10 @@ class ItemsController < ApplicationController
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
 
+  def get_category_size
+    @size = Size.include(:category).where(category: {id: "#{params[:grandchild_id]}"})
+  end
+
   def create
     render layout: 'basic'
     @item = Item.create(item_params)
@@ -41,6 +45,6 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :description, :price, :item_condition_id, :ship_fee_bearer_id, :prefecture_id, :days_before_ship_id, :delivery_method_id, :brand_id, :category_id, item_images_attributes:[:id, :image_url, :item_id]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :description, :price, :item_condition_id, :ship_fee_bearer_id, :prefecture, :days_before_ship_id, :delivery_method_id, :brand_id, :category_id, :size_id, item_images_attributes:[:id, :image_url, :item_id]).merge(user_id: current_user.id)
   end
 end
