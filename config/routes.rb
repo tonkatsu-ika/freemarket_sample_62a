@@ -19,11 +19,6 @@ Rails.application.routes.draw do
 
   get 'itmes/index'
   resources :signup, only: [:show] do
-
-
-
-
-
     collection do
       get 'registlation'
       get 'sms_confirmation' do
@@ -43,7 +38,12 @@ Rails.application.routes.draw do
   end
 
 
-  resources :items
+  resources :items do
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
+  end
   resources :users, only: :show
   resources :transactions, only: [:new, :create]
   

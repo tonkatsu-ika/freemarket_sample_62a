@@ -1,24 +1,76 @@
 $(function(){
+  function appendOption(category){
+    var html = `<option value="${category.id}">${category.name}</option>`;
+    return html;
+  }
 
-  var selectbox = `<select class='sell-wrapper__form__detail__right__upper__select1' name='example'>
-                    <option selected='selected' value=''>---</option>
-                    <option value='選択肢1'>選択肢1</option>
-                    <option value='選択肢2'>選択肢2</option>
-                    <option value='選択肢3'>選択肢3</option>
-                    </select>`
+  // 子カテゴリーの選択フォーム
+  function appendChidrenBox(insertHTML){
+    var selectbox1 = `<div class='sell-wrapper__form__detail__right__upper__select__child'>
+                        <select class='sell-wrapper__form__detail__right__upper__child'>
+                        <option selected='selected'>---</option>
+                        ${insertHTML}
+                        </select>
+                      </div>`;
+    $('.sell-wrapper__form__detail__right__upper').append(selectbox1);
+  }
 
+  // 孫カテゴリーの選択フォーム
+  var selectbox2 = `<div class='sell-wrapper__form__detail__right__upper__select__grandchild'>
+                      <select class='sell-wrapper__form__detail__right__upper__grandchild' name='category_id'>
+                      <option selected='selected' value=''>---</option>
+                      <option value='選択肢1'>選択肢1</option>
+                      <option value='選択肢2'>選択肢2</option>
+                      <option value='選択肢3'>選択肢3</option>
+                      </select>
+                    </div>`;
+
+  // 親カテゴリーのセレクトがチェンジされたら
   $('.sell-wrapper__form__detail__right__upper__select').change(function(){
     var parent_category = $(this).val(); // 親カテゴリーのvalue属性値を取得
     console.log(parent_category);
-    $('.sell-wrapper__form__detail__right__upper').append(selectbox);
+
+    $.ajax({
+      type: 'get',
+      url: 'items#get_category_children {:format=>"json"}',
+      data: { parent_id: parent_category },
+      dataType: 'json'
+    });
+
+    .done(function(data){
+      $('.sell-wrapper__form__detail__right__upper').children('.sell-wrapper__form__detail__right__upper__select__child').remove();
+      var insertHTML = '';
+      data.forEach(function(child){
+        insertHTML += appendOption(child);
+      });
+      appendChidrenBox(insertHTML);
+      
+      // $('.sell-wrapper__form__detail__right__upper').append(selectbox1);
+    });
+    .fail(function(){
+      $('.sell-wrapper__form__detail__right__upper').children('.sell-wrapper__form__detail__right__upper__select__child').remove();
+    });
+
+    
+    
   })
 
-  $(document).on("change", ".sell-wrapper__form__detail__right__upper__select1", function () {
+  // 子カテゴリーのセレクトがチェンジされたら
+  $(document).on("change", ".sell-wrapper__form__detail__right__upper__select__child", function () {
     var child_category = $(this).val(); // 子カテゴリーのvalue属性値を取得
-    $('.sell-wrapper__form__detail__right__upper').append(selectbox);
+    console.log(child_category);
+    $('.sell-wrapper__form__detail__right__upper__select__child').children('.sell-wrapper__form__detail__right__upper__select__grandchild').remove();
+    $('.sell-wrapper__form__detail__right__upper__select__child').append(selectbox2);
   });
 
-  // 販売手数料と利益を計算して表示
+  // 孫カテゴリーのセレクトがチェンジされたら
+  $(document).on("change", ".sell-wrapper__form__detail__right__upper__select__grandchild", function () {
+    var grandchild_category = $(this).val(); // 孫カテゴリーのvalue属性値を取得
+    console.log(grandchild_category);
+  });
+
+
+  // 販売手数料と利益を計算して表示↓
   $('.sell-wrapper__form__price__first__wrapper__right__money').keyup(function(){
     var price = $(this).val();
     if (price >= 300 && price <= 9999999 ) {
@@ -33,6 +85,8 @@ $(function(){
       $('.sell-wrapper__form__price__third__right').text('-');
     }
   })
+
+  // 画像の複数枚投稿↓
 
   var dropzone = $('.dropzone-area'); // 変数dropzone-areaに.dropzone-areaのパラメータを代入
   var dropzone2 = $('.dropzone-area2'); // 同上
