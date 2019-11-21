@@ -3,20 +3,32 @@
     .header__upper__title-logo
       = link_to (image_tag "fmarket_logo_red.svg", size: "134x36", alt: "Fmarket"), :root            
     %form.header__upper__form
-      %input.header__upper__form__search{:name => "", :placeholder => "何かお探しですか？", :type => "text", :value => ""}/
+      %input.header__upper__form__search{name: "", placeholder: "何かお探しですか？", type: "search", value: ""}/
+      = link_to "#" do
+        %i.fas.fa-search
 
   .header__bottom
     %ul.header__bottom__search-items
       %li.header__bottom__search-items__li
+        %i.fas.fa-list-ul
         カテゴリーから探す
       %li.header__bottom__search-items__li
+        %i.fas.fa-tag
         ブランドから探す
     %ul.header__bottom__user-menu
       %li.header__bottom__user-menu__li
-        いいね一覧
+        = link_to "#", class: "header__bottom__user-menu__li" do
+          %i.far.fa-heart
+          いいね！一覧
       %li.header__bottom__user-menu__li
-        お知らせ
+        = link_to "#", class: "header__bottom__user-menu__li" do
+          %i.far.fa-bell
+          お知らせ
       %li.header__bottom__user-menu__li
-        やることリスト
+        = link_to "#", class: "header__bottom__user-menu__li" do
+          %i.fas.fa-check
+          やることリスト
       %li.header__bottom__user-menu__li
-        マイページ
+        = link_to :mypage_index, class: "header__bottom__user-menu__li" do
+          %i.far.fa-user-circle.gray
+          マイページ

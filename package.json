@@ -1,5 +1,11 @@
 {
   "name": "freemarket_sample_62a",
   "private": true,
-  "dependencies": {}
+  "scripts": {
+    "eslint": "eslint"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^6.6.0"
+  }
 }

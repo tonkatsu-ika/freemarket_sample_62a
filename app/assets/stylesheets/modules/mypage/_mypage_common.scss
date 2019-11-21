@@ -1,0 +1,34 @@
+@import '../../config/variables';
+
+.mypage {
+  width: 100vw;
+  color: $f-color-base;
+  box-sizing: border-box;
+  &__breadcrumb {
+    width: 100vw;
+    height: $height-breadcrumb;
+    border-top: solid 1px #eee;
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+    z-index: 5;
+  }
+  &__main {
+    width: 100vw;
+    height: 100%;
+    background-color: $bg-mypage;
+    &__wrapper {
+      width: $width-content-pc;
+      height: 100%;
+      margin: 0 auto;
+      padding: 40px 0;
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      &__main {
+        width: 700px;
+      }
+      &__sidebar {
+        width: $width-sidebar-mypage;
+      }
+    }
+  }
+}
