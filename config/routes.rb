@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  # include Recaptcha::Adapters::ControllerMethods
-  # include Recaptcha::Adapters::ViewMethods
 
   get 'credit_card/new'
   get 'credit_card/show'

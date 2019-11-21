@@ -15,6 +15,7 @@
     margin: 0 auto 0px;
     .progss-bar{
       padding: 20px 0 0 44px;
+      z-index: -1;
       
       &__ul{
         overflow: hidden;
@@ -32,18 +33,46 @@
         color: red;
       }
       #second{
+        color: red;
+      }
+      #modify{
         margin-right:20px;
+      }
+      #third{
+        color: red;
+      }
+      #fourth{
+        color: red;
+      }
+      #fifth{
+        color: red;
       }
       #point-red{
         background-color: red;
       }
-      &__maru{
+      #point-red-second{
+        background-color: red;
+      }
+      #point-red-third{
+        background-color: red;
+      }
+      #point-red-fourth{
+        background-color: red;
+      }
+      #point-red-fifth{
+        background-color: red;
+      }
+      #progressbar-first{
+        border-bottom: 2px solid red;
+      }
+      &__circle{
         height: 11px;
         width: 11px;
         border-radius: 50px;
         background-color: #ccc;
         margin: 0 auto;
         position: relative;
+        
         &:after{
           content: "";
           position: absolute;
@@ -53,8 +82,17 @@
           border-bottom: 2px solid #ccc;
           width: 100px;
           height: 100px;
-          z-index: -2;
         }
+        // &:after{
+        //   content: "";
+        //   position: absolute;
+        //   left: 0;
+        //   right: 0;
+        //   bottom: 5px;
+        //   border-bottom: 2px solid red;
+        //   width: 100px;
+        //   height: 100px;
+        // }
         &-first{
           height: 11px;
           width: 11px;

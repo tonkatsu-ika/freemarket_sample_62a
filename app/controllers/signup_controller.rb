@@ -1,6 +1,6 @@
 class SignupController < ApplicationController
   require "payjp"
-  layout 'users'
+  layout 'users_login'
   
   #会員情報入力
   def registlation
@@ -10,9 +10,15 @@ class SignupController < ApplicationController
 
   #電話番号入力
   def sms_confirmation
-    unless verify_recaptcha
-      redirect_to action: registlation ,alert: 'ユーザ認証をしてください'
-    end
+    user= User.where(email: user_params[:email] )
+
+    binding.pry
+    redirect_to action: 'registlation' if user.present?
+
+
+    # unless verify_recaptcha(ENV['RECAPTCHA_SECRET_KEY'])
+    #   redirect_to action: registlation ,alert: 'ユーザ認証をしてください'
+    # end
     session[:user_params] = user_params
     @user = User.new
   end
@@ -27,32 +33,28 @@ class SignupController < ApplicationController
   #支払い方法入力
   def payment
     
-    session[:address_attributes] = user_params[:address_attributes]
-    session[:user_params].merge!(user_params)
+    # session[:address_attributes] = user_params[:address_attributes]
+    # session[:user_params].merge!(user_params)
 
-    @user = User.new(session[:user_params])
-    @user.build_address(user_params[:address_attributes])
-    binding.pry
-    if @user.save
-      session[:id] = @user.id
+    # @user = User.new(session[:user_params])
+    # @user.build_address(user_params[:address_attributes])
+    # if @user.save
+    #   session[:id] = @user.id
 
-      if user_signed_in?
-      #ユーザーログイン
-        session[:user_id] = nil
-    # 　  sign_in User.find(session[:id])  
-        binding.pry
-      else  
-        sign_in User.find(session[:id]) unless user_signed_in?   
-      end
-      binding.pry
-      sign_in User.find(session[:id]) unless user_signed_in?  
-    else
-      redirect_to payment_signup_index_path
-    end
+    #   if user_signed_in?
+    #   #ユーザーログイン
+    #     session[:user_id] = nil
+    #   else  
+    #     sign_in User.find(session[:id]) unless user_signed_in?   
+    #   end
+    #   sign_in User.find(session[:id]) unless user_signed_in?  
+    # else
+      # redirect_to action: 'payment'
+    # end
     
 
-    @card = CreditCard.new
-    @user = User.new
+    # @card = CreditCard.new
+    # @user = User.new
     
   end
   

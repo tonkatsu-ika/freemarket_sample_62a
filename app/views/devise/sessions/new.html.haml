@@ -1,34 +1,31 @@
 .login-header
   .login-header__title
     .login-header__title_logo
-    = link_to (image_tag "fmarket_logo_red.svg", size: "185x49", alt: "Fmarket",class: "login-header__upper__title-logo__link"), :root                  
+    = link_to (image_tag "fmarket_logo_red.svg", size: "185x49", alt: "Fmarket",class: "login-header__upper__title-logo__link"), :root
     .login-main__container-form
       
 .login-header-signin
   .login-header-signin__index 
     アカウントをお持ちでない方はこちら
     %br/
-    = link_to new_user_registration_path, class: "new-signup-button" do
-      新規会員登録
-  %ul.login-main__container-form__list 
-    %li.login-main__container-form__list__btn-facebook  
-      = link_to '#', class: "done-button" do
-        %a.fab.fa-facebook-square
-        Facebookでログイン
-    %li.login-main__container-form__list__btn-google 
-      = link_to '#', class: "done-button" do
-        %a.fab.fa-google
-        Googleでログイン         
+    = link_to '新規会員登録',new_user_registration_path, class: "new-signup-button"
+  .login-main__container-form__list 
+    .login-main__container-form__list__btn-facebook  
+    = link_to 'Facebookでログイン','#', class: "wrapper-facebook-btn__link" 
+    -# %a.fab.fa-facebook-square
+    .login-main__container-form__list__btn-google 
+    = link_to 'Googleでログイン','#', class: "wrapper-google-btn__link" 
+    -# %a.fab.fa-google 
   .login-header-signin__form
     = form_for @user, url: sms_confirmation_signup_index_path, method: :get, html: {class: 'first-main__box'} do |f|
       .login-header-signin__form-content
         .form-group 
           = f.email_field :email, placeholder: 'メールアドレス',class: 'input-default',required: true 
-
         .form-group 
           = f.password_field :password, placeholder: 'パスワード',class: 'input-default',required: true
-        -# recaptcha 私はロボットではありません
         
+        = recaptcha_tags site_key: ENV['RECAPTCHA_SITE_KEY'] ,class: 'recapcha-tag'
+
         = f.submit class: 'done-button',value:'ログイン'
         .link-block
-          =link_to'パスワードをお忘れの方', '#',class: "link"
+          -# =link_to'パスワードをお忘れの方', '#',class: "link"
