@@ -27,7 +27,26 @@
     %ul.index-contents__tab-container__items
       %li.index-contents__tab-container__items__item
         = link_to "#", class: "index-contents__tab-container__items__item__link" do
-          お知らせ
+          .index-contents__tab-container__items__item__link__image-wrapper
+            =fa_icon "user", class: "index-contents__tab-container__items__item__link__image-wrapper__user-icon"
+          .index-contents__tab-container__items__item__link__content-wrapper
+            moroball14さんが「黄金烏龍茶」にいいね！しました
+            .index-contents__tab-container__items__item__link__content-wrapper__time
+              =fa_icon "clock", class: "index-contents__tab-container__items__item__link__content-wrapper__time__clock-icon"
+              %span.index-contents__tab-container__items__item__link__content-wrapper__time__desc
+                1日前
+          =fa_icon "chevron-right"
+      %li.index-contents__tab-container__items__item
+        = link_to "#", class: "index-contents__tab-container__items__item__link" do
+          .index-contents__tab-container__items__item__link__image-wrapper
+            =image_tag "logo_red.svg", class: "index-contents__tab-container__items__item__link__image-wrapper__fm-logo"
+          .index-contents__tab-container__items__item__link__content-wrapper
+            《販売手数料も梱包資材も実質無料！》超！出品祭開催中♪大好評につき第二弾！
+            .index-contents__tab-container__items__item__link__content-wrapper__time
+              =fa_icon "clock", class: "index-contents__tab-container__items__item__link__content-wrapper__time__clock-icon"
+              %span.index-contents__tab-container__items__item__link__content-wrapper__time__desc
+                1日前
+          =fa_icon "chevron-right"
       %li.index-contents__tab-container__items__item.go-to-btn
         = link_to "#", class: "index-contents__tab-container__items__item__link go-to-btn" do
           一覧を見る
