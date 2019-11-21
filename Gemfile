@@ -82,7 +82,7 @@ gem 'jquery-rails'
 gem 'fog-aws'
 gem 'rails-i18n', '~> 5.1'
 gem 'active_hash'
-gem 'payjp'
+gem 'payjp' 
 gem 'dotenv-rails'
 
 # 閉包テーブル
@@ -92,3 +92,4 @@ gem 'closure_tree'
 gem 'seed-fu', '~> 2.3'
 gem 'faker'
 gem 'faker-japanese'
+gem 'unf_ext'
