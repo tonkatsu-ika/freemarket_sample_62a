@@ -34,10 +34,10 @@ $(function(){
   function appendSizeBox(insertHTML) {
     var sizebox = `<div class='sell-wrapper__form__detail__right__bottom'>
                     <div class='sell-wrapper__form__detail__right__upper__category'>
-                    <div class='sell-wrapper__form__content__name__title'>商品の状態</div>
+                    <div class='sell-wrapper__form__content__name__title'>サイズ</div>
                     <span class='sell-wrapper__form--must sell-wrapper__form__content__must'>必須</span>
                     </div>
-                    <select name="item_condition_id" id="item_condition_id">
+                    <select name="size_id" id="item_condition_id">
                     <option value="">---</option>
                     ${insertHTML}
                     </select>
@@ -109,13 +109,13 @@ $(function(){
     })
     .done(function(data){
       $('.sell-wrapper__form__detail__right__upper__select__grandchild').children('.sell-wrapper__form__detail__right__bottom');
-      var insertHTML = '';
-        console.log(data);
+      if ($.isEmptyObject(data) != true){
+        var insertHTML = '';
         data.forEach(function(size){
           insertHTML += appendOptionSize(size);
         });
         appendSizeBox(insertHTML);
-      })
+      }
     })
     .fail(function(){
       $('.sell-wrapper__form__detail__right__upper__select__grandchild').children('.sell-wrapper__form__detail__right__bottom');

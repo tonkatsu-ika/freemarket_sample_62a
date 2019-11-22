@@ -1,1 +1,1 @@
-json.array! @size, :id, :size
+json.array! @sizes, :id, :size
