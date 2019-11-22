@@ -14,7 +14,7 @@
   &__icon-area {
     background-image: image_url('mypage/bg-mypage-user.jpg');
     &__icon-wrapper {
-      width: 100%;
+      width: 668px;
       height: 60px;
       padding: 72px 16px 24px;
       text-align: center;
@@ -28,14 +28,34 @@
     }
   }
   &__form {
+    width: 668px;
+    padding: 40px 16px;
+    position: relative;
     &__nickname {
-
+      width: 186px;
+      height: 28px;
+      margin-left: 8px;
+      padding: 10px 16px 8px;
+      display: block;
+      font-size: 16px;
     }
     &__profile {
-
+      width: 648px;
+      height: 194px;
+      padding: 10px;
+      font-size: 16px;
     }
     &__button {
-
+      margin-top: 16px;
+      width: 668px;
+      height: 48px;
+      border: 1xp solid $fm-red;
+      background-color: $fm-red;
+      color: #fff;
+      &:hover {
+        background-color: #e62017;
+        cursor: pointer;
+      }
     }
   }
 }
