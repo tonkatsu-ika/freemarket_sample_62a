@@ -19,6 +19,13 @@
       padding: 2px 4px;
       border-radius: 3px;
     }
+    &--not-must {
+      color: #fff;
+      background-color: #bbb;
+      margin-left: 8px;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
     &__image{
       &__content {
         display: flex;
@@ -105,6 +112,9 @@
             // background-color: #fff;
             // border: 1px solid #dddddd;
           }
+        }
+        &__center {
+          margin-top: 40px;
         }
         &__bottom {
           margin-top: 40px;
