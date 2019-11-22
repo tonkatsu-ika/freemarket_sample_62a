@@ -1,0 +1,1 @@
+json.array! @size, :id, :size

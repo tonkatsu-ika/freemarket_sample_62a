@@ -4,6 +4,11 @@ $(function(){
     return html;
   }
 
+  function appendOptionSize(size){
+    var html = `<option value="${size.id}">${size.size}</option>`;
+    return html;
+  }
+
   // 子カテゴリーの選択フォーム
   function appendChidrenBox(insertHTML){
     var selectbox1 = `<div class='sell-wrapper__form__detail__right__upper__select__child'>
@@ -24,6 +29,20 @@ $(function(){
                         </select>
                       </div>`;
     $('.sell-wrapper__form__detail__right__upper__select__child').append(selectbox2);
+  }
+
+  function appendSizeBox(insertHTML) {
+    var sizebox = `<div class='sell-wrapper__form__detail__right__bottom'>
+                    <div class='sell-wrapper__form__detail__right__upper__category'>
+                    <div class='sell-wrapper__form__content__name__title'>商品の状態</div>
+                    <span class='sell-wrapper__form--must sell-wrapper__form__content__must'>必須</span>
+                    </div>
+                    <select name="item_condition_id" id="item_condition_id">
+                    <option value="">---</option>
+                    ${insertHTML}
+                    </select>
+                  </div>`
+    $('.sell-wrapper__form__detail__right__upper__select__grandchild').append(sizebox);
   }
 
   // 親カテゴリーのセレクトがチェンジされたら
@@ -79,8 +98,28 @@ $(function(){
 
   // 孫カテゴリーのセレクトがチェンジされたら
   $(document).on("change", ".sell-wrapper__form__detail__right__upper__grandchild", function () {
-    var grandchild_category = $('.sell-wrapper__form__detail__right__upper__grandchild option:selected').val(); // 孫カテゴリーのvalue属性値を取得
-    console.log(grandchild_category);
+    var grandchild_category_id = $('.sell-wrapper__form__detail__right__upper__grandchild option:selected').val(); // 孫カテゴリーのvalue属性値を取得
+    console.log(grandchild_category_id);
+
+    $.ajax({
+      type: 'GET',
+      url: '/items/get_category_size',
+      data: { grandchild_id: grandchild_category_id},
+      dataType: 'json'
+    })
+    .done(function(data){
+      $('.sell-wrapper__form__detail__right__upper__select__grandchild').children('.sell-wrapper__form__detail__right__bottom');
+      var insertHTML = '';
+        console.log(data);
+        data.forEach(function(size){
+          insertHTML += appendOptionSize(size);
+        });
+        appendSizeBox(insertHTML);
+      })
+    })
+    .fail(function(){
+      $('.sell-wrapper__form__detail__right__upper__select__grandchild').children('.sell-wrapper__form__detail__right__bottom');
+    })
   });
 
 

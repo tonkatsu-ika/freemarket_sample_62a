@@ -23,7 +23,8 @@ class ItemsController < ApplicationController
   end
 
   def get_category_size
-    @size = Size.include(:category).where(category: {id: "#{params[:grandchild_id]}"})
+    @size = Size.includes(:categories).where(category: {id: "#{params[:grandchild_id]}"})
+    binding.pry
   end
 
   def create
