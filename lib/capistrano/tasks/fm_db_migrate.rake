@@ -29,8 +29,6 @@ mig_order = [
   20191116093209
 ]
  
-# taskの順番
-after 'deploy:assets:backup_manifest', 'deploy:fm_db_migrate'
 
 # task本体
 namespace :deploy do
@@ -41,8 +39,13 @@ namespace :deploy do
       within release_path do
         with rails_env: fetch(:rails_env) do
           info '[deploy:fm_db_migrate]: conditional migration'
-          # conditional migrationのロジックを追加する
-          invoke :'deploy:fm_db_migrating'
+          conditionally_migrate = fetch(:conditionally_migrate)
+          if conditionally_migrate && test(:diff, "-qr #{release_path}/db #{current_path}/db")
+            info '[deploy:migrate] Skip `deploy:migrate` (nothing changed in db)'
+          else
+            info '[deploy:migrate] Run `deploy:fm_db_migrate`'
+            invoke :'deploy:fm_db_migrating'
+          end
 
         end
       end
@@ -52,21 +55,23 @@ namespace :deploy do
   desc 'fm用の初期的なdb migration task'
   task :fm_db_migrating do
     on roles(:all) do
-      within release_path do 
-        with rails_env: fetch(:rails_env) do
+     on fetch(:migration_servers) do
+       within release_path do 
+         with rails_env: fetch(:rails_env) do
 
-          info '[deploy:fm_db_migrating]'
+           info '[deploy:fm_db_migrating]'
 
-          mig_order.each do |mig_ver|
-            execute :bundle, "exec rails db:migrate:up VERSION=#{mig_ver}"
-          end
+           mig_order.each do |mig_ver|
+             execute :bundle, "exec rails db:migrate:up VERSION=#{mig_ver}"
+           end
 
-          info "Host #{host} (#{host.roles.to_a.join(', ')})"
-          # migrationがうまくいった場合のロジックを追加する
-          #invoke :'deploy:fm_db_seed_fu'
+           info "Host #{host} (#{host.roles.to_a.join(', ')})"
+           # migrationがうまくいった場合のロジックを追加する
+           #invoke :'deploy:fm_db_seed_fu'
 
-        end
-      end
+         end
+       end
+     end
     end
   end
 
@@ -85,3 +90,7 @@ namespace :deploy do
   end
 
 end
+
+# taskの順番
+after 'deploy:assets:backup_manifest', 'deploy:fm_db_migrate'
+
