@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :items
+  resources :items , only: :show 
   resources :users, only: :show
   resources :transactions, only: [:new, :create]
   get 'itmes/index'
