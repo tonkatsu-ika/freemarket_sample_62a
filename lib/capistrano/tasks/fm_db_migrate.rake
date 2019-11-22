@@ -63,7 +63,7 @@ namespace :deploy do
 
           info "Host #{host} (#{host.roles.to_a.join(', ')})"
           # migrationがうまくいった場合のロジックを追加する
-          invoke :'deploy:fm_db_seed_fu'
+          #invoke :'deploy:fm_db_seed_fu'
 
         end
       end
