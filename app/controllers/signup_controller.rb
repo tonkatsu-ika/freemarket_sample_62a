@@ -45,6 +45,10 @@ class SignupController < ApplicationController
     @user = User.new
     
   end
+
+  def google
+    @user = User.new
+  end
   
   private
   # 許可するキーを設定
