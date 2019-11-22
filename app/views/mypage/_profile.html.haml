@@ -7,4 +7,4 @@
     = form_with model: current_user do |f|
       = f.text_field :nickname, class: "profile-wrapper__form__nickname"
       = f.text_area :profile, class: "profile-wrapper__form__profile"
-      = f.submit "変更する"
+      = f.submit "変更する", class: "profile-wrapper__form__button"
