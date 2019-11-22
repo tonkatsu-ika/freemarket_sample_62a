@@ -5,40 +5,37 @@
   background-color: #fff;
 
   &__header {
-    height: 50px;
-    line-height: 50px;
+    height: 34px;
+    line-height: 34px;
     padding: 8px 24px;
     text-align: center;
     font-size: 24px;
   }
   &__icon-area {
     background-image: image_url('mypage/bg-mypage-user.jpg');
-    &__icon-wrapper {
-      width: 668px;
+    width: 668px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 72px 16px 24px;
+    &__icon-image {
+      border-radius: 30px;
+      width: 60px;
       height: 60px;
-      padding: 72px 16px 24px;
-      text-align: center;
-      &__icon-frame {
-        &__icon-image {
-          border-radius: 30px;
-          width: 60px;
-          height: 60px;
-        }
-      }
+    }
+    &__nickname {
+      width: 186px;
+      height: 28px;
+      margin-left: 8px;
+      padding: 10px 16px 8px;
+      font-size: 16px;
     }
   }
   &__form {
     width: 668px;
     padding: 40px 16px;
     position: relative;
-    &__nickname {
-      width: 186px;
-      height: 28px;
-      margin-left: 8px;
-      padding: 10px 16px 8px;
-      display: block;
-      font-size: 16px;
-    }
     &__profile {
       width: 648px;
       height: 194px;
