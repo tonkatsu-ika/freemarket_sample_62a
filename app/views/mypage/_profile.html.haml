@@ -7,6 +7,6 @@
       = f.text_field :nickname, class: "profile-wrapper__icon-area__nickname", placeholder: "うに太郎＠初心者" do
         = current_user.nickname
     .profile-wrapper__form
-      = f.text_area :profile, class: "profile-wrapper__form__profile", placeholder: "うに太郎＠初心者といいます。まだまだ始めたばかりですが、どうぞよろしくお願いします" do
+      = f.text_area :profile, class: "profile-wrapper__form__profile", placeholder: "うに太郎＠初心者といいます。まだまだ始めたばかりですが、どうぞよろしくお願いします。うに太郎＠初心者といいます。まだまだ始めたばかりですが、どうぞよろしくお願いします" do
         = current_user.profile
       = f.submit "変更する", class: "profile-wrapper__form__button"

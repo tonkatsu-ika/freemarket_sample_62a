@@ -30,6 +30,14 @@
       margin-left: 8px;
       padding: 10px 16px 8px;
       font-size: 16px;
+      border-width: 1px;
+      border-style: solid;
+      border-color: #ccc;
+      border-radius: 4px;
+      &:focus {
+        outline: 0px #0099e8 solid;
+        border-color: #0099e8;
+      }
     }
   }
   &__form {
@@ -41,14 +49,22 @@
       height: 194px;
       padding: 10px;
       font-size: 16px;
+      overflow: auto;
+      &:focus {
+        outline: 0px #0099e8 solid;
+        border-color: #0099e8;
+      }
     }
     &__button {
       margin-top: 16px;
       width: 668px;
       height: 48px;
-      border: 1xp solid $fm-red;
+      border-width: 1px;
+      border-style: solid;
+      border-color: $fm-red;
       background-color: $fm-red;
       color: #fff;
+      box-shadow: unset;
       &:hover {
         background-color: #e62017;
         cursor: pointer;
