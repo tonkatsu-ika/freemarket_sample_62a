@@ -31,7 +31,7 @@ $(function(){
     $('.sell-wrapper__form__detail__right__upper__select__child').append(selectbox2);
   }
 
-  function appendSizeBox(insertHTML) {
+  function appendSizeBox1(insertHTML) {
     var sizebox = `<div class='sell-wrapper__form__detail__right__bottom'>
                     <div class='sell-wrapper__form__detail__right__upper__category'>
                     <div class='sell-wrapper__form__content__name__title'>サイズ</div>
@@ -43,6 +43,20 @@ $(function(){
                     </select>
                   </div>`
     $('.sell-wrapper__form__detail__right__upper__select__grandchild').append(sizebox);
+  }
+
+  function appendSizeBox2(insertHTML) {
+    var sizebox = `<div class='sell-wrapper__form__detail__right__bottom'>
+                    <div class='sell-wrapper__form__detail__right__upper__category'>
+                    <div class='sell-wrapper__form__content__name__title'>サイズ</div>
+                    <span class='sell-wrapper__form--must sell-wrapper__form__content__must'>必須</span>
+                    </div>
+                    <select name="size_id" id="item_condition_id">
+                    <option value="">---</option>
+                    ${insertHTML}
+                    </select>
+                  </div>`
+    $('.sell-wrapper__form__detail__right__upper__select__child').append(sizebox);
   }
 
   // 親カテゴリーのセレクトがチェンジされたら
@@ -73,24 +87,45 @@ $(function(){
     var child_category_id = $('.sell-wrapper__form__detail__right__upper__select__child option:selected').val();
     console.log(child_category_id);
     if (child_category_id != "---"){
-      $.ajax({
-        type: 'GET',
-        url: '/items/get_category_grandchildren',
-        data: { child_id: child_category_id},
-        dataType: 'json'
-      })
-      .done(function(data){
-        $('.sell-wrapper__form__detail__right__upper__select__child').children('.sell-wrapper__form__detail__right__upper__select__grandchild').remove();
-        var insertHTML = '';
-        console.log(data);
-        data.forEach(function(child){
-          insertHTML += appendOption(child);
+      if (child_category_id != 147){
+        $.ajax({
+          type: 'GET',
+          url: '/items/get_category_grandchildren',
+          data: { child_id: child_category_id},
+          dataType: 'json'
+        })
+        .done(function(data){
+          $('.sell-wrapper__form__detail__right__upper__select__child').children('.sell-wrapper__form__detail__right__upper__select__grandchild').remove();
+          $('.sell-wrapper__form__detail__right__upper__select__child').children('.sell-wrapper__form__detail__right__bottom').remove();
+          var insertHTML = '';
+          console.log(data);
+          data.forEach(function(child){
+            insertHTML += appendOption(child);
+          });
+          appendChidrenBox2(insertHTML);
+        })
+        .fail(function(){
+          $('.sell-wrapper__form__detail__right__upper__select__child').children('.sell-wrapper__form__detail__right__upper__select__grandchild').remove();
         });
-        appendChidrenBox2(insertHTML);
-      })
-      .fail(function(){
-        $('.sell-wrapper__form__detail__right__upper__select__child').children('.sell-wrapper__form__detail__right__upper__select__grandchild').remove();
-      });
+      }else {
+        $.ajax({
+          type: 'GET',
+          url: '/items/get_category_size',
+          data: { grandchild_id: child_category_id},
+          dataType: 'json'
+        })
+        .done(function(data){
+          $('.sell-wrapper__form__detail__right__upper__select__child').children('.sell-wrapper__form__detail__right__upper__select__grandchild').remove();
+          var insertHTML = '';
+          data.forEach(function(size){
+            insertHTML += appendOptionSize(size);
+          });
+          appendSizeBox2(insertHTML);
+        })
+        .fail(function(){
+          alert('失敗しました');
+        })
+      }
     }else {
       $('.sell-wrapper__form__detail__right__upper__select__child').children('.sell-wrapper__form__detail__right__upper__select__grandchild').remove();
     }
@@ -114,7 +149,7 @@ $(function(){
         data.forEach(function(size){
           insertHTML += appendOptionSize(size);
         });
-        appendSizeBox(insertHTML);
+        appendSizeBox1(insertHTML);
       }
     })
     .fail(function(){
@@ -206,7 +241,7 @@ $(function(){
       })
       return;
     }
-    var new_image = $(`<input multiple= "multiple" name="item_image[image_url][]" class="upload-image dropzone" data-image= ${images.length} type="file" id="upload-image">`);
+    var new_image = $(`<input name="[item_image][image_url][]" class="upload-image dropzone" data-image= ${images.length} type="file" id="upload-image">`);
     input_area.prepend(new_image); // input_areaの子要素に追加する
   });
   $(document).on('click', '.delete', function() {  // 追加要素の削除ボタンを押したら

@@ -7,7 +7,8 @@ class ItemsController < ApplicationController
 
   def new
     render layout: 'basic'
-    @item = Item.new
+    @item = Item.new()
+    # @item.item_images.build
     10.times { @item.item_images.build }
   end
 
@@ -35,6 +36,7 @@ class ItemsController < ApplicationController
 
   def create
     render layout: 'basic'
+    binding.pry
     @item = Item.create(item_params)
   end
 
@@ -52,6 +54,6 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :description, :price, :item_condition_id, :ship_fee_bearer_id, :prefecture, :days_before_ship_id, :delivery_method_id, :brand_id, :category_id, :size_id, item_images_attributes:[:id, :image_url, :item_id]).merge(user_id: current_user.id)
+    params.permit(:name, :description, :price, :item_condition_id, :ship_fee_bearer_id, :prefecture, :days_before_ship_id, :delivery_method_id, :brand_id, :category_id, :size_id, item_images_attributes: [:id, :image_url, :item_id]).merge(user_id: 1) # current_user.id
   end
 end

@@ -1,6 +1,7 @@
 class ItemImage < ApplicationRecord
   belongs_to :item
-  mount_uploaders :image_url, ImageUploader
+  
+  mount_uploader :image_url, ImageUploader
 
   validates :image_url, presence: true
   validate :image_url_validation #image_urlが1〜10枚であること

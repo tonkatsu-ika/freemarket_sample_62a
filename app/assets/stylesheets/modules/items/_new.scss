@@ -105,13 +105,6 @@
           &__category {
             display: flex;
           }
-          &__select {
-            // margin-top: 10px;
-            // width: 100%;
-            // height: 46px;
-            // background-color: #fff;
-            // border: 1px solid #dddddd;
-          }
         }
         &__center {
           margin-top: 40px;
@@ -231,6 +224,10 @@ select {
   margin-left: 10px;
   margin-bottom: 10px;
   border: 1px solid #eee;
+  img {
+    height: 116px;
+    width: 114px;
+  }
 }
 
 .img_view:first-child {
@@ -239,11 +236,6 @@ select {
 
 .img_view:nth-child(6) {
   margin-left: 0px;
-}
-
-img {
-  height: 116px;
-  width: 114px;
 }
 
 .btn_wrapper {
