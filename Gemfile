@@ -92,3 +92,9 @@ gem 'closure_tree'
 gem 'seed-fu', '~> 2.3'
 gem 'faker'
 gem 'faker-japanese'
+
+# sns認証
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'dotenv-rails'

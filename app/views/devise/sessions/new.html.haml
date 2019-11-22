@@ -13,7 +13,7 @@
           = link_to 'メールアドレスで登録する', "/signup/registlation", method: :get 
         %li.login-main__container-form__list__btn-facebook  
           %a.fab.fa-facebook-square
-          Facebookで登録する
+          = link_to("Facebookで登録する", omniauth_authorize_path(resource_name, resource_class.omniauth_providers[0]))            
         %li.login-main__container-form__list__btn-google 
           %a.fab.fa-google
-          Googleで登録する
+          = link_to("Googleで登録する", omniauth_authorize_path(resource_name, resource_class.omniauth_providers[1]))
