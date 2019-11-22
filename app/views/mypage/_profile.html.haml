@@ -1,1 +1,10 @@
-.contents-wrapper
+.profile-wrapper
+  %h2.profile-wrapper__header
+  .profile-wrapper__icon-area
+    .profile-wrapper__icon-area__icon-wrapper
+      = image_tag "mypage/user-icon-test.jpg", class: "profile-wrapper__icon-area__icon-wrapper__icon-image"
+  .profile-wrapper__form
+    = form_with model: current_user do |f|
+      = f.text_field :nickname, class: "profile-wrapper__form__nickname"
+      = f.text_area :profile, class: "profile-wrapper__form__profile"
+      = f.submit "変更する"
