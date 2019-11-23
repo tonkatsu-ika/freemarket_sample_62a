@@ -1,17 +1,77 @@
-.contents-wrapper
-  .index-contents
-    %section.index-contents__user
-      %figure.index-contents__user__icon-container
-        = image_tag "", alt: "user icon"
-      %h2.index-contents__user__name
-      .index-contents__user__kpis
-        .index-contents__user__kpis__item
+.index-contents
+  %section.index-contents__user
+    = link_to "#", class: "index-contents__user__link" do
+      %figure.index-contents__user__link__icon-container
+        = image_tag "mypage/user-icon-test.jpg", alt: "user icon", class: "index-contents__user__link__icon-container__icon"
+      %h2.index-contents__user__link__name
+        うに太郎
+      .index-contents__user__link__kpis
+        .index-contents__user__link__kpis__item
           評価
-          %span.index-contents__user__kpis__number
+          %span.index-contents__user__link__kpis__item__number
             51
-        .index-contents__user__kpis__item
+        .index-contents__user__link__kpis__item.right
           出品数
-          %span.index-contents__user__kpis__number
+          %span.index-contents__user__link__kpis__item__number
             100      
-    %section.index-contents__tab-container
-    %section.index-contents__tab-container
+  %section.index-contents__tab-container
+    %ul.index-contents__tab-container__tabs
+      %li.index-contents__tab-container__tabs__tab.active
+        %h3
+          = link_to "#", class: "index-contents__tab-container__tabs__tab__link active", data: { tab: "notice" } do
+            お知らせ
+      %li.index-contents__tab-container__tabs__tab
+        %h3
+          = link_to "#", class: "index-contents__tab-container__tabs__tab__link", data: { tab: "todo" } do
+            やることリスト
+    %ul.index-contents__tab-container__items.active{data: { items: "notice" }}
+      %li.index-contents__tab-container__items__notice
+        = link_to "#", class: "index-contents__tab-container__items__notice__link" do
+          .index-contents__tab-container__items__notice__link__image-wrapper
+            =fa_icon "user", class: "index-contents__tab-container__items__notice__link__image-wrapper__user-icon"
+          .index-contents__tab-container__items__notice__link__content-wrapper
+            moroball14さんが「黄金烏龍茶」にいいね！しました
+            .index-contents__tab-container__items__notice__link__content-wrapper__time
+              =fa_icon "clock", class: "index-contents__tab-container__items__notice__link__content-wrapper__time__clock-icon"
+              %span.index-contents__tab-container__items__notice__link__content-wrapper__time__desc
+                1日前
+          =fa_icon "chevron-right"
+      %li.index-contents__tab-container__items__notice
+        = link_to "#", class: "index-contents__tab-container__items__notice__link" do
+          .index-contents__tab-container__items__notice__link__image-wrapper
+            =image_tag "logo_red.svg", class: "index-contents__tab-container__items__notice__link__image-wrapper__fm-logo"
+          .index-contents__tab-container__items__notice__link__content-wrapper
+            《販売手数料も梱包資材も実質無料！》超！出品祭開催中♪大好評につき第二弾！
+            .index-contents__tab-container__items__notice__link__content-wrapper__time
+              =fa_icon "clock", class: "index-contents__tab-container__items__notice__link__content-wrapper__time__clock-icon"
+              %span.index-contents__tab-container__items__notice__link__content-wrapper__time__desc
+                1日前
+          =fa_icon "chevron-right"
+      %li.index-contents__tab-container__items__notice.go-to-btn
+        = link_to "#", class: "index-contents__tab-container__items__notice__link go-to-btn" do
+          一覧を見る
+    %ul.index-contents__tab-container__items{data: { items: "todo" }}
+      %ul.index-contents__tab-container__items__todo
+        %li.index-contents__tab-container__items__todo--todo-not-found
+          現在、やることリストはありません
+  %section.index-contents__tab-container
+    .index-contents__tab-container__header
+      %h2.index-contents__tab-container__header__caption
+        購入した商品
+    %ul.index-contents__tab-container__tabs
+      %li.index-contents__tab-container__tabs__tab.active
+        %h3
+          = link_to "#", class: "index-contents__tab-container__tabs__tab__link active", data: { tab: "transaction-now" } do
+            取引中
+      %li.index-contents__tab-container__tabs__tab
+        %h3
+          = link_to "#", class: "index-contents__tab-container__tabs__tab__link", data: { tab: "transaction-old" } do
+            過去の取引
+    .index-contents__tab-container__contents
+      %ul.index-contents__tab-container__contents__transactions.active{data: { items: "transaction-now" }}
+        %li.index-contents__tab-container__contents__transactions--item-not-found
+          取引中の商品がありません
+      %ul.index-contents__tab-container__contents__transactions{data: { items: "transaction-old" }}
+        %li.index-contents__tab-container__contents__transactions--item-not-found
+          過去の取引はありません
+
