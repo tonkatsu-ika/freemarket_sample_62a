@@ -24,6 +24,14 @@
       margin: 0 auto;
     }
     .form-group{
+      .input-default-half{        
+       margin-top: 10px;
+       width: 50%;
+       height: 46px;
+       background-color: #fff;
+       border: 1px solid #dddddd;
+        
+      }
       .input-default{
         margin: 5px 0 0 0;
         max-width: 343px;

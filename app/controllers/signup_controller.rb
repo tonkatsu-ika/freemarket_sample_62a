@@ -33,28 +33,30 @@ class SignupController < ApplicationController
   #支払い方法入力
   def payment
     
-    # session[:address_attributes] = user_params[:address_attributes]
-    # session[:user_params].merge!(user_params)
-
-    # @user = User.new(session[:user_params])
-    # @user.build_address(user_params[:address_attributes])
-    # if @user.save
-    #   session[:id] = @user.id
-
-    #   if user_signed_in?
-    #   #ユーザーログイン
-    #     session[:user_id] = nil
-    #   else  
-    #     sign_in User.find(session[:id]) unless user_signed_in?   
-    #   end
-    #   sign_in User.find(session[:id]) unless user_signed_in?  
-    # else
-      # redirect_to action: 'payment'
-    # end
+    session[:address_attributes] = user_params[:address_attributes]
+    session[:user_params].merge!(user_params)
     
 
-    # @card = CreditCard.new
-    # @user = User.new
+    @user = User.new(session[:user_params])
+    @user.build_address(user_params[:address_attributes])
+    binding.pry
+    if @user.save
+      session[:id] = @user.id
+
+      if user_signed_in?
+      #ユーザーログイン
+        session[:user_id] = nil
+      else  
+        sign_in User.find(session[:id]) unless user_signed_in?   
+      end
+      sign_in User.find(session[:id]) unless user_signed_in?  
+    else
+      redirect_to action: 'payment'
+    end
+    
+
+    @card = CreditCard.new
+    @user = User.new
     
   end
   

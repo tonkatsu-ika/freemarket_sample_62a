@@ -45,6 +45,9 @@
           text-align: center;
           .wrapper-mail-btn{
             height: 48px;
+            .fa-envelope{
+              color: red;
+            }
             .fa-envelope:before {
               left: -150px;
               z-index: 24;
@@ -193,12 +196,6 @@
   text-align: center;
   .wrapper-mail-btn{
     height: 48px;
-    .fa-envelope:before {
-      left: -150px;
-      z-index: 24;
-      font-size: 26px;
-      color: white;
-    }
     &__link{
       display: block;
       width: 350px;
@@ -212,19 +209,21 @@
       cursor: pointer;
       border-radius: 4px ; 
       position: absolute;
+      
     }
-  }
-  .wrapper-facebook-btn{
-    .fa-facebook-square:before{
+    ::before{
+      font-family: "Font Awesome 5 Free";
       content: "\f0e0";
-    // left: 21px;
       position: relative;
-      top: 68px;
-      right: 140px;
+      top: 0px;
+      right: 60px;
       z-index: 24;
       font-size: 26px;
       color: white;
-    }
+      }
+
+  }
+  .wrapper-facebook-btn{
     &__link{ 
       display: block;
       width: 350px;
@@ -239,18 +238,18 @@
       margin: 16px 0 0;
       background-color: #385185;
     }
-  }
-  .wrapper-google-btn{
-    .fa-google::before{
-      content: "\f0e0";
+    ::before{
+      font-family: "Font Awesome 5 Brands";
+      content: "\f082";
       position: relative;
-      top: 68px;
-      right: 140px;
+      top: 0px;
+      right: 77px;
       z-index: 24;
       font-size: 26px;
       color: white;
-      float: left;
     }
+  }
+  .wrapper-google-btn{
     &__link{
       margin: 16px 0 0;
       background: #fff url(/jp/assets/img/common/common/google.svg) no-repeat 3px top;
@@ -266,5 +265,73 @@
       font-size: 14px;
       text-align: center;
     }
+    ::before{
+      font-family: "Font Awesome 5 Brands";
+      content: "\f1a0";
+      position: relative;
+      top: 0px;
+      right: 86px;
+      z-index: 24;
+      font-size: 26px;
+    }
   }
 }
+
+.login-header-signin{
+  .login-main__container-form__list {
+    ::before{
+      font-family: "Font Awesome 5 Brands";
+      content: "\f082";
+      position: relative;
+      top: 0px;
+      right: 77px;
+      z-index: 24;
+      font-size: 26px;
+      color: white;
+    }
+    .wrapper-facebook-btn__link{
+      display: block;
+      width: 350px;
+      text-decoration: none;
+      list-style: none;
+      line-height: 48px;
+      font-size: 14px;
+      text-align: center;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 4px;  
+      margin: 16px 0 0;
+      background-color: #385185;
+      
+    }
+    
+    .wrapper-google-btn__link{
+      margin: 16px 0 0;
+      background: #fff url(/jp/assets/img/common/common/google.svg) no-repeat 3px top;
+      border: #979797 solid 1px;
+      color: #333;
+      cursor: pointer;
+      border-radius: 4px;
+      display: block;
+      width: 350px;
+      text-decoration: none;
+      list-style: none;
+      line-height: 48px;
+      font-size: 14px;
+      text-align: center;
+      
+    }
+    .wrapper-google-btn__link:before{
+      font-family: "Font Awesome 5 Brands";
+      content: "\f1a0";
+      position: relative;
+      top: 0px;
+      right: 86px;
+      z-index: 24;
+      font-size: 26px;
+      color: #333;
+    }
+  }
+}
+
+

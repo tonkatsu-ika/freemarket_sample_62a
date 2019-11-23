@@ -26,3 +26,10 @@
   border-radius: 4px;
 }
   
+@mixin select($l_width:100%) {
+  margin-top: 10px;
+  width: $l_width;
+  height: 46px;
+  background-color: #fff;
+  border: 1px solid #dddddd;
+}
