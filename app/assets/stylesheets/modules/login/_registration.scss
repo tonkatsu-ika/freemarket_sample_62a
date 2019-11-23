@@ -130,6 +130,10 @@
     font-size: 16px;
     color: #888888;
     -webkit-appearance: none;//追加:デフォルト矢印を消す
+    width: 100%;
+    height: 46px;
+    background-color: #fff;
+    border: 1px solid #dddddd;
   }
   .prefecture-select-wrap {
     position: relative;//親のポジション指定
@@ -148,4 +152,25 @@
     width: 100%;
   }
 }
-
+.slect-box{
+  margin-top: 10px;
+  width: 100%;
+  height: 46px;
+  background-color: #fff;
+  border: 1px solid #dddddd;
+}
+.login-header-registration__form .form-group .form-group__select-box #user_birthday_2i{
+  width: 27%;
+  height: 46px;
+  background-color: #fff;
+}
+.login-header-registration__form .form-group .form-group__select-box #user_birthday_1i{
+  width: 27%;
+  height: 46px;
+  background-color: #fff;
+}
+.login-header-registration__form .form-group .form-group__select-box #user_birthday_3i{
+  width: 27%;
+  height: 46px;
+  background-color: #fff;
+}
