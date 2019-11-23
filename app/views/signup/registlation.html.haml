@@ -17,6 +17,10 @@
           %br/
           = f.email_field :email, placeholder: 'PC・携帯どちらでも可',class: 'input-default',required: true
 
+        -if flash[:email].present?
+          .flash-message
+            =flash[:email]
+
         .form-group 
           = f.label 'パスワード' ,class: 'login-header-registration__label'
           %span.login-header-registration__form--must 必須

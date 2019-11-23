@@ -37,5 +37,13 @@ class User < ApplicationRecord
 
          has_one :credit_card, dependent: :destroy
 
+    def   valid_email(email)
+       user = User.where(email: email)
+       if email.present?
+       　　 = '入力されたメールアドレスはすでに登録されています'
+       end
+       
+    end
+
 
 end

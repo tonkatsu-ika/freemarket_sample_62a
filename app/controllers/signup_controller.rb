@@ -11,11 +11,13 @@ class SignupController < ApplicationController
   #電話番号入力
   def sms_confirmation
     user= User.where(email: user_params[:email] )
-
-    binding.pry
-    redirect_to action: 'registlation' if user.present?
-
-
+    
+    if user.present?
+      flash[:email] = '･入力されたメールアドレスはすでに登録されています'
+      redirect_to action: 'registlation'
+    end  
+       
+    
     # unless verify_recaptcha(ENV['RECAPTCHA_SECRET_KEY'])
     #   redirect_to action: registlation ,alert: 'ユーザ認証をしてください'
     # end
