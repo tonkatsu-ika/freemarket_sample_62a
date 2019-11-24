@@ -28,3 +28,6 @@
 
 # node_moduleを除外
 /node_modules
+
+# test 用イメージを除外
+/app/assets/images/item_images/*
