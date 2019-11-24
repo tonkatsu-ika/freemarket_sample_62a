@@ -66,8 +66,6 @@ namespace :deploy do
            end
 
            info "Host #{host} (#{host.roles.to_a.join(', ')})"
-           # migrationがうまくいった場合のロジックを追加する
-           #invoke :'deploy:fm_db_seed_fu'
 
          end
        end
@@ -75,6 +73,7 @@ namespace :deploy do
     end
   end
 
+  # db migration等のイベントフックとは紐づけていない（独立して実行することを想定）
   desc 'dbへのシード投入'
   task :fm_db_seed_fu do
     on roles(:all) do
