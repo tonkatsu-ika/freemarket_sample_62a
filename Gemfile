@@ -42,7 +42,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'rails-controller-testing'
   gem 'factory_bot_rails'
-  gem 'faker'
   gem 'capybara'
   gem 'capistrano'
   gem 'capistrano-rbenv'
@@ -86,4 +85,10 @@ gem 'active_hash'
 gem 'payjp'
 gem 'dotenv-rails'
 
+# 閉包テーブル
 gem 'closure_tree'
+
+# seed data作成
+gem 'seed-fu', '~> 2.3'
+gem 'faker'
+gem 'faker-japanese'

@@ -16,7 +16,6 @@ Rails.application.routes.draw do
       get :logout
     end
   end
-
   get 'itmes/index'
   resources :signup, only: [:show] do
     collection do
@@ -37,7 +36,6 @@ Rails.application.routes.draw do
     end
   end
 
-
   resources :items do
     collection do
       get 'get_category_children', defaults: { format: 'json' }
@@ -47,8 +45,5 @@ Rails.application.routes.draw do
   end
   resources :users, only: :show
   resources :transactions, only: [:new, :create]
-  
-
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
