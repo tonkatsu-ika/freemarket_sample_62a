@@ -1,22 +1,6 @@
 class SignupController < ApplicationController
   require "payjp"
   layout 'users_login'
-  
-  # def new
-    
-  #   user = User.where(email: user_params[:email] ) 
-  #   binding.pry
-  #   # sign_in User.find(user.ids) unless user_signed_in?   
-  #   loginuser = User.find(user.ids) unless user_signed_in?   
-  
-  #   bypass_sign_in(loginuser)
-  #   if 
-  #    redirect_to root_path  
-  #   else
-  #    redirect_to new_user_session_path
-  #   end
-  # end
-
 
   #会員情報入力
   def registlation
