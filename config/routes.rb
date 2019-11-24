@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     confirmations: 'users/confirmations' 
     }
-  devise_for :admins, :class_name => 'User'
+  
   root 'items#index'
   resources :mypage, only: [:index, :update] do
     collection do
