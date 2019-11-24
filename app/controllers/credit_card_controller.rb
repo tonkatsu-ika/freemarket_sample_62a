@@ -17,12 +17,11 @@ class CreditCardController < ApplicationController
         card: params['payjp-token'],
         # metadata: {user_id: current_user.id}
         ) #念の為metadataにuser_idを入れましたがなくてもOK
-        binding.pry
         
         @card = CreditCard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
         
         if @card.save
-          binding.pry
+          
           redirect_to done_signup_index_path
         else
           redirect_to action: "pay"

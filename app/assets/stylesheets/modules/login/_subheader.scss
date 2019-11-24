@@ -72,17 +72,19 @@
         background-color: #ccc;
         margin: 0 auto;
         position: relative;
-        
+        z-index: 2;
         &:after{
           content: "";
           position: absolute;
           left: 0;
+          z-index: 1;
           right: 0;
           bottom: 5px;
           border-bottom: 2px solid #ccc;
           width: 100px;
           height: 100px;
         }
+        
         // &:after{
         //   content: "";
         //   position: absolute;
@@ -102,6 +104,25 @@
           position: relative;
         }
       }
+      &__circle.nowpoint{
+        height: 11px;
+        width: 11px;
+        border-radius: 50px;
+        background-color: red;
+        margin: 0 auto;
+        position: relative;
+        
+        &:after{
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 5px;
+          border-bottom: 2px solid red;
+          width: 100px;
+          height: 100px;
+        }
+      }  
     }
   }
 

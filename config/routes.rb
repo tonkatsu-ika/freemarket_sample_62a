@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     confirmations: 'users/confirmations' 
     }
+  devise_for :admins, :class_name => 'User'
   root 'items#index'
   resources :mypage, only: [:index, :update] do
     collection do
@@ -19,7 +20,7 @@ Rails.application.routes.draw do
   end
 
   get 'itmes/index'
-  resources :signup, only: [:show] do
+  resources :signup, only: [:new] do
     collection do
       get 'registlation'
       get 'sms_confirmation' do

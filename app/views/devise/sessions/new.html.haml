@@ -15,7 +15,7 @@
     .login-main__container-form__list__btn-google 
     = link_to 'Googleでログイン','#', class: "wrapper-google-btn__link" 
   .login-header-signin__form
-    = form_for @user, url: sms_confirmation_signup_index_path, method: :get, html: {class: 'first-main__box'} do |f|
+    = form_for @user,url: user_session_path, method: :post, html: {class: 'first-main__box'} do |f|
       .login-header-signin__form-content
         .form-group 
           = f.email_field :email, placeholder: 'メールアドレス',class: 'input-default',required: true 
