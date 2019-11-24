@@ -1,5 +1,5 @@
 language: ruby
-
+rvm: 2.5.1
 
 services:
   - mysql
@@ -13,12 +13,14 @@ cache: bundler
 
 before_install:
   - gem install bundler -v 2.0.2
-
+  - bundle install
 
 before_script:
-
+  - bundle exec rake db:create
+  - bundle exec rake db:migrate
 
 script:
+  - bundle exec rake spec
 
 notification:
 # slackへの通知（作成中)
