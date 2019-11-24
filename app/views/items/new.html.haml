@@ -1,6 +1,6 @@
 .sell-wrapper
   %h2.sell-wrapper__index 商品の情報を入力
-  = form_with(model: @item, url: '/items', local: true) do |f|
+  = form_for (@item) do |f|
     .sell-wrapper__form.sell-wrapper__form__image
       .sell-wrapper__form__image__content
         .sell-wrapper__form__image__title 出品画像
@@ -12,7 +12,7 @@
           .dropzone-area
             = i.label :image_url, class: "dropzone-box", for: "upload-image" do
               .input_area
-                = i.file_field :image_url, id: "upload-image", class: "upload-image dropzone", 'data-image': 0
+                = i.file_field :image_url, multiple: true, name: 'item_images[image_url][]', id: "upload-image", class: "upload-image dropzone", 'data-image': 0
                 .boxFileSelect
                   %p
                     ドロップ&amp;ドラッグ
@@ -41,7 +41,6 @@
           %span.sell-wrapper__form--must.sell-wrapper__form__content__must 必須
         .sell-wrapper__form__content__name__bottom
           = f.text_area :description, class: 'sell-wrapper__form__content__explain__bottom__text-box', placeholder: '商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'
-          
 
     .sell-wrapper__form.sell-wrapper__form__detail
       %h3.sell-wrapper__form__detail__left 商品の詳細

@@ -6,10 +6,9 @@ class ItemsController < ApplicationController
   end
 
   def new
+    @item = Item.new
+    @item.item_images.build
     render layout: 'basic'
-    @item = Item.new()
-    # @item.item_images.build
-    10.times { @item.item_images.build }
   end
 
   def get_category_children
@@ -32,9 +31,14 @@ class ItemsController < ApplicationController
   end
 
   def create
-    render layout: 'basic'
+    @item = Item.new(item_params)
     binding.pry
-    @item = Item.create(item_params)
+    if @item.save!
+      params[:item_images][:image_url].each do |a|
+        @item.item_images.create!(image_url: a)
+      end
+    end
+    render layout: 'basic'
   end
 
   def edit
@@ -51,6 +55,6 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.permit(:name, :description, :price, :item_condition_id, :ship_fee_bearer_id, :prefecture, :days_before_ship_id, :delivery_method_id, :brand_id, :category_id, :size_id, item_images_attributes: [:id, :image_url, :item_id]).merge(user_id: 1) # current_user.id
+    params.require(:item).permit(:name, :description, :price, :item_condition_id, :ship_fee_bearer_id, :prefecture, :days_before_ship_id, :delivery_method_id, :brand_id, :category_id, :size_id, item_images_attributes: [:image_url, :item_id]).merge(user_id: 1) # current_user.id
   end
 end
