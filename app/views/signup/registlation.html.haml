@@ -3,7 +3,7 @@
     %b  
       会員情報入力
   .login-header-registration__form
-    = form_for @user, url: sms_confirmation_signup_index_path, method: :get, html: {class: 'first-main__box'} do |f|
+    = form_for @user, url: sms_confirmation_signup_index_path, method: :post, html: {class: 'first-main__box'} do |f|
       .login-header-registration__form-content
         .form-group
           = f.label 'ニックネーム' ,class: 'login-header-registration__label' 

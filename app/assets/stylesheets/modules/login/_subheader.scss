@@ -63,9 +63,94 @@
         background-color: red;
       }
       #progressbar-first{
-        border-bottom: 2px solid red;
+        
+        &:after{
+          content: "";
+          position: absolute;
+          left: 11px;
+          z-index: 1;
+          right: 0;
+          bottom: 5px;
+          border-bottom: 2px solid red;
+          width: 85px;
+          height: 100px;
+        }
       }
-      &__circle{
+      #progressbar-second{
+        border-bottom: 0px solid red;
+        background-color: red;
+        &:after{
+          content: "";
+          position: absolute;
+          left: 11px;
+          z-index: 1;
+          right: 0;
+          bottom: 5px;
+          border-bottom: 2px solid red;
+          width: 85px;
+          height: 100px;
+        }
+      }
+      #progressbar-third{
+        border-bottom: 0px solid red;
+        background-color: red;
+        &:after{
+          content: "";
+          position: absolute;
+          left: 11px;
+          z-index: 1;
+          right: 0;
+          bottom: 5px;
+          border-bottom: 2px solid red;
+          width: 79px;
+          height: 100px;
+        }
+      }
+      #progressbar-fourth{
+        border-bottom: 0px solid red;
+        background-color: red;
+        &:after{
+          content: "";
+          position: absolute;
+          left: 11px;
+          z-index: 1;
+          right: 0;
+          bottom: 5px;
+          border-bottom: 2px solid red;
+          width: 87px;
+          height: 100px;
+        }
+      }
+      &__circle-first{
+        height: 11px;
+        width: 11px;
+        border-radius: 50px;
+        background-color: red;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+        &:after{
+          content: "";
+          position: absolute;
+          left: 11px;
+          z-index: 1;
+          right: 0;
+          bottom: 5px;
+          border-bottom: 2px solid #ccc;
+          width: 85px;
+          height: 100px;
+        }
+        &-first{
+          height: 11px;
+          width: 11px;
+          border-radius: 50px;
+          background-color: #ccc;
+          margin: 0 auto;
+          position: relative;
+        }
+      }
+      
+      &__circle-second{
         height: 11px;
         width: 11px;
         border-radius: 50px;
@@ -76,53 +161,65 @@
         &:after{
           content: "";
           position: absolute;
-          left: 0;
+          left: 11px;
           z-index: 1;
           right: 0;
           bottom: 5px;
           border-bottom: 2px solid #ccc;
-          width: 100px;
-          height: 100px;
-        }
-        
-        // &:after{
-        //   content: "";
-        //   position: absolute;
-        //   left: 0;
-        //   right: 0;
-        //   bottom: 5px;
-        //   border-bottom: 2px solid red;
-        //   width: 100px;
-        //   height: 100px;
-        // }
-        &-first{
-          height: 11px;
-          width: 11px;
-          border-radius: 50px;
-          background-color: #ccc;
-          margin: 0 auto;
-          position: relative;
-        }
-      }
-      &__circle.nowpoint{
-        height: 11px;
-        width: 11px;
-        border-radius: 50px;
-        background-color: red;
-        margin: 0 auto;
-        position: relative;
-        
-        &:after{
-          content: "";
-          position: absolute;
-          left: 0;
-          right: 0;
-          bottom: 5px;
-          border-bottom: 2px solid red;
-          width: 100px;
+          width: 85px;
           height: 100px;
         }
       }  
+      &__circle-third{
+        height: 11px;
+        width: 11px;
+        border-radius: 50px;
+        background-color: #ccc;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+        &:after{
+          content: "";
+          position: absolute;
+          left: 11px;
+          z-index: 1;
+          right: 0;
+          bottom: 5px;
+          border-bottom: 2px solid #ccc;
+          width: 79px;
+          height: 100px;
+        }
+      }  
+      &__circle-fourth{
+        height: 11px;
+        width: 11px;
+        border-radius: 50px;
+        background-color: #ccc;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+        &:after{
+          content: "";
+          position: absolute;
+          left: 11px;
+          z-index: 1;
+          right: 0;
+          bottom: 5px;
+          border-bottom: 2px solid #ccc;
+          width: 87px;
+          height: 100px;
+        }
+      }  
+      &__circle-fifth{
+        height: 11px;
+        width: 11px;
+        border-radius: 50px;
+        background-color: #ccc;
+        
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+      }
     }
   }
 

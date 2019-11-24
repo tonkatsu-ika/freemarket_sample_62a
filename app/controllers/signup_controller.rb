@@ -17,7 +17,6 @@ class SignupController < ApplicationController
       flash[:email] = '･入力されたメールアドレスはすでに登録されています'
       redirect_to action: 'registlation'
     end  
-       
     
     # unless verify_recaptcha(ENV['RECAPTCHA_SECRET_KEY'])
     #   redirect_to action: registlation ,alert: 'ユーザ認証をしてください'
@@ -51,7 +50,6 @@ class SignupController < ApplicationController
       else  
         
         sign_in User.find(session[:id]) unless user_signed_in?   
-        binding.pry
       end
       sign_in User.find(session[:id]) unless user_signed_in?  
     else

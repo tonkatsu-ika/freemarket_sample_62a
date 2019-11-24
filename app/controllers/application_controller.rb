@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   ## ログアウト後に遷移するpathを設定
   def after_sign_out_path_for(resource)
-    redirect_to root_path
+    admin_root_path
   end
 
   protected

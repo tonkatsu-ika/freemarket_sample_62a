@@ -23,10 +23,10 @@ Rails.application.routes.draw do
   resources :signup, only: [:new] do
     collection do
       get 'registlation'
-      get 'sms_confirmation' do
+      post 'sms_confirmation' do
         get 'sms' #電話認証のページ
       end
-      get 'address'
+      post 'address'
       post 'payment'
       get 'done'
     end
