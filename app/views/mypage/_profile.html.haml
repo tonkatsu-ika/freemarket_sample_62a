@@ -1,12 +1,13 @@
-.profile-contents
-  = form_with model: User.update, local: true do |f|
-    %h2.profile-contents__header
-      プロフィール
-    .profile-contents__user
-      %figure.profile-contents__user__icon-container
-        = image_tag "mypage/user-icon-test.jpg", alt: "user icon", class: "profile-contents__user__icon-container__icon"
-      = f.text_field :nickname, html: { class: "profile-contents__user__form-nickname" } do
+
+.profile-wrapper
+  %h2.profile-wrapper__header
+    プロフィール
+  = form_with model: current_user do |f|
+    .profile-wrapper__icon-area
+      = image_tag "mypage/user-icon-test.jpg", class: "profile-wrapper__icon-area__icon-image"
+      = f.text_field :nickname, class: "profile-wrapper__icon-area__nickname", placeholder: "うに太郎＠初心者" do
         = current_user.nickname
-    .profile-contents__profile
-      = f.text_area :profile, html: { class: "profile-contents__profile__form-profile" }
-      = f.submit "変更する", html: { class: "profile-contents__profile__form-button" }
+    .profile-wrapper__form
+      = f.text_area :profile, class: "profile-wrapper__form__profile", placeholder: "うに太郎＠初心者といいます。まだまだ始めたばかりですが、どうぞよろしくお願いします。うに太郎＠初心者といいます。まだまだ始めたばかりですが、どうぞよろしくお願いします" do
+        = current_user.profile
+      = f.submit "変更する", class: "profile-wrapper__form__button"

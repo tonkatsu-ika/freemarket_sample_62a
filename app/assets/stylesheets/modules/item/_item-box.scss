@@ -1,0 +1,43 @@
+.item-box {
+  width: 220px;
+  height: 335px;
+  margin: 10px 0;
+  background-color: white;
+  list-style: none;
+  &:hover {
+   outline: 1px solid blue;
+  }
+  &__item-name {
+    height: 50px;
+    width: 200px;
+    margin: 16px 16px 0 16px;
+    font-size: 16px;
+    color: #333;
+    letter-spacing: 0.5px;
+    overflow: hidden;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  &__item-num {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    &--price {
+      margin: 5px 0 0 16px;
+      color: #333;
+      font-weight: 600;
+      font-size: 14px;
+      
+    }
+    &--like {
+      margin: 5px 20px 0 0;
+      font-size: 16px;
+      .far.fa-heart {
+        color: #ccc;
+      }
+      span {
+        color: #333;
+      }
+    }
+  }
+}
