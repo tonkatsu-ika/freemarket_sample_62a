@@ -4,7 +4,15 @@
 
 // form_button_etc
 
-@mixin form_button($b_color:rgb(234, 53, 45), $color:#fff) {
+@mixin form_button($b_color:#ea352d, $color:#fff) {
   background-color: $b_color;
   color: $color;
+  text-align: center;
+}
+
+// link_etc
+
+@mixin link_hover($l_decoration: underline, $l-color: #45c7fa){
+  text-decoration: $l_decoration;
+  color: $l-color;
 }

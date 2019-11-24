@@ -1,1 +1,20 @@
 .contents-wrapper
+  .card-contents
+    .card-contents__head
+      支払い方法
+    .card-contents__main
+      .card-contents__main__section
+        .card-contents__main__section__text
+          クレジットカード一覧
+        = form_with(url: "#", method: :DELETE, class: "card-contents__main__section__form") do |f|
+          = image_tag("fmarket_logo_red.svg", size: "134x20", alt: "Fmarket", class: "card-contents__main__section__form__image" )
+          .card-contents__main__section__form__number
+            ************0000
+          .card-contents__main__section__form__date
+            11/15
+          = f.submit '削除する', class: "card-contents__main__section__form__btn"
+      .card-contents__main__method
+        = link_to("#", class: "card-contents__main__method__text") do
+          支払い方法について
+          = fa_icon "chevron-right", class: "card-contents__main__method__text__icon"
+

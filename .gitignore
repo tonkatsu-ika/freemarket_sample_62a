@@ -25,11 +25,10 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/.env
 
-<<<<<<< HEAD
-# 開発用の商品画像を除外
-/app/assets/images/item_images/*
-=======
 # node_moduleを除外
 /node_modules
->>>>>>> dfa74fe0ab6a083090e4e70e4e82cd320b9b8c75
+
+# seedで作るitem_imagesを除外
+/app/assets/images/item_images/*
