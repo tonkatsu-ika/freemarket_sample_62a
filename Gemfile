@@ -88,8 +88,12 @@ gem 'dotenv-rails'
 # 閉包テーブル
 gem 'closure_tree'
 
+
+gem "recaptcha", require: "recaptcha/rails"
+
 # seed data作成
 gem 'seed-fu', '~> 2.3'
 gem 'faker'
 gem 'faker-japanese'
 gem 'unf_ext'
+

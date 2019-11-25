@@ -1,0 +1,53 @@
+.registration-header{
+  height: 128px;
+  text-align: center;
+  .registration__title{
+    display: inline-block;
+    font-size: 0;
+    padding-top:40px;
+    
+  }
+  .progress-bar{
+    padding: 40px 0 0 20px;
+    border: 0;
+    float: right;
+    width: 100;
+    .clearfix{
+      padding: 20px 40px 0 44px;
+      border: 0;
+      display: flex;
+      list-style: none;
+      %li{
+        margin: 0 40px 0 0;
+        
+      }
+    }
+    .progress-bar-1{
+      border-bottom:solid 2px gray;
+      position: absolute;
+      height: 10px;
+      width: 70px;
+      float: left;
+      .progress-status-1{
+        position: relative;
+        top:0;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #ea352d;
+      }  
+        
+    }
+    .progress-status{
+      position: relative;
+      top:0;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: grey;
+    }
+  }
+  
+  
+  
+}
