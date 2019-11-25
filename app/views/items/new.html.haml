@@ -49,17 +49,17 @@
           .sell-wrapper__form__detail__right__upper__category
             .sell-wrapper__form__content__name__title カテゴリー
             %span.sell-wrapper__form--must.sell-wrapper__form__content__must 必須
-          = f.collection_select :category_id, Category.roots, :id, :category_name, {prompt: true}, {class: 'sell-wrapper__form__detail__right__upper__select'}
+          = f.collection_select :category_id, Category.roots, :id, :category_name, {prompt: true}, {class: 'sell-wrapper__form__detail__right__upper__select sell-wrapper__form__select'}
         .sell-wrapper__form__detail__right__center
           .sell-wrapper__form__detail__right__upper__category
             .sell-wrapper__form__content__name__title ブランド
             %span.sell-wrapper__form--not-must.sell-wrapper__form__content__must 任意
-          = f.collection_select :brand_id, Brand.all, :id, :brand_name, {prompt: true}
+          = f.collection_select :brand_id, Brand.all, :id, :brand_name, {prompt: true}, {class: 'sell-wrapper__form__select'}
         .sell-wrapper__form__detail__right__bottom
           .sell-wrapper__form__detail__right__upper__category
             .sell-wrapper__form__content__name__title 商品の状態
             %span.sell-wrapper__form--must.sell-wrapper__form__content__must 必須
-          = f.collection_select :item_condition_id, ItemCondition.all, :id, :item_condition, prompt: true
+          = f.collection_select :item_condition_id, ItemCondition.all, :id, :item_condition, {prompt: true}, {class: 'sell-wrapper__form__select'}
 
 
     .sell-wrapper__form.sell-wrapper__form__delivery
@@ -69,22 +69,22 @@
           .sell-wrapper__form__detail__right__upper__category
             .sell-wrapper__form__content__name__title 配送料の負担
             %span.sell-wrapper__form--must.sell-wrapper__form__content__must 必須
-          = f.collection_select :ship_fee_bearer_id, ShipFeeBearer.all, :id, :ship_fee_bearer, prompt: true
+          = f.collection_select :ship_fee_bearer_id, ShipFeeBearer.all, :id, :ship_fee_bearer, {prompt: true}, {class: 'sell-wrapper__form__select'}
         .sell-wrapper__form__detail__right__bottom
           .sell-wrapper__form__detail__right__upper__category
             .sell-wrapper__form__content__name__title 配送の方法
             %span.sell-wrapper__form--must.sell-wrapper__form__content__must 必須
-          = f.collection_select :delivery_method_id, DeliveryMethod.all, :id, :delivery_method, prompt: true
+          = f.collection_select :delivery_method_id, DeliveryMethod.all, :id, :delivery_method, {prompt: true}, {class: 'sell-wrapper__form__select'}
         .sell-wrapper__form__detail__right__bottom
           .sell-wrapper__form__detail__right__upper__category
             .sell-wrapper__form__content__name__title 発送元の地域
             %span.sell-wrapper__form--must.sell-wrapper__form__content__must 必須
-          = f.collection_select :prefecture, Prefecture.all, :id, :name, prompt: true
+          = f.collection_select :prefecture, Prefecture.all, :id, :name, {prompt: true}, {class: 'sell-wrapper__form__select'}
         .sell-wrapper__form__detail__right__bottom
           .sell-wrapper__form__detail__right__upper__category
             .sell-wrapper__form__content__name__title 発送までの日数
             %span.sell-wrapper__form--must.sell-wrapper__form__content__must 必須
-          = f.collection_select :days_before_ship_id, DaysBeforeShip.all, :id, :days_before_ship, prompt: true
+          = f.collection_select :days_before_ship_id, DaysBeforeShip.all, :id, :days_before_ship, {prompt: true}, {class: 'sell-wrapper__form__select'}
 
     .sell-wrapper__form.sell-wrapper__form__price
       %h3.sell-wrapper__form__detail__left 販売価格(300〜9,999,999)

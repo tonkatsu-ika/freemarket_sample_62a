@@ -12,7 +12,7 @@ $(function(){
   // 子カテゴリーの選択フォーム
   function appendChidrenBox(insertHTML){
     var selectbox1 = `<div class='sell-wrapper__form__detail__right__upper__select__child'>
-                        <select class='sell-wrapper__form__detail__right__upper__child' name='category_id'>
+                        <select class='sell-wrapper__form__detail__right__upper__child sell-wrapper__form__select' name='category_id'>
                         <option selected='selected' value="---">---</option>
                         ${insertHTML}
                         </select>
@@ -23,7 +23,7 @@ $(function(){
   // 孫カテゴリーの選択フォーム
   function appendChidrenBox2(insertHTML){
     var selectbox2 = `<div class='sell-wrapper__form__detail__right__upper__select__grandchild'>
-                        <select class='sell-wrapper__form__detail__right__upper__grandchild' name='category_id'>
+                        <select class='sell-wrapper__form__detail__right__upper__grandchild sell-wrapper__form__select' name='category_id'>
                         <option selected='selected' value='---'>---</option>
                         ${insertHTML}
                         </select>
@@ -37,7 +37,7 @@ $(function(){
                     <div class='sell-wrapper__form__content__name__title'>サイズ</div>
                     <span class='sell-wrapper__form--must sell-wrapper__form__content__must'>必須</span>
                     </div>
-                    <select name="size_id" id="item_condition_id">
+                    <select name="size_id" id="item_condition_id" class="sell-wrapper__form__select">
                     <option value="">---</option>
                     ${insertHTML}
                     </select>
@@ -51,7 +51,7 @@ $(function(){
                     <div class='sell-wrapper__form__content__name__title'>サイズ</div>
                     <span class='sell-wrapper__form--must sell-wrapper__form__content__must'>必須</span>
                     </div>
-                    <select name="size_id" id="item_condition_id">
+                    <select name="size_id" id="item_condition_id" class="sell-wrapper__form__select">
                     <option value="">---</option>
                     ${insertHTML}
                     </select>

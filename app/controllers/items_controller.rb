@@ -31,8 +31,8 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(item_params)
     binding.pry
+    @item = Item.new(item_params)
     if @item.save!
       params[:item_images][:image_url].each do |a|
         @item.item_images.create!(image_url: a)

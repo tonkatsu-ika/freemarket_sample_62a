@@ -1,4 +1,5 @@
 class Item < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
   has_one :item_condition
   has_one :ship_fee_bearer
   has_one :prefecture
