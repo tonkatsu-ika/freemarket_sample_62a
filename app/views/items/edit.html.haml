@@ -108,5 +108,7 @@
             .sell-wrapper__form__price__third__right -
     .sell-wrapper__form.sell-wrapper__form__sell-btn
       .sell-wrapper__form__sell-btn__upper
-      = f.submit '出品する', class: 'sell-wrapper__form__sell-btn__sent'
-      .sell-wrapper__form__sell-btn__back もどる
+      = f.submit '変更する', class: 'sell-wrapper__form__sell-btn__sent'
+      .sell-wrapper__form__sell-btn__back
+        =link_to item_path, class: "sell-wrapper__form__sell-btn__back__link" do
+          キャンセル
