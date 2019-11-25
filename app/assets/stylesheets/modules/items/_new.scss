@@ -1,5 +1,6 @@
 @import '../../mixin/mixin';
 
+// items#new と items#editで使用
 .sell-wrapper {
   background-color: #fff; // 後で変数化
   width: 700px; // 後で変数化
@@ -196,6 +197,11 @@
           border: 1px solid #bbb;
           transition-duration: 0.5s;
           transition: background-color 0.5s linear; /* 追加 */
+        }
+        // items#editはlink_toを足したため、クラス追加
+        &__link {
+          text-decoration: none;
+          color: #fff;
         }
       }
     }
