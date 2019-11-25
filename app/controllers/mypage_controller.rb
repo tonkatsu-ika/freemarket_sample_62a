@@ -6,6 +6,7 @@ class MypageController < ApplicationController
   end
 
   def profile
+  
   end
 
   def card

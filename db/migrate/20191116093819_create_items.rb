@@ -6,11 +6,13 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.integer :price, null: false, index: true
       t.bigint :item_condition_id
       t.bigint :ship_fee_bearer_id
+      t.bigint :prefecture
       t.bigint :days_before_ship_id
       t.bigint :delivery_method_id
       t.bigint :user_id
       t.bigint :brand_id
       t.bigint :category_id
+      t.bigint :size_id
 
       t.timestamps
     end
@@ -21,5 +23,6 @@ class CreateItems < ActiveRecord::Migration[5.2]
     add_foreign_key :items, :users, column: :user_id
     add_foreign_key :items, :brands, column: :brand_id
     add_foreign_key :items, :categories, column: :category_id
+    add_foreign_key :items, :sizes, column: :size_id
   end
 end
