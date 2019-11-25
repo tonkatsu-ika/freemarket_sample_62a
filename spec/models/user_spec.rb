@@ -12,6 +12,7 @@ RSpec.describe User, type: :model do
           user = build(:user, password: "000000", password_confirmation: "000000")
           user.valid?
           expect(user).to be_valid
+        end
       end
 
       #テスト　user登録できない
@@ -89,7 +90,5 @@ RSpec.describe User, type: :model do
           expect(user.errors[:password]).to include("は6文字以上で入力してください")
         end
       end
-      
-    end
   end
 end

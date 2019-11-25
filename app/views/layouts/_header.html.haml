@@ -18,20 +18,27 @@
           %i.fas.fa-tag
           ブランドから探す
         = render 'layouts/slide_menu/slide_brands'
-    %ul.header__bottom__user-menu
-      %li.header__bottom__user-menu__li
-        = link_to "#", class: "header__bottom__user-menu__li" do
-          %i.far.fa-heart
-          いいね！一覧
-      %li.header__bottom__user-menu__li
-        = link_to "#", class: "header__bottom__user-menu__li" do
-          %i.far.fa-bell
-          お知らせ
-      %li.header__bottom__user-menu__li
-        = link_to "#", class: "header__bottom__user-menu__li" do
-          %i.fas.fa-check
-          やることリスト
-      %li.header__bottom__user-menu__li
-        = link_to :mypage_index, class: "header__bottom__user-menu__li" do
-          %i.far.fa-user-circle.gray
-          マイページ
+    -if user_signed_in?
+      %ul.header__bottom__user-menu
+        %li.header__bottom__user-menu__li
+          = link_to "#", class: "header__bottom__user-menu__li" do
+            %i.far.fa-heart
+            いいね！一覧
+        %li.header__bottom__user-menu__li
+          = link_to "#", class: "header__bottom__user-menu__li" do
+            %i.far.fa-bell
+            お知らせ
+        %li.header__bottom__user-menu__li
+          = link_to "#", class: "header__bottom__user-menu__li" do
+            %i.fas.fa-check
+            やることリスト
+        %li.header__bottom__user-menu__li
+          = link_to :mypage_index, class: "header__bottom__user-menu__li" do
+            %i.far.fa-user-circle.gray
+            マイページ
+    -else
+      %ul.header__bottom__login-block
+        %li
+          = link_to '新規会員登録',new_user_registration_path, class: 'header__bottom__login-block__signup-button'
+        %li
+          = link_to 'ログイン',new_user_session_path, class: 'header__bottom__login-block__signin-button'  

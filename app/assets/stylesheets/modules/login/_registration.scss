@@ -1,0 +1,176 @@
+@import "../../mixin/mixin";
+
+.login-header-registration {
+  background-color: #fff; // 後で変数化
+  width: 700px; // 後で変数化
+  margin: 0 auto;
+  &__index {
+    text-align: center;
+    font-size: 22px;
+    color: #333333;
+    padding: 32px 0;
+    border-bottom: 2px solid #f5f5f5;
+  }
+  &__label {
+    display: inline-block;
+    font-weight: 600;
+    margin: 8px 0 8px 0;
+  }
+  &__form {
+    
+    .login-header-registration__form-content{
+      max-width: 343px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .form-group{
+      .input-default-half{        
+       margin-top: 10px;
+       width: 50%;
+       height: 46px;
+       background-color: #fff;
+       border: 1px solid #dddddd;
+        
+      }
+      .input-default{
+        margin: 5px 0 0 0;
+        max-width: 343px;
+        width: 310px;
+        height: 30px;
+        padding: 10px 16px 8px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        background: #fff;
+        line-height: 1.5;
+        font-size: 16px;
+      }
+      .form-group__select-box{
+        width: 100%;
+        
+        #user_birthday_1i{
+          width: 27%;
+        }
+        #user_birthday_2i{
+          width: 27%;
+        }
+        #user_birthday_3i{
+          width: 27%;
+        }  
+      }
+      .form-group-double{
+        display: flex;
+        
+        .input-default-half{
+          padding-right: 10px;
+          width: 50%;
+          margin:0 5px 0 5px ;
+          height: 30px;
+          padding: 10px 16px 8px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+          background: #fff;
+          line-height: 1.5;
+          font-size: 16px;
+        }    
+      }
+    }
+    padding: 40px;
+    border-bottom: 2px solid #f5f5f5;
+    margin: 0 auto;
+    .userloginform-into__sub-head{
+      font-size: 18px;
+      margin: 8px 0 8px 0;
+      
+     &__text{
+      margin: 8px 0 8px 0;
+      line-height: 22px;
+      padding: 0;
+      width: 100%;
+     }
+    }
+    .userloginform-into{
+      line-height: 22px;
+      color: #888888;
+      display: block;
+      margin: 10px 0 10px 0;
+      text-align: center;
+    }
+    &--must {
+      color: #fff;
+      background-color: #ea352d;
+      margin-left: 8px;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+    &--option {
+      color: #fff;
+      background-color: grey;
+      margin-left: 8px;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+    .btn-default{
+      @include form_button();
+      margin:10px 0 10px 0 ;
+      text-align: center;
+      width: 100%;
+      display: block;
+      line-height: 44px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .link-block{
+      float: right;
+      display: block;
+      margin:15px 0 15px 0;
+    }
+  }
+  #user_address_attributes_prefecture{
+    padding-left: 15px;
+    font-size: 16px;
+    color: #888888;
+    -webkit-appearance: none;//追加:デフォルト矢印を消す
+    width: 100%;
+    height: 46px;
+    background-color: #fff;
+    border: 1px solid #dddddd;
+  }
+  .prefecture-select-wrap {
+    position: relative;//親のポジション指定
+  }
+  .prefecture.fas.fa-chevron-down {
+    position: absolute;//子のポジション指定
+    right: 30px;//右25px空ける
+    top: 60%;//上から60%の位置へ
+    z-index: 2;//親の下へ潜り揉まないようにする
+    color: #888;
+    transform: translate(0, -50%);//translate(X方向の移動距離, Y方向の移動距離)
+    font-size: 18px;
+    cursor: pointer;
+  }
+  .recapcha-tag{
+    width: 100%;
+  }
+}
+.slect-box{
+  margin-top: 10px;
+  width: 100%;
+  height: 46px;
+  background-color: #fff;
+  border: 1px solid #dddddd;
+}
+.login-header-registration__form .form-group .form-group__select-box #user_birthday_2i{
+  width: 27%;
+  height: 46px;
+  background-color: #fff;
+}
+.login-header-registration__form .form-group .form-group__select-box #user_birthday_1i{
+  width: 27%;
+  height: 46px;
+  background-color: #fff;
+}
+.login-header-registration__form .form-group .form-group__select-box #user_birthday_3i{
+  width: 27%;
+  height: 46px;
+  background-color: #fff;
+}
