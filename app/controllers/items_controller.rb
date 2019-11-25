@@ -43,6 +43,10 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @category_grandchild = Category.find(@item.category_id)
+    @category_child = @category_grandchild.parent
+    @category = @category_child.parent
+    binding.pry
     render layout: 'basic'
   end
 
