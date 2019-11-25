@@ -96,4 +96,3 @@ gem 'closure_tree'
 gem 'seed-fu', '~> 2.3'
 gem 'faker'
 gem 'faker-japanese'
->>>>>>> 19e55334cbfa03aea1b458e204e23c9e86e5feab
