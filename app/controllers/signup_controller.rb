@@ -87,6 +87,10 @@ class SignupController < ApplicationController
     #   end
     
   end
+
+  def auth
+    @user = User.new
+  end
   
   private
   # 許可するキーを設定
