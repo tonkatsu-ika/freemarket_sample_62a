@@ -16,12 +16,12 @@ before_install:
   - bundle install
 
 before_script:
-  - bundle exec rake db:create
-  - ./lib/team/migration_up.sh
+#  - bundle exec rake db:create
+#  - ./lib/team/migration_up.sh
 #  - bundle exec rake db:migrate
 
 script:
-  - bundle exec rake spec
+#  - bundle exec rake spec
 
 notification:
 # slackへの通知（作成中)
