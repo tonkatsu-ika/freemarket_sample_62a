@@ -7,6 +7,7 @@
 @mixin form_button($b_color:#ea352d, $color:#fff) {
   background-color: $b_color;
   color: $color;
+  text-align: center;
 }
 
 // link_etc

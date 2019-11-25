@@ -18,9 +18,10 @@ Rails.application.routes.draw do
       get :logout
     end
   end
-
   get 'itmes/index'
-  resources :signup, only: [:new] do
+
+  resources :signup, only: [:show] do
+
     collection do
       get 'registlation'
       post 'sms_confirmation' do
@@ -38,13 +39,8 @@ Rails.application.routes.draw do
       post 'delete', to: 'credit_card#delete'
     end
   end
-
-
   resources :items
   resources :users, only: :show
   resources :transactions, only: [:new, :create]
-  
-
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
