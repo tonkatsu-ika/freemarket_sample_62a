@@ -43,6 +43,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    render layout: 'basic'
   end
 
   def update
