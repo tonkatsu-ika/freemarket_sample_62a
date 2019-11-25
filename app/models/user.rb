@@ -34,4 +34,29 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
 
+         has_many :comments, dependent: :destroy
+         has_many :likes, dependent: :destroy
+         has_many :items, dependent: :destroy
+
+         has_many :sold_to, class_name: "Transaction", foreign_key: "buyer_id", dependent: :destroy
+         has_many :buyers, through: :bought_from
+
+         has_many :bought_from, class_name: "Transaction", foreign_key: "seller_id"
+         has_many :sellers, through: :sold_to
+
+         has_one :address, dependent: :destroy
+         belongs_to_active_hash :prefecture
+         accepts_nested_attributes_for :address
+
+         has_one :credit_card, dependent: :destroy
+
+    def   valid_email(email)
+       user = User.where(email: email)
+       if email.present?
+       　　 = '入力されたメールアドレスはすでに登録されています'
+       end
+       
+    end
+
+
 end

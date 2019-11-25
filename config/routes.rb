@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'credit_card/new'
   get 'credit_card/show'
   devise_for :users, controllers: {
@@ -7,6 +8,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     confirmations: 'users/confirmations' 
     }
+  
   root 'items#index'
   resources :mypage, only: [:index, :update] do
     collection do
@@ -17,15 +19,17 @@ Rails.application.routes.draw do
     end
   end
   get 'itmes/index'
+
   resources :signup, only: [:show] do
+
     collection do
       get 'registlation'
-      get 'sms_confirmation' do
+      post 'sms_confirmation' do
         get 'sms' #電話認証のページ
       end
-      get 'address'
+      post 'address'
       post 'payment'
-      post 'done'
+      get 'done'
     end
   end
   resources :credit_card ,only: [:new, :show] do

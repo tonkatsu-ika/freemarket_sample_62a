@@ -1,3 +1,5 @@
+@import '../../mixin/mixin';
+
 .sell-wrapper {
   background-color: #fff; // 後で変数化
   width: 700px; // 後で変数化
@@ -200,15 +202,6 @@
   }
 }
 
-select {
-  margin-top: 10px;
-  width: 100%;
-  height: 46px;
-  background-color: #fff;
-  border: 1px solid #dddddd;
-}
-
-
 .dropzone-container {
   height: 162px;
   width: 620px;
@@ -302,3 +295,8 @@ select {
 .clearfix {
   clear: both;
 }
+
+@include select() {
+  
+}
+
