@@ -43,3 +43,7 @@
 
 // devise
 @import "./modules/userlogin";
+
+// スライド作成のプラグインのためのscss
+@import "slick-theme"; 
+@import "slick";
