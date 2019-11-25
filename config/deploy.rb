@@ -3,8 +3,9 @@
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 # ブランチをコマンド実行時に選択できるようにした(指定なければmaster)
-set :branch, ENV['BRANCH'] || "master"
-
+#set :branch, ENV['BRANCH'] || "master"
+#set :branch, 'develop_branch'
+set :branch, ENV['BRANCH'] || 'develop_branch'
 
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, "/var/www/my_app_name"
@@ -67,6 +68,7 @@ set :keep_releases, 5
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
   task :restart do
-    invoke 'unicorn:restart'
+    #invoke 'unicorn:restart'
+    invoke 'unicorn:reload'
   end
 end
