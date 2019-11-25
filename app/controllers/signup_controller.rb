@@ -46,7 +46,7 @@ class SignupController < ApplicationController
     
   end
 
-  def google
+  def auth
     @user = User.new
   end
   

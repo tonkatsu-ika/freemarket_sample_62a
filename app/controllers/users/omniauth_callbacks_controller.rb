@@ -38,24 +38,18 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
 
+  private
+ 
   def callback_for(provider)
-    
-    @omniauth = request.env['omniauth.auth']
-    info = User.find_oauth(@omniauth)
-    @user = info[:user]
-    binding.pry
-    if @user.persisted? 
-      sign_in_and_redirect @user, event: :authentication
-      set_flash_message(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?
-    else 
-      binding.pry
-      @sns = info[:sns]
-      render template: "devise/sessions/new" 
+    provider = provider.to_s
+    @user = User.find_oauth(request.env['omniauth.auth'])
+    unless @user.uid
+      flash[:notice] = I18n.t('devise.omniauth_callbacks.success', kind: provider.capitalize)
+      render template: "/users/sign_in"
+    else
+      session["devise.#{provider}_data"] = request.env['omniauth.auth'].except("extra")
+      render template: "/signup/auth"
     end
-  end
-
-  def failure
-    redirect_to root_path and return
   end
   
 end

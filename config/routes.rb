@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
 
     collection do
-      get 'google'
+      get 'auth'
       get 'registlation'
       get 'sms_confirmation' do
         get 'sms' #電話認証のページ
