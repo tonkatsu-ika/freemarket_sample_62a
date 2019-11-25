@@ -143,7 +143,7 @@ $(document).on('turbolinks:load', function(){
       dataType: 'json'
     })
     .done(function(data){
-      $('.sell-wrapper__form__detail__right__upper__select__grandchild').children('.sell-wrapper__form__detail__right__bottom');
+      $('.sell-wrapper__form__detail__right__upper__select__grandchild').children('.sell-wrapper__form__detail__right__bottom').remove();
       if ($.isEmptyObject(data) != true){
         var insertHTML = '';
         data.forEach(function(size){
