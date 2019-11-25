@@ -29,7 +29,7 @@ development:
 test:
   <<: *default
   adapter: mysql2
-  database: freemarket_sample_62a_development
+  database: freemarket_sample_62a_test
   username: travis
   encoding: utf8
 
