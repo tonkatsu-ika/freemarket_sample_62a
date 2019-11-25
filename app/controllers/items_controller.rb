@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+
+  before_action :set_current_item, only: [:show, :edit, :update, :destroy]
   
   # レイアウトはnewとcreateのとき変更する
 
@@ -32,7 +34,6 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    binding.pry
     if @item.save!
       params[:item_images][:image_url].each do |a|
         @item.item_images.create!(image_url: a)
@@ -42,11 +43,11 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
-    binding.pry
+    render layout: 'basic'
   end
 
   def update
+    @item.update(item_params)
   end
 
   def destroy
@@ -58,5 +59,10 @@ class ItemsController < ApplicationController
   private
   def item_params
     params.require(:item).permit(:name, :description, :price, :item_condition_id, :ship_fee_bearer_id, :prefecture, :days_before_ship_id, :delivery_method_id, :brand_id, :category_id, :size_id, item_images_attributes: [:image_url, :item_id]).merge(user_id: 1) # current_user.id
+  end
+
+  # 現在の商品をインスタンス変数に格納するメソッド
+  def set_current_item
+    @item = Item.find(params[:id])
   end
 end
