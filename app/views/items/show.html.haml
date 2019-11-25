@@ -140,7 +140,20 @@
         %i.fas.fa-chevron-right
   .item-social-media-box
     .item-edit-btn 商品を編集する
-    .item-delete-btn 商品を削除する
+    .item-delete-btn.js-modal-open 商品を削除する
+    .modal.js-modal
+      .modal__bg.js-modal-close
+      .modal__content
+        .modal__content__wrapper
+          .modal__content__wrapper__title 確認
+          .modal__content__wrapper__sentence-one 削除すると二度と復活できません。
+          .modal__content__wrapper__sentence-two 本当に削除しますか？
+        %ul
+          %li
+            .js-modal-close 閉じる
+          %li
+            = link_to "/items/#{params[:id]}", class: "link-delete", method: :delete do
+              .link-delete__sentence 削除する
     %ul.social-media-box
       %li.share-btn 
         = link_to "#", class:"share-btn" do
