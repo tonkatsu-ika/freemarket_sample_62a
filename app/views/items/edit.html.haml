@@ -102,10 +102,12 @@
                 = f.text_field :price, class: 'sell-wrapper__form__price__first__wrapper__right__money', placeholder: '例）300'
           %li.sell-wrapper__form__price__second
             .sell-wrapper__form__price__second__left 販売手数料(10%)
-            .sell-wrapper__form__price__second__right -
+            .sell-wrapper__form__price__second__right
+              = calc_fm_commission(@item.price)
           %li.sell-wrapper__form__price__third
             .sell-wrapper__form__price__third__left 販売利益
-            .sell-wrapper__form__price__third__right -
+            .sell-wrapper__form__price__third__right
+              = calc_fm_profit(@item.price)
     .sell-wrapper__form.sell-wrapper__form__sell-btn
       = f.submit '変更する', class: 'sell-wrapper__form__sell-btn__sent'
       .sell-wrapper__form__sell-btn__back 
