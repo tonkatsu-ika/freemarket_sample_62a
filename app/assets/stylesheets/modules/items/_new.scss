@@ -1,3 +1,5 @@
+// items#newとitems#editで共用
+
 @import '../../mixin/mixin';
 
 .sell-wrapper {
@@ -199,6 +201,11 @@
           border: 1px solid #bbb;
           transition-duration: 0.5s;
           transition: background-color 0.5s linear; /* 追加 */
+        }
+        // items#editのキャンセルボタン用
+        &__link {
+          text-decoration: none;
+          color: #fff;
         }
       }
     }
