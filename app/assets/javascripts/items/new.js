@@ -71,7 +71,6 @@ $(document).on('turbolinks:load', function(){
     .done(function(data){
       $('.sell-wrapper__form__detail__right__upper').children('.sell-wrapper__form__detail__right__upper__select__child').remove();
       var insertHTML = '';
-      console.log(data);
       data.forEach(function(child){
         insertHTML += appendOption(child);
       });
@@ -85,7 +84,6 @@ $(document).on('turbolinks:load', function(){
   // 子カテゴリーのセレクトがチェンジされたら
   $(document).on("change", ".sell-wrapper__form__detail__right__upper__child", function () {
     var child_category_id = $('.sell-wrapper__form__detail__right__upper__select__child option:selected').val();
-    console.log(child_category_id);
     if (child_category_id != "---"){
       if (child_category_id != 147){
         $.ajax({
@@ -98,7 +96,6 @@ $(document).on('turbolinks:load', function(){
           $('.sell-wrapper__form__detail__right__upper__select__child').children('.sell-wrapper__form__detail__right__upper__select__grandchild').remove();
           $('.sell-wrapper__form__detail__right__upper__select__child').children('.sell-wrapper__form__detail__right__bottom').remove();
           var insertHTML = '';
-          console.log(data);
           data.forEach(function(child){
             insertHTML += appendOption(child);
           });
@@ -134,7 +131,6 @@ $(document).on('turbolinks:load', function(){
   // 孫カテゴリーのセレクトがチェンジされたら
   $(document).on("change", ".sell-wrapper__form__detail__right__upper__grandchild", function () {
     var grandchild_category_id = $('.sell-wrapper__form__detail__right__upper__grandchild option:selected').val(); // 孫カテゴリーのvalue属性値を取得
-    console.log(grandchild_category_id);
 
     $.ajax({
       type: 'GET',
