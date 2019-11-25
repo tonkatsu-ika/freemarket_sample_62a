@@ -12,8 +12,8 @@
           = link_to "メールアドレスで登録する", registlation_signup_index_path, class: "wrapper-mail-btn__link"
         .wrapper-facebook-btn
         
-          = link_to'Facebookで登録する', root_path, class: "wrapper-facebook-btn__link"
+          = link_to'Facebookで登録する', omniauth_authorize_path(resource_name, resource_class.omniauth_providers[0]), class: "wrapper-facebook-btn__link"
         .wrapper-google-btn
         
-          = link_to 'Googleで登録する','#', class: "wrapper-google-btn__link"
+          = link_to 'Googleで登録する',omniauth_authorize_path(resource_name, resource_class.omniauth_providers[1]), class: "wrapper-google-btn__link"
 
