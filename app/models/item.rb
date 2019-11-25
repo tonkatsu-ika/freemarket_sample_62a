@@ -1,7 +1,9 @@
 class Item < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
   has_one :item_condition
   has_one :ship_fee_bearer
-  has_one :prefecture
+  # has_one :prefecture
+  belongs_to_active_hash :prefecture
   has_one :days_before_ship
   has_one :delivery_method
   belongs_to :user
