@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Item, type: :model do
 
-
   context '商品出品できる' do
     
     it "ブランド以外登録されてたら出品できる" do
@@ -124,7 +123,14 @@ RSpec.describe Item, type: :model do
   end
 
   context '商品が削除できる' do
-    
+    # it "id=1の商品を削除できる" do
+    #   user = FactoryBot.build(:user, id: 1)
+    #   login_user user
+    #   item = FactoryBot.build(:item, id: 1, user_id: 1)
+    #   expect(Item.where(id: 1).count).to eq 1
+    #   item.destroy
+    #   expect(Item.where(id: 1).count).to eq 0
+    # end
   end
 
 end
