@@ -43,10 +43,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @current_item_category = Category.find(@item.category_id)
-    @category_grandchildren = @current_item_category.self_and_siblings
-    @category_children = @current_item_category.parent.self_and_siblings
-    @category_parents = @current_item_category.parent.parent.self_and_siblings
     render layout: 'basic'
   end
 
@@ -68,6 +64,6 @@ class ItemsController < ApplicationController
 
   # 現在のアイテムをインスタンス変数@itemに格納する
   def get_current_item
-    @item = Item.find(params[:id])
+    @item = Item.includes(:category, :user).find(params[:id])
   end
 end
