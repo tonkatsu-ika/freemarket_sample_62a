@@ -25,6 +25,7 @@
 // common layout parts
 @import './modules/header';
 @import './modules/footer';
+@import './modules/flash';
 @import './modules/breadcrumb';
 
 // index
@@ -50,3 +51,4 @@
 // スライド作成のプラグインのためのscss
 @import "slick-theme"; 
 @import "slick";
+
