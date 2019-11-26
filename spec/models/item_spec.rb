@@ -72,9 +72,9 @@ RSpec.describe Item, type: :model do
     end
 
     it "都道府県のidがないと出品できない" do
-      item = FactoryBot.build(:item, prefecture: nil)
+      item = FactoryBot.build(:item, prefecture_id: nil)
       item.valid?
-      expect(item.errors[:prefecture]).to include("を入力してください")
+      expect(item.errors[:prefecture_id]).to include("を入力してください")
     end
 
     it "配送までの日数のidがないと出品できない" do
@@ -119,6 +119,10 @@ RSpec.describe Item, type: :model do
       expect(item.errors[:price]).to include("は10000000より小さい値にしてください")
     end
 
+  end
+
+  context '商品が削除できる' do
+    
   end
 
 end

@@ -2,7 +2,6 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   has_one :item_condition
   has_one :ship_fee_bearer
-  # has_one :prefecture
   belongs_to_active_hash :prefecture
   has_one :days_before_ship
   has_one :delivery_method
@@ -22,7 +21,7 @@ class Item < ApplicationRecord
   validates :description, length: { maximum: 1000 }
   validates :item_condition_id, presence: true
   validates :ship_fee_bearer_id, presence: true
-  validates :prefecture, presence: true
+  validates :prefecture_id, presence: true
   validates :days_before_ship_id, presence: true
   validates :category_id, presence: true
   validates :price, presence: true

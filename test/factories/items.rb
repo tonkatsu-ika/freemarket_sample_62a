@@ -4,10 +4,11 @@ FactoryBot.define do
     description { "こちらの商品がオススメです" }
     item_condition_id { 1 }
     ship_fee_bearer_id { 1 }
-    prefecture { 1 }
+    prefecture_id { 1 }
     days_before_ship_id { 1 }
     category_id { 35 }
     price { 300 }
+    size_id { 1 }
     association :user
   end
 end
