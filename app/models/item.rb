@@ -63,4 +63,23 @@ class Item < ApplicationRecord
     self.grandchild_category.self_and_siblings
   end
 
+
+  #
+  # ビジネスロジック（サイズ）
+  #
+
+  # 現在の商品が属するカテゴリのサイズ一覧を返す
+  def sizes
+    self.category.sizes
+  end
+
+  # 現在の商品が属するカテゴリがサイズ一覧を持っているか判定
+  def has_sizes?
+    if self.category.sizes.length != 0
+      true
+    else
+      false
+    end
+  end
+
 end

@@ -54,10 +54,11 @@
           = f.collection_select :category_id, @item.child_categories, :id, :category_name, {prompt: true, selected: @item.child_category.id}, html_options = {class: 'sell-wrapper__form__detail__right__upper__select sell-wrapper__form__select'}
           = f.collection_select :category_id, @item.grandchild_categories, :id, :category_name, {prompt: true, selected: @item.grandchild_category.id}, {class: 'sell-wrapper__form__detail__right__upper__select sell-wrapper__form__select'}
         .sell-wrapper__form__detail__right__center
+        - if @item.has_sizes?
           .sell-wrapper__form__detail__right__upper__category
             .sell-wrapper__form__content__name__title サイズ
             %span.sell-wrapper__form--not-must.sell-wrapper__form__content__must 任意
-          = f.collection_select :size_id, Size.all, :id, :size, {prompt: true}, {class: 'sell-wrapper__form__select'}
+          = f.collection_select :size_id, @item.sizes, :id, :size, {prompt: true}, {class: 'sell-wrapper__form__select'}
         .sell-wrapper__form__detail__right__center
           .sell-wrapper__form__detail__right__upper__category
             .sell-wrapper__form__content__name__title ブランド
