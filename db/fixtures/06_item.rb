@@ -17,6 +17,7 @@ csv.each do |data|
     s.user_id = data[8]
     s.brand_id = data[9]
     s.category_id = data[10]
+    s.size_id = data[11]
   end
 end
 
