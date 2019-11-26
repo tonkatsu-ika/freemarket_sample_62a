@@ -1,0 +1,101 @@
+@import "../../mixin/mixin";
+
+.login-header-signin__form-content{
+  text-align: center ;
+  line-height: 40px;
+  font-size: 22px;
+  padding-bottom: 20px;
+} 
+.login-header-signin {
+  background-color: #fff; // 後で変数化
+  width: 700px; // 後で変数化
+  margin: 0 auto;
+  text-align: center;
+  .fab{
+    float: left;
+    position: relative;
+    padding:15px 0 0 15px ;
+    font-size: 20px;
+  }
+  &__index {
+    text-align: center;
+    font-size: 16px;
+    color: #333333;
+    padding: 32px 0;
+    border-bottom: 2px solid #f5f5f5;
+    
+    .new-signup-button{
+      display: block;
+
+      text-decoration: none;
+      margin: 8px auto;
+      border: 1px solid #0099e8;
+      background: #0099e8;
+      color: #fff;
+      line-height: 40px;
+      width: 343px;
+    }
+  }
+  &__label {
+    display: inline-block;
+    font-weight: 600;
+    margin: 8px 0 8px 0;
+  }
+  &__form {
+    &-content{
+      padding-top:20px;
+      
+      .form-group{
+        margin:10px 0 10px 0;
+        .input-default{
+          margin: 10px 0 0 0;
+          max-width: 343px;
+          width: 310px;
+          height: 30px;
+          padding: 10px 16px 8px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+          background: #fff;
+          line-height: 1.5;
+          font-size: 16px;
+        }
+        
+      }
+      .link-block{
+        margin-top: 20px;
+        line-height: 22px;
+        font-size: 16px;
+        // float: left;
+        display: block;
+        padding-right: 140px;
+        text-decoration: none;
+        color: #0099e8;
+        ::after{
+          clear: both;
+        }
+        .link{
+          color: #0099e8;
+          text-decoration: none;
+          font-size: 14px;
+        }
+      }
+
+      max-width: 343px;
+      width: 100%;
+      margin: 0 auto;
+      text-align: center;
+      .done-button{
+        @include form_button();
+        margin:30px 0 10px 0 ;
+        text-align: center;
+        width: 100%;
+        display: block;
+        line-height: 44px;
+        font-size: 16px;
+        cursor: pointer;
+        text-decoration: none;
+      }
+    }
+  }
+  
+}

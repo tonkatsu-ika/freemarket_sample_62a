@@ -1,7 +1,7 @@
 @import '../../mixin/mixin';
 @import '../../config/variables';
 
-.contents-wrapper{
+.logout-contents{
   width: 700px;
   height: 179px;
   display: flex; 
@@ -25,7 +25,7 @@
       font-family: inherit;
       &:hover {
         cursor: pointer;
-        background-color: #e62017;
+        background-color: $hover-red;
       }
     }
   }

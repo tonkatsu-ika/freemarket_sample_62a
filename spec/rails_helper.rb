@@ -63,5 +63,10 @@ RSpec.configure do |config|
 
   # factory_botの記法の省略
   config.include FactoryBot::Syntax::Methods
+
+  # deviseテスト用の記述
+  Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include ControllerMacros, type: :controller
    
 end

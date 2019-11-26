@@ -4,7 +4,33 @@
 
 // form_button_etc
 
-@mixin form_button($b_color:rgb(234, 53, 45), $color:#fff) {
+@mixin form_button($b_color:#ea352d, $color:#fff) {
   background-color: $b_color;
   color: $color;
+  text-align: center;
+}
+
+// link_etc
+
+@mixin link_hover($l_decoration: underline, $l-color: #45c7fa){
+  text-decoration: $l_decoration;
+  color: $l-color;
+}
+
+
+@mixin text-box(){
+  font-size: 16px;
+  width: calc(100% - 32px);
+  padding: 10px 16px 8px;
+  line-height: 1.5;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+}
+  
+@mixin select($l_width:100%) {
+  margin-top: 10px;
+  width: $l_width;
+  height: 46px;
+  background-color: #fff;
+  border: 1px solid #dddddd;
 }

@@ -1,3 +1,5 @@
+@import '../config/variables';
+
 body{
   margin: 0;
   padding: 0%;
@@ -44,20 +46,31 @@ header{
   }
   &__bottom{
     width: 100%;
+    height: 52px;
+    line-height: 52px;
     display: flex;
     justify-content: space-between;
-    line-height: 60px;
     &__search-items{
       list-style: none;
       font-weight: bold;
       box-sizing: border-box;
       &__li{
+        height: 100%;
         font-size: 14px;
         margin-right: 25px;
         margin-left: 10px;
         float: left;
-        & i {
-          color: red;
+        position: relative;
+        &__link {
+          text-decoration: none;
+          color: $f-color-base;
+          display: block;
+          & i {
+            color: red;
+          }
+          &:hover {
+            color: #5D99FF;
+          }
         }
       }
     }
@@ -69,6 +82,76 @@ header{
         margin-left: 14px;
         float: left;
         text-decoration: none;
+        &:hover {
+          color: #5D99FF;
+          cursor: pointer;
+        }
+        &:hover > i{
+          color: #5D99FF;
+        }
+        &:hover > .gray{
+          color: #cccccc;
+        }
+        & i {
+          font-size: 20px;
+          color: #cccccc;
+          position: relative;
+          top:2px;
+          margin-right: 10px;
+          width: 19px;
+        }
+      }
+    }
+    &__login-block{
+      list-style: none;
+      display: flex;
+      .header__bottom__login-block__signup-button{
+        background-color: rgb(234, 53, 45);
+        color: rgb(255, 255, 255);
+        display: block;
+        margin-right:5px;
+        font-size: 15px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: rgb(234, 53, 45);
+        border-image: initial;
+        border-radius: 4px;
+        
+        line-height: 40px;
+        text-decoration: none;
+        margin-top:8px ;
+        height: 30px;
+        padding-bottom: 3px;
+        text-align: center;
+        width: 100px;
+      }
+      .header__bottom__login-block__signin-button{
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 149, 238);
+        display: block;
+        font-size: 16px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: rgb(0, 149, 238);
+        border-image: initial;
+        border-radius: 4px;
+        transition: all 0.3s ease-out 0s;
+        margin-right:5px;
+        line-height: 40px;
+        text-decoration: none;
+        margin-top:8px ;
+        height: 30px;
+        padding-bottom: 3px;
+        text-align: center;
+        width: 90px;
+      }
+      &__li{
+        color: black;
+        font-size: 14px;
+        margin-left: 14px;
+        float: left;
+        text-decoration: none;
+        
         &:hover {
           color: #5D99FF;
           cursor: pointer;

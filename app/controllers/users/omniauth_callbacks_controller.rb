@@ -28,4 +28,28 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # def after_omniauth_failure_path_for(scope)
   #   super(scope)
   # end
+
+  def facebook
+    callback_for(:facebook)
+  end
+
+  def google_oauth2
+    callback_for(:google)
+  end
+
+
+  private
+ 
+  def callback_for(provider)
+    provider = provider.to_s
+    @user = User.find_oauth(request.env['omniauth.auth'])
+    unless @user.uid
+      flash[:notice] = I18n.t('devise.omniauth_callbacks.success', kind: provider.capitalize)
+      render template: "/users/sign_in"
+    else
+      session["devise.#{provider}_data"] = request.env['omniauth.auth'].except("extra")
+      render template: "/signup/auth"
+    end
+  end
+  
 end
