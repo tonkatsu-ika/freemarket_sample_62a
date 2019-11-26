@@ -18,5 +18,6 @@ class MypageController < ApplicationController
   end
 
   def logout
+    @user = User.find(current_user.id)
   end
 end
