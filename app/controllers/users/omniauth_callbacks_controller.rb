@@ -48,7 +48,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       render template: "/users/sign_in"
     else
       session["devise.#{provider}_data"] = request.env['omniauth.auth'].except("extra")
-      render template: "/signup/auth"
+      render template: registlation_signup_index_path
     end
   end
   

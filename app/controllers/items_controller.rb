@@ -3,6 +3,32 @@ class ItemsController < ApplicationController
   # レイアウトはnewとcreateのとき変更する
 
   def index
+    #ひとまず固定で以下アイテムの取得をする
+    #レディース新着のアイテム取得
+      @ladies = Item.where(category_id: 174).order("created_at DESC").includes(:item_images)
+
+      
+      # @ladies = Item.includes(:item_images).where(category_id: 174).order("created_at DESC")
+      # binding.pry
+      # @ladies = Item.where(category_id: 174).includes(:item_images).order("created_at DESC")
+      # binding.pry
+      # @ladies = ladies.item_images.image_url
+      
+    #メンズ新着アイテムの取得
+      @mens = Item.where(category_id: 2).order("created_at DESC")
+    #家電・スマホ・カメラ新着アイテムの取得
+      @appliances = Item.where(category_id: 8).order("created_at DESC")
+    #おもちゃ・ホビー・グッズ新着アイテムの取得
+      @hobbies = Item.where(category_id: 6).order("created_at DESC")
+  #人気のブランド取得
+    #シャネル新着アイテムの取得
+      @chanel = Item.where(brand_id: 1).order("created_at DESC")
+    #ルイヴィトン新着アイテムの取得
+      @louis = Item.where(brand_id: 3).order("created_at DESC")
+    #シュプリーム新着アイテムの取得
+      @supreme = Item.where(brand_id: 4).order("created_at DESC")
+    #ナイキ新着アイテムの取得
+      @nike = Item.where(brand_id: 2).order("created_at DESC")
   end
 
   def new
