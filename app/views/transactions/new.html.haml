@@ -1,4 +1,46 @@
-%h1 Transactions#new
-%p Find me in app/views/transactions/new.html.haml
-
--# 購入確認画面(購入する)
+.wrapper
+  .login-header
+    .login-header__title
+      .login-header__title_logo
+        = link_to (image_tag "fmarket_logo_red.svg", size: "185x49", alt: "Fmarket",class: "login-header__upper__title-logo__link"), :root
+  .main
+    .main__container
+      %h2.head-title 購入内容の確認
+      .buy-content
+        .buy-content__inner
+          %h3.buy-item-image
+            = image_tag "footer_image.png", size: "85x85"
+          %p.buy-item-name CELINE セリーヌ ショルダーバッグ
+          %form.buy-form
+            .buy-price 
+              .buy-price__text
+                .buy-price__text--num ¥27,000
+                .buy-price__text--postage 送料込み
+            .buy-accordion
+              %ul.accordion-parent
+                %li.accordion-toggle ポイントはありません
+            %ul.buy-price-table
+              %li.buy-price-row
+                .buy-price-cell 支払い金額
+                .buy-price-num ￥27,000
+          %p.has-error-text 配送先と支払い方法の入力を完了してください
+          %button.btn-default 購入する
+      .buy-content
+        .buy-content__inner
+          .buy-user-info-title 配送先
+          .buy-user-info-text 〒-
+          .buy-user-info-fix 
+            = link_to "#", class:"buy-user-info-fix" do
+              変更する
+              %i.fas.fa-chevron-right
+      .buy-content
+        .buy-content__inner
+          %h3 支払方法
+          %p.buy-user-info-text
+          %br 
+          %br  
+          %br /     
+          .buy-user-info-fix
+            = link_to  "#", class:"buy-user-info-fix" do
+              変更する
+              %i.fas.fa-chevron-right
