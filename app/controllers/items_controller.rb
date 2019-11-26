@@ -47,7 +47,9 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item.update(item_params)
+    if @item.update!(item_params)
+      # 成功時の処理
+    end
     redirect_to item_path
   end
 
