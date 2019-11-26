@@ -7,28 +7,34 @@
         .sell-wrapper__form__image__title 出品画像
         %span.sell-wrapper__form--must.sell-wrapper__form__image__must 必須
       .sell-wrapper__form__image__explanation 最大10枚までアップロードできます
-      = f.fields_for :item_images do |i|
-        .dropzone-container.clearfix
-          #preview
-          
-          .dropzone-area
-            = i.label :image_url, class: "dropzone-box", for: "upload-image" do
-              .input_area
-                = i.file_field :image_url, multiple: true, name: 'item_images[image_url][]', id: "upload-image", class: "upload-image dropzone", 'data-image': 0
-                .boxFileSelect
-                  %p
-                    ドロップ&amp;ドラッグ
-                    %br
-                    もしくはクリックしてください
-          #preview2
-          .dropzone-area2
-            = i.label :image_url, class: "dropzone-box", for: "upload-image" do
-              .boxFileSelect
-                %p
-                  ドロップ&amp;ドラッグ
-                  %br
-                  もしくはクリックしてください
-        .clearfix
+      - @item_images.each_with_index do |item_image, index|
+        = f.fields_for :item_images, item_image do |i|
+          .dropzone-container.clearfix
+            #preview
+            - if @item_images.count < 5
+              .img_view{data: {image: index}}   
+                = image_tag item_image.image_url.identifier
+              .dropzone-area
+                = i.label :image_url, class: "dropzone-box", for: "upload-image" do
+                  .input_area
+                    = i.file_field :image_url, multiple: true, name: 'item_images[image_url][]', id: "upload-image", class: "upload-image dropzone", 'data-image': 0
+                    .boxFileSelect
+                      %p
+                        ドロップ&amp;ドラッグ
+                        %br
+                        もしくはクリックしてください
+            #preview2
+              - if @item_images.count >= 5 
+                .img_view{data: {image: i}}   
+                  = image_tag item_image.image_url.identifier
+              .dropzone-area2
+                = i.label :image_url, class: "dropzone-box", for: "upload-image" do
+                  .boxFileSelect
+                    %p
+                      ドロップ&amp;ドラッグ
+                      %br
+                      もしくはクリックしてください
+          .clearfix
 
     .sell-wrapper__form.sell-wrapper__form__content
       .sell-wrapper__form__content__name

@@ -43,6 +43,8 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item_images = @item.item_images
+    #binding.pry
     render layout: 'basic'
   end
 
@@ -66,6 +68,6 @@ class ItemsController < ApplicationController
 
   # 現在のアイテムをインスタンス変数@itemに格納する
   def get_current_item
-    @item = Item.includes(:category, :user).find(params[:id])
+    @item = Item.includes(:category, :user, :item_images).find(params[:id])
   end
 end
