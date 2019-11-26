@@ -1,0 +1,136 @@
+@import '../../config/variables';
+@import '../../mixin/mixin';
+.wrapper {
+  background-color: $bg-mypage;
+  padding: 0 20px;
+  .main{
+    &__container {
+      width: 700px;
+      margin: 0 auto;
+      .head-title {
+        text-align: center;
+        font-size: 22px;
+        color: rgb(51, 51, 51);
+        padding: 20px;
+        background-color: #fff;
+      }
+      .buy-content {
+        margin-top: 1px;
+        background-color: #fff;
+        padding: 24px 12.5% 0;
+        &__inner {
+          margin: 0 auto;
+          max-width: 320px;
+          display: flex;
+          flex-wrap: wrap;
+          img {
+            height: 85px;
+            width: 85px;
+          }
+          .buy-item-name {
+            width: 215px;
+            font-size: 16px;
+            line-height: 1.5;
+            margin-left: 15px;
+            font-weight: bold;
+            color: rgb(51, 51, 51);
+          }
+          .buy-form {
+            .buy-price {
+              text-align: center;
+              height: 33px;
+              width: 320px;
+              display: flex;
+              margin: 5px 0;
+              &__text {
+                display: flex;
+                margin: 15px auto;
+                &--num{
+                  font-weight: bold;
+                  font-size: 20px;
+                  color: rgb(51, 51, 51);
+                  margin: 0 8px 0 0;
+                }
+                &--postage{
+                  margin: 0 0 0 8px;
+                  padding-top: 5px;
+                }
+              }
+            }
+            .buy-accordion {
+              text-align: center¥;
+              padding: 16px;
+              font-size: 14px;
+              background-color: #ccc;
+              margin-top: 25px;
+              .accordion-parent {
+                .accordion-toggle {
+                  text-align: center;
+                  color: rgb(51, 51, 51);
+                  list-style: none;
+                }
+              }
+            }
+            .buy-price-table {
+              .buy-price-row {
+                margin: 20px auto;
+                list-style: none;
+                display: flex;
+                justify-content: space-between;
+                font-weight: bold;
+                color: rgb(51, 51, 51);
+                .buy-price-cell {
+                  font-size: 18px;
+                  padding-top: 7px;
+                }
+                .buy-price-num {
+                  font-size: 25px;
+                }                  
+              }
+            }
+          }
+          .has-error-text {
+            color: #ea352d;
+            margin: 10px auto;
+          }
+          .btn-default { 
+            height: 50px;
+            width: 700px;
+            margin: auto;
+            color: #fff;
+            background-color: #888;
+            border: 1px solid #888;
+            font-weight: bold;
+            margin-bottom: 40px;
+          }
+        }
+      }
+      .buy-content {
+        &__inner {
+          .buy-user-info-title {
+            width: 700px;
+            font-weight: bold;
+            color: rgb(51, 51, 51);
+          }
+          .buy-user-info-text {
+            margin-top: 10px;
+            width: 700px;
+          }
+          .buy-user-info-fix {
+            text-align: right;
+            margin-top: 30px;
+            width: 700px;
+            margin-bottom: 40px;
+            text-decoration: none;
+            color: #0099e8;
+            font-size: 14px;
+            i {
+              font-size: 12px;
+              margin-left: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
