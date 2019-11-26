@@ -10,6 +10,7 @@
       = f.fields_for :item_images do |i|
         .dropzone-container.clearfix
           #preview
+          
           .dropzone-area
             = i.label :image_url, class: "dropzone-box", for: "upload-image" do
               .input_area
