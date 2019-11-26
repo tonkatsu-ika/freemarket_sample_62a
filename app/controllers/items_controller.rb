@@ -47,13 +47,12 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    begin
-      item = Item.find(params[:id])
-      if (current_user.id == item.user_id)
-        item.destroy
-      end
-    rescue ActiveRecord::RecordNotFound => e
-      render 'errors/error_404', status: :not_found
+    item = Item.find(params[:id])
+    if current_user.id == item.user_id && item.destroy
+      redirect_to items_path, notice: '出品した商品を削除しました'
+    else
+      flash.now[:alert] = '商品を削除できませんでした'
+      render :index
     end
   end
 

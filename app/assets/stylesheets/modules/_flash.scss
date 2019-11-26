@@ -1,0 +1,20 @@
+@import '../config/variables';
+
+.notifications {
+  text-align: center;
+  .notice {
+    height: 50px;
+    width: 100%;
+    line-height: 50px;
+    color: rgb(0,128,0);
+    background-color: rgba(0,128,0,0.15);
+  }
+
+  .alert {
+    height: 50px;
+    width: 100%;
+    line-height: 50px;
+    color: rgb(255,128,0);
+    background-color: rgba(255,128,0,0.15);
+  }
+}

@@ -152,7 +152,7 @@
           %li
             .js-modal-close キャンセル
           %li
-            = link_to "/items/#{params[:id]}", class: "link-delete", method: :delete do
+            = link_to item_path, class: "link-delete", method: :delete do
               .link-delete__sentence 削除する
     %ul.social-media-box
       %li.share-btn 
