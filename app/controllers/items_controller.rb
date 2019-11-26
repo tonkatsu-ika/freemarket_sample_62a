@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
   
+  before_action :get_current_item, only: [:show, :edit, :update, :destroy]
+
   # レイアウトはnewとcreateのとき変更する
 
   def index
@@ -40,7 +42,7 @@ class ItemsController < ApplicationController
   def get_category_children
     #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
     @category_children = Category.find_by(category_name: "#{params[:parent_name]}", parent_id: nil).children
- end
+  end
 
   # 子カテゴリーが選択された後に動くアクション
   def get_category_grandchildren
@@ -67,9 +69,14 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    render layout: 'basic'
   end
 
   def update
+    if @item.update!(item_params)
+      # 成功時の処理
+    end
+    redirect_to item_path
   end
 
   def destroy
@@ -81,5 +88,10 @@ class ItemsController < ApplicationController
   private
   def item_params
     params.require(:item).permit(:name, :description, :price, :item_condition_id, :ship_fee_bearer_id, :prefecture_id, :days_before_ship_id, :delivery_method_id, :brand_id, :category_id, :size_id, item_images_attributes: [:image_url, :item_id]).merge(user_id: 1) # current_user.id
+  end
+
+  # 現在のアイテムをインスタンス変数@itemに格納する
+  def get_current_item
+    @item = Item.includes(:category, :user).find(params[:id])
   end
 end
