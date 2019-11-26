@@ -50,9 +50,9 @@
           .sell-wrapper__form__detail__right__upper__category
             .sell-wrapper__form__content__name__title カテゴリー
             %span.sell-wrapper__form--must.sell-wrapper__form__content__must 必須
-          = f.collection_select :category_id, @category_parents, :id, :category_name, {prompt: true}, {class: 'sell-wrapper__form__detail__right__upper__select sell-wrapper__form__select'}
-          = f.collection_select :category_id, @category_children, :id, :category_name, {prompt: true}, {class: 'sell-wrapper__form__detail__right__upper__select sell-wrapper__form__select'}
-          = f.collection_select :category_id, @category_grandchildren, :id, :category_name, {prompt: true}, {class: 'sell-wrapper__form__detail__right__upper__select sell-wrapper__form__select', }
+          = f.collection_select :category_id, @category_parents, :id, :category_name, {prompt: true}, html_options = {class: 'sell-wrapper__form__detail__right__upper__select sell-wrapper__form__select', selected: "#{@current_item_category.parent.parent}"}
+          = f.collection_select :category_id, @category_children, :id, :category_name, {prompt: true}, html_options = {class: 'sell-wrapper__form__detail__right__upper__select sell-wrapper__form__select', selected: "#{@current_item_category.parent.parent}"}
+          = f.collection_select :category_id, @category_grandchildren, :id, :category_name, {prompt: true}, {class: 'sell-wrapper__form__detail__right__upper__select sell-wrapper__form__select'}
         .sell-wrapper__form__detail__right__center
           .sell-wrapper__form__detail__right__upper__category
             .sell-wrapper__form__content__name__title サイズ
