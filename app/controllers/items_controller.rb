@@ -47,11 +47,13 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    item = Item.find(params[:id])
-    if (current_user.id == item.user_id)
-      item.destroy 
-    else
-      redirect_to item_path(@item)
+    begin
+      item = Item.find(params[:id])
+      if (current_user.id == item.user_id)
+        item.destroy
+      end
+    rescue ActiveRecord::RecordNotFound => e
+      render 'errors/error_404', status: :not_found
     end
   end
 
