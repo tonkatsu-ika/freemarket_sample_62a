@@ -23,7 +23,7 @@
         .form-group 
           = f.password_field :password, placeholder: 'パスワード',class: 'input-default',required: true
         
-        -# = recaptcha_tags site_key: ENV['RECAPTCHA_SITE_KEY'] ,class: 'recapcha-tag'
+        = recaptcha_tags site_key: ENV['RECAPTCHA_SITE_KEY'] ,class: 'recapcha-tag'
 
         = f.submit class: 'done-button',value:'ログイン'
         .link-block
