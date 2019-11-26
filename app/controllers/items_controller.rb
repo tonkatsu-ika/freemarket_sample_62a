@@ -16,7 +16,7 @@ class ItemsController < ApplicationController
   def get_category_children
     #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
     @category_children = Category.find_by(category_name: "#{params[:parent_name]}", parent_id: nil).children
- end
+  end
 
   # 子カテゴリーが選択された後に動くアクション
   def get_category_grandchildren
@@ -43,10 +43,13 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @category_grandchildren = Category.find(@item.category_id).parent.children
+    @category_children = Category.find(@item.category_id).parent.parent.children
+    @category_parents = Category.roots
+
     @category_grandchild = Category.find(@item.category_id)
     @category_child = @category_grandchild.parent
     @category = @category_child.parent
-    binding.pry
     render layout: 'basic'
   end
 
