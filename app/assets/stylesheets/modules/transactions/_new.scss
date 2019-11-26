@@ -124,6 +124,10 @@
             text-decoration: none;
             color: #0099e8;
             font-size: 14px;
+            &:hover {
+              text-decoration: underline;
+              color: #b3d4fc;
+            }
             i {
               font-size: 12px;
               margin-left: 5px;
