@@ -14,6 +14,9 @@
             - if @item_images.count < 5
               .img_view{data: {image: index}}   
                 = image_tag item_image.image_url.identifier
+                .btn_wrapper
+                  .btn.edit 編集
+                  .btn.delete 削除
               .dropzone-area
                 = i.label :image_url, class: "dropzone-box", for: "upload-image" do
                   .input_area
@@ -25,8 +28,11 @@
                         もしくはクリックしてください
             #preview2
               - if @item_images.count >= 5 
-                .img_view{data: {image: i}}   
+                .img_view{data: {image: index}}   
                   = image_tag item_image.image_url.identifier
+                  .btn_wrapper
+                    .btn.edit 編集
+                    .btn.delete 削除
               .dropzone-area2
                 = i.label :image_url, class: "dropzone-box", for: "upload-image" do
                   .boxFileSelect
