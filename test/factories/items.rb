@@ -8,7 +8,6 @@ FactoryBot.define do
     days_before_ship_id { 1 }
     category_id { 35 }
     price { 300 }
-    size_id { 1 }
     association :user
   end
 end

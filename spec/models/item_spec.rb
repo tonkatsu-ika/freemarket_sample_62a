@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
+
+
   context '商品出品できる' do
     
     it "ブランド以外登録されてたら出品できる" do
