@@ -148,7 +148,7 @@
 |price|integer|null: false, index: true|
 |item_condition_id|bigint|foreign_key: true|
 |ship_fee_bearer_id|bigint|foreign_key: true|
-|prefecture|bigint||
+|prefecture_id|integer|
 |days_before_ship_id|bigint|foreign_key: true|
 |delivery_method_id|bigint|foreign_key: true|
 |user_id|bigint|foreign_key: true|
