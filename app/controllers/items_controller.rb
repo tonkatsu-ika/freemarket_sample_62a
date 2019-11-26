@@ -6,8 +6,8 @@ class ItemsController < ApplicationController
     #ひとまず固定で以下アイテムの取得をする
     #レディース新着のアイテム取得
       @ladies = Item.where(category_id: 174).order("created_at DESC").includes(:item_images)
-
       
+      binding.pry
       # @ladies = Item.includes(:item_images).where(category_id: 174).order("created_at DESC")
       # binding.pry
       # @ladies = Item.where(category_id: 174).includes(:item_images).order("created_at DESC")
