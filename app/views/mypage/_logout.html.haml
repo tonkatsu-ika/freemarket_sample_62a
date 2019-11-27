@@ -1,4 +1,4 @@
 .contents-wrapper
   .logout-contents
-    = form_with(url: destroy_user_session_path, method: :delete, class: "logouts-contents__form") do |f|
+    = form_for @user,url: destroy_user_session_path, method: :delete, html: {class: "logouts-contents__form"} do |f|
       = f.submit 'ログアウト', class: "logout-contents__form__btn"
