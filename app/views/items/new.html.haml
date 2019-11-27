@@ -1,5 +1,4 @@
 .sell-wrapper
-  - binding.pry
   %h2.sell-wrapper__index 商品の情報を入力
   = form_for (@item) do |f|
     .sell-wrapper__form.sell-wrapper__form__image
@@ -28,6 +27,7 @@
                   %br
                   もしくはクリックしてください
         .clearfix
+      
       -if flash[:item_images].present?
         .flash-message
           =flash[:item_images]
@@ -124,7 +124,7 @@
                 .sell-wrapper__form__content__must
                   %span.sell-wrapper__form--must 必須
               .sell-wrapper__form__price__first__wrapper__right
-                ¥
+                %span ¥
                 = f.text_field :price, class: 'sell-wrapper__form__price__first__wrapper__right__money', placeholder: '例）300'
             -if flash[:price].present?
               .flash-message
