@@ -1,9 +1,9 @@
 .new-items-by-category__wrapper--list__bottom
   %ul
     %li
-      = link_to "#{lady.item_images.first.image_url}", class: "new-items-by-category__wrapper--list__bottom__link" do
+      = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
         .new-items-by-category__wrapper--list__bottom__image
-          = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
+          = image_tag "#{lady.item_images.first.image_url}", size: "188x188", alt: "商品イメージ"
           %span
             ¥
             = lady.price

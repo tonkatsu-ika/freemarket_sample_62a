@@ -1,0 +1,12 @@
+.new-items-by-category__wrapper--list__bottom
+  %ul
+    %li
+      = link_to "item/#{nike.id}", class: "new-items-by-category__wrapper--list__bottom__link" do
+        .new-items-by-category__wrapper--list__bottom__image
+          = image_tag "#{nike.item_images.first.image_url}", size: "188x188", alt: "商品イメージ"
+          %span
+            ¥
+            = nike.price
+        .new-items-by-category__wrapper--list__bottom__item-name 
+          =nike.name.truncate(25)
+    

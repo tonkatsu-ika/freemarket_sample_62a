@@ -13,22 +13,22 @@ class ItemsController < ApplicationController
     end
     #レディース新着のアイテム取得  
       @ladies = Item.where(category_id:get_categoryid(1)).order("created_at DESC").limit(10).includes(:item_images)
-      binding.pry
     #メンズ新着アイテムの取得
-      @mens  = Item.where(category_id:get_categoryid(1)).order("created_at DESC").limit(10).includes(:item_images)
+      @mens  = Item.where(category_id:get_categoryid(2)).order("created_at DESC").limit(10).includes(:item_images)
     #家電・スマホ・カメラ新着アイテムの取得
-      @appliances  = Item.where(category_id:get_categoryid(1)).order("created_at DESC").limit(10).includes(:item_images)
+      @appliances  = Item.where(category_id:get_categoryid(8)).order("created_at DESC").limit(10).includes(:item_images)
     #おもちゃ・ホビー・グッズ新着アイテムの取得
-      @hobbies  = Item.where(category_id:get_categoryid(1)).order("created_at DESC").limit(10).includes(:item_images)
+      @hobbies  = Item.where(category_id:get_categoryid(6)).order("created_at DESC").limit(10).includes(:item_images)
   #人気のブランド取得
     #シャネル新着アイテムの取得
-      @chanel = Item.where(brand_id: 1).order("created_at DESC").limit(10).includes(:item_images)
+      @chanels = Item.where(brand_id: 1).order("created_at DESC").limit(10).includes(:item_images)
     #ルイヴィトン新着アイテムの取得
-      @louis = Item.where(brand_id: 3).order("created_at DESC").limit(10).includes(:item_images)
+      @louises = Item.where(brand_id: 3).order("created_at DESC").limit(10).includes(:item_images)
     #シュプリーム新着アイテムの取得
-      @supreme = Item.where(brand_id: 4).order("created_at DESC").limit(10).includes(:item_images)
+      @supremes = Item.where(brand_id: 4).order("created_at DESC").limit(10).includes(:item_images)
     #ナイキ新着アイテムの取得
-      @nike = Item.where(brand_id: 2).order("created_at DESC").limit(10).includes(:item_images)
+      @nikes = Item.where(brand_id: 2).order("created_at DESC").limit(10).includes(:item_images)
+      
   end
 
   def new
