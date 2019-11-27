@@ -44,6 +44,9 @@ $(function(){
     });
 
 
+    
+
+
   // モーダルウィンドウが開く
   $('.js-modal-open').on('click',function(){
     $('.js-modal').fadeIn();
@@ -55,6 +58,7 @@ $(function(){
     $('.js-modal').fadeOut();
     return false;
   });
+
 
 });
 
