@@ -6,8 +6,7 @@
       .sell-wrapper__form__image__content
         .sell-wrapper__form__image__title 出品画像
         %span.sell-wrapper__form--must.sell-wrapper__form__image__must 必須
-      .sell-wrapper__form__image__explanation
-      最大10枚までアップロードできます
+      .sell-wrapper__form__image__explanation 最大10枚までアップロードできます
       .dropzone-container.clearfix
         = f.fields_for @item.item_images do |i|
           #preview
