@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+
+  layout 'basic', only: :new
   
   before_action :get_current_item, only: [:show, :edit, :update, :destroy]
 
@@ -34,7 +36,6 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.item_images.build
-    render layout: 'basic'
   end
 
   def get_category_children
@@ -66,6 +67,40 @@ class ItemsController < ApplicationController
         redirect_to items_path, notice: '商品を出品しました'
       end
     else
+      if @item[:item_images].blank?
+        flash[:item_images] = '画像がありません'
+      end
+      if @item[:name].blank?
+        flash[:name] = '入力してください'
+      end
+      if @item[:description].blank?
+        flash[:description] = '入力してください'
+      end
+      if @item[:category_id].blank?
+        flash[:category_id] = '選択してください'
+      end
+      if @item[:item_condition_id].blank?
+        flash[:item_condition_id] = '選択してください'
+      end
+      if @item[:ship_fee_bearer_id].blank?
+        flash[:ship_fee_bearer_id] = '選択してください'
+      end
+      if @item[:delivery_method_id].blank?
+        flash[:delivery_method_id] = '選択してください'
+      end
+      if @item[:prefecture_id].blank?
+        flash[:prefecture_id] = '選択してください'
+      end
+      if @item[:days_before_ship_id].blank?
+        flash[:days_before_ship_id] = '選択してください'
+      end
+      if @item[:price].blank? or @item[:price] < 300 or @item[:price] > 9999999
+        flash[:price] = '300以上9999999以下で入力してください'
+      end
+      if @item[:price] == 0 or item_params[:price].include?('.') == true
+        flash[:price] = '整数で入力してください'
+      end
+      
       # バリデーション失敗時のアクション
       redirect_to action: 'new'
     end
