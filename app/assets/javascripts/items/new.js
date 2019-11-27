@@ -183,23 +183,26 @@ $(document).on('turbolinks:load', function(){
 
   // 画面ロード時
   //  画像枚数に応じてdropzoneの幅を調整する
-  var imageCount = $('.dropzone-container').find('.img_view').length;
-  console.log(imageCount);
-  if ( imageCount < 4 ) {
+  var imageCountAtLoad = $('.dropzone-container').find('.img_view').length;
+  console.log(imageCountAtLoad);
+  if ( imageCountAtLoad < 4 ) {
     dropzone.css({ //変数dropzoneの要素のcssに
-      'width': `calc(100% - (126px * ${imageCount}))`  // スタイルを当てる
+      'width': `calc(100% - (126px * ${imageCountAtLoad}))`  // スタイルを当てる
     });
-  } else if ( imageCount >= 5 ) {
+  } else if ( imageCountAtLoad >= 5 ) {
     dropzone2.css({ // 変数dropzone2のcssに
       'display': 'block'  // display: blockを追加（初めはdisplay:noneを設定）
     });
     dropzone2.css({ //変数dropzoneの要素のcssに
-      'width': `calc(100% - (126px * ${imageCount -5 }))`  // スタイルを当てる
+      'width': `calc(100% - (126px * ${imageCountAtLoad -5 }))`  // スタイルを当てる
     });
-    if(imageCount > 5) {
+    if(imageCountAtLoad > 5) {
       dropzone2.css({
         'margin-left': '10px'
       })
+    }
+    if(imageCountAtLoad == 9) {  // 配列imagesのlengthが9なら
+      dropzone2.find('p').replaceWith('<p>あと1枚です</p>')  // dropzone2の子要素pタグのところを()の中身に置き換える
     }
   }
 
