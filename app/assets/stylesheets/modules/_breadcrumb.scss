@@ -12,10 +12,9 @@
   width: $width-content-pc;
   height: $height-breadcrumb;
   margin: 0 auto;
-  padding: 16px 0;
   display: flex;
   letter-spacing: 1px;
-  padding-left: 14px;
+  line-height: $height-breadcrumb;
   a {
     color: $f-color-base;
     text-decoration: none;

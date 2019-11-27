@@ -192,4 +192,7 @@
           = render "item" 
           = render "item" 
           = render "item" 
-      
+
+.show__breadcrumb
+  - breadcrumb :root, @item
+  = render "layouts/breadcrumb"
