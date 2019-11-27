@@ -37,7 +37,6 @@ class SignupController < ApplicationController
     
     session[:address_attributes] = user_params[:address_attributes]
     session[:user_params].merge!(user_params)
-    
 
     @user = User.new(session[:user_params])
     @user.build_address(user_params[:address_attributes])
