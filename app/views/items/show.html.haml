@@ -44,15 +44,18 @@
               %li.item-detail-table__category
                 = link_to "#", class:"item-detail-table__category" do
                   %span 
-                    = @item.category.category_name
+                    = @item.parent_category.category_name
+                    .category.category_name
               %li.item-detail-table__sub-category
                 = link_to "#", class:"item-detail-table__sub-category" do
                   %i.fas.fa-chevron-right
-                  %span バッグ
+                  %span 
+                    = @item.child_category.category_name
               %li.item-detail-table__sub-sub-category
                 = link_to "#", class:"item-detail-table__sub-sub-category"do
                   %i.fas.fa-chevron-right
-                  %span ショルダーバック
+                  %span 
+                    = @item.grandchild_category.category_name
         %tr
           %th.th ブランド
           %td.bland
