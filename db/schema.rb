@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_23_083532) do
+ActiveRecord::Schema.define(version: 2019_11_25_080416) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "post_code", null: false
@@ -117,8 +117,10 @@ ActiveRecord::Schema.define(version: 2019_11_23_083532) do
     t.bigint "user_id"
     t.bigint "brand_id"
     t.bigint "category_id"
+    t.bigint "size_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "prefecture_id"
     t.index ["brand_id"], name: "fk_rails_36708b3aa6"
     t.index ["category_id"], name: "fk_rails_89fb86dc8b"
     t.index ["days_before_ship_id"], name: "fk_rails_91824208cc"
@@ -127,6 +129,7 @@ ActiveRecord::Schema.define(version: 2019_11_23_083532) do
     t.index ["name"], name: "index_items_on_name"
     t.index ["price"], name: "index_items_on_price"
     t.index ["ship_fee_bearer_id"], name: "fk_rails_b1da0ee207"
+    t.index ["size_id"], name: "fk_rails_53a5d2c7e9"
     t.index ["user_id"], name: "fk_rails_d4b6334db2"
   end
 
@@ -197,16 +200,14 @@ ActiveRecord::Schema.define(version: 2019_11_23_083532) do
     t.string "nickname", null: false
     t.string "profile_image"
     t.date "birthday", null: false
-    t.string "telephone"
+    t.string "telephone", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-
     t.string "provider"
     t.string "uid"
-
     t.text "profile"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -225,6 +226,7 @@ ActiveRecord::Schema.define(version: 2019_11_23_083532) do
   add_foreign_key "items", "delivery_methods"
   add_foreign_key "items", "item_conditions"
   add_foreign_key "items", "ship_fee_bearers"
+  add_foreign_key "items", "sizes"
   add_foreign_key "items", "users"
   add_foreign_key "likes", "items"
   add_foreign_key "likes", "users"

@@ -1,18 +1,18 @@
-$(function(){
+$(document).on('turbolinks:load', function(){
   function appendOption(category){
-    var html = `<option value="${category.id}">${category.category_name}</option>`;
+    var html = `<option value=${category.id}>${category.category_name}</option>`;
     return html;
   }
 
   function appendOptionSize(size){
-    var html = `<option value="${size.id}">${size.size}</option>`;
+    var html = `<option value=${size.id}>${size.size}</option>`;
     return html;
   }
 
   // 子カテゴリーの選択フォーム
   function appendChidrenBox(insertHTML){
     var selectbox1 = `<div class='sell-wrapper__form__detail__right__upper__select__child'>
-                        <select class='sell-wrapper__form__detail__right__upper__child' name='category_id'>
+                        <select class='sell-wrapper__form__detail__right__upper__child sell-wrapper__form__select' name='item[category_id]'>
                         <option selected='selected' value="---">---</option>
                         ${insertHTML}
                         </select>
@@ -23,7 +23,7 @@ $(function(){
   // 孫カテゴリーの選択フォーム
   function appendChidrenBox2(insertHTML){
     var selectbox2 = `<div class='sell-wrapper__form__detail__right__upper__select__grandchild'>
-                        <select class='sell-wrapper__form__detail__right__upper__grandchild' name='category_id'>
+                        <select class='sell-wrapper__form__detail__right__upper__grandchild sell-wrapper__form__select' name='item[category_id]'>
                         <option selected='selected' value='---'>---</option>
                         ${insertHTML}
                         </select>
@@ -37,7 +37,7 @@ $(function(){
                     <div class='sell-wrapper__form__content__name__title'>サイズ</div>
                     <span class='sell-wrapper__form--must sell-wrapper__form__content__must'>必須</span>
                     </div>
-                    <select name="size_id" id="item_condition_id">
+                    <select name="item[size_id]" id="item_condition_id" class="sell-wrapper__form__select">
                     <option value="">---</option>
                     ${insertHTML}
                     </select>
@@ -51,7 +51,7 @@ $(function(){
                     <div class='sell-wrapper__form__content__name__title'>サイズ</div>
                     <span class='sell-wrapper__form--must sell-wrapper__form__content__must'>必須</span>
                     </div>
-                    <select name="size_id" id="item_condition_id">
+                    <select name="item[size_id]" id="item_condition_id" class="sell-wrapper__form__select">
                     <option value="">---</option>
                     ${insertHTML}
                     </select>
@@ -71,7 +71,6 @@ $(function(){
     .done(function(data){
       $('.sell-wrapper__form__detail__right__upper').children('.sell-wrapper__form__detail__right__upper__select__child').remove();
       var insertHTML = '';
-      console.log(data);
       data.forEach(function(child){
         insertHTML += appendOption(child);
       });
@@ -85,7 +84,6 @@ $(function(){
   // 子カテゴリーのセレクトがチェンジされたら
   $(document).on("change", ".sell-wrapper__form__detail__right__upper__child", function () {
     var child_category_id = $('.sell-wrapper__form__detail__right__upper__select__child option:selected').val();
-    console.log(child_category_id);
     if (child_category_id != "---"){
       if (child_category_id != 147){
         $.ajax({
@@ -98,7 +96,6 @@ $(function(){
           $('.sell-wrapper__form__detail__right__upper__select__child').children('.sell-wrapper__form__detail__right__upper__select__grandchild').remove();
           $('.sell-wrapper__form__detail__right__upper__select__child').children('.sell-wrapper__form__detail__right__bottom').remove();
           var insertHTML = '';
-          console.log(data);
           data.forEach(function(child){
             insertHTML += appendOption(child);
           });
@@ -134,7 +131,6 @@ $(function(){
   // 孫カテゴリーのセレクトがチェンジされたら
   $(document).on("change", ".sell-wrapper__form__detail__right__upper__grandchild", function () {
     var grandchild_category_id = $('.sell-wrapper__form__detail__right__upper__grandchild option:selected').val(); // 孫カテゴリーのvalue属性値を取得
-    console.log(grandchild_category_id);
 
     $.ajax({
       type: 'GET',
@@ -143,7 +139,7 @@ $(function(){
       dataType: 'json'
     })
     .done(function(data){
-      $('.sell-wrapper__form__detail__right__upper__select__grandchild').children('.sell-wrapper__form__detail__right__bottom');
+      $('.sell-wrapper__form__detail__right__upper__select__grandchild').children('.sell-wrapper__form__detail__right__bottom').remove();
       if ($.isEmptyObject(data) != true){
         var insertHTML = '';
         data.forEach(function(size){
@@ -185,6 +181,7 @@ $(function(){
   var preview = $('#preview'); // 
   var preview2 = $('#preview2');
 
+  // 画像追加時
   $(document).on('change', 'input[type= "file"].upload-image',function(event) {  // input[type= "file"].upload-imageの内容が変わったら（ファイルが登録されたら）
     var file = $(this).prop('files')[0]; // 登録したファイルの情報のハッシュを変数fileに取得
     var reader = new FileReader(); // 変数readerにインスタンスを生成
@@ -244,6 +241,7 @@ $(function(){
     var new_image = $(`<input multiple="multiple" name="item_images[image_url][]" class="upload-image dropzone" data-image= ${images.length} type="file" id="upload-image">`);
     input_area.prepend(new_image); // input_areaの子要素に追加する
   });
+  // 画像削除時
   $(document).on('click', '.delete', function() {  // 追加要素の削除ボタンを押したら
     var target_image = $(this).parent().parent();  // 変数target_imageに.deleteの親の親の要素を代入
     $.each(inputs, function(index, input){ //配列inputsの一つ一つ(input)に対して
@@ -308,13 +306,6 @@ $(function(){
       dropzone.find('p').replaceWith('<p>ドロップ&ドラッグ<br>もしくはクリックしてください</p>')
     }
   })
-
-  Dropzone.autoDiscover = false;
-
-  $(".dropzone").dropzone({
-    maxFilesize: 1,
-    addRemoveLinks: true
-  });
 
 
 })
