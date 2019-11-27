@@ -59,9 +59,23 @@ $(document).on('turbolinks:load', function(){
     $('.sell-wrapper__form__detail__right__upper__select__child').append(sizebox);
   }
 
+var patternForEditItemPath = new RegExp('\/items\/\\d{1,}\/edit');
+
   // 親カテゴリーのセレクトがチェンジされたら
   $('.sell-wrapper__form__detail__right__upper__select').change(function(){
-    var parent_category = $('.sell-wrapper__form__detail__right__upper__select option:selected').text(); // 親カテゴリーのvalue属性値を取得
+    // 編集ページと出品ページで親カテゴリの取り方を変える
+    if (patternForEditItemPath.test(location.pathname)) {
+      var parent_category = $('.sell-wrapper__form__select__parent option:selected').text();
+    } else {
+      var parent_category = $('.sell-wrapper__form__detail__right__upper__select option:selected').text(); // 親カテゴリーのvalue属性値を取得
+    }
+    console.log(parent_category);
+    // 商品編集時のみ：子カテゴリを「---」にし、既に表示されている孫カテゴリとサイズを消去する
+    $('.sell-wrapper__form__select__child').remove();
+    $('.sell-wrapper__form__select__grandchild').remove();
+    $('.sell-wrapper__form__select__size').remove();
+    $('.sell-wrapper__form__detail__right__upper__category__size').remove();
+    // 以下、ajax本体
     $.ajax({
       type: 'GET',
       url: '/items/get_category_children',
@@ -69,9 +83,8 @@ $(document).on('turbolinks:load', function(){
       dataType: 'json'
     })
     .done(function(data){
+      console.log("called");
       $('.sell-wrapper__form__detail__right__upper').children('.sell-wrapper__form__detail__right__upper__select__child').remove();
-      // 商品編集時のみ：既に表示されている孫カテゴリとサイズを消去する
-
       var insertHTML = '';
       data.forEach(function(child){
         insertHTML += appendOption(child);
@@ -186,7 +199,6 @@ $(document).on('turbolinks:load', function(){
   // 画面ロード時
   //  画像枚数に応じてdropzoneの幅を調整する
   var imageCountAtLoad = $('.dropzone-container').find('.img_view').length;
-  console.log(imageCountAtLoad);
   if ( imageCountAtLoad < 4 ) {
     dropzone.css({ //変数dropzoneの要素のcssに
       'width': `calc(100% - (126px * ${imageCountAtLoad}))`  // スタイルを当てる
