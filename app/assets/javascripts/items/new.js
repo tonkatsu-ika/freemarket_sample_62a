@@ -181,6 +181,19 @@ $(document).on('turbolinks:load', function(){
   var preview = $('#preview'); // 
   var preview2 = $('#preview2');
 
+  // 画面ロード時
+  //  画像枚数に応じてdropzoneの幅を調整する
+  var imageCount = $('.dropzone-container').find('.img_view').length;
+  if ( imageCount < 4 ) {
+    dropzone.css({ //変数dropzoneの要素のcssに
+      'width': `calc(100% - (126px * ${imageCount}))`  // スタイルを当てる
+    })
+  } else {
+    dropzone2.css({ //変数dropzoneの要素のcssに
+      'width': `calc(100% - (126px * ${imageCount}))`  // スタイルを当てる
+    })
+  }
+
   // 画像追加時
   $(document).on('change', 'input[type= "file"].upload-image',function(event) {  // input[type= "file"].upload-imageの内容が変わったら（ファイルが登録されたら）
     var file = $(this).prop('files')[0]; // 登録したファイルの情報のハッシュを変数fileに取得
