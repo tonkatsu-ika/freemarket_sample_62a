@@ -204,6 +204,11 @@ $(document).on('turbolinks:load', function(){
     if(imageCountAtLoad == 9) {  // 配列imagesのlengthが9なら
       dropzone2.find('p').replaceWith('<p>あと1枚です</p>')  // dropzone2の子要素pタグのところを()の中身に置き換える
     }
+    if(imageCountAtLoad == 10) {
+      dropzone2.css({
+        'display': 'none'
+      })
+    }
   }
 
   // 画像追加時
