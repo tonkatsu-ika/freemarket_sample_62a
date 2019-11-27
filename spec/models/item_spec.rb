@@ -36,6 +36,12 @@ RSpec.describe Item, type: :model do
 
   context '商品出品できない' do
 
+    # it '画像がないと出品できない' do
+    #   item = FactoryBot.build(:item, item_images: [])
+    #   item.valid?
+    #   expect(item.errors[:item_images]).to include("を入力してください")
+    # end
+
     it "商品名がないと出品できない" do
       item = FactoryBot.build(:item, name: "")
       item.valid?
