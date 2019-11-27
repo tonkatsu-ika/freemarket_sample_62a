@@ -237,7 +237,7 @@ $(document).on('turbolinks:load', function(){
       })
       return;
     }
-    var new_image = $(`<input multiple="multiple" name="item_images[image_url][]" class="upload-image dropzone" data-image= ${images.length} type="file" id="upload-image">`);
+    var new_image = $(`<input name="item_images[image_url][]" class="upload-image dropzone" data-image= ${images.length} type="file" id="upload-image">`);
     input_area.prepend(new_image); // input_areaの子要素に追加する
   });
   $(document).on('click', '.delete', function() {  // 追加要素の削除ボタンを押したら

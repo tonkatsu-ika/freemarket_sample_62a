@@ -17,6 +17,8 @@ class Item < ApplicationRecord
 
   validates :name, presence: true
   validates :name, length: { maximum: 40 }
+  # validates :item_images, presence: true
+  # validate :image_validation
   validates :description, presence: true
   validates :description, length: { maximum: 1000 }
   validates :item_condition_id, presence: true
@@ -26,7 +28,6 @@ class Item < ApplicationRecord
   validates :category_id, presence: true
   validates :price, presence: true
   validates :price, numericality: { only_integer: true, greater_than: 299, less_than: 10000000} # 値段が300円以上9,999,999円以下であること
-
 
   #
   # ビジネスロジック（カテゴリ）
