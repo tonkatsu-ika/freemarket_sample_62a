@@ -21,7 +21,8 @@
           .flash-message
             =flash[:email]
 
-        .form-group 
+
+        .form-group
           = f.label 'パスワード' ,class: 'login-header-registration__label'
           %span.login-header-registration__form--must 必須
           %br/
@@ -34,14 +35,12 @@
           %br/
           = f.password_field :password_confirmation, placeholder: '7文字以上',class: 'input-default',required: true
 
-        
-
         %p.userloginform-into__sub-head
           %b
             本人確認
         %p.userloginform-into__sub-head__text
           安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません
-          私はロボットではありません。
+          
 
         .form-group 
           = f.label 'お名前(全角)' ,class: 'login-header-registration__label' 

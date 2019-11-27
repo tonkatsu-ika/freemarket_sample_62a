@@ -37,7 +37,6 @@ class SignupController < ApplicationController
     
     session[:address_attributes] = user_params[:address_attributes]
     session[:user_params].merge!(user_params)
-    
 
     @user = User.new(session[:user_params])
     @user.build_address(user_params[:address_attributes])
@@ -65,26 +64,6 @@ class SignupController < ApplicationController
   #会員情報登録完了
   def done
     
-
-    # Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-    #   if params['payjp-token'].blank?
-    #     redirect_to action: "new"
-    #   else
-    #     customer = Payjp::Customer.create(
-    #     # description: '登録テスト', #なくてもOK
-    #     # email: current_user.email, #なくてもOK
-    #     card: params['payjp-token'],
-    #     # metadata: {user_id: current_user.id}
-    #     ) #念の為metadataにuser_idを入れましたがなくてもOK
-    #     binding.pry
-    #     @card = CreditCard.new(user_id: session[:id], customer_id: customer.id, card_id: customer.default_card)
-        
-    #     if @card.save
-    #       redirect_to done_signup_index_path
-    #     else
-    #       redirect_to action: "payment"
-    #     end
-    #   end
     
   end
 
@@ -106,7 +85,7 @@ class SignupController < ApplicationController
       :first_name_kana,
       :birthday,
       :telephone,
-      address_attributes:[:id, :post_code, :prefecture, :address,:building]
+      address_attributes:[:id, :post_code, :prefecture_id, :address,:building]
     )
   end
 
