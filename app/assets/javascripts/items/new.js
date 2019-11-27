@@ -70,6 +70,8 @@ $(document).on('turbolinks:load', function(){
     })
     .done(function(data){
       $('.sell-wrapper__form__detail__right__upper').children('.sell-wrapper__form__detail__right__upper__select__child').remove();
+      // 商品編集時のみ：既に表示されている孫カテゴリとサイズを消去する
+
       var insertHTML = '';
       data.forEach(function(child){
         insertHTML += appendOption(child);
@@ -180,6 +182,36 @@ $(document).on('turbolinks:load', function(){
   var input_area = $('.input_area'); // 変数input_areaに「.input_area」のパラメータを代入
   var preview = $('#preview'); // 
   var preview2 = $('#preview2');
+
+  // 画面ロード時
+  //  画像枚数に応じてdropzoneの幅を調整する
+  var imageCountAtLoad = $('.dropzone-container').find('.img_view').length;
+  console.log(imageCountAtLoad);
+  if ( imageCountAtLoad < 4 ) {
+    dropzone.css({ //変数dropzoneの要素のcssに
+      'width': `calc(100% - (126px * ${imageCountAtLoad}))`  // スタイルを当てる
+    });
+  } else if ( imageCountAtLoad >= 5 ) {
+    dropzone2.css({ // 変数dropzone2のcssに
+      'display': 'block'  // display: blockを追加（初めはdisplay:noneを設定）
+    });
+    dropzone2.css({ //変数dropzoneの要素のcssに
+      'width': `calc(100% - (126px * ${imageCountAtLoad -5 }))`  // スタイルを当てる
+    });
+    if(imageCountAtLoad > 5) {
+      dropzone2.css({
+        'margin-left': '10px'
+      })
+    }
+    if(imageCountAtLoad == 9) {  // 配列imagesのlengthが9なら
+      dropzone2.find('p').replaceWith('<p>あと1枚です</p>')  // dropzone2の子要素pタグのところを()の中身に置き換える
+    }
+    if(imageCountAtLoad == 10) {
+      dropzone2.css({
+        'display': 'none'
+      })
+    }
+  }
 
   // 画像追加時
   $(document).on('change', 'input[type= "file"].upload-image',function(event) {  // input[type= "file"].upload-imageの内容が変わったら（ファイルが登録されたら）
