@@ -36,8 +36,8 @@ class ItemsController < ApplicationController
       params[:item_images][:image_url].each do |a|
         @item.item_images.create!(image_url: a)
       end
+      redirect_to items_path, notice: '商品を出品しました'
     end
-    render layout: 'basic'
   end
 
   def edit
