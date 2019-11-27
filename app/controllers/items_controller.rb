@@ -6,31 +6,28 @@ class ItemsController < ApplicationController
 
   def index
     #ひとまず固定で以下アイテムの取得をする
-    #レディース新着のアイテム取得
-      @ladies = Item.where(category_id: 174).order("created_at DESC").includes(:item_images)
-      
-      binding.pry
-      # @ladies = Item.includes(:item_images).where(category_id: 174).order("created_at DESC")
-      # binding.pry
-      # @ladies = Item.where(category_id: 174).includes(:item_images).order("created_at DESC")
-      # binding.pry
-      # @ladies = ladies.item_images.image_url
-      
+    #孫カテゴリーIDの一覧取得
+    def get_categoryid(ancestor_id) 
+      parente_id = Category.find(ancestor_id).find_all_by_generation(2)
+      array = parente_id .ids
+    end
+    #レディース新着のアイテム取得  
+      @ladies = Item.where(category_id:get_categoryid(1)).order("created_at DESC").limit(10).includes(:item_images)
     #メンズ新着アイテムの取得
-      @mens = Item.where(category_id: 2).order("created_at DESC")
+      @mens  = Item.where(category_id:get_categoryid(1)).order("created_at DESC").limit(10).includes(:item_images)
     #家電・スマホ・カメラ新着アイテムの取得
-      @appliances = Item.where(category_id: 8).order("created_at DESC")
+      @appliances  = Item.where(category_id:get_categoryid(1)).order("created_at DESC").limit(10).includes(:item_images)
     #おもちゃ・ホビー・グッズ新着アイテムの取得
-      @hobbies = Item.where(category_id: 6).order("created_at DESC")
+      @hobbies  = Item.where(category_id:get_categoryid(1)).order("created_at DESC").limit(10).includes(:item_images)
   #人気のブランド取得
     #シャネル新着アイテムの取得
-      @chanel = Item.where(brand_id: 1).order("created_at DESC")
+      @chanel = Item.where(brand_id: 1).order("created_at DESC").limit(10).includes(:item_images)
     #ルイヴィトン新着アイテムの取得
-      @louis = Item.where(brand_id: 3).order("created_at DESC")
+      @louis = Item.where(brand_id: 3).order("created_at DESC").limit(10).includes(:item_images)
     #シュプリーム新着アイテムの取得
-      @supreme = Item.where(brand_id: 4).order("created_at DESC")
+      @supreme = Item.where(brand_id: 4).order("created_at DESC").limit(10).includes(:item_images)
     #ナイキ新着アイテムの取得
-      @nike = Item.where(brand_id: 2).order("created_at DESC")
+      @nike = Item.where(brand_id: 2).order("created_at DESC").limit(10).includes(:item_images)
   end
 
   def new

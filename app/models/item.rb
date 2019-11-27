@@ -63,6 +63,8 @@ class Item < ApplicationRecord
     self.grandchild_category.self_and_siblings
   end
 
+  
+
 
   #
   # ビジネスロジック（サイズ）
