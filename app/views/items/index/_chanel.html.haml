@@ -1,7 +1,7 @@
 .new-items-by-category__wrapper--list__bottom
   %ul
     %li
-      = link_to "items/#{chanel.id}", class: "new-items-by-category__wrapper--list__bottom__link" do
+      = link_to item_path(chanel), class: "new-items-by-category__wrapper--list__bottom__link" do
         -# = link_to "items/#{chanel.id}", class: "new-items-by-category__wrapper--list__bottom__link" do
         .new-items-by-category__wrapper--list__bottom__image
           = image_tag "#{chanel.item_images.first.image_url}", size: "188x188", alt: "商品イメージ"
