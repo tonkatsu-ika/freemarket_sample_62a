@@ -181,6 +181,7 @@ $(document).on('turbolinks:load', function(){
   var preview = $('#preview'); // 
   var preview2 = $('#preview2');
 
+  // 画像追加時
   $(document).on('change', 'input[type= "file"].upload-image',function(event) {  // input[type= "file"].upload-imageの内容が変わったら（ファイルが登録されたら）
     var file = $(this).prop('files')[0]; // 登録したファイルの情報のハッシュを変数fileに取得
     var reader = new FileReader(); // 変数readerにインスタンスを生成
@@ -240,6 +241,7 @@ $(document).on('turbolinks:load', function(){
     var new_image = $(`<input multiple="multiple" name="item_images[image_url][]" class="upload-image dropzone" data-image= ${images.length} type="file" id="upload-image">`);
     input_area.prepend(new_image); // input_areaの子要素に追加する
   });
+  // 画像削除時
   $(document).on('click', '.delete', function() {  // 追加要素の削除ボタンを押したら
     var target_image = $(this).parent().parent();  // 変数target_imageに.deleteの親の親の要素を代入
     $.each(inputs, function(index, input){ //配列inputsの一つ一つ(input)に対して
