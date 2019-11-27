@@ -184,14 +184,23 @@ $(document).on('turbolinks:load', function(){
   // 画面ロード時
   //  画像枚数に応じてdropzoneの幅を調整する
   var imageCount = $('.dropzone-container').find('.img_view').length;
+  console.log(imageCount);
   if ( imageCount < 4 ) {
     dropzone.css({ //変数dropzoneの要素のcssに
       'width': `calc(100% - (126px * ${imageCount}))`  // スタイルを当てる
-    })
-  } else {
+    });
+  } else if ( imageCount >= 5 ) {
+    dropzone2.css({ // 変数dropzone2のcssに
+      'display': 'block'  // display: blockを追加（初めはdisplay:noneを設定）
+    });
     dropzone2.css({ //変数dropzoneの要素のcssに
-      'width': `calc(100% - (126px * ${imageCount}))`  // スタイルを当てる
-    })
+      'width': `calc(100% - (126px * ${imageCount -5 }))`  // スタイルを当てる
+    });
+    if(imageCount > 5) {
+      dropzone2.css({
+        'margin-left': '10px'
+      })
+    }
   }
 
   // 画像追加時
