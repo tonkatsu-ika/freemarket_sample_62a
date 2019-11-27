@@ -20,19 +20,19 @@
         -if flash[:email].present?
           .flash-message
             =flash[:email]
+        -unless @user.uid
+          .form-group 
+            = f.label 'パスワード' ,class: 'login-header-registration__label'
+            %span.login-header-registration__form--must 必須
+            %br/
+            = f.password_field :password, placeholder: '7文字以上',class: 'input-default',required: true
 
-        .form-group 
-          = f.label 'パスワード' ,class: 'login-header-registration__label'
-          %span.login-header-registration__form--must 必須
-          %br/
-          = f.password_field :password, placeholder: '7文字以上',class: 'input-default',required: true
 
-
-        .form-group 
-          = f.label 'パスワード確認', class: 'login-header-registration__label' 
-          %span.login-header-registration__form--must 必須
-          %br/
-          = f.password_field :password_confirmation, placeholder: '7文字以上',class: 'input-default',required: true
+          .form-group 
+            = f.label 'パスワード確認', class: 'login-header-registration__label' 
+            %span.login-header-registration__form--must 必須
+            %br/
+            = f.password_field :password_confirmation, placeholder: '7文字以上',class: 'input-default',required: true
 
         
 
