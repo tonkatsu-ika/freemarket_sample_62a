@@ -13,6 +13,7 @@ class ItemsController < ApplicationController
     end
     #レディース新着のアイテム取得  
       @ladies = Item.where(category_id:get_categoryid(1)).order("created_at DESC").limit(10).includes(:item_images)
+      binding.pry
     #メンズ新着アイテムの取得
       @mens  = Item.where(category_id:get_categoryid(1)).order("created_at DESC").limit(10).includes(:item_images)
     #家電・スマホ・カメラ新着アイテムの取得
