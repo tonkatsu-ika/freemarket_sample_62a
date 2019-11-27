@@ -2,10 +2,14 @@ crumb :root do
   link "Fmarket", root_path
 end
 
+# Fmarketの子
+
 crumb :mypage do
   link "マイページ", mypage_index_path
   parent :root
 end
+
+# マイページの子
 
 crumb :profile do
   link "プロフィール", profile_mypage_index_path

@@ -16,6 +16,13 @@
   display: flex;
   letter-spacing: 1px;
   padding-left: 14px;
+  a {
+    color: black;
+    text-decoration: none;
+  }
+  .current {
+    font-weight: bold;
+  }
   &__item {
     &__link{
       margin-right: 3px;
