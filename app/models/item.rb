@@ -1,9 +1,10 @@
 class Item < ApplicationRecord
-  has_one :item_condition
-  has_one :ship_fee_bearer
-  has_one :prefecture
-  has_one :days_before_ship
-  has_one :delivery_method
+  
+  belongs_to :ship_fee_bearer
+  belongs_to :prefecture
+  belongs_to :delivery_method
+  belongs_to :days_before_ship
+  belongs_to :item_condition
   belongs_to :user
   belongs_to :brand, optional: true
   belongs_to :category

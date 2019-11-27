@@ -35,7 +35,7 @@ class User < ApplicationRecord
   validates :birthday, presence: true
   validates :email, uniqueness: true
   validates :password, length: { minimum: 6 }
-  validates :password_confirmation, presence: true
+  # validates :password_confirmation, presence: true
   validates :password, presence: true, unless: :uid?
 
   ##sns auth
