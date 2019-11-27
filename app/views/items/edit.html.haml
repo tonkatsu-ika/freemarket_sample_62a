@@ -6,41 +6,42 @@
       .sell-wrapper__form__image__content
         .sell-wrapper__form__image__title 出品画像
         %span.sell-wrapper__form--must.sell-wrapper__form__image__must 必須
-      .sell-wrapper__form__image__explanation 最大10枚までアップロードできます
-      - @item_images.each_with_index do |item_image, index|
-        = f.fields_for :item_images, item_image do |i|
-          .dropzone-container.clearfix
-            #preview
-            - if @item_images.count < 5
-              .img_view{data: {image: index}}   
-                = image_tag item_image.image_url.identifier
-                .btn_wrapper
-                  .btn.edit 編集
-                  .btn.delete 削除
-              .dropzone-area
-                = i.label :image_url, class: "dropzone-box", for: "upload-image" do
-                  .input_area
-                    = i.file_field :image_url, multiple: true, name: 'item_images[image_url][]', id: "upload-image", class: "upload-image dropzone", 'data-image': 0
-                    .boxFileSelect
-                      %p
-                        ドロップ&amp;ドラッグ
-                        %br
-                        もしくはクリックしてください
-            #preview2
-              - if @item_images.count >= 5 
-                .img_view{data: {image: index}}   
+      .sell-wrapper__form__image__explanation
+      最大10枚までアップロードできます
+      .dropzone-container.clearfix
+        = f.fields_for @item.item_images do |i|
+          #preview
+            - if @item.item_images.count < 5
+              - @item.item_images.each_with_index do |item_image, index|
+                .img_view{data: {image: index}}
                   = image_tag item_image.image_url.identifier
                   .btn_wrapper
                     .btn.edit 編集
                     .btn.delete 削除
-              .dropzone-area2
-                = i.label :image_url, class: "dropzone-box", for: "upload-image" do
-                  .boxFileSelect
-                    %p
-                      ドロップ&amp;ドラッグ
-                      %br
-                      もしくはクリックしてください
-          .clearfix
+          .dropzone-area
+            = i.label :image_url, class: "dropzone-box", for: "upload-image" do
+              .input_area
+                = i.file_field :image_url, multiple: true, name: 'item_images[image_url][]', id: "upload-image", class: "upload-image dropzone", 'data-image': 0
+                .boxFileSelect
+                  %p
+                    ドロップ&amp;ドラッグ
+                    %br
+                    もしくはクリックしてください
+            -# #preview2
+            -#   - if @item_images.count >= 5 
+            -#     .img_view{data: {image: index}}   
+            -#       = image_tag item_image.image_url.identifier
+            -#       .btn_wrapper
+            -#         .btn.edit 編集
+            -#         .btn.delete 削除
+            -# .dropzone-area2
+            -#   = i.label :image_url, class: "dropzone-box", for: "upload-image" do
+            -#     .boxFileSelect
+            -#       %p
+            -#         ドロップ&amp;ドラッグ
+            -#         %br
+            -#         もしくはクリックしてください
+      .clearfix
 
     .sell-wrapper__form.sell-wrapper__form__content
       .sell-wrapper__form__content__name
