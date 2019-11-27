@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root 'items#index'
+  
   get 'credit_card/new'
   get 'credit_card/show'
   devise_for :users, controllers: {
@@ -9,8 +11,7 @@ Rails.application.routes.draw do
     confirmations: 'users/confirmations',
     omniauth_callbacks: 'users/omniauth_callbacks'
     }
-  
-  root 'items#index'
+
   resources :mypage, only: [:index, :update] do
     collection do
       get :profile
@@ -19,10 +20,8 @@ Rails.application.routes.draw do
       get :logout
     end
   end
-  get 'itmes/index'
 
   resources :signup, only: [:show] do
-
     collection do
       get 'auth'
       get 'registlation'
@@ -34,6 +33,7 @@ Rails.application.routes.draw do
       get 'done'
     end
   end
+
   resources :credit_card ,only: [:new, :show] do
     collection do
       post 'show', to: 'credit_card#show'

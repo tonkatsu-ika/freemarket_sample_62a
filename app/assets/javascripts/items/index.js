@@ -1,4 +1,5 @@
 $(document).on('turbolinks:load', function(){
+
   $("#index-slide").slick({
     speed: 1000,
     // prevArrow: '<button class="fas.fa-chevron-left"></button>',
@@ -8,4 +9,7 @@ $(document).on('turbolinks:load', function(){
     dots: false,
     autoplay: 500,
 });
+
+  setTimeout("$('.notifications').fadeOut('slow')", 1000) 
+
 });
