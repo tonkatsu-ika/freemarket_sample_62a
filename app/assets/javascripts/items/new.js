@@ -70,6 +70,8 @@ $(document).on('turbolinks:load', function(){
     })
     .done(function(data){
       $('.sell-wrapper__form__detail__right__upper').children('.sell-wrapper__form__detail__right__upper__select__child').remove();
+      // 商品編集時のみ：既に表示されている孫カテゴリとサイズを消去する
+
       var insertHTML = '';
       data.forEach(function(child){
         insertHTML += appendOption(child);
