@@ -1,0 +1,74 @@
+@import '../../config/variables';
+
+.profile-wrapper {
+  width: 100%;
+  background-color: #fff;
+
+  &__header {
+    height: 34px;
+    line-height: 34px;
+    padding: 8px 24px;
+    text-align: center;
+    font-size: 24px;
+  }
+  &__icon-area {
+    background-image: image_url('mypage/bg-mypage-user.jpg');
+    width: 668px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 72px 16px 24px;
+    &__icon-image {
+      border-radius: 30px;
+      width: 60px;
+      height: 60px;
+    }
+    &__nickname {
+      width: 186px;
+      height: 28px;
+      margin-left: 8px;
+      padding: 10px 16px 8px;
+      font-size: 16px;
+      border-width: 1px;
+      border-style: solid;
+      border-color: #ccc;
+      border-radius: 4px;
+      &:focus {
+        outline: 0px #0099e8 solid;
+        border-color: #0099e8;
+      }
+    }
+  }
+  &__form {
+    width: 668px;
+    padding: 40px 16px;
+    position: relative;
+    &__profile {
+      width: 648px;
+      height: 194px;
+      padding: 10px;
+      font-size: 16px;
+      overflow: auto;
+      &:focus {
+        outline: 0px #0099e8 solid;
+        border-color: #0099e8;
+      }
+    }
+    &__button {
+      margin-top: 16px;
+      width: 668px;
+      height: 48px;
+      border-width: 1px;
+      border-style: solid;
+      border-color: $fm-red;
+      background-color: $fm-red;
+      color: #fff;
+      box-shadow: unset;
+      &:hover {
+        background-color: #e62017;
+        cursor: pointer;
+      }
+    }
+  }
+}

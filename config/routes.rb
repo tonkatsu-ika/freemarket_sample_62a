@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
+
+  get 'credit_card/new'
+  get 'credit_card/show'
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     passwords: 'users/passwords',
     registrations: 'users/registrations',
-    confirmations: 'users/confirmations' 
+    confirmations: 'users/confirmations',
+    omniauth_callbacks: 'users/omniauth_callbacks'
     }
+  
   root 'items#index'
   resources :mypage, only: [:index, :update] do
     collection do
@@ -14,11 +19,38 @@ Rails.application.routes.draw do
       get :logout
     end
   end
-
-  resources :items
-  resources :users, only: :show
-  resources :transactions, only: [:new, :create]
   get 'itmes/index'
 
+  resources :signup, only: [:show] do
+
+    collection do
+      get 'auth'
+      get 'registlation'
+      post 'sms_confirmation' do
+        get 'sms' #電話認証のページ
+      end
+      post 'address'
+      post 'payment'
+      get 'done'
+    end
+  end
+  resources :credit_card ,only: [:new, :show] do
+    collection do
+      post 'show', to: 'credit_card#show'
+      post 'pay', to: 'credit_card#pay'
+      post 'delete', to: 'credit_card#delete'
+    end
+  end
+
+  resources :items do
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+      get 'get_category_size', defaults: { format: 'json' }
+    end
+  end
+
+  resources :users, only: :show
+  resources :transactions, only: [:new, :create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

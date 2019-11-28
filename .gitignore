@@ -25,9 +25,15 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/.env
+/public/uploads
 
 # node_moduleを除外
 /node_modules
 
+<<<<<<< HEAD
 # test 用イメージを除外
+=======
+# seedで作るitem_imagesを除外
+>>>>>>> 69970094b67af493a139ef3319875f7e5dcb8f9f
 /app/assets/images/item_images/*

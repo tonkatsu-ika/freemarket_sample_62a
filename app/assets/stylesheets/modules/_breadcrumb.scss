@@ -1,5 +1,13 @@
 @import './config/variables';
 
+.mypage__breadcrumb{
+  box-shadow: 0px 3px 3px -3px rgba(0, 0, 0, 0.6) rgba(0,0,0,0.6);
+  -webkit-box-shadow: 0px 3px 3px -3px rgba(0, 0, 0, 0.6)x rgba(0,0,0,0.6);
+  -moz-box-shadow: 0px 3px 3px -3px rgba(0, 0, 0, 0.6) rgba(0,0,0,0.6);
+  margin-bottom: 3px; 
+}
+
+
 .bread-crumb-list {
   width: $width-content-pc;
   height: $height-breadcrumb;
