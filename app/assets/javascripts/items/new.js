@@ -67,7 +67,6 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
   $('.sell-wrapper__form__detail__right__upper__select').change(function(){
     // 編集ページと出品ページで親カテゴリの取り方を変える
     if ( isItemEditPath ) {
-      console.log('isItemEditPath called');
       var parent_category = $('.sell-wrapper__form__select__parent option:selected').text();
     } else {
       var parent_category = $('.sell-wrapper__form__detail__right__upper__select option:selected').text(); // 親カテゴリーのvalue属性値を取得
@@ -230,13 +229,14 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
     
     // 商品編集画面ロード時にinputs, imagesに値を格納
     inputs = $('.dropzone-box').find('.upload-image');
-    console.log(inputs[1]);
-    images = $('.dropzone-container').find('.img_view');
-    console.log(images[1]);
-  }
+    images = $('.dropzone-container').find('.img_view').map(function(){
+      return $(this);
+    });
+}
 
   // 画像追加時
   $(document).on('change', 'input[type= "file"].upload-image',function(event) {  // input[type= "file"].upload-imageの内容が変わったら（ファイルが登録されたら）
+
     var file = $(this).prop('files')[0]; // 登録したファイルの情報のハッシュを変数fileに取得
     var reader = new FileReader(); // 変数readerにインスタンスを生成
     inputs.push($(this)); // 変数inputsにinput[type= "file"].upload-imageの内容を追加
@@ -248,14 +248,10 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
         src: e.target.result
       })
     }
+
     reader.readAsDataURL(file); //ファイルの読み込みをしている（この一行がなければ画像の枠しか表示されない）
     images.push(img); // 配列imagesにimgを追加する（この時のimgにはsrc属性にurlがある）
 
-    //　あとで消す
-    console.log(this);
-    console.log(`inputs: ${inputs}`);
-    console.log(`images: ${images}`);
-    
 
     if(images.length >= 5) { // もし配列imagesの要素が5つ以上なら
       dropzone2.css({ // 変数dropzone2のcssに
@@ -264,7 +260,8 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
       dropzone.css({ // 変数dropzoneのcssに
         'display': 'none' // display: noneを追加
       })
-      $.each(images, function(index, image) {  // imagesという配列のそれぞれの要素に対して(indexは番号,imageは一つ一つ取り出した時の変数)
+      $.each(function(index, image) {  // imagesという配列のそれぞれの要素に対して(indexは番号,imageは一つ一つ取り出した時の変数)
+
         image.attr('data-image', index);  // eachで取り出したimageに属性と属性値を追加
         preview2.append(image);  // 変数preview2の子要素にimageを追加する
         dropzone2.css({  // 変数dropzone2の要素のcssに
@@ -301,6 +298,7 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
     var new_image = $(`<input multiple="multiple" name="item_images[image_url][]" class="upload-image dropzone" data-image= ${images.length} type="file" id="upload-image">`);
     input_area.prepend(new_image); // input_areaの子要素に追加する
   });
+
   // 画像削除時
   $(document).on('click', '.delete', function() {  // 追加要素の削除ボタンを押したら
     

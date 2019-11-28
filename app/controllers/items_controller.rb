@@ -34,6 +34,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    binding.pry
     if @item.save!
       params[:item_images][:image_url].each do |a|
         @item.item_images.create!(image_url: a)
@@ -49,7 +50,9 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update!(item_params)
-      # 成功時の処理
+      # params[:item_images][:image_url].each do |a|
+      #   @item.item_images.find_or_create!(image_url: a)
+      #end
     end
     redirect_to item_path
   end
