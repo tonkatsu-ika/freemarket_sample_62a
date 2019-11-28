@@ -64,6 +64,15 @@ class SignupController < ApplicationController
   #会員情報登録完了
   def done
     
+  end
+  #リロードした際に新規登録画面の最初に戻す
+  def show
+    session[:user_params] = nil
+    session[:address_attributes] = nil 
+    session[:telephone] = nil
+    session[:user_id] = nil
+    flash[:danger] = '不正な処理が行われました'
+    redirect_to action: 'registlation'
     
   end
 
