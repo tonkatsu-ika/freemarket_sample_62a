@@ -35,4 +35,4 @@
 /app/assets/images/item_images/*
 
 # creden
-config/credential.yml.enc
+config/credentials.yml.enc
