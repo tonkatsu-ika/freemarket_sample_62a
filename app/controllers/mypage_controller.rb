@@ -11,14 +11,12 @@ class MypageController < ApplicationController
   end
 
   def card
-    card = CreditCard.new
+    @card = CreditCard.new
     @card = CreditCard.where(user_id: current_user.id).first if CreditCard.where(user_id: current_user.id).present?
-    if @card.present?
+    if @card[:user_id] != nil
       Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
       customer = Payjp::Customer.retrieve(@card.customer_id)
       @card_information = customer.cards.retrieve(@card.card_id)
-
-      # 《＋α》 登録しているカード会社のブランドアイコンを表示するためのコードです。---------
       @card_brand = @card_information.brand
       case @card_brand
       when "Visa"
@@ -34,7 +32,6 @@ class MypageController < ApplicationController
       when "Discover"
         @card_src = "discover.gif"
       end
-      # ---------------------------------------------------------------
     end
   end
 
