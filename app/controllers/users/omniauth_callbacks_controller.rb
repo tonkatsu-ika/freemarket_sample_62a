@@ -45,10 +45,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = User.find_oauth(request.env['omniauth.auth'])
     unless @user.uid
       flash[:notice] = I18n.t('devise.omniauth_callbacks.success', kind: provider.capitalize)
-      render template: "/users/sign_in"
+      render template: "/users/sign_in" 
     else
       session["devise.#{provider}_data"] = request.env['omniauth.auth'].except("extra")
-      render template: registlation_signup_index_path
+      render template: registlation_signup_index_path(@user)
     end
   end
   
