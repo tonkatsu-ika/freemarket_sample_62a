@@ -1,4 +1,6 @@
 class MypageController < ApplicationController
+  require "payjp"
+
   def index
   end
 
@@ -9,6 +11,7 @@ class MypageController < ApplicationController
   end
 
   def card
+    card = CreditCard.new
     @card = CreditCard.where(user_id: current_user.id).first if CreditCard.where(user_id: current_user.id).present?
     if @card.present?
       Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
@@ -33,6 +36,30 @@ class MypageController < ApplicationController
       end
       # ---------------------------------------------------------------
     end
+  end
+
+  def create
+    binding.pry
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      if params['payjp-token'].blank?
+        redirect_to action: "card"
+      else
+        customer = Payjp::Customer.create(
+        # description: '登録テスト', #なくてもOK
+        # email: current_user.email, #なくてもOK
+        card: params['payjp-token'],
+        # metadata: {user_id: current_user.id}
+        ) #念の為metadataにuser_idを入れましたがなくてもOK
+        
+        @card = CreditCard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
+        
+        if @card.save
+          
+          redirect_to card_mypage_index_path
+        else
+          redirect_to action: "card"
+        end
+      end
   end
 
   def identification

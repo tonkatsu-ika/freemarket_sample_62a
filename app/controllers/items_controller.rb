@@ -102,7 +102,7 @@ class ItemsController < ApplicationController
       end
       
       # バリデーション失敗時のアクション
-      render 'new', layout: 'basic'
+      redirect_to action: 'new', layout: 'basic'
     end
   end
 

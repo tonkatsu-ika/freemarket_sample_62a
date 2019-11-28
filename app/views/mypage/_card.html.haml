@@ -25,7 +25,7 @@
         %b
           支払い方法
       .login-header-registration__form   
-        = form_tag(pay_credit_card_index_path, method: :post, id: 'charge-form',  name: "inputForm") do
+        = form_tag("/mypage", method: :post, id: 'charge-form',  name: "inputForm") do
           .login-header-registration__form-content
             .form-group
               %label.login-header-registration__label カード番号
