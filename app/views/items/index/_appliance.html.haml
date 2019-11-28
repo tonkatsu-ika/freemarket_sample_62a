@@ -1,0 +1,14 @@
+.new-items-by-category__wrapper--list__bottom
+  %ul
+    %li
+      = link_to item_path(appliance), class: "new-items-by-category__wrapper--list__bottom__link" do
+        -# = link_to "items/#{appliance.id}", class: "new-items-by-category__wrapper--list__bottom__link" do
+        .new-items-by-category__wrapper--list__bottom__image
+          = image_tag "#{appliance.item_images.first.image_url}", size: "188x188", alt: "商品イメージ"
+          %span
+            ¥
+            = appliance.price
+        .new-items-by-category__wrapper--list__bottom__item-name 
+          =appliance.name.truncate(25)
+    
+

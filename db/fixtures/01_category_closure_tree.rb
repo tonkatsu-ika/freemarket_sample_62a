@@ -6,9 +6,7 @@ category_csv = CSV.read(category_csv_path)
 
 records = []
 
-
-# カテゴリデータがない場合のみseedを作る
-if Category.count = 0
+if Category.count == 0
   category_csv.each_with_index do |data, i|
     if data[2] == nil
       records << Category.create(category_name: data[1])

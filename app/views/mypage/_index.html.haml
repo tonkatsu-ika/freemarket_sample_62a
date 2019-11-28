@@ -4,7 +4,7 @@
       %figure.index-contents__user__link__icon-container
         = image_tag "mypage/user-icon-test.jpg", alt: "user icon", class: "index-contents__user__link__icon-container__icon"
       %h2.index-contents__user__link__name
-        うに太郎
+        = current_user.nickname
       .index-contents__user__link__kpis
         .index-contents__user__link__kpis__item
           評価

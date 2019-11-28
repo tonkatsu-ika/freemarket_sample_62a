@@ -25,6 +25,7 @@
 // common layout parts
 @import './modules/header';
 @import './modules/footer';
+@import './modules/flash';
 @import './modules/breadcrumb';
 
 // index
@@ -41,9 +42,13 @@
 @import './modules/mypage/logout';
 @import './modules/mypage/profile';
 
+// transactions
+@import './modules/transactions/new';
+
 // devise
 @import "./modules/userlogin";
 
 // スライド作成のプラグインのためのscss
 @import "slick-theme"; 
 @import "slick";
+

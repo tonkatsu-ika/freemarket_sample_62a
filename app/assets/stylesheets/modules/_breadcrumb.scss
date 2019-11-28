@@ -12,23 +12,15 @@
   width: $width-content-pc;
   height: $height-breadcrumb;
   margin: 0 auto;
-  padding: 16px 0;
   display: flex;
   letter-spacing: 1px;
-  padding-left: 14px;
-  &__item {
-    &__link{
-      margin-right: 3px;
-      text-decoration: none;
-      color: $f-color-base;
-    }
-    &__icon{
-      color: #888;
-      margin: 0px 8px;
-      font-size: 0.7rem;
-    }
+  line-height: $height-breadcrumb;
+  a {
+    color: $f-color-base;
+    text-decoration: none;
+    margin-right: 5px;
   }
-  &__item--bold{
+  .current {
     font-weight: bold;
   }
 }

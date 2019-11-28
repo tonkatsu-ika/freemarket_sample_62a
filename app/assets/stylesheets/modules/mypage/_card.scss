@@ -2,10 +2,10 @@
 @import "../../mixin/mixin";
 
 .card-contents{
-  height: 365px;
+  // height: 365px;
   width: 700px;
   background-color: #fff;
-  font-size: 24px;
+  // font-size: 24px;
     &__head{
       width: auto;
       height: 50px;
@@ -31,12 +31,10 @@
           width: 320px;
           margin: 24px auto ;
           position: relative;
-          &__image{
-            position: relative;
-            right: 34px;
-            
-            
-          }
+          // &__image{
+          //   position: relative;
+          //   right: 34px;
+          // }
           &__number{
             font-size: 16px;
             margin-top: 8px;

@@ -1,31 +1,23 @@
 .wrapper
   .item-box-container 
-    %h1.item-name コーチ シグネチャーショルダーバッグ
+    %h1.item-name 
+      = @item.name
     .item-main-content
       .item-photo
         .item-photo__load
           %ul.slider#slider
-            = render "slide-item"
-            = render "slide-item"
-            = render "slide-item"
-            = render "slide-item"
-            = render "slide-item"
-            = render "slide-item"
+            = render "slide-item", collection: @item
           .item-photo__thumbnail
             %ul#thumbnail-list
-              = render 'thumbnail-item'
-              = render 'thumbnail-item'
-              = render 'thumbnail-item'
-              = render 'thumbnail-item'
-              = render 'thumbnail-item'
-              = render 'thumbnail-item'
+              = render 'thumbnail-item', collection: @item
+              
       %table.item-detail-table
         %tr
           %th.th 出品者
           %td.user-info
             %a.name
               = link_to "#", class:"name" do
-                みぽ
+                = @item.user.nickname
             %ul.item-user-ratings
               %li.icon-good
                 %i.fas.fa-laugh
@@ -42,70 +34,65 @@
             %ul.item-categories
               %li.item-detail-table__category
                 = link_to "#", class:"item-detail-table__category" do
-                  %span レディース
+                  %span 
+                    = @item.parent_category.category_name
+                    .category.category_name
               %li.item-detail-table__sub-category
                 = link_to "#", class:"item-detail-table__sub-category" do
                   %i.fas.fa-chevron-right
-                  %span バッグ
-              %li.item-detail-table__sub-sub-category
-                = link_to "#", class:"item-detail-table__sub-sub-category"do
-                  %i.fas.fa-chevron-right
-                  %span ショルダーバック
+                  %span 
+                    = @item.child_category.category_name
+              -if @item.grandchild_category.present?   
+                %li.item-detail-table__sub-sub-category
+                  = link_to "#", class:"item-detail-table__sub-sub-category"do
+                    %i.fas.fa-chevron-right
+                    %span 
+                      = @item.grandchild_category
         %tr
           %th.th ブランド
           %td.bland
             = link_to "#" do
-              コーチ
+              = @item.brand.brand_name
+        - if @item.size_id
+          %tr
+            %th.th 商品のサイズ
+            %td 
+              = @item.size.size
         %tr
           %th.th 商品の状態
-          %td 目立った傷や汚れなし
+          %td 
+            = @item.item_condition.item_condition
         %tr
           %th.th 配送料の負担
-          %td 送料込み(出品者負担)
+          %td 
+            = @item.ship_fee_bearer.ship_fee_bearer
         %tr
           %th.th 配送の方法
-          %td ゆうゆうメルカリ便
+          %td 
+            = @item.delivery_method.delivery_method
         %tr
           %th.th 配送元地域
           %td.prefecture
             %a 
               = link_to "#" do
-                神奈川県
+                = @item.user.address.prefecture
 
         %tr
           %th.th 発送日の目安
-          %td 1~2日で発送
+          %td 
+            = @item.days_before_ship.days_before_ship
     .item-price-box  
-      %span.item-price ¥4,000円
+      %span.item-price
+        = "¥#{@item.price.to_s(:delimited)}円"
       %span.item-tax (税込)
       %span.item-shipping-fee 送料込み
     .item-buy-btn 
-      = link_to "#", class:"item-buy-btn" do
+      = link_to new_transaction_path(@item), class:"item-buy-btn" do
         購入画面へ進む
     %p.shipping-not-allowed-message この商品はゆうゆうメルカリ便を利用しているため、アプリからのみ購入できます。
     .item-description
       %p.item-description__inner
-      コーチ シグネチャーショルダーバッグ
-      %br
-      %br
-      ゴールド 裏地 パープル
-      %br
-      %br
-      あまり使用した記憶がなく、長期自宅保管な感じです。
-      %br
-      比較的キレイな商品だと思います。
-      %br
-      %br
-      長さ調整ができるので斜め掛けでも
-      そのまま肩にかけてでも使用できます⭐︎
-      %br
-      縦 約32㎝
-      横 約31㎝
-      マチ 約4㎝
-      素人採寸です。
-      %br
-      %br
-      小さくたたんで送付いたしますこと、ご了承下さい。
+        = simple_format(@item.description)
     .item-button-container
       %ul.item-button-left
         %li.item-button-like
@@ -121,6 +108,7 @@
           = link_to "#", class:"item-button-right" do
             %i.fas.fa-lock
             %span あんしん・あんぜんへの取り組み
+
   .item-detail-message
     .message-container
       .message-content
@@ -139,6 +127,21 @@
         %span 送料無料！ナラ100%乾燥薪20キロ！サービス有り！
         %i.fas.fa-chevron-right
   .item-social-media-box
+    .item-edit-btn 商品を編集する
+    .item-delete-btn.js-modal-open 商品を削除する
+    .modal.js-modal
+      .modal__bg.js-modal-close
+      .modal__content
+        .modal__content__wrapper
+          .modal__content__wrapper__title 確認
+          .modal__content__wrapper__sentence-one 削除すると二度と復活できません。
+          .modal__content__wrapper__sentence-two 本当に削除しますか？
+        %ul
+          %li
+            .js-modal-close キャンセル
+          %li
+            = link_to item_path, class: "link-delete", method: :delete do
+              .link-delete__sentence 削除する
     %ul.social-media-box
       %li.share-btn 
         = link_to "#", class:"share-btn" do
@@ -156,24 +159,32 @@
     .items-box-container
       %h2.items-box-head
         = link_to "#", class:"items-box-head" do
-          みぽさんのその他の出品
+          = @item.user.nickname
+          %span
+            のその他の出品
       .items-box-content
         %ul
-          = render "item" 
-          = render "item" 
-          = render "item" 
-          = render "item" 
-          = render "item" 
-          = render "item" 
+          = render partial: "item" , collection: @items.limit(6)
       %h2.items-box-head
         = link_to "#", class:"items-box-head" do
-          コーチのショルダーバッグ  その他の出品
+          = @item.brand.brand_name
+          %span  
+            その他の出品
       .items-box-content
         %ul
-          = render "item" 
-          = render "item" 
-          = render "item" 
-          = render "item" 
-          = render "item" 
-          = render "item" 
-      
+          = render partial: "itemb" , collection: @itembs.limit(6),locals:{item: @itembs}
+  
+.item-show-footer
+  %ul.item-show-footer__content
+    %li.item-show-footer__content__title
+      = link_to "/", class:"item-show-footer__content__title" do
+        Fmarket
+    %li.item-show-footer__content__icon
+      %i.fas.fa-chevron-right
+    %li.item-show-footer__content__item
+      = @item.name
+          
+
+-# .show__breadcrumb
+-#   - breadcrumb :root, @item
+-#   = render "layouts/breadcrumb"

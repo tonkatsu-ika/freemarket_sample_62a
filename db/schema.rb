@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_18_060053) do
+ActiveRecord::Schema.define(version: 2019_11_27_010421) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "post_code", null: false
-    t.string "prefecture", null: false
     t.string "address", null: false
     t.string "building", null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "prefecture_id"
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
@@ -69,11 +69,6 @@ ActiveRecord::Schema.define(version: 2019_11_18_060053) do
     t.bigint "user_id"
     t.string "customer_id"
     t.string "card_id"
-    t.integer "number", null: false
-    t.date "expiration_month", null: false
-    t.date "expiration_year", null: false
-    t.integer "security_code", null: false
-    t.boolean "main_card_flag", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_credit_cards_on_user_id"
@@ -117,7 +112,6 @@ ActiveRecord::Schema.define(version: 2019_11_18_060053) do
     t.integer "price", null: false
     t.bigint "item_condition_id"
     t.bigint "ship_fee_bearer_id"
-    t.bigint "prefecture"
     t.bigint "days_before_ship_id"
     t.bigint "delivery_method_id"
     t.bigint "user_id"
@@ -126,6 +120,7 @@ ActiveRecord::Schema.define(version: 2019_11_18_060053) do
     t.bigint "size_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "prefecture_id"
     t.index ["brand_id"], name: "fk_rails_36708b3aa6"
     t.index ["category_id"], name: "fk_rails_89fb86dc8b"
     t.index ["days_before_ship_id"], name: "fk_rails_91824208cc"
@@ -166,6 +161,15 @@ ActiveRecord::Schema.define(version: 2019_11_18_060053) do
     t.index ["size"], name: "index_sizes_on_size"
   end
 
+  create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "provider"
+    t.string "uid"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
+  end
+
   create_table "transactions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "buyer_id"
     t.bigint "seller_id"
@@ -202,7 +206,9 @@ ActiveRecord::Schema.define(version: 2019_11_18_060053) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "profile", null: false
+    t.string "provider"
+    t.string "uid"
+    t.text "profile"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -224,6 +230,7 @@ ActiveRecord::Schema.define(version: 2019_11_18_060053) do
   add_foreign_key "items", "users"
   add_foreign_key "likes", "items"
   add_foreign_key "likes", "users"
+  add_foreign_key "sns_credentials", "users"
   add_foreign_key "transactions", "grades", column: "grade_by_buyer_id"
   add_foreign_key "transactions", "grades", column: "grade_by_seller_id"
   add_foreign_key "transactions", "items"

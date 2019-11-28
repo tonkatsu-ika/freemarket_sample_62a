@@ -1,6 +1,12 @@
 .top-page__image
-  .top-page__image__wrapper
-    = image_tag "top1.png"
+  %ul.top-page__image__wrapper#index-slide
+    %li
+      = image_tag "top1.png"
+    %li  
+      = image_tag "top1.png"
+    %li  
+      = image_tag "header-slide.png",size: "1440x400"
+      
     -# .top-page__image__wrapper--index
     -#   スマホでかんたん
     -#   %br
@@ -16,336 +22,59 @@
   .favorite-category__bottom
     %ul
       %li
-        = link_to 'レディース', '#', class: "favorite-category__bottom__list"
+        = link_to 'レディース', '#lady', class: "favorite-category__bottom__list"
       %li
-        = link_to 'メンズ', '#', class: "favorite-category__bottom__list"
+        = link_to 'メンズ', '#men', class: "favorite-category__bottom__list"
       %li
-        = link_to '家電・スマホ・カメラ', '#', class: "favorite-category__bottom__list"
+        = link_to '家電・スマホ・カメラ', '#appliance', class: "favorite-category__bottom__list"
       %li
-        = link_to 'おもちゃ・ホビー・グッズ', '#', class: "favorite-category__bottom__list"
+        = link_to 'おもちゃ・ホビー・グッズ', '#hobby', class: "favorite-category__bottom__list"
 
 .new-items-by-category
   .new-items-by-category__wrapper
     %ul
       %li.new-items-by-category__wrapper--list
         .new-items-by-category__wrapper--list__upper
-          .new-items-by-category__wrapper--list__upper__index
+          .new-items-by-category__wrapper--list__upper__index#lady
             レディース新着アイテム
           .new-items-by-category__wrapper--list__upper__more-watch
             = link_to 'もっと見る  ＞', '#', class: 'new-items-by-category__wrapper--list__upper__more-watch'
-        .new-items-by-category__wrapper--list__bottom
-          %ul
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-          .clearfix
+        -#レディース新着アイテム
+        = render partial: 'items/index/lady',collection: @ladies
+        .clearfix
+        
 
       %li.new-items-by-category__wrapper--list
         .new-items-by-category__wrapper--list__upper
-          .new-items-by-category__wrapper--list__upper__index
+          .new-items-by-category__wrapper--list__upper__index#men
             メンズ新着アイテム
           .new-items-by-category__wrapper--list__upper__more-watch
             = link_to 'もっと見る  ＞', '#', class: 'new-items-by-category__wrapper--list__upper__more-watch'
-        .new-items-by-category__wrapper--list__bottom
-          %ul
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-          .clearfix
+        -#メンズ新着アイテム    
+        = render partial: 'items/index/men',collection: @mens 
+        .clearfix
+        
 
       %li.new-items-by-category__wrapper--list
         .new-items-by-category__wrapper--list__upper
-          .new-items-by-category__wrapper--list__upper__index
+          .new-items-by-category__wrapper--list__upper__index#appliance
             家電・スマホ・カメラ新着アイテム
           .new-items-by-category__wrapper--list__upper__more-watch
             = link_to 'もっと見る  ＞', '#', class: 'new-items-by-category__wrapper--list__upper__more-watch'
-        .new-items-by-category__wrapper--list__bottom
-          %ul
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-          .clearfix
+          -#家電スマホカメラ新着アイテム    
+        = render partial: 'items/index/appliance',collection: @appliances
+        .clearfix
 
       %li.new-items-by-category__wrapper--list
         .new-items-by-category__wrapper--list__upper
-          .new-items-by-category__wrapper--list__upper__index
+          .new-items-by-category__wrapper--list__upper__index#hobby
             おもちゃ・ホビー・グッズ新着アイテム
           .new-items-by-category__wrapper--list__upper__more-watch
             = link_to 'もっと見る  ＞', '#', class: 'new-items-by-category__wrapper--list__upper__more-watch'
-        .new-items-by-category__wrapper--list__bottom
-          %ul
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-          .clearfix
+            -#おもちゃ ホビー新着アイテム    
+        = render partial: 'items/index/hobby',collection: @hobbies
+        .clearfix
+
 
 .favorite-category
   .favorite-category__headding
@@ -353,338 +82,57 @@
   .favorite-category__bottom
     %ul
       %li
-        = link_to 'シャネル', '#', class: "favorite-category__bottom__list"
+        = link_to 'シャネル', '#chanel', class: "favorite-category__bottom__list"
       %li
-        = link_to 'ルイヴィトン', '#', class: "favorite-category__bottom__list"
+        = link_to 'ルイヴィトン', '#louis', class: "favorite-category__bottom__list"
       %li
-        = link_to 'シュプリーム', '#', class: "favorite-category__bottom__list"
+        = link_to 'シュプリーム', '#supreme', class: "favorite-category__bottom__list"
       %li
-        = link_to 'ナイキ', '#', class: "favorite-category__bottom__list"
+        = link_to 'ナイキ', '#nike', class: "favorite-category__bottom__list"
 
 .new-items-by-category
   .new-items-by-category__wrapper
     %ul
       %li.new-items-by-category__wrapper--list
         .new-items-by-category__wrapper--list__upper
-          .new-items-by-category__wrapper--list__upper__index
+          .new-items-by-category__wrapper--list__upper__index#chanel
             シャネル新着アイテム
           .new-items-by-category__wrapper--list__upper__more-watch
             = link_to 'もっと見る  ＞', '#', class: 'new-items-by-category__wrapper--list__upper__more-watch'
-        .new-items-by-category__wrapper--list__bottom
-          %ul
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-          .clearfix
+        = render partial: 'items/index/chanel',collection: @chanels
+        .clearfix
+
 
       %li.new-items-by-category__wrapper--list
         .new-items-by-category__wrapper--list__upper
-          .new-items-by-category__wrapper--list__upper__index
+          .new-items-by-category__wrapper--list__upper__index#louis
             ルイヴィトン新着アイテム
           .new-items-by-category__wrapper--list__upper__more-watch
             = link_to 'もっと見る  ＞', '#', class: 'new-items-by-category__wrapper--list__upper__more-watch'
-        .new-items-by-category__wrapper--list__bottom
-          %ul
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-          .clearfix
+        = render partial: 'items/index/louis',collection: @louises
+        .clearfix
+          
 
       %li.new-items-by-category__wrapper--list
         .new-items-by-category__wrapper--list__upper
-          .new-items-by-category__wrapper--list__upper__index
+          .new-items-by-category__wrapper--list__upper__index#supreme
             シュプリーム新着アイテム
           .new-items-by-category__wrapper--list__upper__more-watch
             = link_to 'もっと見る  ＞', '#', class: 'new-items-by-category__wrapper--list__upper__more-watch'
-        .new-items-by-category__wrapper--list__bottom
-          %ul
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-          .clearfix
+        = render partial: 'items/index/supreme',collection: @supremes
+        .clearfix
 
       %li.new-items-by-category__wrapper--list
         .new-items-by-category__wrapper--list__upper
-          .new-items-by-category__wrapper--list__upper__index
+          .new-items-by-category__wrapper--list__upper__index#nike
             ナイキ新着アイテム
           .new-items-by-category__wrapper--list__upper__more-watch
             = link_to 'もっと見る  ＞', '#', class: 'new-items-by-category__wrapper--list__upper__more-watch'
-        .new-items-by-category__wrapper--list__bottom
-          %ul
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-            %li
-              = link_to "#", class: "new-items-by-category__wrapper--list__bottom__link" do
-                .new-items-by-category__wrapper--list__bottom__image
-                  = image_tag "mercari.jpg", size: "188x188", alt: "商品イメージ"
-                  %span
-                    ¥4,900
-                .new-items-by-category__wrapper--list__bottom__item-name "ここは文字数制限すすすすする".truncate(値)
-          .clearfix
+        = render partial: 'items/index/nike',collection: @nikes
+        .clearfix
 
-= link_to "#", class: "exhibit-btn" do
+
+= link_to new_item_path, class: "exhibit-btn" do
   .exhibit-btn__sentence 出品
   .exhibit-btn__camera
     %i.fa.fa-camera

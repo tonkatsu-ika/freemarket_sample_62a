@@ -1,8 +1,8 @@
 class TransactionsController < ApplicationController
 
-  # レイアウトを指定する
-
+  layout 'users' ## とりあえずここにかいておく。
   def new
+    
   end
 
   def create
