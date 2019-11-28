@@ -201,11 +201,16 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
 
     //  画像枚数に応じてdropzoneの幅と表示を調整する
     var imageCountAtLoad = $('.dropzone-container').find('.img_view').length;
+    // 1段目のdropzoneを表示
     if ( imageCountAtLoad < 4 ) {
       dropzone.css({ //変数dropzoneの要素のcssに
         'width': `calc(100% - (126px * ${imageCountAtLoad}))`  // スタイルを当てる
       });
+    // 2段目のdropzoneを表示
     } else if ( imageCountAtLoad >= 5 ) {
+      dropzone.css({
+        'display': 'none'
+      })
       dropzone2.css({ // 変数dropzone2のcssに
         'display': 'block'  // display: blockを追加（初めはdisplay:noneを設定）
       });
