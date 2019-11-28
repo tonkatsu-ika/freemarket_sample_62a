@@ -6,15 +6,17 @@
       .card-contents__main__section
         .card-contents__main__section__text
           クレジットカード一覧
-        = form_with(url: "#", method: :DELETE, class: "card-contents__main__section__form") do |f|
-          = image_tag("fmarket_logo_red.svg", size: "134x20", alt: "Fmarket", class: "card-contents__main__section__form__image" )
-          .card-contents__main__section__form__number
-            ************0000
-          .card-contents__main__section__form__date
-            11/15
-          = f.submit '削除する', class: "card-contents__main__section__form__btn"
-      .card-contents__main__method
-        = link_to("#", class: "card-contents__main__method__text") do
-          支払い方法について
-          = fa_icon "chevron-right", class: "card-contents__main__method__text__icon"
-
+        - if @card.present?
+          = form_with(url: "#", method: :DELETE, class: "card-contents__main__section__form") do |f|
+            = image_tag "credit-cards/#{@card_src}", width: '26', height: '20', alt: @card_brand, id: "card_image", class: "card-contents__main__section__form__image"
+            .card-contents__main__section__form__number
+              = "**** **** **** " + @card_information.last4
+            .card-contents__main__section__form__date
+              - exp_month = @card_information.exp_month.to_s
+              - exp_year = @card_information.exp_year.to_s.slice(2,3)
+              = exp_month + " / " + exp_year
+            = f.submit '削除する', class: "card-contents__main__section__form__btn"
+        .card-contents__main__method
+          = link_to("#", class: "card-contents__main__method__text") do
+            支払い方法について
+            = fa_icon "chevron-right", class: "card-contents__main__method__text__icon"
