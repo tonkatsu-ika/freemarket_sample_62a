@@ -1,2 +1,3 @@
-%li.slide-item
-  = image_tag "footer_image.png", size: "300x300"
+- @item.item_images.each do |image|
+  %li.slide-item
+    = image_tag "#{image.image_url}", size: "300x300"

@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
-
-  layout 'basic', only: :new
   
+  layout 'basic', only: :new
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :get_current_item, only: [:show, :edit, :update, :destroy]
 
   # レイアウトはnewとcreateのとき変更する
@@ -107,6 +107,8 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item_images = @item.item_images
+    #binding.pry
     render layout: 'basic'
   end
 
@@ -128,6 +130,10 @@ class ItemsController < ApplicationController
   end
 
   def show
+    user_id = @item.user_id
+    @items = Item.where(user_id: user_id).includes(:item_images)
+    brand_id = @item.brand_id
+    @itembs = Item.where(brand_id: brand_id).includes(:item_images)
   end
 
   private
@@ -137,6 +143,7 @@ class ItemsController < ApplicationController
 
   # 現在のアイテムをインスタンス変数@itemに格納する
   def get_current_item
-    @item = Item.includes(:category, :user).find(params[:id])
+    @item = Item.includes(:category, :user, :item_images).find(params[:id])
+
   end
 end
