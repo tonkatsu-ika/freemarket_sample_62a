@@ -33,3 +33,6 @@
 
 # seedで作るitem_imagesを除外
 /app/assets/images/item_images/*
+
+# creden
+config/credential.yml.enc
