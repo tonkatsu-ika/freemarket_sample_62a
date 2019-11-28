@@ -27,6 +27,10 @@
                   %br
                   もしくはクリックしてください
         .clearfix
+      
+      -if flash[:item_images].present?
+        .flash-message
+          =flash[:item_images]
 
     .sell-wrapper__form.sell-wrapper__form__content
       .sell-wrapper__form__content__name
@@ -35,12 +39,18 @@
           %span.sell-wrapper__form--must.sell-wrapper__form__content__must 必須
         .sell-wrapper__form__content__name__bottom
           = f.text_field :name, class: 'sell-wrapper__form__content__name__bottom__text-box', placeholder: '商品名（必須 40文字まで）'
+      -if flash[:name].present?
+        .flash-message
+          =flash[:name]
       .sell-wrapper__form__content__explain
         .sell-wrapper__form__content__name__upper
           .sell-wrapper__form__content__name__title 商品の説明
           %span.sell-wrapper__form--must.sell-wrapper__form__content__must 必須
         .sell-wrapper__form__content__name__bottom
           = f.text_area :description, class: 'sell-wrapper__form__content__explain__bottom__text-box', placeholder: '商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'
+      -if flash[:description].present?
+        .flash-message
+          =flash[:description]
 
     .sell-wrapper__form.sell-wrapper__form__detail
       %h3.sell-wrapper__form__detail__left 商品の詳細
@@ -50,6 +60,9 @@
             .sell-wrapper__form__content__name__title カテゴリー
             %span.sell-wrapper__form--must.sell-wrapper__form__content__must 必須
           = f.collection_select :category_id, Category.roots, :id, :category_name, {prompt: true}, {class: 'sell-wrapper__form__detail__right__upper__select sell-wrapper__form__select'}
+        -if flash[:category_id].present?
+          .flash-message
+            =flash[:category_id]
         .sell-wrapper__form__detail__right__center
           .sell-wrapper__form__detail__right__upper__category
             .sell-wrapper__form__content__name__title ブランド
@@ -60,7 +73,9 @@
             .sell-wrapper__form__content__name__title 商品の状態
             %span.sell-wrapper__form--must.sell-wrapper__form__content__must 必須
           = f.collection_select :item_condition_id, ItemCondition.all, :id, :item_condition, {prompt: true}, {class: 'sell-wrapper__form__select'}
-
+        -if flash[:item_condition_id].present?
+          .flash-message
+            =flash[:item_condition_id]
 
     .sell-wrapper__form.sell-wrapper__form__delivery
       %h3.sell-wrapper__form__detail__left 配送について
@@ -70,21 +85,33 @@
             .sell-wrapper__form__content__name__title 配送料の負担
             %span.sell-wrapper__form--must.sell-wrapper__form__content__must 必須
           = f.collection_select :ship_fee_bearer_id, ShipFeeBearer.all, :id, :ship_fee_bearer, {prompt: true}, {class: 'sell-wrapper__form__select'}
+        -if flash[:ship_fee_bearer_id].present?
+          .flash-message
+            =flash[:ship_fee_bearer_id]
         .sell-wrapper__form__detail__right__bottom
           .sell-wrapper__form__detail__right__upper__category
             .sell-wrapper__form__content__name__title 配送の方法
             %span.sell-wrapper__form--must.sell-wrapper__form__content__must 必須
           = f.collection_select :delivery_method_id, DeliveryMethod.all, :id, :delivery_method, {prompt: true}, {class: 'sell-wrapper__form__select'}
+        -if flash[:delivery_method_id].present?
+          .flash-message
+            =flash[:delivery_method_id]
         .sell-wrapper__form__detail__right__bottom
           .sell-wrapper__form__detail__right__upper__category
             .sell-wrapper__form__content__name__title 発送元の地域
             %span.sell-wrapper__form--must.sell-wrapper__form__content__must 必須
           = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: true}, {class: 'sell-wrapper__form__select'}
+        -if flash[:prefecture_id].present?
+          .flash-message
+            =flash[:prefecture_id]
         .sell-wrapper__form__detail__right__bottom
           .sell-wrapper__form__detail__right__upper__category
             .sell-wrapper__form__content__name__title 発送までの日数
             %span.sell-wrapper__form--must.sell-wrapper__form__content__must 必須
           = f.collection_select :days_before_ship_id, DaysBeforeShip.all, :id, :days_before_ship, {prompt: true}, {class: 'sell-wrapper__form__select'}
+        -if flash[:days_before_ship_id].present?
+          .flash-message
+            =flash[:days_before_ship_id]
 
     .sell-wrapper__form.sell-wrapper__form__price
       %h3.sell-wrapper__form__detail__left 販売価格(300〜9,999,999)
@@ -97,8 +124,11 @@
                 .sell-wrapper__form__content__must
                   %span.sell-wrapper__form--must 必須
               .sell-wrapper__form__price__first__wrapper__right
-                ¥
+                %span ¥
                 = f.text_field :price, class: 'sell-wrapper__form__price__first__wrapper__right__money', placeholder: '例）300'
+            -if flash[:price].present?
+              .flash-message
+                =flash[:price]
           %li.sell-wrapper__form__price__second
             .sell-wrapper__form__price__second__left 販売手数料(10%)
             .sell-wrapper__form__price__second__right -
