@@ -58,9 +58,9 @@ class Item < ApplicationRecord
   #   itemのcategory_idが子カテゴリ -> nilを返す
   def grandchild_category
     if self.is_grandchild?
-      self.category
+      self.category.category_name
     else   
-      return nil
+      return " "
     end
   end
 
