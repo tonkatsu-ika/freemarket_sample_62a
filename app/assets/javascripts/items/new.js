@@ -60,16 +60,18 @@ $(document).on('turbolinks:load', function(){
   }
 
 var patternForEditItemPath = new RegExp('\/items\/\\d{1,}\/edit');
+// 商品編集ページの場合はtrue
+var isItemEditPath = patternForEditItemPath.test(location.pathname); 
 
   // 親カテゴリーのセレクトがチェンジされたら
   $('.sell-wrapper__form__detail__right__upper__select').change(function(){
     // 編集ページと出品ページで親カテゴリの取り方を変える
-    if (patternForEditItemPath.test(location.pathname)) {
+    if ( isItemEditPath ) {
+      console.log('isItemEditPath called');
       var parent_category = $('.sell-wrapper__form__select__parent option:selected').text();
     } else {
       var parent_category = $('.sell-wrapper__form__detail__right__upper__select option:selected').text(); // 親カテゴリーのvalue属性値を取得
     }
-    console.log(parent_category);
     // 商品編集時のみ：子カテゴリを「---」にし、既に表示されている孫カテゴリとサイズを消去する
     $('.sell-wrapper__form__select__child').remove();
     $('.sell-wrapper__form__select__grandchild').remove();
@@ -83,7 +85,6 @@ var patternForEditItemPath = new RegExp('\/items\/\\d{1,}\/edit');
       dataType: 'json'
     })
     .done(function(data){
-      console.log("called");
       $('.sell-wrapper__form__detail__right__upper').children('.sell-wrapper__form__detail__right__upper__select__child').remove();
       var insertHTML = '';
       data.forEach(function(child){
@@ -129,12 +130,12 @@ var patternForEditItemPath = new RegExp('\/items\/\\d{1,}\/edit');
         .done(function(data){
           $('.sell-wrapper__form__detail__right__upper__select__child').children('.sell-wrapper__form__detail__right__upper__select__grandchild').remove();
           var insertHTML = '';
-          data.forEach(function(size){
+          data.forEach(function(size) {
             insertHTML += appendOptionSize(size);
           });
           appendSizeBox2(insertHTML);
         })
-        .fail(function(){
+        .fail(function() {
           alert('失敗しました');
         })
       }
@@ -153,24 +154,24 @@ var patternForEditItemPath = new RegExp('\/items\/\\d{1,}\/edit');
       data: { grandchild_id: grandchild_category_id},
       dataType: 'json'
     })
-    .done(function(data){
+    .done(function(data) {
       $('.sell-wrapper__form__detail__right__upper__select__grandchild').children('.sell-wrapper__form__detail__right__bottom').remove();
       if ($.isEmptyObject(data) != true){
         var insertHTML = '';
-        data.forEach(function(size){
+        data.forEach(function(size) {
           insertHTML += appendOptionSize(size);
         });
         appendSizeBox1(insertHTML);
       }
     })
-    .fail(function(){
+    .fail(function() {
       $('.sell-wrapper__form__detail__right__upper__select__grandchild').children('.sell-wrapper__form__detail__right__bottom');
     })
   });
 
 
   // 販売手数料と利益を計算して表示↓
-  $('.sell-wrapper__form__price__first__wrapper__right__money').keyup(function(){
+  $('.sell-wrapper__form__price__first__wrapper__right__money').keyup(function() {
     var price = $(this).val();
     if (price >= 300 && price <= 9999999 && price.match(/^([1-9]\d*|0)$/) ) {
       var fee = price * 0.1;
@@ -196,33 +197,42 @@ var patternForEditItemPath = new RegExp('\/items\/\\d{1,}\/edit');
   var preview = $('#preview'); // 
   var preview2 = $('#preview2');
 
-  // 画面ロード時
-  //  画像枚数に応じてdropzoneの幅を調整する
-  var imageCountAtLoad = $('.dropzone-container').find('.img_view').length;
-  if ( imageCountAtLoad < 4 ) {
-    dropzone.css({ //変数dropzoneの要素のcssに
-      'width': `calc(100% - (126px * ${imageCountAtLoad}))`  // スタイルを当てる
-    });
-  } else if ( imageCountAtLoad >= 5 ) {
-    dropzone2.css({ // 変数dropzone2のcssに
-      'display': 'block'  // display: blockを追加（初めはdisplay:noneを設定）
-    });
-    dropzone2.css({ //変数dropzoneの要素のcssに
-      'width': `calc(100% - (126px * ${imageCountAtLoad -5 }))`  // スタイルを当てる
-    });
-    if(imageCountAtLoad > 5) {
-      dropzone2.css({
-        'margin-left': '10px'
-      })
+  // 画面ロード時（商品編集ページだけで動くコード）
+  if ( isItemEditPath ) {
+
+    //  画像枚数に応じてdropzoneの幅と表示を調整する
+    var imageCountAtLoad = $('.dropzone-container').find('.img_view').length;
+    if ( imageCountAtLoad < 4 ) {
+      dropzone.css({ //変数dropzoneの要素のcssに
+        'width': `calc(100% - (126px * ${imageCountAtLoad}))`  // スタイルを当てる
+      });
+    } else if ( imageCountAtLoad >= 5 ) {
+      dropzone2.css({ // 変数dropzone2のcssに
+        'display': 'block'  // display: blockを追加（初めはdisplay:noneを設定）
+      });
+      dropzone2.css({ //変数dropzoneの要素のcssに
+        'width': `calc(100% - (126px * ${imageCountAtLoad -5 }))`  // スタイルを当てる
+      });
+      if(imageCountAtLoad > 5) {
+        dropzone2.css({
+          'margin-left': '10px'
+        })
+      }
+      if(imageCountAtLoad == 9) {  // 配列imagesのlengthが9なら
+        dropzone2.find('p').replaceWith('<p>あと1枚です</p>')  // dropzone2の子要素pタグのところを()の中身に置き換える
+      }
+      if(imageCountAtLoad == 10) {
+        dropzone2.css({
+          'display': 'none'
+        })
+      }
     }
-    if(imageCountAtLoad == 9) {  // 配列imagesのlengthが9なら
-      dropzone2.find('p').replaceWith('<p>あと1枚です</p>')  // dropzone2の子要素pタグのところを()の中身に置き換える
-    }
-    if(imageCountAtLoad == 10) {
-      dropzone2.css({
-        'display': 'none'
-      })
-    }
+    
+    // 商品編集画面ロード時にinputs, imagesに値を格納
+    inputs = $('.dropzone-box').find('.upload-image');
+    console.log(inputs[1]);
+    images = $('.dropzone-container').find('.img_view');
+    console.log(images[1]);
   }
 
   // 画像追加時
@@ -240,6 +250,12 @@ var patternForEditItemPath = new RegExp('\/items\/\\d{1,}\/edit');
     }
     reader.readAsDataURL(file); //ファイルの読み込みをしている（この一行がなければ画像の枠しか表示されない）
     images.push(img); // 配列imagesにimgを追加する（この時のimgにはsrc属性にurlがある）
+
+    //　あとで消す
+    console.log(this);
+    console.log(`inputs: ${inputs}`);
+    console.log(`images: ${images}`);
+    
 
     if(images.length >= 5) { // もし配列imagesの要素が5つ以上なら
       dropzone2.css({ // 変数dropzone2のcssに
@@ -287,8 +303,9 @@ var patternForEditItemPath = new RegExp('\/items\/\\d{1,}\/edit');
   });
   // 画像削除時
   $(document).on('click', '.delete', function() {  // 追加要素の削除ボタンを押したら
+    
     var target_image = $(this).parent().parent();  // 変数target_imageに.deleteの親の親の要素を代入
-    $.each(inputs, function(index, input){ //配列inputsの一つ一つ(input)に対して
+    $.each(inputs, function(index, input) { //配列inputsの一つ一つ(input)に対して
       if ($(this).data('image') == target_image.data('image')){  // input要素のdata-imageの値と、投稿した画像のdata-imageの値が同じものに対して
         $(this).remove(); // 次のinputタグ(thisの中身)を削除
         target_image.remove(); // 削除したい画像を削除

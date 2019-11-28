@@ -20,7 +20,8 @@
             .dropzone-area
               = i.label :image_url, class: "dropzone-box", for: "upload-image" do
                 .input_area
-                  = i.file_field :image_url, multiple: true, name: 'item_images[image_url][]', id: "upload-image", class: "upload-image dropzone", 'data-image': 0
+                  - @item.item_images.each_with_index do |item_image, index|
+                    = i.file_field :image_url, multiple: true, name: 'item_images[image_url][]', id: "upload-image", class: "upload-image dropzone", 'data-image': 0
                   .boxFileSelect
                     %p
                       ドロップ&amp;ドラッグ
@@ -36,11 +37,14 @@
                     .btn.delete 削除
             .dropzone-area2
               = i.label :image_url, class: "dropzone-box", for: "upload-image" do
-                .boxFileSelect
-                  %p
-                    ドロップ&amp;ドラッグ
-                    %br
-                    もしくはクリックしてください
+                .input_area
+                  - @item.item_images.each_with_index do |item_image, index|
+                    = i.file_field :image_url, multiple: true, name: 'item_images[image_url][]', id: "upload-image", class: "upload-image dropzone", 'data-image': "#{index}"
+                  .boxFileSelect
+                    %p
+                      ドロップ&amp;ドラッグ
+                      %br
+                      もしくはクリックしてください
       .clearfix
 
     .sell-wrapper__form.sell-wrapper__form__content

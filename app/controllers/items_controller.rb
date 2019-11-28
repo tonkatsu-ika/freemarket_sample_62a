@@ -44,7 +44,6 @@ class ItemsController < ApplicationController
 
   def edit
     @item_images = @item.item_images
-    #binding.pry
     render layout: 'basic'
   end
 
