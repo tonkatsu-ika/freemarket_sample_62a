@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :item do
     name { "商品名" }
+    # item_images { 'aaa' }
     description { "こちらの商品がオススメです" }
     item_condition_id { 1 }
     ship_fee_bearer_id { 1 }

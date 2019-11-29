@@ -14,17 +14,17 @@
         %li.identification-contents__form__person__li
           = f.label "お名前", class: "identification-contents__form__person__li__label"
           %p.identification-contents__form__person__li__profile
-            = @user.last_name
-            = @user.first_name
+            = current_user.last_name
+            = current_user.first_name
         %li.identification-contents__form__person__li
           = f.label "お名前カナ", class: "identification-contents__form__person__li__label"
           %p.identification-contents__form__person__li__profile
-            = @user.last_name_kana
-            = @user.first_name_kana
+            = current_user.last_name_kana
+            = current_user.first_name_kana
         %li.identification-contents__form__person__li
           = f.label "生年月日", class: "identification-contents__form__person__li__label" 
           %p.identification-contents__form__person__li__profile
-            = @user.birthday.strftime("%Y/%-m/%-d")
+            = current_user.birthday.strftime("%Y/%-m/%-d")
         %li.identification-contents__form__person__li
           = f.label "郵便番号", class: "identification-contents__form__person__li__label"
           %span.identification-contents__form__person__li__span

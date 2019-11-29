@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
     }
 
-  resources :mypage, only: [:index, :update] do
+  resources :mypage, only: [:index, :update, :create] do
     collection do
       get :profile
       get :card

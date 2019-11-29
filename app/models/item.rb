@@ -17,6 +17,8 @@ class Item < ApplicationRecord
 
   validates :name, presence: true
   validates :name, length: { maximum: 40 }
+  # validates :item_images, presence: true
+  # validate :image_validation
   validates :description, presence: true
   validates :description, length: { maximum: 1000 }
   validates :item_condition_id, presence: true
@@ -26,5 +28,60 @@ class Item < ApplicationRecord
   validates :category_id, presence: true
   validates :price, presence: true
   validates :price, numericality: { only_integer: true, greater_than: 299, less_than: 10000000} # 値段が300円以上9,999,999円以下であること
+
+  #
+  # ビジネスロジック（カテゴリ）
+  #
+
+  # 現在の商品の親カテゴリオブジェクトを返す
+  def parent_category
+    self.category.parent.parent
+  end
+
+  # 現在の商品の子カテゴリオブジェクトを返す
+  def child_category
+    self.category.parent
+  end
+  
+  # 現在の商品の孫カテゴリオブジェクトを返す
+  def grandchild_category
+    self.category
+  end
+
+  # 親カテゴリの一覧を取得
+  def parent_categories
+    self.parent_category.self_and_siblings
+  end
+
+  # 子カテゴリの一覧を取得
+  def child_categories
+    self.child_category.self_and_siblings
+  end
+
+  # 孫カテゴリの一覧を取得
+  def grandchild_categories
+    self.grandchild_category.self_and_siblings
+  end
+
+  
+
+
+  #
+  # ビジネスロジック（サイズ）
+  #
+
+  # 現在の商品が属するカテゴリのサイズ一覧を返す
+  def sizes
+    self.category.sizes
+  end
+
+  # 現在の商品が属するカテゴリがサイズ一覧を持っているか判定
+  def has_sizes?
+    if self.category.sizes.length != 0
+      true
+    else
+      false
+    end
+  end
 
 end
