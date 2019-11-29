@@ -27,6 +27,7 @@ class SignupController < ApplicationController
 
   #住所入力
   def address
+    
     @user = User.new
     session[:telephone] = user_params[:telephone]
     @user.build_address
@@ -40,18 +41,20 @@ class SignupController < ApplicationController
 
     @user = User.new(session[:user_params])
     @user.build_address(user_params[:address_attributes])
+    password_length = 10
+    @user.password = Devise.friendly_token(password_length)
+    @user.password_confirmation = @user.password
     if @user.save
       session[:id] = @user.id
-
+      
       if user_signed_in?
       #ユーザーログイン
         session[:user_id] = nil
       else  
-        
         sign_in User.find(session[:id]) unless user_signed_in?   
       end
       sign_in User.find(session[:id]) unless user_signed_in?  
-    else
+    else      
       redirect_to action: 'payment'
     end
     
@@ -85,6 +88,8 @@ class SignupController < ApplicationController
       :first_name_kana,
       :birthday,
       :telephone,
+      :uid,
+      :provider,
       address_attributes:[:id, :post_code, :prefecture_id, :address,:building]
     )
   end
