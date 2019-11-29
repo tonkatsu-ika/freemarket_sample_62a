@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe PurchaseController do
+describe TransactionsController do
 
   describe "GET #done" do
 

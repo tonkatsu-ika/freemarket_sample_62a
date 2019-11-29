@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   # レイアウトはnewとcreateのとき変更する
 
   def index
+    
   end
 
   def new
@@ -57,6 +58,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+
   end
 
   private
