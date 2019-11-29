@@ -20,7 +20,7 @@ class Item < ApplicationRecord
 
   validates :name, presence: true
   validates :name, length: { maximum: 40 }
-  validates :item_images, presence: true
+  # validates :item_images, presence: true
   # validate :image_validation
   validates :description, presence: true
   validates :description, length: { maximum: 1000 }
