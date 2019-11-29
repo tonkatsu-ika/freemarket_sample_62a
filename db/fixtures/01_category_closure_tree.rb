@@ -17,5 +17,4 @@ if Category.count == 0
     end
     p records[i]
   end
-
 end

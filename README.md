@@ -55,7 +55,7 @@
 
 ### Association
 - belongs_to :user
-
+- belongs_to :prefecture
 
 ## credit_cards table
 |Column|Type|Options|
