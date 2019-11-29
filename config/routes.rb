@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'purchase/index'
+  get 'purchase/done'
   root 'items#index'
   
   get 'credit_card/new'
@@ -50,7 +52,16 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :transactions, only: [:index] do
+    collection do
+      get 'index', to: 'transactions#index'
+      post 'index', to: 'transactions#create'
+      post 'pay', to: 'transactions#pay'
+      get 'done', to: 'transactions#done'
+      get 'new', to: 'transactions#new'
+    end
+  end
+
   resources :users, only: :show
-  resources :transactions, only: [:new, :create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

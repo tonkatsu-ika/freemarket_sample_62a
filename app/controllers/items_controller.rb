@@ -134,6 +134,7 @@ class ItemsController < ApplicationController
     @items = Item.where(user_id: user_id).includes(:item_images)
     brand_id = @item.brand_id
     @itembs = Item.where(brand_id: brand_id).includes(:item_images)
+
   end
 
   private

@@ -17,13 +17,13 @@ class User < ApplicationRecord
 
   has_many :bought_from, class_name: "Transaction", foreign_key: "seller_id", dependent: :destroy
   has_many :sellers, through: :sold_to
-
   has_one :address, dependent: :destroy
   belongs_to_active_hash :prefecture
   accepts_nested_attributes_for :address
   has_one :credit_card, dependent: :destroy
 
   has_many :sns_credentials, dependent: :destroy
+
   
   ## validation
   validates :telephone, numericality: { allow_blank: true }
