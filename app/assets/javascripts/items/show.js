@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load', function(){
   let slider = $("#slider");
   let thumbnailItem = $("#thumbnail-list .thumbnail-item");
   
