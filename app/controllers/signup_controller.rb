@@ -70,6 +70,15 @@ class SignupController < ApplicationController
   def auth
     @user = User.new
   end
+  #リロード時のページを指定
+  def show
+    session[:user_params] = nil
+    session[:address_attributes] = nil 
+    session[:telephone] = nil
+    session[:user_id] = nil
+    flash[:danger] = '不正な処理が行われました'
+    redirect_to action: 'registlation'
+  end
   
   private
   # 許可するキーを設定
