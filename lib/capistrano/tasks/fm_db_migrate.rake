@@ -64,6 +64,8 @@ namespace :deploy do
            mig_order.each do |mig_ver|
              execute :bundle, "exec rails db:migrate:up VERSION=#{mig_ver}"
            end
+           
+           invoke :'deploy:fm_db_seed_fu' 
 
            info "Host #{host} (#{host.roles.to_a.join(', ')})"
 
