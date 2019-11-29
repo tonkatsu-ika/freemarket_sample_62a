@@ -34,7 +34,7 @@ class TransactionsController < ApplicationController
     :customer => card.customer_id, #顧客ID
     :currency => 'jpy', #日本円
   )
-    # Transaction.create({id: current_user.id,buyer_id: current_user.id,seller_id: current_user.id,item_id: 4,grade_by_buyer_id: 2,comment_by_buyer: "aa",grade_by_seller_id: 2,comment_by_seller: "3",transaction_status: 2,payment_method_id: 1})
+    Transaction.create({id: current_user.id,buyer_id: current_user.id,seller_id: current_user.id,item_id: 4,grade_by_buyer_id: 2,comment_by_buyer: "aa",grade_by_seller_id: 2,comment_by_seller: "3",transaction_status: 2,payment_method_id: 1})
     # itemの情報を持って来られるようになったら、上記のコメントアウトを外し中身を変更する
     redirect_to action: 'done' #完了画面に移動
   end
