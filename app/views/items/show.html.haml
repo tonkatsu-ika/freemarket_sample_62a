@@ -88,7 +88,7 @@
         %span.item-shipping-fee 送料込み
       - if current_user.id != @item.user_id
         .item-buy-btn 
-          = link_to new_transaction_path(@item), class:"item-buy-btn" do
+          = link_to transaction_path(@item), class:"item-buy-btn" do
             購入画面へ進む
       .item-description
         %p.item-description__inner

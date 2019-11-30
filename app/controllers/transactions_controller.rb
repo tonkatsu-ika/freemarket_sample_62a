@@ -1,8 +1,9 @@
 class TransactionsController < ApplicationController
   require 'payjp'
   layout 'users' ## とりあえずここにかいておく。
-  def new
-    
+
+  def show
+    @item = Item.find(params[:id])
   end
 
   def create
