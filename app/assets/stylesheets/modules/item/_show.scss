@@ -155,10 +155,10 @@
       color: $fm-red;
     }
     .item-description {
-        font-size: 18px;
-        color: #333;
-        margin: 40px 40px 20px 40px;
-        line-height: 1.5em;
+      font-size: 18px;
+      color: #333;
+      margin: 40px 40px 20px 40px;
+      line-height: 1.5em;
     }
     .item-button-container {
       height: 80px;
@@ -391,38 +391,67 @@
   .items-in-user-profile {
     margin: 0 auto ;
     .items-box-container {
-      width: 700px;
+      width: 750px;
       margin: 30px auto 0 auto;
       .items-box-head {
         text-decoration: none;
         color: #0099e8;
         font-size: 22px;
+        margin-left: 11px;
       }
       .items-box-content {
-        height: 720px;
-        width: 700px;
+        width: 750px;
+        padding-bottom: 30px;
         ul {
-          width: 700px;
+          width: 745px;
           display: flex;
           flex-wrap: wrap;
-          justify-content: space-between;
+          li {
+            margin-left: 23px;
+            margin-right: -2px;
+          }
         }
       }
     }
-
   }
 }
 
+.item-box__image {
+  height: 220px;
+}
 
+.item-show-footer{
+  width: 100vw;
+  height: 48px;
+  position: relative;
+  background-color: #f5f5f5;
+  border-top: 1px solid #eee;
+  &__content{
+    line-height: 48px;
+    list-style: none;
+    display: flex;
+    margin: 0 130px;
+    &__title {
+      text-decoration: none;
+      color: black;
+      font-weight: normal;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    &__icon {
+      margin: 0 10px;
+      color: #888;
+    }
+    &__item {
+      font-weight: bold;
+    }
+  }
+}
 
 .fas fa-chevron-left slick-arrow{
   position: relative;
   top: 30px;
   background-color: red;
   color: red;
-}
-.show__breadcrumb {
-  background-color: $bg-mypage;
-  border-top: 1px solid #eee;
-
 }
