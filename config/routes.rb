@@ -50,7 +50,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :transactions, only: [:index] do
+  resources :transactions, only: [:index, :show] do
     collection do
       get 'index', to: 'transactions#index'
       post 'index', to: 'transactions#create'
