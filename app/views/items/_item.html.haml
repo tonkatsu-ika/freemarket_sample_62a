@@ -12,7 +12,6 @@
 %li.item-box
   = link_to item_path(item), class: "new-items-by-category__wrapper--list__bottom__link",data: {"turbolinks"=>false} do
     .item-box__image
-      -binding.pry
       = image_tag "#{item.item_images[0].image_url}", size: "220x220", alt: "商品イメージ"
     %h3.item-box__item-name 
       = item.name.truncate(25)
