@@ -29,8 +29,10 @@ class User < ApplicationRecord
   validates :telephone, numericality: { allow_blank: true }
   validates :nickname, presence: true
   validates :last_name, presence: true
+  # validates :last_name_kana, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。'
   validates :last_name_kana, presence: true
   validates :first_name, presence: true
+  # validates :first_name_kana, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。'
   validates :first_name_kana, presence: true
   validates :birthday, presence: true
   validates :email, uniqueness: true
@@ -39,7 +41,7 @@ class User < ApplicationRecord
   validates :password, presence: true, unless: :uid?
 
   ##sns auth
- 
+
 
    def self.find_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first

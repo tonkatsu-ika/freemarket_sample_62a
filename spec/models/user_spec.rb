@@ -89,6 +89,18 @@ RSpec.describe User, type: :model do
           user.valid?
           expect(user.errors[:password]).to include("は6文字以上で入力してください")
         end
+        #first_name_kanaがカタカナ以外では登録できないこと
+        it "is invalid without a first_name_kana" do
+          user = build(:user, first_name_kana: "しけん")
+          user.valid?
+          expect(user.errors[:first_name_kana]).to include("はカタカナで入力して下さい。")
+        end
+        #last_name_kanaがカタカナ以外では登録できないこと
+        it "is invalid without a first_name_kana" do
+          user = build(:user, first_name_kana: "たんたい")
+          user.valid?
+          expect(user.errors[:first_name_kana]).to include("はカタカナで入力して下さい。")
+        end
       end
   end
 end

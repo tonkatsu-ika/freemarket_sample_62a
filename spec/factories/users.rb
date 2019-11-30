@@ -8,7 +8,7 @@ FactoryBot.define do
     first_name_kana       {"シケン"}
     last_name             {"単体"}
     last_name_kana        {"タンタイ"} 
-    birthday              {"20191116"} 
+    birthday              {"2019-11-16"} 
     telephone             {"09046131596"}
     profile               {"初めまして。"}
   end
