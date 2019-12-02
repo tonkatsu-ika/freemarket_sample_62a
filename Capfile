@@ -11,7 +11,7 @@ require "capistrano/scm/git"
 install_plugin Capistrano::SCM::Git
 
 # dotenv用
-require 'dotenv'
+#require 'dotenv'
 
 # Include tasks from other gems included in your Gemfile
 #
