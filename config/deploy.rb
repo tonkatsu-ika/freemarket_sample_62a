@@ -22,7 +22,7 @@ set :branch, ENV['BRANCH'] || 'push_branch'
 
 # Default value for :linked_files is []
 # append :linked_files, "config/database.yml"
-append :linked_files, 'config/master.key', '.env.production'
+append :linked_files, %w{'config/master.key', '.env.production'}
 
 # Default value for linked_dirs is []
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
