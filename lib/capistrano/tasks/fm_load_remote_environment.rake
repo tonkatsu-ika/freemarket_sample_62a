@@ -5,7 +5,7 @@ namespace :deploy do
       set :default_environment, Dotenv::Parser.call(capture("cat #{shared_path}/.env.production"))
     end
   end
-  
-  after 'deploy:set_current_revision', 'deploy:fm_load_remote_environment'
 
 end
+
+after 'deploy:set_current_revision', 'deploy:fm_load_remote_environment'
