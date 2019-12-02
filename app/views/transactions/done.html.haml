@@ -12,19 +12,17 @@
   .main
     .main__container
       %h2.head-title 購入が完了しました
-      .buy-content
-        .buy-content__inner
+      .buy-content-sub
+        .buy-content-sub__inner
           %h3.buy-item-image
-            = image_tag "footer_image.png",size: "300×300"
-          %p.buy-item-name
-            = @item[0].name
-      .buy-content
+            = image_tag "#{@item[0].item_images.first.image_url}",size: "300×300"
+            %p.buy-item-name
+              = @item[0].name
+      .price-content
         .buy-price 
-          .buy-price__text
-            .buy-price__text--num
-              =format_currency(@item[0].price)
-              %span
-                送料込み
+          =format_currency(@item[0].price)
+          %span.buy-price-sub
+            送料込み
       .buy-content
         .buy-content__inner
           .buy-user-info-title 
