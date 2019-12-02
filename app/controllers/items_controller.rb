@@ -107,12 +107,16 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item_images = @item.item_images
     render layout: 'basic'
   end
 
   def update
-    if @item.update!(item_params)
-      # 成功時の処理
+    if @item.update!(item_params) and params[:item_images].present?
+      @item.item_images.delete_all
+      params[:item_images][:image_url].each do |a|
+        @item.item_images.create!(image_url: a)
+      end
     end
     redirect_to item_path
   end
@@ -136,11 +140,12 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :description, :price, :item_condition_id, :ship_fee_bearer_id, :prefecture_id, :days_before_ship_id, :delivery_method_id, :brand_id, :category_id, :size_id, item_images_attributes: [:image_url, :item_id]).merge(user_id: 1) # current_user.id
+    params.require(:item).permit(:name, :description, :price, :item_condition_id, :ship_fee_bearer_id, :prefecture_id, :days_before_ship_id, :delivery_method_id, :brand_id, :category_id, :size_id, item_images_attributes: [:image_url, :item_id]).merge(user_id: 1) # current_user.idに変更する
   end
 
   # 現在のアイテムをインスタンス変数@itemに格納する
   def get_current_item
     @item = Item.includes(:category, :user, :item_images).find(params[:id])  # , :brand, :size, :item_condition, :ship_fee_bearer, :delivery_method, :days_before_ship
   end
+
 end

@@ -8,7 +8,7 @@
       .sell-wrapper__form__image__explanation 最大10枚までアップロードできます
       = f.fields_for :item_images do |i|
         .dropzone-container.clearfix
-          #preview
+          .preview
           .dropzone-area
             = i.label :image_url, class: "dropzone-box", for: "upload-image" do
               .input_area
@@ -18,7 +18,7 @@
                     ドロップ&amp;ドラッグ
                     %br
                     もしくはクリックしてください
-          #preview2
+          .preview2
           .dropzone-area2
             = i.label :image_url, class: "dropzone-box", for: "upload-image" do
               .boxFileSelect

@@ -33,19 +33,44 @@ class Item < ApplicationRecord
   # ビジネスロジック（カテゴリ）
   #
 
-  # 現在の商品の親カテゴリオブジェクトを返す
+  # 現在の商品の親カテゴリオブジェクトを返す（上位カテゴリ）
   def parent_category
-    self.category.parent.parent
+    if self.is_grandchild?
+      self.category.parent.parent
+    else
+      self.category.parent
+    end
   end
 
-  # 現在の商品の子カテゴリオブジェクトを返す
+  # 現在の商品の子カテゴリオブジェクトを返す(中間カテゴリ)
   def child_category
-    self.category.parent
+    if self.is_grandchild?
+      self.category.parent
+    else
+      self.category
+    end
   end
   
-  # 現在の商品の孫カテゴリオブジェクトを返す
+  # 現在の商品の孫カテゴリオブジェクトを返す（下位カテゴリ）
+  # 中間カテゴリまでしかないカテゴリがあるため条件分岐
+  #   itemのcategory_idが孫カテゴリ -> 自分のカテゴリを返す
+  #   itemのcategory_idが子カテゴリ -> nilを返す
   def grandchild_category
-    self.category
+    if self.is_grandchild?
+      self.category
+    else   
+      return nil
+    end
+  end
+
+  # itemのcategory_idが中間カテゴリか下位カテゴリか判定するメソッド
+  #   下位カテゴリ -> trueを返す
+  def is_grandchild?
+    if self.category.depth == 2
+      true
+    else
+      false
+    end
   end
 
   # 親カテゴリの一覧を取得
