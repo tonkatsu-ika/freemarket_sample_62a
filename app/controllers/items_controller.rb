@@ -52,9 +52,7 @@ class ItemsController < ApplicationController
     binding.pry
     if @item.update!(update_item_params)
       params[:item_images][:image_url].each do |a|
-        if a.present?
-          @item.item_images.find_by_create!(image_url: a)
-        end
+        @item.item_images.create!(image_url: a)
       end
     end
     redirect_to item_path

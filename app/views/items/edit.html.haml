@@ -8,7 +8,7 @@
         %span.sell-wrapper__form--must.sell-wrapper__form__image__must 必須
       .sell-wrapper__form__image__explanation 最大10枚までアップロードできます
       .dropzone-container.clearfix
-        = f.fields_for @item_images do |i|
+        = f.fields_for :items_images, @item_images do |i|
           .preview
             - if @item.item_images.count < 5
               - @item.item_images.each_with_index do |item_image, index|
@@ -21,8 +21,7 @@
             = i.label :image_url, class: "dropzone-box", for: "upload-image" do
               .input_area
                 - @item.item_images.each_with_index do |item_image, index|
-                  = i.file_field :image_url, multiple: true, name: 'item_images[image_url][]', id: "upload-image", class: "upload-image dropzone", 'data-image': "#{index}"
-                  -# = i.hidden_field :id, value: "#{item_image.id}", name: 'item_images[image_url][]'
+                  = i.file_field :image_url, name: 'item_images[image_url][]', id: "upload-image", class: "upload-image dropzone", 'data-image': "#{index}"
                 .boxFileSelect
                   %p
                     ドロップ&amp;ドラッグ
@@ -40,8 +39,7 @@
             = i.label :image_url, class: "dropzone-box", for: "upload-image" do
               .input_area
                 - @item.item_images.each_with_index do |item_image, index|
-                  = i.file_field :image_url, multiple: true, name: 'item_images[image_url][]', id: "upload-image", class: "upload-image dropzone", 'data-image': "#{index}"
-                  -# = i.hidden_field :id, value: "#{item_image.id}", name: 'item_images[image_url][]'
+                  = i.file_field :image_url, name: 'item_images[image_url][]', id: "upload-image", class: "upload-image dropzone", 'data-image': "#{index}"
                 .boxFileSelect
                   %p
                     ドロップ&amp;ドラッグ
