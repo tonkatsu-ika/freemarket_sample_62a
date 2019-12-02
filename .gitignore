@@ -32,4 +32,4 @@
 /node_modules
 
 # seedで作るitem_imagesを除外
-/app/assets/images/item_images/*
+# /app/assets/images/item_images/*

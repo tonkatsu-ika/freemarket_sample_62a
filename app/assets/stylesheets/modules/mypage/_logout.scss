@@ -9,6 +9,9 @@
   justify-content: center; 
   align-items: center;  
   background-color: #fff;
+  a {
+    text-decoration: none;
+  }
   &__form{
     width: 320px;
     height: 50px;
@@ -19,6 +22,7 @@
       @include form_button();
       width: 320px;
       height: 50px;
+      line-height: 50px;
       border: none;
       font-size: 13px;
       letter-spacing:1px;

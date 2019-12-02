@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load', function(){
   let slider = $("#slider");
   let thumbnailItem = $("#thumbnail-list .thumbnail-item");
   
@@ -42,6 +42,23 @@ $(function(){
     }, function() {
     $(this).siblings().stop().fadeTo(500,1);
     });
+
+
+    
+
+
+  // モーダルウィンドウが開く
+  $('.js-modal-open').on('click',function(){
+    $('.js-modal').fadeIn();
+    return false;
+  });
+
+  // モーダルウィンドウが閉じる
+  $('.js-modal-close').on('click',function(){
+    $('.js-modal').fadeOut();
+    return false;
+  });
+
 
 });
 

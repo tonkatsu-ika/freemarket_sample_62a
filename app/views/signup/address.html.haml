@@ -31,7 +31,7 @@
             %span.login-header-registration__form--must 必須
             %br/
             .prefecture-select-wrap
-              = i.collection_select :prefecture, Prefecture.all, :id, :name, placeholder: '例）北海道',required: true,class: 'selct-box'
+              = i.collection_select :prefecture_id, Prefecture.all, :id, :name, placeholder: '例）北海道',required: true,class: 'selct-box'
               %i.prefecture.fas.fa-chevron-down
           .form-group 
             = i.label '市区町村', class: 'login-header-registration__label'

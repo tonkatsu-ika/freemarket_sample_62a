@@ -1,3 +1,4 @@
+= render "layouts/flash"
 .login-header-registration 
   .login-header-registration__index 
     %b  
@@ -20,28 +21,30 @@
         -if flash[:email].present?
           .flash-message
             =flash[:email]
+        -if @user.uid
+          .extra-form
+            = f.text_field :uid
+            = f.text_field :provider
+        -unless @user.uid
+          .form-group 
+            = f.label 'パスワード' ,class: 'login-header-registration__label'
+            %span.login-header-registration__form--must 必須
+            %br/
+            = f.password_field :password, placeholder: '7文字以上',class: 'input-default',required: true
 
-        .form-group 
-          = f.label 'パスワード' ,class: 'login-header-registration__label'
-          %span.login-header-registration__form--must 必須
-          %br/
-          = f.password_field :password, placeholder: '7文字以上',class: 'input-default',required: true
 
-
-        .form-group 
-          = f.label 'パスワード確認', class: 'login-header-registration__label' 
-          %span.login-header-registration__form--must 必須
-          %br/
-          = f.password_field :password_confirmation, placeholder: '7文字以上',class: 'input-default',required: true
-
-        
+          .form-group 
+            = f.label 'パスワード確認', class: 'login-header-registration__label' 
+            %span.login-header-registration__form--must 必須
+            %br/
+            = f.password_field :password_confirmation, placeholder: '7文字以上',class: 'input-default',required: true
 
         %p.userloginform-into__sub-head
           %b
             本人確認
         %p.userloginform-into__sub-head__text
           安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません
-          私はロボットではありません。
+          
 
         .form-group 
           = f.label 'お名前(全角)' ,class: 'login-header-registration__label' 

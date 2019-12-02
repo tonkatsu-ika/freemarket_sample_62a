@@ -27,6 +27,7 @@ class SignupController < ApplicationController
 
   #住所入力
   def address
+    
     @user = User.new
     session[:telephone] = user_params[:telephone]
     @user.build_address
@@ -37,22 +38,27 @@ class SignupController < ApplicationController
     
     session[:address_attributes] = user_params[:address_attributes]
     session[:user_params].merge!(user_params)
-    
 
     @user = User.new(session[:user_params])
     @user.build_address(user_params[:address_attributes])
+    
+    if @user.uid.present?    
+      password_length = 10
+      @user.password = Devise.friendly_token(password_length)
+      @user.password_confirmation = @user.password
+    end
+
     if @user.save
       session[:id] = @user.id
-
+      
       if user_signed_in?
       #ユーザーログイン
         session[:user_id] = nil
       else  
-        
         sign_in User.find(session[:id]) unless user_signed_in?   
       end
       sign_in User.find(session[:id]) unless user_signed_in?  
-    else
+    else      
       redirect_to action: 'payment'
     end
     
@@ -65,31 +71,20 @@ class SignupController < ApplicationController
   #会員情報登録完了
   def done
     
-
-    # Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-    #   if params['payjp-token'].blank?
-    #     redirect_to action: "new"
-    #   else
-    #     customer = Payjp::Customer.create(
-    #     # description: '登録テスト', #なくてもOK
-    #     # email: current_user.email, #なくてもOK
-    #     card: params['payjp-token'],
-    #     # metadata: {user_id: current_user.id}
-    #     ) #念の為metadataにuser_idを入れましたがなくてもOK
-    #     binding.pry
-    #     @card = CreditCard.new(user_id: session[:id], customer_id: customer.id, card_id: customer.default_card)
-        
-    #     if @card.save
-    #       redirect_to done_signup_index_path
-    #     else
-    #       redirect_to action: "payment"
-    #     end
-    #   end
     
   end
 
   def auth
     @user = User.new
+  end
+  #リロード時のページを指定
+  def show
+    session[:user_params] = nil
+    session[:address_attributes] = nil 
+    session[:telephone] = nil
+    session[:user_id] = nil
+    flash[:danger] = '不正な処理が行われました'
+    redirect_to action: 'registlation'
   end
   
   private
@@ -106,7 +101,9 @@ class SignupController < ApplicationController
       :first_name_kana,
       :birthday,
       :telephone,
-      address_attributes:[:id, :post_code, :prefecture, :address,:building]
+      :uid,
+      :provider,
+      address_attributes:[:id, :post_code, :prefecture_id, :address,:building]
     )
   end
 

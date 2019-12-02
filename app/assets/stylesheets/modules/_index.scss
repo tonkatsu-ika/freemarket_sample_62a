@@ -1,11 +1,20 @@
 .top-page__image {
   height: 390px;
-  width: 100%;
+  img {
+    margin: auto;
+  }
   // background-image: image-url("mercari.jpg");
   &__wrapper {
     // width: 760px;
     height: 100%;
-    margin: 0 auto;
+    position: relative;
+    .slick-prev {
+      z-index: 100;
+      font-weight: 900;
+    }
+    .slick-next {
+      font-weight: 900;
+    }
     &--index {
       font-size: 60px;
       line-height: 1.4;
@@ -146,3 +155,4 @@
     margin-top: 10px;
   }
 }
+
