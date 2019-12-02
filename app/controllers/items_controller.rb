@@ -50,12 +50,13 @@ class ItemsController < ApplicationController
 
   def update
     binding.pry
-    @item.update(update_item_params)
-    # if @item.update!(item_params)
-    #   params[:item_images][:image_url].each do |a|
-    #     @item.item_images.find_or_create_by!(image_url: a)
-    #   end
-    # end
+    if @item.update!(update_item_params)
+      params[:item_images][:image_url].each do |a|
+        if a.present?
+          @item.item_images.find_by_create!(image_url: a)
+        end
+      end
+    end
     redirect_to item_path
   end
 
@@ -67,7 +68,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :description, :price, :item_condition_id, :ship_fee_bearer_id, :prefecture_id, :days_before_ship_id, :delivery_method_id, :brand_id, :category_id, :size_id, item_images_attributes: [:image_url, :item_id]).merge(user_id: 1) # current_user.id
+    params.require(:item).permit(:name, :description, :price, :item_condition_id, :ship_fee_bearer_id, :prefecture_id, :days_before_ship_id, :delivery_method_id, :brand_id, :category_id, :size_id, item_images_attributes: [:image_url, :item_id]).merge(user_id: 1) # current_user.idに変更する
   end
 
   # 現在のアイテムをインスタンス変数@itemに格納する
@@ -76,6 +77,6 @@ class ItemsController < ApplicationController
   end
 
   def update_item_params
-    params.require(:item).permit(:name, :description, :price, :item_condition_id, :ship_fee_bearer_id, :prefecture_id, :days_before_ship_id, :delivery_method_id, :brand_id, :category_id, :size_id, item_images_attributes: [:id, :_destroy, :image_url, :item_id]).merge(user_id: 1) # current_user.id
+    params.require(:item).permit(:name, :description, :price, :item_condition_id, :ship_fee_bearer_id, :prefecture_id, :days_before_ship_id, :delivery_method_id, :brand_id, :category_id, :size_id, item_images_attributes: [:id, :_destroy, :image_url, :item_id]).merge(user_id: 1) # current_user.idに変更する
   end
 end
