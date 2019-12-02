@@ -6,4 +6,4 @@ task :fm_load_remote_environment do
 end
 
 
-after 'deploy:publishing', 'fm_load_remote_environment'
+#after 'deploy:publishing', 'fm_load_remote_environment'

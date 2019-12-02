@@ -8,7 +8,7 @@
 set :branch, ENV['BRANCH'] || 'push_branch'
 
 # Default deploy_to directory is /var/www/my_app_name
-# set :deploy_to, "/var/www/my_app_name"
+set :deploy_to, "/var/www/freemarket_sample_62a"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
@@ -22,7 +22,7 @@ set :branch, ENV['BRANCH'] || 'push_branch'
 
 # Default value for :linked_files is []
 # append :linked_files, "config/database.yml"
-append :linked_files, %w{'config/master.key', '.env.production'}
+append :linked_files, 'config/master.key', ".env.production"
 
 # Default value for linked_dirs is []
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
