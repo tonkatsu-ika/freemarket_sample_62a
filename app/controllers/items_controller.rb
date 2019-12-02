@@ -50,9 +50,6 @@ class ItemsController < ApplicationController
 
   def update
     binding.pry
-    # if params[:item_images].present?
-    #   @item.item_images.delete_all
-    # end
     if @item.update!(update_item_params) and params[:item_images].present?
       @item.item_images.delete_all
       params[:item_images][:image_url].each do |a|
