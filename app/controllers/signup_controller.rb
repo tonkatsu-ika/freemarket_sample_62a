@@ -41,7 +41,7 @@ class SignupController < ApplicationController
 
     @user = User.new(session[:user_params])
     @user.build_address(user_params[:address_attributes])
-    binding.pry
+    
     if @user.uid.present?    
       password_length = 10
       @user.password = Devise.friendly_token(password_length)

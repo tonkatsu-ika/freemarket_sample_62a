@@ -8,6 +8,7 @@ $(document).on('turbolinks:load', function(){
     // prevArrow: '<i class="fas fa-chevron-left"></i>',
     dots: false,
     autoplay: 500,
+
 });
 
   setTimeout("$('.notifications').fadeOut('slow')", 1000) 
