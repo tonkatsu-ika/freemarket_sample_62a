@@ -6,6 +6,6 @@ namespace :deploy do
     end
   end
   
-  after 'deploy:set_current_revision', 'deploy:load_remote_environment'
+  after 'deploy:set_current_revision', 'deploy:fm_load_remote_environment'
 
 end
