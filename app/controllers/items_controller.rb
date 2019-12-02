@@ -49,11 +49,13 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if @item.update!(item_params)
-      # params[:item_images][:image_url].each do |a|
-      #   @item.item_images.find_or_create!(image_url: a)
-      #end
-    end
+    binding.pry
+    @item.update(update_item_params)
+    # if @item.update!(item_params)
+    #   params[:item_images][:image_url].each do |a|
+    #     @item.item_images.find_or_create_by!(image_url: a)
+    #   end
+    # end
     redirect_to item_path
   end
 
@@ -71,5 +73,9 @@ class ItemsController < ApplicationController
   # 現在のアイテムをインスタンス変数@itemに格納する
   def get_current_item
     @item = Item.includes(:category, :user, :item_images).find(params[:id])
+  end
+
+  def update_item_params
+    params.require(:item).permit(:name, :description, :price, :item_condition_id, :ship_fee_bearer_id, :prefecture_id, :days_before_ship_id, :delivery_method_id, :brand_id, :category_id, :size_id, item_images_attributes: [:id, :_destroy, :image_url, :item_id]).merge(user_id: 1) # current_user.id
   end
 end

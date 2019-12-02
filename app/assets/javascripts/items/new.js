@@ -193,8 +193,8 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
   var images = []; // 空の配列imagesを用意
   var inputs  =[]; // 空の配列inputsを用意
   var input_area = $('.input_area'); // 変数input_areaに「.input_area」のパラメータを代入
-  var preview = $('#preview'); // 
-  var preview2 = $('#preview2');
+  var preview = $('.preview'); // 
+  var preview2 = $('.preview2');
 
   // 画面ロード時（商品編集ページだけで動くコード）
   if ( isItemEditPath ) {
@@ -237,7 +237,8 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
     images = $('.dropzone-container').find('.img_view').map(function(){
       return $(this);
     });
-}
+    console.log(inputs);
+  }
 
   // 画像追加時
   $(document).on('change', 'input[type= "file"].upload-image',function(event) {  // input[type= "file"].upload-imageの内容が変わったら（ファイルが登録されたら）
@@ -257,6 +258,7 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
     reader.readAsDataURL(file); //ファイルの読み込みをしている（この一行がなければ画像の枠しか表示されない）
     images.push(img); // 配列imagesにimgを追加する（この時のimgにはsrc属性にurlがある）
 
+    console.log(images.length);
 
     if(images.length >= 5) { // もし配列imagesの要素が5つ以上なら
       dropzone2.css({ // 変数dropzone2のcssに
@@ -265,7 +267,7 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
       dropzone.css({ // 変数dropzoneのcssに
         'display': 'none' // display: noneを追加
       })
-      $.each(function(index, image) {  // imagesという配列のそれぞれの要素に対して(indexは番号,imageは一つ一つ取り出した時の変数)
+      $.each(images, function(index, image) {  // imagesという配列のそれぞれの要素に対して(indexは番号,imageは一つ一つ取り出した時の変数)
 
         image.attr('data-image', index);  // eachで取り出したimageに属性と属性値を追加
         preview2.append(image);  // 変数preview2の子要素にimageを追加する
@@ -279,7 +281,7 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
         })
       }
       if(images.length == 9) {  // 配列imagesのlengthが9なら
-        dropzone2.find('p').replaceWith('<p>あと1枚です</p>')  // dropzone2の子要素pタグのところを()の中身に置き換える
+        dropzone2.find('p').replaceWith('<p>あと1枚です</p>');  // dropzone2の子要素pタグのところを()の中身に置き換える
       }
     } else {  // image.lengthが5未満なら
       $('#preview').empty();  // #previewの子要素を空にする
@@ -306,7 +308,7 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
 
   // 画像削除時
   $(document).on('click', '.delete', function() {  // 追加要素の削除ボタンを押したら
-    
+
     var target_image = $(this).parent().parent();  // 変数target_imageに.deleteの親の親の要素を代入
     $.each(inputs, function(index, input) { //配列inputsの一つ一つ(input)に対して
       if ($(this).data('image') == target_image.data('image')){  // input要素のdata-imageの値と、投稿した画像のdata-imageの値が同じものに対して

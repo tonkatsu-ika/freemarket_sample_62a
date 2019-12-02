@@ -8,17 +8,17 @@
       .sell-wrapper__form__image__explanation 最大10枚までアップロードできます
       = f.fields_for :item_images do |i|
         .dropzone-container.clearfix
-          #preview
+          .preview
           .dropzone-area
             = i.label :image_url, class: "dropzone-box", for: "upload-image" do
               .input_area
-                = i.file_field :image_url, multiple: true, name: 'item_images[image_url][]', id: "upload-image", class: "upload-image dropzone", 'data-image': 0
+                = i.file_field :image_url, name: 'item_images[image_url][]', id: "upload-image", class: "upload-image dropzone", 'data-image': 0
                 .boxFileSelect
                   %p
                     ドロップ&amp;ドラッグ
                     %br
                     もしくはクリックしてください
-          #preview2
+          .preview2
           .dropzone-area2
             = i.label :image_url, class: "dropzone-box", for: "upload-image" do
               .boxFileSelect
