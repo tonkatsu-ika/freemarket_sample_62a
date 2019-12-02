@@ -1,0 +1,59 @@
+.header__bottom__user-menu__li__mypage
+  .header__bottom__user-menu__li__mypage__image
+    = image_tag "mypage/user-icon-test.jpg", alt: "user icon", class: "header__bottom__user-menu__li__mypage__image__icon"
+  .header__bottom__user-menu__li__mypage__top
+    .header__bottom__user-menu__li__mypage__top__status
+      .header__bottom__user-menu__li__mypage__top__status__name 
+        = current_user.nickname
+      %br/
+      評価: 51
+      %span
+        出品数: 100
+    
+    .header__bottom__user-menu__li__mypage__top__performance
+      %table 
+        %tr
+          %td
+            = link_to "#", class:"header__bottom__user-menu__li__mypage__top__performance" do
+              .header__bottom__user-menu__li__mypage__top__performance__point
+                売上金
+              .header__bottom__user-menu__li__mypage__top__performance__point
+                %span ¥0
+                %span
+                  = fa_icon "chevron-right", class:"icon-a"
+        %tr
+          %td
+            = link_to "#", class: "header__bottom__user-menu__li__mypage__top__performance" do
+              .header__bottom__user-menu__li__mypage__top__performance__point
+                ポイント
+              .header__bottom__user-menu__li__mypage__top__performance__point
+                %span P0
+                %span
+                  = fa_icon "chevron-right", class:"icon-a"
+    
+    %ul.header__bottom__user-menu__li__mypage__top__list
+      %li.header__bottom__user-menu__li__mypage__top__list__item.header__bottom__user-menu__li__mypage__top__list__item-top
+        = link_to :mypage_index, class: "header__bottom__user-menu__li__mypage__top__list__item__link" do
+          %span.header__bottom__user-menu__li__mypage__top__list__item__link__name マイページ(TOP)
+          = fa_icon "chevron-right", class: "header__bottom__user-menu__li__mypage__top__list__item__link__arrow"
+      %li.header__bottom__user-menu__li__mypage__top__list__item
+        = link_to :new_item, class: "header__bottom__user-menu__li__mypage__top__list__item__link" do
+          %span.header__bottom__user-menu__li__mypage__top__list__item__link__name 出品する
+          = fa_icon "chevron-right", class: "header__bottom__user-menu__li__mypage__top__list__item__link__arrow"
+      %li.header__bottom__user-menu__li__mypage__top__list__item
+        = link_to :profile_mypage_index, class: "header__bottom__user-menu__li__mypage__top__list__item__link" do
+          %span.header__bottom__user-menu__li__mypage__top__list__item__link__name プロフィール
+          = fa_icon "chevron-right", class: "header__bottom__user-menu__li__mypage__top__list__item__link__arrow"
+      %li.header__bottom__user-menu__li__mypage__top__list__item
+        = link_to :identification_mypage_index, class: "header__bottom__user-menu__li__mypage__top__list__item__link" do
+          %span.header__bottom__user-menu__li__mypage__top__list__item__link__name 本人情報
+          = fa_icon "chevron-right", class: "header__bottom__user-menu__li__mypage__top__list__item__link__arrow"
+      %li.header__bottom__user-menu__li__mypage__top__list__item
+        = link_to :card_mypage_index, class: "header__bottom__user-menu__li__mypage__top__list__item__link" do
+          %span.header__bottom__user-menu__li__mypage__top__list__item__link__name 支払い方法
+          = fa_icon "chevron-right", class: "header__bottom__user-menu__li__mypage__top__list__item__link__arrow"
+      %li.header__bottom__user-menu__li__mypage__top__list__item
+        = link_to :logout_mypage_index, class: "header__bottom__user-menu__li__mypage__top__list__item__link" do
+          %span.header__bottom__user-menu__li__mypage__top__list__item__link__name ログアウト
+          = fa_icon "chevron-right", class: "header__bottom__user-menu__li__mypage__top__list__item__link__arrow"
+      
