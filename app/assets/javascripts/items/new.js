@@ -377,6 +377,9 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
       dropzone2.css({
         'display': 'none'
       })
+      $('.dropzone-area').css({
+        'margin-left': '10px'
+      })
     }
     if(images.length == 3) {
       dropzone.find('p').replaceWith('<p>ドロップ&ドラッグ<br>もしくはクリックしてください</p>')

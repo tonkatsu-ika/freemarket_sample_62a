@@ -49,8 +49,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    binding.pry
-    if @item.update!(update_item_params) and params[:item_images].present?
+    if @item.update!(item_params) and params[:item_images].present?
       @item.item_images.delete_all
       params[:item_images][:image_url].each do |a|
         @item.item_images.create!(image_url: a)
@@ -75,7 +74,4 @@ class ItemsController < ApplicationController
     @item = Item.includes(:category, :user, :item_images).find(params[:id])
   end
 
-  def update_item_params
-    params.require(:item).permit(:name, :description, :price, :item_condition_id, :ship_fee_bearer_id, :prefecture_id, :days_before_ship_id, :delivery_method_id, :brand_id, :category_id, :size_id, item_images_attributes: [:id, :_destroy, :image_url, :item_id]).merge(user_id: 1) # current_user.idに変更する
-  end
 end
