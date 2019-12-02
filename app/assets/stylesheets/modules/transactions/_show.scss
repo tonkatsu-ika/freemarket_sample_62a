@@ -3,6 +3,30 @@
 .wrapper {
   background-color: $bg-mypage;
   padding: 0 20px;
+  .main-sub{
+    &__container-sub{
+      width: 700px;
+      margin: 0 auto;
+      ::before{
+        font-family: "Font Awesome 5 Free";
+        content: "\f017";
+        font-weight: 400;
+        position: relative;
+      }
+      .head-title-sub{
+        text-align: center;
+        font-size: 20px;
+        color: #ea352d;
+        padding: 20px;
+        background-color: #fff6de;
+        
+      }
+      .head-title-sub__content{
+        color:black;
+        font-size: 12px;
+      }
+    }
+  }
   .main{
     &__container {
       width: 700px;
@@ -24,8 +48,8 @@
           display: flex;
           flex-wrap: wrap;
           img {
-            max-height: 300px;
-            max-width: 300px;
+            max-height: 88px;
+            max-width: 88px;
           }
           .buy-item-name {
             width: 215px;
@@ -98,8 +122,8 @@
             width: 700px;
             margin: auto;
             color: #fff;
-            background-color: #888;
-            border: 1px solid #888;
+            background-color:#ea352d;
+            border: 1px solid #ea352d;
             font-weight: bold;
             margin-bottom: 40px;
             display: block;
@@ -110,7 +134,25 @@
         }
       }
       .buy-content {
+        .buy-price {
+          text-align: center;
+          height: 33px;
+          width: 320px;
+          display: flex;
+          margin: 5px 0;
+          &__text {
+            display: flex;
+            margin: 15px auto;
+            &--num{
+              font-weight: bold;
+              font-size: 20px;
+              color: rgb(51, 51, 51);
+              margin: 0 8px 0 0;
+            }
+          }
+        }
         &__inner {
+          font-weight: bold;
           .buy-user-info-title {
             width: 700px;
             font-weight: bold;
@@ -120,6 +162,7 @@
             margin-top: 10px;
             width: 700px;
           }
+          
           .buy-user-info-fix {
             text-align: right;
             margin-top: 30px;
@@ -138,7 +181,46 @@
             }
           }
         }
+        .card-contents__main__section{
+          width: 320px;
+          margin: 0px auto;
+          position: relative;
+          .buy-user-info-fix-b{
+            text-align: right;
+            margin-top: 30px;
+            margin-bottom: 40px;
+            text-decoration: none;
+            color: #0099e8;
+            font-size: 14px;
+            .buy-user-info-fix {
+              text-align: right;
+              font-weight: bold;
+              margin-bottom: 40px;
+              text-decoration: none;
+              color: #0099e8;
+              font-size: 14px;
+              &:hover {
+                text-decoration: underline;
+                color: #b3d4fc;
+              }
+              i {
+                font-size: 12px;
+                margin-left: 5px;
+              }
+            }
+            &:hover {
+              text-decoration: underline;
+              color: #b3d4fc;
+            }
+            i {
+              font-size: 12px;
+              margin-left: 5px;
+            }
+          }
+        }
       }
     }
   }
 }
+
+

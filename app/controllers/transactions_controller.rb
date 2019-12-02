@@ -3,7 +3,30 @@ class TransactionsController < ApplicationController
   layout 'users' ## とりあえずここにかいておく。
 
   def show
-    @item = Item.find(params[:id])
+    # @item = Item.find(params[:id]).includes(:user,:item_images)
+    @item = Item.includes(:category, :user, :item_images).find(params[:id])
+    @address = User.includes(:address).find(current_user.id)
+    @card = CreditCard.where(user_id: current_user.id).first if CreditCard.where(user_id: current_user.id).present?
+    if @card[:user_id] != nil
+      Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      @card_information = customer.cards.retrieve(@card.card_id)
+      @card_brand = @card_information.brand
+      case @card_brand
+      when "Visa"
+        @card_src = "visa.svg"
+      when "JCB"
+        @card_src = "jcb.gif"
+      when "MasterCard"
+        @card_src = "mastercard.svg"
+      when "American Express"
+        @card_src = "amex.gif"
+      when "Diners Club"
+        @card_src = "diners.gif"
+      when "Discover"
+        @card_src = "discover.gif"
+      end
+    end
     # card = CreditCard.where(user_id: current_user.id).first
     # #テーブルからpayjpの顧客IDを検索
     # if card.blank?
@@ -35,7 +58,22 @@ class TransactionsController < ApplicationController
       #保管した顧客IDでpayjpから情報取得
       customer = Payjp::Customer.retrieve(card.customer_id)
       #保管したカードIDでpayjpから情報取得、カード情報表示のためインスタンス変数に代入
-      @default_card_information = customer.cards.retrieve(card.card_id)
+      @card_information = customer.cards.retrieve(card.card_id)
+      @card_brand = @card_information.brand
+      case @card_brand
+      when "Visa"
+        @card_src = "visa.svg"
+      when "JCB"
+        @card_src = "jcb.gif"
+      when "MasterCard"
+        @card_src = "mastercard.svg"
+      when "American Express"
+        @card_src = "amex.gif"
+      when "Diners Club"
+        @card_src = "diners.gif"
+      when "Discover"
+        @card_src = "discover.gif"
+      end
     end
   end
 
@@ -56,6 +94,34 @@ class TransactionsController < ApplicationController
   def done
     @item = Item.where(id: session[:item]) 
     session[:item] = nil
+    @address = User.includes(:address).find(current_user.id)
+    card = CreditCard.where(user_id: current_user.id).first
+    #テーブルからpayjpの顧客IDを検索
+    if card.blank?
+      #登録された情報がない場合にカード登録画面に移動
+      redirect_to controller: "credit_card", action: "new"
+    else
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      #保管した顧客IDでpayjpから情報取得
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      #保管したカードIDでpayjpから情報取得、カード情報表示のためインスタンス変数に代入
+      @card_information = customer.cards.retrieve(card.card_id)
+      @card_brand = @card_information.brand
+      case @card_brand
+      when "Visa"
+        @card_src = "visa.svg"
+      when "JCB"
+        @card_src = "jcb.gif"
+      when "MasterCard"
+        @card_src = "mastercard.svg"
+      when "American Express"
+        @card_src = "amex.gif"
+      when "Diners Club"
+        @card_src = "diners.gif"
+      when "Discover"
+        @card_src = "discover.gif"
+      end
+    end
   end
 
   private
