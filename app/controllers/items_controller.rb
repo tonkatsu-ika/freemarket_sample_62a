@@ -13,8 +13,8 @@ class ItemsController < ApplicationController
       parente_id = Category.find(ancestor_id).find_all_by_generation(2)
       array = parente_id .ids
     end
-    #レディース新着のアイテム取得  
-      @ladies = Item.where(category_id:get_categoryid(1)).order("created_at DESC").limit(10).includes(:item_images)
+    #レディース新着のアイテム取得 
+      @ladies = Item.where(category_id:get_categoryid(1)).order("created_at DESC").limit(10).includes(:item_images,:process)
     #メンズ新着アイテムの取得
       @mens  = Item.where(category_id:get_categoryid(2)).order("created_at DESC").limit(10).includes(:item_images)
     #家電・スマホ・カメラ新着アイテムの取得

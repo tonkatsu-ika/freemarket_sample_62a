@@ -12,6 +12,7 @@ class Item < ApplicationRecord
   has_many :item_images, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_one :process, class_name: "Transaction"
 
   accepts_nested_attributes_for :item_images, allow_destroy: true
 
@@ -63,8 +64,10 @@ class Item < ApplicationRecord
     self.grandchild_category.self_and_siblings
   end
 
-  
-
+  #いいね済みアイテムを取得
+  def like_user(user_id)
+    likes.find_by(user_id: user_id)
+  end
 
   #
   # ビジネスロジック（サイズ）
