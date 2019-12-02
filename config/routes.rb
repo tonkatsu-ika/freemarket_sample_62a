@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   resources :credit_card ,only: [:new, :show] do
     collection do
       post 'show', to: 'credit_card#show'
-      post 'pay', to: 'credit_card#pay'
+      get 'pay', to: 'credit_card#pay'
       post 'delete', to: 'credit_card#delete'
     end
   end
@@ -53,8 +53,7 @@ Rails.application.routes.draw do
   resources :transactions, only: [:index, :show] do
     collection do
       get 'index', to: 'transactions#index'
-      post 'index', to: 'transactions#create'
-      post 'pay', to: 'transactions#pay'
+      get 'pay', to: 'transactions#pay'
       get 'done', to: 'transactions#done'
       get 'new', to: 'transactions#new'
     end

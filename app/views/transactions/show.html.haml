@@ -9,7 +9,7 @@
       .buy-content
         .buy-content__inner
           %h3.buy-item-image
-            = image_tag "footer_image.png",size: "88×88"
+            = image_tag "#{@item.item_images.first.image_url}",size: "88×88"
           %p.buy-item-name
             = @item.name
           %form.buy-form
@@ -27,8 +27,7 @@
                 .buy-price-cell 支払い金額
                 .buy-price-num 
                   =format_currency(@item.price)
-          = link_to transactions_path(@item), class:"btn-default" do
-            購入する
+          = link_to '購入する',pay_transactions_path(@item), action: :get,class:"btn-default"
       .buy-content
         .buy-content__inner
           .buy-user-info-title 
