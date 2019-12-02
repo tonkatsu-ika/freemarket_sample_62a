@@ -5,7 +5,7 @@
 # ブランチをコマンド実行時に選択できるようにした(指定なければmaster)
 #set :branch, ENV['BRANCH'] || "master"
 #set :branch, 'develop_branch'
-set :branch, ENV['BRANCH'] || 'develop_branch'
+set :branch, ENV['BRANCH'] || 'push_branch'
 
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, "/var/www/my_app_name"
