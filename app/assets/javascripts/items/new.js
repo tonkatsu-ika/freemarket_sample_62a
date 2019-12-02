@@ -293,6 +293,11 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
         'width': `calc(100% - (126px * ${images.length}))`  // スタイルを当てる
       })
     }
+    if(images.length == 1) {
+      $('.dropzone-area').css({
+        'margin-left': '10px'
+      })
+    }
     if(images.length == 4) {
       dropzone.find('p').replaceWith('<p>ドロップ&ドラッグ<br>もしくはクリックしてください</p>')
     }
@@ -351,6 +356,11 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
       if(images.length == 8) {
         dropzone2.find('p').replaceWith('<p>ドロップ&ドラッグ<br>もしくはクリックしてください</p>')
       }
+      if (images.length = 5) {
+        $('.dropzone-area2').css({
+          'margin-left': '0px'
+        })
+      }
     } else {
       dropzone.css({
         'display': 'block'
@@ -370,6 +380,11 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
     }
     if(images.length == 3) {
       dropzone.find('p').replaceWith('<p>ドロップ&ドラッグ<br>もしくはクリックしてください</p>')
+    }
+    if (images.length == 0) {
+      $('.dropzone-area').css({
+        'margin-left': '0px'
+      })
     }
   })
 
