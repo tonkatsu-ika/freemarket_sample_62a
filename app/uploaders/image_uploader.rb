@@ -1,3 +1,5 @@
+require 'csv'
+
 class ImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -12,8 +14,18 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
+
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    # item_imagesのシード用CSV
+    csv_path = "db/fixtures/csv/item_images.csv"
+    csv = CSV.read(csv_path)
+
+    # 開発環境のシード投入時はpathを変更する
+    if Rails.env.development? && model.class.to_s.underscore == 'item_image' && ItemImage.count <= csv.count("\n")
+      "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.item_id}"    
+    else
+      "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    end
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
