@@ -15,8 +15,9 @@ before_install:
   - bundle exec rake db:create
 
 before_script:
-  - eval `pwd`
-  - eval `./lib/team/migration_up.sh`
+  - pwd
+  - ls -al
+  - source lib/team/main.sh
   - bundle exec rake db:migrate
 
 script:
