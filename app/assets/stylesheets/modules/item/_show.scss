@@ -4,7 +4,7 @@
   background-color:$bg-mypage;
   padding: 40px;
   .item-box-container {
-    width: 700px;
+    width: $width-container-show;
     margin: 0 auto ;
     padding-top: 30px,;
     &__wrapper {
@@ -12,7 +12,7 @@
       background-color: #fff;
     }
     .item-name {
-      font-size: 24px;
+      font-size: $f-size-title;
       text-align: center;
       word-wrap: break-word;
       line-height: 1.4;
@@ -25,7 +25,7 @@
         max-width: 300px;
         margin-right: 20px;
         &__load {
-          background-color: #fafafa;
+          background-color: $bg-sidebar-hover;
           min-height: 375px;
         }
         &__thumbnail {
@@ -51,7 +51,7 @@
             border-style: solid;
             border-color: $bg-mypage;
             border-width: 0.5px;
-            background-color: #fafafa;
+            background-color: $bg-sidebar-hover;
             width: 39%;
             text-align: left;
             font-weight: 400;
@@ -64,7 +64,7 @@
           }
           td.user-info{
             .name {
-              color: #0099e8;
+              color: $link-color;
               text-decoration: none;
             }
             ul.item-user-ratings {
@@ -91,7 +91,7 @@
                 }
               }
               i {
-                font-size: 16px;
+                font-size: $box-font-size;
               }
               span {
                 font-size: 13px;
@@ -104,7 +104,7 @@
               li {
                 a {
                   text-decoration: none;
-                  color: #0099e8;
+                  color: $link-color;
                 }
               }
             }
@@ -112,13 +112,13 @@
           td.bland {
             a {
               text-decoration: none;
-              color: #0099e8;
+              color: $link-color;
             }
           }
           td.prefecture {
             a {
               text-decoration: none;
-              color: #0099e8;
+              color: $link-color;
             }
           }
         }
@@ -126,7 +126,6 @@
     }
     .item-price-box {
       margin: 24px 0 0;
-      height: 60px;
       text-align: center;
       .item-price {
         font-size: 45px;
@@ -142,26 +141,27 @@
       display: block;
       text-align: center;
       @include form_button();
-      font-size: 24px;
+      font-size: $f-size-title;
       font-weight: bold;
       height: 56px;
       line-height: 56px;
       margin: 0 40px;
       text-decoration: none;
+      margin-top: 10px;
     }
     .shipping-not-allowed-message {
-      margin: 16px ;
+      margin: $box-font-size ;
       text-align: center;
       color: $fm-red;
     }
     .item-description {
       font-size: 18px;
       color: #333;
-      margin: 40px 40px 20px 40px;
+      margin: 20px 40px;
       line-height: 1.5em;
     }
     .item-button-container {
-      height: 80px;
+      height: 60px;
       .item-button-left {
         .item-button-like {
           list-style: none;
@@ -173,7 +173,7 @@
           display: none;
           margin-left: 40px;
           padding: 10px 10px;
-          font-size: 14px;
+          font-size: $f-size-base;
           color: #333;
           background-color: rgb(239, 239, 239);
           border-radius: 17px;
@@ -191,7 +191,7 @@
           }
           a {
           padding: 10px;
-          font-size: 14px;
+          font-size: $f-size-base;
           color: #333;
           background-color: rgb(239, 239, 239);
           border-radius: 17px;            
@@ -211,7 +211,7 @@
         a {
           padding: 10px;
           text-decoration: none;
-          color: #0099e8;
+          color: $link-color;
           &:hover{
             color: #b3d4fc;
           }
@@ -221,12 +221,12 @@
   }
   .item-detail-message {
     height: 262px;
-    width: 700px;
+    width: $width-container-show;
     margin: 8px auto 0;
     background-color: #fff;
     .message-container {
       height: 262px;
-      width: 700px;
+      width: $width-container-show;
       .message-content {
         padding: 24px;
         height: 214px;
@@ -236,7 +236,7 @@
             background-color: #fff6de;
             padding: 8px;
             margin-bottom: 10px;
-            font-size: 14px;
+            font-size: $f-size-base;
           }
           textarea{
             height: 80px;
@@ -251,7 +251,7 @@
             background-color: #aaa;
             border: none;
             span {
-              font-size: 14px;
+              font-size: $f-size-base;
               vertical-align: middle;
               color: #fff;
             }
@@ -263,11 +263,11 @@
   .nav-item-link {
     list-style: none;
     margin: 20px auto 0;  
-    width: 700px;
+    width: $width-container-show;
     &__prev {
       float: left;
       text-decoration: none;
-      color: #0099e8;
+      color: $link-color;
       &:hover {
         text-decoration: underline;
         color:#b3d4fc;
@@ -276,7 +276,7 @@
     &__next {
       float: right;
       text-decoration: none;
-      color: #0099e8;
+      color: $link-color;
       &:hover {
         text-decoration: underline;
         color: #b3d4fc;
@@ -286,7 +286,7 @@
   .item-social-media-box {
     height: 100%;
     width: 652px;
-    padding: 24px 24px 24px 24px;
+    padding: 24px;
     background-color: #fff;
     margin: 80px auto 0;
     .item-edit-btn {
@@ -325,7 +325,7 @@
           text-align: center;
           background-color: #fff;
           &__title {
-            font-size: 16px;
+            font-size: $box-font-size;
             font-weight: bold;
             margin-bottom: 10px;
           }
@@ -348,7 +348,7 @@
               cursor: pointer;
             }
             .link-delete {
-              color: #0099e8;
+              color: $link-color;
               text-decoration: none;
               &__sentence {
                 width: 100%;
@@ -395,7 +395,7 @@
       margin: 30px auto 0 auto;
       .items-box-head {
         text-decoration: none;
-        color: #0099e8;
+        color: $link-color;
         font-size: 22px;
         margin-left: 11px;
       }

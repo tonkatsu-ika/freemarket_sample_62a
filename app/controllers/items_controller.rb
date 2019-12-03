@@ -1,10 +1,8 @@
 class ItemsController < ApplicationController
 
-  layout 'basic', only: :new
+  layout 'basic', only: [:new, :edit]
   
   before_action :get_current_item, only: [:show, :edit, :update, :destroy]
-
-  # レイアウトはnewとcreateのとき変更する
 
   def index
     #ひとまず固定で以下アイテムの取得をする
@@ -108,7 +106,6 @@ class ItemsController < ApplicationController
 
   def edit
     @item_images = @item.item_images
-    render layout: 'basic'
   end
 
   def update
@@ -132,20 +129,18 @@ class ItemsController < ApplicationController
   end
 
   def show
-    user_id = @item.user_id
-    @items = Item.where(user_id: user_id).includes(:item_images)
-    brand_id = @item.brand_id
-    @itembs = Item.where(brand_id: brand_id).includes(:item_images)
+    @items = Item.where(user_id: @item.user_id).includes(:item_images)
+    @itembs = Item.where(brand_id: @item.brand_id).includes(:item_images)
   end
 
   private
   def item_params
-    params.require(:item).permit(:name, :description, :price, :item_condition_id, :ship_fee_bearer_id, :prefecture_id, :days_before_ship_id, :delivery_method_id, :brand_id, :category_id, :size_id, item_images_attributes: [:image_url, :item_id]).merge(user_id: 1) # current_user.idに変更する
+    params.require(:item).permit(:name, :description, :price, :item_condition_id, :ship_fee_bearer_id, :prefecture_id, :days_before_ship_id, :delivery_method_id, :brand_id, :category_id, :size_id, item_images_attributes: [:image_url, :item_id]).merge(user_id: current_user.id) # current_user.idに変更する
   end
 
   # 現在のアイテムをインスタンス変数@itemに格納する
   def get_current_item
-    @item = Item.includes(:category, :user, :item_images).find(params[:id])  # , :brand, :size, :item_condition, :ship_fee_bearer, :delivery_method, :days_before_ship
+    @item = Item.includes(:category, :user, :item_images, :brand, :size, :item_condition, :ship_fee_bearer, :delivery_method, :days_before_ship).find(params[:id])
   end
 
 end
