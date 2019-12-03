@@ -290,6 +290,10 @@
     padding: 24px;
     background-color: #fff;
     margin: 80px auto 0;
+    &__link {
+      color: $fm-white;
+      text-decoration: none;
+    }
     .item-edit-btn {
       @include form_button();
       padding: 20px 0;
