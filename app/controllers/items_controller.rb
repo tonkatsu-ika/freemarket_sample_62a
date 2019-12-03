@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-  layout 'basic', only: :new
+  layout 'basic', only: [:new, :edit]
   
   before_action :get_current_item, only: [:show, :edit, :update, :destroy]
 
@@ -106,7 +106,6 @@ class ItemsController < ApplicationController
 
   def edit
     @item_images = @item.item_images
-    render layout: 'basic'
   end
 
   def update
