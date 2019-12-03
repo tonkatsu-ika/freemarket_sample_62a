@@ -43,7 +43,8 @@ class TransactionsController < ApplicationController
     customer: card.customer_id, #顧客ID
     currency: 'jpy', #日本円
     )
-    Transaction.create(buyer_id: current_user.id,
+    tran = Transaction.where(item_id: @item[0].id)
+    tran.update(buyer_id: current_user.id,
                         seller_id: @item[0].user_id,
                         item_id: @item[0].id,
                         grade_by_buyer_id: 2,

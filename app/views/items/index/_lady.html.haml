@@ -3,7 +3,9 @@
     %li
       = link_to item_path(lady), class: "new-items-by-category__wrapper--list__bottom__link" do
         .new-items-by-category__wrapper--list__bottom__image
-          = image_tag "#{lady.item_images.first.image_url}", size: "188x188", alt: "商品イメージ"
+          = image_tag "#{lady.item_images.first.image_url}", size: "188x188", alt: "商品イメージ",class: "soldout-flag"
+          .flag-content
+            SOLD
           %span
             ¥
             = lady.price

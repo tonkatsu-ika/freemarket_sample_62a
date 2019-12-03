@@ -14,6 +14,7 @@ class Item < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_one :process, class_name: "Transaction"
 
+
   accepts_nested_attributes_for :item_images, allow_destroy: true
 
   validates :name, presence: true

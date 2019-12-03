@@ -307,7 +307,32 @@
   clear: both;
 }
 
-// @include select() {
-  
-// }
+.new-items-by-category__wrapper--list__bottom__image{
+  ::before{
+    width: 0;
+    height: 0;
+    z-index: 1;
+    border-style: solid;
+    border-width: 100px 100px 0 0;
+    border-color: #007bff transparent transparent transparent;
+  }
+}
+  .soldout-flag{
+    %img{
+      
+    }
+    
+  }
 
+  .flag-content{
+    position: absolute;
+    left: 0;
+    z-index: 2;
+    color: red;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    letter-spacing: 2px;
+    font-weight: 600;
+      
+  }
+  
