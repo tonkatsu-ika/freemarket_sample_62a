@@ -100,6 +100,184 @@ header{
           margin-right: 10px;
           width: 19px;
         }
+        &__notice{
+          width: 310px;
+          height: 100px;
+          position: relative;
+          top:53px;
+          left:50px;
+          z-index: 1;
+          padding: 0px 10px;
+          background-color: rgb(255, 255, 255);
+          box-shadow: 0 0 4px rgb(177, 177, 177);
+          display: none;
+          cursor: pointer;
+          &__logo{
+            position: relative;
+            bottom:51px;
+            height: 50px;
+            display: inline-block;
+            background-color: #eee;
+          }
+          &__message{
+            position: relative;
+            bottom:35px;
+            line-height: 16px;
+            display:inline-block;
+            margin: 0px 17px 22px;
+            width: 200px;
+            font-size: 14px;
+            &__hours-ago{
+              color: rgb(185, 184, 184);
+              margin-top: 3px;
+            }
+          }
+          &__icon{
+            display: inline;
+            position: relative;
+            bottom:55px;
+            color: #cccccc;
+          }
+          
+        }
+        &__todo{
+          width: 320px;
+          height: 230px;
+          position: relative;
+          top:53px;
+          left:190px;
+          z-index: 1;
+          background-color: rgb(255, 255, 255);
+          box-shadow: 0 0 4px rgb(177, 177, 177);
+          display: none;
+          &__image{
+            text-align: center;
+          }
+          &__message{
+            text-align: center;
+            color: #ccc;
+            font-size: 16px;
+            font-weight: 600;
+          }
+        }
+
+        &__mypage{
+          height: auto;
+          width: 320px;
+          background-color:  rgb(255, 255, 255);
+          position: relative;
+          top: 53px;
+          left:235px;
+          z-index: 1;
+          box-shadow: 0 0 4px rgb(177, 177, 177);
+          display: none;
+          
+          &__image{
+            background-image: image-url('mypage/bg-mypage-user.jpg');
+            background-repeat:no-repeat;
+            background-size: contain;
+            width: 100%;
+            text-align: center;
+            &__icon{
+              width: 60px;
+              height: 60px;
+              border-radius: 30px;
+              position: relative;
+              bottom:10px;
+              z-index: 2;
+            }
+          }
+          &__top{
+            height: 150px;
+            width: 100%;
+            
+            position: relative;
+            bottom: 42px;
+            text-align: center;
+            &__status{
+              padding-top: 18px;
+              line-height: 15px;
+              font-size: 14px;
+              &__name{
+                font-size: 16px;
+              }
+              span{
+                margin-left: 15px;
+              }
+            }
+            &__performance{
+              padding: 0px 10px;
+              margin-top: 13px;
+              display: flex;
+              justify-content: space-between;
+              text-decoration: none;
+              color: black;
+              font-size: 14px;
+              margin-bottom: 8px;
+              :hover{
+                color: #a1a1a1;
+              }
+              table{
+                width: 100%;
+                background-color: #fafafa;
+                tr{
+                  line-height: 25px;
+                  border-style: solid;
+                  border-color: #eeeded;
+                  border-width: 1px;
+                  td{
+                    line-height: 25px;
+                    .icon-a{
+                      color:#cacaca;
+                    }
+                  }
+                }
+
+            }
+              
+            }
+            &__list{
+              width: 100%;
+              &__item-top{
+                border-top: solid 1px #eee;
+              }
+              &__item{
+                display: block;
+                height: $height-sidebar-item;
+                line-height: $height-sidebar-item;
+                padding: 0 16px;
+                border-bottom: solid 1px #eee;
+                background-color: #fff;
+                &__link{
+                  justify-content: space-between;
+                  text-decoration: none;
+                  color: $f-color-base;
+                  display: flex;
+                  position: relative;
+                  &__name{
+                    line-height: $height-sidebar-item;;
+                  }
+                  &__arrow{
+                    right: 16px;
+                    line-height: $height-sidebar-item;
+                    font-weight: bold;
+                    opacity: 0.3;
+                  }
+                }
+                &:hover {
+                  background-color: $bg-sidebar-hover;
+                  .header__bottom__user-menu__li__mypage__top__list__item__link__arrow {
+                    transform: translate(4px);
+                    opacity: 1;
+                  }
+                }
+                
+              }
+
+            }
+          }
+            
+        }
       }
     }
     &__login-block{

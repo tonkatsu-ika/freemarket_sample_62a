@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root 'items#index'
+  
   get 'credit_card/new'
   get 'credit_card/show'
   devise_for :users, controllers: {
@@ -9,9 +11,8 @@ Rails.application.routes.draw do
     confirmations: 'users/confirmations',
     omniauth_callbacks: 'users/omniauth_callbacks'
     }
-  
-  root 'items#index'
-  resources :mypage, only: [:index, :update] do
+
+  resources :mypage, only: [:index, :update, :create] do
     collection do
       get :profile
       get :card
@@ -19,10 +20,8 @@ Rails.application.routes.draw do
       get :logout
     end
   end
-  get 'itmes/index'
 
   resources :signup, only: [:show] do
-
     collection do
       get 'auth'
       get 'registlation'
@@ -34,10 +33,11 @@ Rails.application.routes.draw do
       get 'done'
     end
   end
+
   resources :credit_card ,only: [:new, :show] do
     collection do
       post 'show', to: 'credit_card#show'
-      post 'pay', to: 'credit_card#pay'
+      get 'pay', to: 'credit_card#pay'
       post 'delete', to: 'credit_card#delete'
     end
   end
@@ -50,7 +50,14 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :transactions, only: [:index, :show] do
+    collection do
+      get 'index', to: 'transactions#index'
+      get 'pay', to: 'transactions#pay'
+      get 'done', to: 'transactions#done'
+      get 'new', to: 'transactions#new'
+    end
+  end
   resources :users, only: :show
-  resources :transactions, only: [:new, :create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
+
   context '商品出品できる' do
     
     it "ブランド以外登録されてたら出品できる" do
@@ -34,6 +35,12 @@ RSpec.describe Item, type: :model do
   end
 
   context '商品出品できない' do
+
+    # it '画像がないと出品できない' do
+    #   item = FactoryBot.build(:item, item_images: [])
+    #   item.valid?
+    #   expect(item.errors[:item_images]).to include("を入力してください")
+    # end
 
     it "商品名がないと出品できない" do
       item = FactoryBot.build(:item, name: "")
@@ -72,9 +79,9 @@ RSpec.describe Item, type: :model do
     end
 
     it "都道府県のidがないと出品できない" do
-      item = FactoryBot.build(:item, prefecture: nil)
+      item = FactoryBot.build(:item, prefecture_id: nil)
       item.valid?
-      expect(item.errors[:prefecture]).to include("を入力してください")
+      expect(item.errors[:prefecture_id]).to include("を入力してください")
     end
 
     it "配送までの日数のidがないと出品できない" do
@@ -119,6 +126,17 @@ RSpec.describe Item, type: :model do
       expect(item.errors[:price]).to include("は10000000より小さい値にしてください")
     end
 
+  end
+
+  context '商品が削除できる' do
+    # it "id=1の商品を削除できる" do
+    #   user = FactoryBot.build(:user, id: 1)
+    #   login_user user
+    #   item = FactoryBot.build(:item, id: 1, user_id: 1)
+    #   expect(Item.where(id: 1).count).to eq 1
+    #   item.destroy
+    #   expect(Item.where(id: 1).count).to eq 0
+    # end
   end
 
 end

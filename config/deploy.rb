@@ -5,10 +5,10 @@
 # ブランチをコマンド実行時に選択できるようにした(指定なければmaster)
 #set :branch, ENV['BRANCH'] || "master"
 #set :branch, 'develop_branch'
-set :branch, ENV['BRANCH'] || 'develop_branch'
+set :branch, ENV['BRANCH'] || 'push_branch'
 
 # Default deploy_to directory is /var/www/my_app_name
-# set :deploy_to, "/var/www/my_app_name"
+#set :deploy_to, "/var/www/freemarket_sample_62a"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
@@ -22,6 +22,8 @@ set :branch, ENV['BRANCH'] || 'develop_branch'
 
 # Default value for :linked_files is []
 # append :linked_files, "config/database.yml"
+#append :linked_files, 'config/master.key', ".env.production"
+append :linked_files, 'config/master.key'
 
 # Default value for linked_dirs is []
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
@@ -68,6 +70,7 @@ set :keep_releases, 5
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
   task :restart do
+    #set :default_environment, Dotenv::Parser.call(capture("cat #{shared_path}/.env.production")) 
     #invoke 'unicorn:restart'
     invoke 'unicorn:reload'
   end

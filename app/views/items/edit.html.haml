@@ -1,1 +1,142 @@
 -# アイテム編集ページ
+.sell-wrapper
+  %h2.sell-wrapper__index 商品の情報を入力
+  = form_for (@item) do |f|
+    .sell-wrapper__form.sell-wrapper__form__image
+      .sell-wrapper__form__image__content
+        .sell-wrapper__form__image__title 出品画像
+        %span.sell-wrapper__form--must.sell-wrapper__form__image__must 必須
+      .sell-wrapper__form__image__explanation 最大10枚までアップロードできます
+      .dropzone-container.clearfix
+        = f.fields_for :items_images, @item.item_images do |i|
+          .preview
+            - if @item.item_images.count < 5
+              - @item.item_images.each_with_index do |item_image, index|
+                .img_view{data: {image: index}}
+                  = image_tag item_image.image_url.identifier
+                  .btn_wrapper
+                    .btn.edit 編集
+                    .btn.delete 削除
+          .dropzone-area
+            = i.label :image_url, class: "dropzone-box", for: "upload-image" do
+              .input_area
+                - @item.item_images.each_with_index do |item_image, index|
+                  = i.file_field :image_url, name: 'item_images[image_url][]', id: "upload-image", class: "upload-image dropzone", 'data-image': "#{index}"
+                .boxFileSelect
+                  %p
+                    ドロップ&amp;ドラッグ
+                    %br
+                    もしくはクリックしてください
+          .preview2
+            - if @item_images.count >= 5
+              - @item.item_images.each_with_index do |item_image, index| 
+                .img_view{data: {image: index}}
+                  = image_tag item_image.image_url.identifier
+                  .btn_wrapper
+                    .btn.edit 編集
+                    .btn.delete 削除
+          .dropzone-area2
+            = i.label :image_url, class: "dropzone-box", for: "upload-image" do
+              .input_area
+                - @item.item_images.each_with_index do |item_image, index|
+                  = i.file_field :image_url, name: 'item_images[image_url][]', id: "upload-image", class: "upload-image dropzone", 'data-image': "#{index}"
+                .boxFileSelect
+                  %p
+                    ドロップ&amp;ドラッグ
+                    %br
+                    もしくはクリックしてください
+      .clearfix
+
+    .sell-wrapper__form.sell-wrapper__form__content
+      .sell-wrapper__form__content__name
+        .sell-wrapper__form__content__name__upper
+          .sell-wrapper__form__content__name__title 商品名
+          %span.sell-wrapper__form--must.sell-wrapper__form__content__must 必須
+        .sell-wrapper__form__content__name__bottom
+          = f.text_field :name, class: 'sell-wrapper__form__content__name__bottom__text-box', placeholder: '商品名（必須 40文字まで）'
+      .sell-wrapper__form__content__explain
+        .sell-wrapper__form__content__name__upper
+          .sell-wrapper__form__content__name__title 商品の説明
+          %span.sell-wrapper__form--must.sell-wrapper__form__content__must 必須
+        .sell-wrapper__form__content__name__bottom
+          = f.text_area :description, class: 'sell-wrapper__form__content__explain__bottom__text-box', placeholder: '商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'
+
+    .sell-wrapper__form.sell-wrapper__form__detail
+      %h3.sell-wrapper__form__detail__left 商品の詳細
+      .sell-wrapper__form__detail__right
+        .sell-wrapper__form__detail__right__upper
+          .sell-wrapper__form__detail__right__upper__category
+            .sell-wrapper__form__content__name__title カテゴリー
+            %span.sell-wrapper__form--must.sell-wrapper__form__content__must 必須
+          = f.collection_select :category_id, @item.parent_categories, :id, :category_name, {prompt: true, selected: @item.parent_category.id}, html_options = {class: 'sell-wrapper__form__detail__right__upper__select sell-wrapper__form__select sell-wrapper__form__detail__right__upper__select sell-wrapper__form__select__parent'}
+          = f.collection_select :category_id, @item.child_categories, :id, :category_name, {prompt: true, selected: @item.child_category.id}, html_options = {class: 'sell-wrapper__form__detail__right__upper__select sell-wrapper__form__select sell-wrapper__form__detail__right__upper__select sell-wrapper__form__select__child'}
+          = f.collection_select :category_id, @item.grandchild_categories, :id, :category_name, {prompt: true, selected: @item.grandchild_category.id}, {class: 'sell-wrapper__form__detail__right__upper__select sell-wrapper__form__select sell-wrapper__form__detail__right__upper__select sell-wrapper__form__select__grandchild'}
+        .sell-wrapper__form__detail__right__center
+        - if @item.has_sizes?
+          .sell-wrapper__form__detail__right__upper__category.sell-wrapper__form__detail__right__upper__category__size
+            .sell-wrapper__form__content__name__title サイズ
+            %span.sell-wrapper__form--must.sell-wrapper__form__content__must 必須
+          = f.collection_select :size_id, @item.sizes, :id, :size, {prompt: true}, {class: 'sell-wrapper__form__select sell-wrapper__form__select__size'}
+        .sell-wrapper__form__detail__right__center
+          .sell-wrapper__form__detail__right__upper__category
+            .sell-wrapper__form__content__name__title ブランド
+            %span.sell-wrapper__form--not-must.sell-wrapper__form__content__must 任意
+          = f.collection_select :brand_id, Brand.all, :id, :brand_name, {prompt: true}, {class: 'sell-wrapper__form__select'}
+        .sell-wrapper__form__detail__right__bottom
+          .sell-wrapper__form__detail__right__upper__category
+            .sell-wrapper__form__content__name__title 商品の状態
+            %span.sell-wrapper__form--must.sell-wrapper__form__content__must 必須
+          = f.collection_select :item_condition_id, ItemCondition.all, :id, :item_condition, {prompt: true}, {class: 'sell-wrapper__form__select'}
+
+
+    .sell-wrapper__form.sell-wrapper__form__delivery
+      %h3.sell-wrapper__form__detail__left 配送について
+      .sell-wrapper__form__detail__right
+        .sell-wrapper__form__delivery__right__upper
+          .sell-wrapper__form__detail__right__upper__category
+            .sell-wrapper__form__content__name__title 配送料の負担
+            %span.sell-wrapper__form--must.sell-wrapper__form__content__must 必須
+          = f.collection_select :ship_fee_bearer_id, ShipFeeBearer.all, :id, :ship_fee_bearer, {prompt: true}, {class: 'sell-wrapper__form__select'}
+        .sell-wrapper__form__detail__right__bottom
+          .sell-wrapper__form__detail__right__upper__category
+            .sell-wrapper__form__content__name__title 配送の方法
+            %span.sell-wrapper__form--must.sell-wrapper__form__content__must 必須
+          = f.collection_select :delivery_method_id, DeliveryMethod.all, :id, :delivery_method, {prompt: true}, {class: 'sell-wrapper__form__select'}
+        .sell-wrapper__form__detail__right__bottom
+          .sell-wrapper__form__detail__right__upper__category
+            .sell-wrapper__form__content__name__title 発送元の地域
+            %span.sell-wrapper__form--must.sell-wrapper__form__content__must 必須
+          = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: true}, {class: 'sell-wrapper__form__select'}
+        .sell-wrapper__form__detail__right__bottom
+          .sell-wrapper__form__detail__right__upper__category
+            .sell-wrapper__form__content__name__title 発送までの日数
+            %span.sell-wrapper__form--must.sell-wrapper__form__content__must 必須
+          = f.collection_select :days_before_ship_id, DaysBeforeShip.all, :id, :days_before_ship, {prompt: true}, {class: 'sell-wrapper__form__select'}
+
+    .sell-wrapper__form.sell-wrapper__form__price
+      %h3.sell-wrapper__form__detail__left 販売価格(300〜9,999,999)
+      .sell-wrapper__form__detail__right
+        %ul
+          %li.sell-wrapper__form__price__first
+            .sell-wrapper__form__price__first__wrapper
+              .sell-wrapper__form__detail__right__upper__category.sell-wrapper__form__price__first__wrapper__height
+                .sell-wrapper__form__content__name__title 価格
+                .sell-wrapper__form__content__must
+                  %span.sell-wrapper__form--must 必須
+              .sell-wrapper__form__price__first__wrapper__right
+                ¥
+                = f.text_field :price, class: 'sell-wrapper__form__price__first__wrapper__right__money', placeholder: '例）300'
+          %li.sell-wrapper__form__price__second
+            .sell-wrapper__form__price__second__left 販売手数料(10%)
+            .sell-wrapper__form__price__second__right
+              = format_currency(calc_fm_commission(@item.price))
+          %li.sell-wrapper__form__price__third
+            .sell-wrapper__form__price__third__left 販売利益
+            .sell-wrapper__form__price__third__right
+              = format_currency(calc_fm_profit(@item.price))
+    .sell-wrapper__form.sell-wrapper__form__sell-btn
+      .sell-wrapper__form__sell-btn__upper
+      = f.submit '変更する', class: 'sell-wrapper__form__sell-btn__sent'
+      .sell-wrapper__form__sell-btn__back
+        =link_to item_path, class: "sell-wrapper__form__sell-btn__back__link" do
+          キャンセル

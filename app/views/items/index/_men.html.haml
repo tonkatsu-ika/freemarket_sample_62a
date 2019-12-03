@@ -1,0 +1,12 @@
+.new-items-by-category__wrapper--list__bottom
+  %ul
+    %li
+      = link_to item_path(men), class: "new-items-by-category__wrapper--list__bottom__link" do
+        .new-items-by-category__wrapper--list__bottom__image
+          = image_tag "#{men.item_images.first.image_url}", size: "188x188", alt: "商品イメージ"
+          %span
+            ¥
+            = men.price
+        .new-items-by-category__wrapper--list__bottom__item-name 
+          =men.name.truncate(25)
+    
