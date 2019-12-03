@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   layout 'basic', only: [:new, :edit]
   
   before_action :get_current_item, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     #ひとまず固定で以下アイテムの取得をする

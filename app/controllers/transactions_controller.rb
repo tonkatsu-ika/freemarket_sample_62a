@@ -2,6 +2,8 @@ class TransactionsController < ApplicationController
   require 'payjp'
   layout 'users' ## とりあえずここにかいておく。
 
+  before_action :authenticate_user!
+
   def show
     item = Item.find(params[:id])
     if item.user_id == current_user.id
