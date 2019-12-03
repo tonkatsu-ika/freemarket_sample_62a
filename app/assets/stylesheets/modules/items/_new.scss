@@ -3,7 +3,7 @@
 @import '../../mixin/mixin';
 
 .sell-wrapper {
-  background-color: #fff; // 後で変数化
+  background-color: $fm-white;
   width: 700px; // 後で変数化
   margin: 0 auto;
   &__index {
@@ -20,14 +20,14 @@
       @include select();
     }
     &--must {
-      color: #fff;
+      color: $fm-white;
       background-color: #ea352d;
       margin-left: 8px;
       padding: 2px 4px;
       border-radius: 3px;
     }
     &--not-must {
-      color: #fff;
+      color: $fm-white;
       background-color: #bbb;
       margin-left: 8px;
       padding: 2px 4px;
@@ -69,7 +69,7 @@
           margin-bottom: 8px;
         }
         &__title {
-          font-size: 14px;
+          font-size: $f-size-base;
           font-weight: bold;
         }
         &__bottom {
@@ -148,7 +148,7 @@
               padding: $box-padding;
               border-radius: 4px;
               border: 1px solid #ccc;
-              background: #fff;
+              background: $fm-white;
               line-height: 1.5;
               font-size: 16px;
               text-align: right;
@@ -181,7 +181,7 @@
         line-height: 48px;
         background: #ea352d;
         border: 1px solid #ea352d;
-        color: #fff;
+        color: $fm-white;
         &:hover {
           cursor: pointer;
           background-color: #e62017;
@@ -194,7 +194,7 @@
         line-height: 48px;
         text-align: center;
         border: 1px solid #aaa;
-        color: #fff;
+        color: $fm-white;
         transition: background-color 0.5s linear;
         &:hover {
           cursor: pointer;
@@ -206,7 +206,7 @@
         // items#editのキャンセルボタン用
         &__link {
           text-decoration: none;
-          color: #fff;
+          color: $fm-white;
         }
       }
     }
@@ -244,7 +244,7 @@
 
 .btn_wrapper {
   display: flex;
-  font-size: 14px;
+  font-size: $f-size-base;
 }
 
 .btn {
@@ -294,20 +294,11 @@
   }
 }
 
-
-
-
 .dropzone-area2 {
   float: left;
   display: none;
 }
 
-
 .clearfix {
   clear: both;
 }
-
-// @include select() {
-  
-// }
-
