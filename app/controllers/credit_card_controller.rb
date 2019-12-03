@@ -24,7 +24,7 @@ class CreditCardController < ApplicationController
           
           redirect_to done_signup_index_path
         else
-          redirect_to action: "pay"
+          redirect_to root_path
         end
       end
     end
