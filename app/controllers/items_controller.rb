@@ -13,40 +13,24 @@ class ItemsController < ApplicationController
       parente_id = Category.find(ancestor_id).find_all_by_generation(2)
       array = parente_id .ids
     end
-    #出品中のアイテムIDの絞り込み
-    def get_transaction_status(transaction_ids,ids)
-      item_test = transaction_ids & ids
-    end
-
-    #出品中のアイテムのIDを取得する
-      transaction_ids = Transaction.where(transaction_status: 1).pluck(:item_id)
 
     #レディース新着のアイテム取得  
-      ids = Item.where(category_id:get_categoryid(1)).pluck(:id)
-      @ladies  = Item.where(id:get_transaction_status(transaction_ids,ids)).order("created_at DESC").limit(10).includes(:item_images)
+      @ladies  = Item.where(category_id:get_categoryid(1),transaction_status:[1,2]).order("created_at DESC").limit(10).includes(:item_images)
     #メンズ新着アイテムの取得
-      ids = Item.where(category_id:get_categoryid(2)).pluck(:id)
-      @mens  = Item.where(id:get_transaction_status(transaction_ids,ids)).order("created_at DESC").limit(10).includes(:item_images)
+      @mens  = Item.where(category_id:get_categoryid(2),transaction_status:[1,2]).order("created_at DESC").limit(10).includes(:item_images)
     #家電・スマホ・カメラ新着アイテムの取得
-      ids = Item.where(category_id:get_categoryid(8)).pluck(:id)
-      @appliances  = Item.where(id:get_transaction_status(transaction_ids,ids)).order("created_at DESC").limit(10).includes(:item_images)
+      @appliances  = Item.where(category_id:get_categoryid(8),transaction_status:[1,2]).order("created_at DESC").limit(10).includes(:item_images)
     #おもちゃ・ホビー・グッズ新着アイテムの取得
-      ids = Item.where(category_id:get_categoryid(6)).pluck(:id)
-      @hobbies  = Item.where(id:get_transaction_status(transaction_ids,ids)).order("created_at DESC").limit(10).includes(:item_images)
+      @hobbies  = Item.where(category_id:get_categoryid(6),transaction_status:[1,2]).order("created_at DESC").limit(10).includes(:item_images)
   #人気のブランド取得
     #シャネル新着アイテムの取得
-      ids = Item.where(brand_id: 1).pluck(:id)
-      @chanels = Item.where(id:get_transaction_status(transaction_ids,ids)).order("created_at DESC").limit(10).includes(:item_images)
+      @chanels = Item.where(brand_id: 1,transaction_status:[1,2]).order("created_at DESC").limit(10).includes(:item_images)
     #ルイヴィトン新着アイテムの取得
-      ids = Item.where(brand_id: 3).pluck(:id)
-      @louises = Item.where(id:get_transaction_status(transaction_ids,ids)).order("created_at DESC").limit(10).includes(:item_images)
+      @louises = Item.where(brand_id: 3,transaction_status:[1,2]).order("created_at DESC").limit(10).includes(:item_images)
     #シュプリーム新着アイテムの取得
-      ids = Item.where(brand_id: 4).pluck(:id)
-      @supremes = Item.where(id:get_transaction_status(transaction_ids,ids)).order("created_at DESC").limit(10).includes(:item_images)
+      @supremes = Item.where(brand_id: 4,transaction_status:[1,2]).order("created_at DESC").limit(10).includes(:item_images)
     #ナイキ新着アイテムの取得
-      ids = Item.where(brand_id: 2).pluck(:id)
-      @nikes = Item.where(id:get_transaction_status(transaction_ids,ids)).order("created_at DESC").limit(10).includes(:item_images)
-      
+      @nikes = Item.where(brand_id: 2,transaction_status:[1,2]).order("created_at DESC").limit(10).includes(:item_images)
   end
 
   def new
@@ -85,7 +69,6 @@ class ItemsController < ApplicationController
             item_id: @item.id,
             grade_by_buyer_id: 2,
             grade_by_seller_id: 2,
-            transaction_status: 1,#１、出品中、２は取引中、３は売却済
             payment_method_id: 1)  
         redirect_to items_path, notice: '商品を出品しました'
       end

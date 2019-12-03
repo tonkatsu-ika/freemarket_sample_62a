@@ -43,15 +43,10 @@ class TransactionsController < ApplicationController
     customer: card.customer_id, #顧客ID
     currency: 'jpy', #日本円
     )
-    tran = Transaction.where(item_id: @item[0].id)
-    tran.update(buyer_id: current_user.id,
-                        seller_id: @item[0].user_id,
-                        item_id: @item[0].id,
-                        grade_by_buyer_id: 2,
-                        grade_by_seller_id: 2,
-                        transaction_status: 3,#１、出品中、２は取引中、３は売却済
-                        payment_method_id: 1)#現状クレジットカードでのみ購入可能なため１を仮置き
-
+    tran = Item.where(id: @item[0].id)
+    
+    #Itemのtransaction_statusを購入済み（３）に変更
+    tran.update(transaction_status:3)
     redirect_to action: 'done' #完了画面に移動
   end
 
