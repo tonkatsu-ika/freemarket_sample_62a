@@ -91,7 +91,7 @@
                 }
               }
               i {
-                font-size: 16px;
+                font-size: $box-font-size;
               }
               span {
                 font-size: 13px;
@@ -150,7 +150,7 @@
       margin-top: 10px;
     }
     .shipping-not-allowed-message {
-      margin: 16px ;
+      margin: $box-font-size ;
       text-align: center;
       color: $fm-red;
     }
@@ -325,7 +325,7 @@
           text-align: center;
           background-color: #fff;
           &__title {
-            font-size: 16px;
+            font-size: $box-font-size;
             font-weight: bold;
             margin-bottom: 10px;
           }
