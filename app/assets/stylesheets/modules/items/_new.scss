@@ -1,5 +1,5 @@
 // items#newとitems#editで共用
-
+@import '../../config/variables';
 @import '../../mixin/mixin';
 
 .sell-wrapper {
@@ -77,7 +77,7 @@
           &__text-box {
             font-size: 16px;
             width: calc(100% - 32px);
-            padding: 10px 16px 8px;
+            padding: $box-padding;
             line-height: 1.5;
             border: 1px solid #dddddd;
             border-radius: 4px;
@@ -91,7 +91,7 @@
             font-size: 16px;
             min-height: 104px;
             width: calc(100% - 32px);
-            padding: 10px 16px 8px;
+            padding: $box-padding;
             line-height: 1.5;
             border: 1px solid #dddddd;
             border-radius: 4px;
@@ -145,7 +145,7 @@
             &__money {
               height: 30px;
               margin-left: 5px;
-              padding: 10px 16px 8px;
+              padding: $box-padding;
               border-radius: 4px;
               border: 1px solid #ccc;
               background: #fff;
