@@ -8,15 +8,13 @@ CarrierWave.configure do |config|
     config.storage :fog
     config.fog_provider = 'fog/aws'
     config_fog_directory = 'freemarket-t62a'
-    #config_fog_directory = 'yoshihisa2'
     config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/freemarket-t62a'
-    #config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/yoshihisa2'
 
     config.fog_credentials = {
       provider: 'AWS',
       aws_access_key_id: Rails.application.credentials.aws[:AWS_ACCESS_KEY_ID],
       aws_secret_access_key: Rails.application.credentials.aws[:AWS_SECRET_ACCESS_KEY],
-      use_iam_profile: true,
+      #use_iam_profile: true,
       region: 'ap-northeast-1'
     }
 
