@@ -12,7 +12,7 @@
       background-color: #fff;
     }
     .item-name {
-      font-size: 24px;
+      font-size: $f-size-title;
       text-align: center;
       word-wrap: break-word;
       line-height: 1.4;
@@ -142,7 +142,7 @@
       display: block;
       text-align: center;
       @include form_button();
-      font-size: 24px;
+      font-size: $f-size-title;
       font-weight: bold;
       height: 56px;
       line-height: 56px;
@@ -286,7 +286,7 @@
   .item-social-media-box {
     height: 100%;
     width: 652px;
-    padding: 24px 24px 24px 24px;
+    padding: 24px;
     background-color: #fff;
     margin: 80px auto 0;
     .item-edit-btn {
