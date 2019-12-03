@@ -3,27 +3,33 @@ class TransactionsController < ApplicationController
   layout 'users' ## とりあえずここにかいておく。
 
   def show
-    @item = Item.includes(:category, :user, :item_images).find(params[:id])
-    @address = User.includes(:address).find(current_user.id)
-    @card = CreditCard.where(user_id: current_user.id).first if CreditCard.where(user_id: current_user.id).present?
-    if @card[:user_id] != nil
-      Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
-      customer = Payjp::Customer.retrieve(@card.customer_id)
-      @card_information = customer.cards.retrieve(@card.card_id)
-      @card_brand = @card_information.brand
-      case @card_brand
-      when "Visa"
-        @card_src = "visa.svg"
-      when "JCB"
-        @card_src = "jcb.gif"
-      when "MasterCard"
-        @card_src = "mastercard.svg"
-      when "American Express"
-        @card_src = "amex.gif"
-      when "Diners Club"
-        @card_src = "diners.gif"
-      when "Discover"
-        @card_src = "discover.gif"
+    item = Item.find(params[:id])
+    if item.user_id == current_user.id
+      redirect_to item_path(item), alert: 'あなたの出品した商品です。'
+    else
+      @item = Item.includes(:category, :user, :item_images).find(params[:id])
+      @user = User.includes(:address).find(current_user.id)
+      @card = CreditCard.where(user_id: current_user.id).first if CreditCard.where(user_id: current_user.id).present?
+      # binding.pry
+      if @card != nil
+        Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+        customer = Payjp::Customer.retrieve(@card.customer_id)
+        @card_information = customer.cards.retrieve(@card.card_id)
+        @card_brand = @card_information.brand
+        case @card_brand
+        when "Visa"
+          @card_src = "visa.svg"
+        when "JCB"
+          @card_src = "jcb.gif"
+        when "MasterCard"
+          @card_src = "mastercard.svg"
+        when "American Express"
+          @card_src = "amex.gif"
+        when "Diners Club"
+          @card_src = "diners.gif"
+        when "Discover"
+          @card_src = "discover.gif"
+        end
       end
     end
   
