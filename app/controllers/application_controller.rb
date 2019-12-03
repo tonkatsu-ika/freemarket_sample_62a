@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :get_category_all
   before_action :configure_permitted_parameters, if: :devise_controller?
   protect_from_forgery with: :exception
   :layout_by_resource
@@ -16,6 +17,11 @@ class ApplicationController < ActionController::Base
   # Overwriting the sign_out redirect path method
   def after_sign_out_path_for(resource_or_scope)
     root_path
+  end
+
+  def get_category_all
+    @category_all = Category.limit(13)
+    # binding.pry
   end
 
   protected

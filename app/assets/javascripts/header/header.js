@@ -69,5 +69,24 @@ $(document).on('turbolinks:load', function(){
   });
 
 
+
+  $("#slide_categories").on("mouseover", function(){
+    $(".header-category-list").show()
+  });
+
+  $("#slide_categories").on("mouseout", function(){
+    $(".header-category-list").hide()
+  });
+
+  $(".header-category-list").on("mouseover", function(){
+    $(".header-category-list").show()
+  });
+
+  $(".header-category-list").on("mouseout", function(){
+    $(".header-category-list").hide()
+  });
+
+
+
   
 });

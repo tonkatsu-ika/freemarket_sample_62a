@@ -36,6 +36,7 @@
           = link_to :mypage_index, class: "header__bottom__user-menu__li" do
             %i.far.fa-user-circle.gray
             マイページ
+            
         
         = render "layouts/noticebar"      
         = render "layouts/todobar"
@@ -47,3 +48,13 @@
           = link_to '新規会員登録',new_user_registration_path, class: 'header__bottom__login-block__signup-button'
         %li
           = link_to 'ログイン',new_user_session_path, class: 'header__bottom__login-block__signin-button'  
+
+.header-category-list
+  = render partial: "layouts/categorybar", collection: @category_all,as: "category"
+  = link_to "#", class: "header-category-list__content" do
+    .header-category-list__content__item
+      カテゴリー一覧
+.header-category-list-child
+  = link_to "#", class: "header-category-list-child__content" do
+    .header-category-list-child__content__item
+      = @category_all[1].category_name
