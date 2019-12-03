@@ -35,12 +35,12 @@
           .buy-user-info-text 
             〒
             %span
-              =@address.address.post_code
-            =@address.address.address
-            =@address.address.building
+              = @user.address.post_code
+              = @user.address.address
+              = @user.address.building
           %br
-            =@address.last_name
-            =@address.first_name
+            = @user.last_name
+            = @user.first_name
           .buy-user-info-fix 
             = link_to "#", class:"buy-user-info-fix" do
               変更する

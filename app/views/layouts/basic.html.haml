@@ -17,16 +17,4 @@
       %main
         = yield
 
-      .login-footer
-        .login-footer__list
-          %ul
-            %li
-            = link_to 'プライバシーポリシー', "#",class: 'btn-square-little-rich', method: :get         
-            %li
-            = link_to 'Fmarket利用規約', "#",class: 'btn-square-little-rich', method: :get      
-            %li
-            = link_to '特定商取引に関する表記', "#",class: 'btn-square-little-rich', method: :get
-        .login-footer__title-logo
-          = link_to (image_tag "fmarket_logo_white.svg", size: "185x49", alt: "Fmarket",class: "login-header__upper__title-logo__link"), :root      
-        .login-footer__copyright
-          © ︎2019 Fmarket
+      = render 'devise/shared/userlogin_footer'

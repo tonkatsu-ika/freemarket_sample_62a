@@ -1,6 +1,8 @@
 require 'csv'
 require 'fileutils'
 
+csv_path = "db/fixtures/csv/item_images.csv"
+csv = CSV.read(csv_path)
 
 Dir.chdir 'public/uploads/item_image/image_url/' 
 FileUtils.rm(Dir.glob('*.*'))
