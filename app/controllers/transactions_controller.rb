@@ -7,7 +7,7 @@ class TransactionsController < ApplicationController
   def show
     item = Item.find(params[:id])
     if item.user_id == current_user.id
-      redirect_to item_path(item), alert: 'あなたの出品した商品です。'
+      redirect_to item_path(item), alert: 'あなたが出品した商品です。'
     else
       @item = Item.includes(:category, :user, :item_images).find(params[:id])
       @user = User.includes(:address).find(current_user.id)
