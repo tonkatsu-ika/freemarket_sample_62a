@@ -10,7 +10,6 @@ class TransactionsController < ApplicationController
       @item = Item.includes(:category, :user, :item_images).find(params[:id])
       @user = User.includes(:address).find(current_user.id)
       @card = CreditCard.where(user_id: current_user.id).first if CreditCard.where(user_id: current_user.id).present?
-      # binding.pry
       if @card != nil
         Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
         customer = Payjp::Customer.retrieve(@card.customer_id)
@@ -30,6 +29,8 @@ class TransactionsController < ApplicationController
         when "Discover"
           @card_src = "discover.gif"
         end
+      else
+        redirect_to item_path(item), alert: 'クレジットカードをマイページで登録してください。'
       end
     end
   
