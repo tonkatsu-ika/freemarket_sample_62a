@@ -64,7 +64,7 @@
           }
           td.user-info{
             .name {
-              color: #0099e8;
+              color: $link-color;
               text-decoration: none;
             }
             ul.item-user-ratings {
@@ -104,7 +104,7 @@
               li {
                 a {
                   text-decoration: none;
-                  color: #0099e8;
+                  color: $link-color;
                 }
               }
             }
@@ -112,13 +112,13 @@
           td.bland {
             a {
               text-decoration: none;
-              color: #0099e8;
+              color: $link-color;
             }
           }
           td.prefecture {
             a {
               text-decoration: none;
-              color: #0099e8;
+              color: $link-color;
             }
           }
         }
@@ -211,7 +211,7 @@
         a {
           padding: 10px;
           text-decoration: none;
-          color: #0099e8;
+          color: $link-color;
           &:hover{
             color: #b3d4fc;
           }
@@ -267,7 +267,7 @@
     &__prev {
       float: left;
       text-decoration: none;
-      color: #0099e8;
+      color: $link-color;
       &:hover {
         text-decoration: underline;
         color:#b3d4fc;
@@ -276,7 +276,7 @@
     &__next {
       float: right;
       text-decoration: none;
-      color: #0099e8;
+      color: $link-color;
       &:hover {
         text-decoration: underline;
         color: #b3d4fc;
@@ -348,7 +348,7 @@
               cursor: pointer;
             }
             .link-delete {
-              color: #0099e8;
+              color: $link-color;
               text-decoration: none;
               &__sentence {
                 width: 100%;
@@ -395,7 +395,7 @@
       margin: 30px auto 0 auto;
       .items-box-head {
         text-decoration: none;
-        color: #0099e8;
+        color: $link-color;
         font-size: 22px;
         margin-left: 11px;
       }
