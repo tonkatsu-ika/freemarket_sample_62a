@@ -7,10 +7,10 @@ CarrierWave.configure do |config|
   if Rails.env.production?
     config.storage :fog
     config.fog_provider = 'fog/aws'
-    #config_fog_directory = 'freemarket-t62a'
-    config_fog_directory = 'yoshihisa2'
-    #config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/freemarket-t62a'
-    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/yoshihisa2'
+    config_fog_directory = 'freemarket-t62a'
+    #config_fog_directory = 'yoshihisa2'
+    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/freemarket-t62a'
+    #config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/yoshihisa2'
 
     config.fog_credentials = {
       provider: 'AWS',
