@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def get_category_all
-    @category_all = Category.limit(13)
+    @category_all = Category.roots
     # binding.pry
   end
 

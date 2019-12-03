@@ -49,12 +49,13 @@
         %li
           = link_to 'ログイン',new_user_session_path, class: 'header__bottom__login-block__signin-button'  
 
-.header-category-list
-  = render partial: "layouts/categorybar", collection: @category_all,as: "category"
-  = link_to "#", class: "header-category-list__content" do
-    .header-category-list__content__item
-      カテゴリー一覧
-.header-category-list-child
-  = link_to "#", class: "header-category-list-child__content" do
-    .header-category-list-child__content__item
-      = @category_all[1].category_name
+.header-category-all
+  .header-category-list
+    = render partial: "layouts/categorybar", collection: @category_all,as: "category"
+    = link_to "#", class: "header-category-list__content" do
+      .header-category-list__content__item
+        カテゴリー一覧
+  .header-category-list-child
+    = render partial: "layouts/categorychildren", collection: @category_all[1].children,as:"category"
+  .header-category-list-grandchild
+    = render partial: "layouts/categorygrand", collection: @category_all[0].children[1].children,as:"category"
