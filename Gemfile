@@ -81,6 +81,8 @@ gem 'pry-byebug'
 gem 'jquery-rails'
 gem 'fog-aws'
 gem 'rails-i18n', '~> 5.1'
+
+
 gem 'active_hash'
 gem 'payjp' 
 gem 'dotenv-rails'
@@ -105,3 +107,6 @@ gem 'omniauth-google-oauth2'
 
 # パンくず
 gem "gretel"
+
+# Coveralls
+gem 'coveralls', require: false

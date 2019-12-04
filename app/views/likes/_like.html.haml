@@ -1,0 +1,13 @@
+%li.like-link{id: "like-link-#{@item.id}"}
+  - if user_signed_in? && Like.find_by(user_id: current_user.id, item_id: @item.id)
+    = link_to unlike_path(@item.id), method: :delete, remote: true do
+      %i.fas.fa-heart
+      %span いいね！
+      %span.fade-in-down 
+        = @item.likes.count
+  - else 
+    = link_to like_path(@item.id), method: :post, remote: true do
+      %i.far.fa-heart
+      %span いいね！
+      %span.fade-in-down 
+        = @item.likes.count

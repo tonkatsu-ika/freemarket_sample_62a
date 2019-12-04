@@ -150,6 +150,17 @@
       text-decoration: none;
       margin-top: 10px;
     }
+    .item-buy-btn__soldout {
+      display: block;
+      text-align: center;
+      @include form_button(#888);
+      font-size: 24px;
+      font-weight: bold;
+      height: 56px;
+      line-height: 56px;
+      margin: 0 40px;
+      text-decoration: none;
+    }
     .shipping-not-allowed-message {
       margin: $box-font-size ;
       text-align: center;
@@ -164,7 +175,7 @@
     .item-button-container {
       height: 60px;
       .item-button-left {
-        .item-button-like {
+        .like-link {
           list-style: none;
           float: left;
           i {
@@ -423,6 +434,30 @@
 
 .item-box__image {
   height: 220px;
+  position: relative;
+  &-soldtag{
+    float: left;
+    position: absolute;
+    // left: 0;
+    bottom:183px;
+    z-index: 2;
+    font-size: 20px;
+    color: #fff;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    letter-spacing: 2px;
+    font-weight: 600;
+    
+  }
+  &-sold-triangle  {
+    width: 0;
+    height: 0;
+    position: absolute;
+    top:0;
+    border-style: solid;
+    border-width: 80px 80px 0 0;
+    border-color: #ea352d transparent transparent transparent;
+  }
 }
 
 .item-show-footer{
@@ -459,4 +494,26 @@
   top: 30px;
   background-color: red;
   color: red;
+}
+.slide-item-soldtag{
+  float: left;
+  position: absolute;
+  top: 26px;
+  z-index: 2;
+  font-size: 30px;
+  color: #fff;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  letter-spacing: 2px;
+  font-weight: 600;
+  
+}
+.slide-item-sold-triangle {
+  width: 0;
+  height: 0;
+  position: absolute;
+  top:0;
+  border-style: solid;
+  border-width: 120px 120px 0 0;
+  border-color: #ea352d transparent transparent transparent;
 }

@@ -1,14 +1,33 @@
-%li.item-box
-  = link_to item_path(itemb), class: "new-items-by-category__wrapper--list__bottom__link",data: {"turbolinks"=>false} do
-    .item-box__image
-      = image_tag "#{itemb.item_images[0].image_url}", size: "220x220", alt: "商品イメージ"
-    %h3.item-box__item-name 
-      = itemb.name.truncate(25)
-    .item-box__item-num
-      .item-box__item-num--price 
-        ¥
-        %span
-          = itemb.price
-      .item-box__item-num--like
-        %i.far.fa-heart
-        %span 8
+-if itemb.transaction_status==3
+  %li.item-box
+    = link_to item_path(itemb), class: "new-items-by-category__wrapper--list__bottom__link",data: {"turbolinks"=>false} do
+      .item-box__image
+        = image_tag "#{itemb.item_images[0].image_url}", size: "220x220", alt: "商品イメージ"
+        .item-box__image-soldtag
+          SOLD
+        .item-box__image-sold-triangle
+      %h3.item-box__item-name 
+        = itemb.name.truncate(25)
+      .item-box__item-num
+        .item-box__item-num--price 
+          ¥
+          %span
+            = itemb.price
+        .item-box__item-num--like
+          %i.far.fa-heart
+          %span 8
+-else           
+  %li.item-box
+    = link_to item_path(itemb), class: "new-items-by-category__wrapper--list__bottom__link",data: {"turbolinks"=>false} do
+      .item-box__image
+        = image_tag "#{itemb.item_images[0].image_url}", size: "220x220", alt: "商品イメージ"
+      %h3.item-box__item-name 
+        = itemb.name.truncate(25)
+      .item-box__item-num
+        .item-box__item-num--price 
+          ¥
+          %span
+            = itemb.price
+        .item-box__item-num--like
+          %i.far.fa-heart
+          %span 8

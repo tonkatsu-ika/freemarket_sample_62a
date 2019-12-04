@@ -47,6 +47,7 @@ Rails.application.routes.draw do
       get 'get_category_grandchildren', defaults: { format: 'json' }
       get 'get_category_size', defaults: { format: 'json' }
     end
+    resources :likes, only: [:create, :destroy]
   end
 
   resources :transactions, only: [:index, :show] do
@@ -58,5 +59,10 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only: :show
+
+  post   '/like/:item_id', to: 'likes#create', as: :like
+  delete '/like/:item_id', to: 'likes#destroy', as: :unlike
+  
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
