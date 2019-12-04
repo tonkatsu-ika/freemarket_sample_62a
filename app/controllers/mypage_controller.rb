@@ -59,6 +59,9 @@ class MypageController < ApplicationController
       end
   end
 
+  def like
+  end
+
   def identification
   end
 

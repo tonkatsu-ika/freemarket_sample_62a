@@ -21,7 +21,7 @@
     -if user_signed_in?
       %ul.header__bottom__user-menu
         %li.header__bottom__user-menu__li
-          = link_to "#", class: "header__bottom__user-menu__li" do
+          = link_to :like_mypage_index, class: "header__bottom__user-menu__li" do
             %i.far.fa-heart
             いいね！一覧
         %li.header__bottom__user-menu__li.header-notice
