@@ -52,10 +52,18 @@
 .header-category-all
   .header-category-list
     = render partial: "layouts/categorybar", collection: @category_all,as: "category"
+    -# - @category_all.each do |category|
+    -#   = link_to "#{category.category_name}", "#", class: "header-category-list__content",id: "#{category.id}"    
     = link_to "#", class: "header-category-list__content" do
-      .header-category-list__content__item
-        カテゴリー一覧
+      カテゴリー一覧
+  
   .header-category-list-child
-    = render partial: "layouts/categorychildren", collection: @category_all[1].children,as:"category"
+    -# - @category_all[1].children.each do |child|
+      -# = link_to "#{child.category_name}", "#", class: "header-category-list-child__content",id: "#{child.id}"
+    -# = render partial: "layouts/categorychildren", collection: @category_all[1].children,as:"category"
+  
   .header-category-list-grandchild
-    = render partial: "layouts/categorygrand", collection: @category_all[0].children[1].children,as:"category"
+    -# - @category_all[1].children[1].children.each do |grand|
+    -#   = link_to "#{grand.category_name}", "#", class: "header-category-list-grandchild__content",id: "#{grand.id}"
+
+    -# = render partial: "layouts/categorygrand", collection: @category_all[0].children[1].children,as:"category"

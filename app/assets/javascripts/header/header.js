@@ -141,13 +141,4 @@ $(document).on('turbolinks:load', function(){
     $(".header-category-list-child").hide();
   });
 
-
-
-  
-
-
-  
-
-
-  
 });

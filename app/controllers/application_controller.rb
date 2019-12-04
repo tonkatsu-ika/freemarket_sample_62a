@@ -24,6 +24,8 @@ class ApplicationController < ActionController::Base
     # binding.pry
   end
 
+  
+
   protected
 
   def layout_by_resource
