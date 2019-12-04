@@ -4,3 +4,12 @@
       = render partial: "main"
     %nav.search__wrapper__sidebar
       = render partial: "sidebar"
+  .item-show-footer
+    %ul.item-show-footer__content
+      %li.item-show-footer__content__title
+        = link_to "/", class:"item-show-footer__content__title" do
+          Fmarket
+      %li.item-show-footer__content__icon
+        %i.fas.fa-chevron-right
+      %li.item-show-footer__content__item
+        検索条件を表示する（あとで置き換え）
