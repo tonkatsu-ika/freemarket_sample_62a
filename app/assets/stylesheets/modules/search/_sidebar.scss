@@ -21,6 +21,12 @@
         @include text-box();
         margin-top: 8px;
       }
+      &__category {
+        @include select();
+      }
+      &__brand {
+        @include select();
+      }
     }
   }
 }
