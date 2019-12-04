@@ -86,7 +86,14 @@
           = "¥#{@item.price.to_s(:delimited)}円"
         %span.item-tax (税込)
         %span.item-shipping-fee 送料込み
-      - if current_user.id != @item.user_id&&@item.transaction_status!=3
+      - if !user_signed_in? && @item.transaction_status!=3
+        .item-buy-btn 
+          = link_to transaction_path(@item), class:"item-buy-btn" do
+            購入画面へ進む
+      - elsif !user_signed_in? && @item.transaction_status==3
+        .item-buy-btn__soldout
+          売り切れました
+      - elsif current_user.id != @item.user_id&&@item.transaction_status!=3
         .item-buy-btn 
           = link_to transaction_path(@item), class:"item-buy-btn" do
             購入画面へ進む

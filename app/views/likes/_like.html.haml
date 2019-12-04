@@ -1,5 +1,5 @@
 %li.like-link{id: "like-link-#{@item.id}"}
-  - if Like.find_by(user_id: current_user.id, item_id: @item.id)
+  - if user_signed_in? && Like.find_by(user_id: current_user.id, item_id: @item.id)
     = link_to unlike_path(@item.id), method: :delete, remote: true do
       %i.fas.fa-heart
       %span いいね！

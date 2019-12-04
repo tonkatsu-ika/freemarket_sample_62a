@@ -2,7 +2,9 @@ class LikesController < ApplicationController
   before_action :set_variables
 
   def create
-    @like = Like.create(user_id: current_user.id, item_id: @item.id)
+    if user_signed_in?
+      @like = Like.create(user_id: current_user.id, item_id: @item.id)
+    end
   end
 
   def destroy
