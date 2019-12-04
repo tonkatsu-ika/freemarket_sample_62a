@@ -49,6 +49,45 @@
           }
         }
       }
+      &__item-condition {
+        margin-top: 16px;
+        &__check-wrapper {
+          width: 48%;
+          height: 40px;
+          line-height: 20px;
+          float: left;
+          display: flex;
+          & input[type=checkbox] {
+            width: 17px;
+            height: 20px;
+          }
+          & label {
+            font-size: 14px;
+          }
+        }
+      }
+      &__ship-fee-bearer {
+        margin-top: 16px;
+      }
+      &__item-status {
+        margin-top: 16px;
+      }
+      &__btn-wrapper {
+        display: flex;
+        justify-content: space-between;
+        &__clear {
+          @include form_button($b_color: #bbb);
+          width: 45%;
+          height: 48px;
+          border: 1px solid #bbb;
+        }
+        &__ok {
+          @include form_button();
+          width: 45%;
+          height: 48px;
+          border: 1px solid $fm-red;
+        }
+      }
     }
   }
 }
