@@ -98,11 +98,7 @@
           = simple_format(@item.description)
       .item-button-container
         %ul.item-button-left
-          %li.item-button-like
-            = link_to item_likes_path(@item), method: :post, remote: true, class:"item-button-like" do
-              %i.far.fa-heart
-              %span いいね！
-              %span.fade-in-down 0
+          = render "/likes/like", collection:@item, as: :item
           %li.item-button-report
             = link_to "#", class:"item-button-report" do
               %i.far.fa-flag
