@@ -10,6 +10,7 @@ class User < ApplicationRecord
   ## association
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :like_items, through: :likes, source: :item
   has_many :items, dependent: :destroy
 
   has_many :sold_to, class_name: "Transaction", foreign_key: "buyer_id", dependent: :destroy
