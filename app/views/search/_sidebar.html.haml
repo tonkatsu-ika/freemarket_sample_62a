@@ -1,7 +1,8 @@
--# = search_form_for(@q, url:search_index_path) do |f|
+-# = search_form_for @q, url:search_index_path, html:{ method: :post } do |f|
 = form_for (@item) do |f|
   .search-sidebar
     =f.select :name, [["価格安い順","価格安い順"],["価格高い順","価格高い順"],["価格安い順","価格安い順"]], {prompt: "並び替え"}, {class: "search-sidebar__upper"}
+    -# = f.select( :sorts, { '並び替え': 'id desc', '価格の安い順': 'price asc', '価格の高い順': 'price desc', '出品の古い順': 'updated_at asc', '出品の新しい順': 'updated_at desc' } , { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()'} )
     
     .search-sidebar__bottom
       %h2.search-sidebar__bottom__top 詳細検索
