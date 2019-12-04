@@ -1,12 +1,13 @@
 .search-result
   %h2.search-result__header
-    レディースの
+    レディース
     %span.search-result__header__text
-      検索結果
+      の検索結果
   .search-result__number
     1-10件表示
   .search-result__results
-    検索結果
+    = render partial: 'main_each_item'
+
   %ul.search-result__pager
     %li.search-result__pager__pager-num
       %ul.search-result__pager__pager-num__cells
