@@ -6,6 +6,7 @@ FactoryBot.define do
     item_condition_id { 1 }
     ship_fee_bearer_id { 1 }
     prefecture_id { 1 }
+    delivery_method_id { 1 }
     days_before_ship_id { 1 }
     category_id { 35 }
     price { 300 }
