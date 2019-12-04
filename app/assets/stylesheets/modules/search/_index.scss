@@ -3,7 +3,6 @@
 
 
 .search {
-
   height: 100%;
   width: 100vw;
   background-color: $bg-mypage;
@@ -12,11 +11,10 @@
     flex-direction: row-reverse;
     height: 100%;
     justify-content: space-between;
-    width: $width-content-pc;
     margin: 0 auto;
     padding: 40px 0;
+    width: $width-content-pc;
     &__main {
-      background-color: red;
       width: $width-container-search-main;
     }
     &__sidebar {

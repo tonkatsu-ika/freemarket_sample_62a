@@ -1,1 +1,37 @@
-main
+.search-result
+  %h2.search-result__header
+    レディース
+    %span.search-result__header__text
+      の検索結果
+  .search-result__number
+    1-10件表示
+  .search-result__results
+    = render partial: 'main_each_item'
+
+  %ul.search-result__pager
+    %li.search-result__pager__pager-num
+      %ul.search-result__pager__pager-num__cells
+        %li.search-result__pager__pager-num__cells__pager-cell
+          = link_to "#", class: "search-result__pager__pager-num__cells__pager-cell__link search-result__pager__pager-num__cells__pager-cell__link--active" do
+            1
+        %li.search-result__pager__pager-num__cells__pager-cell
+          = link_to "#", class: "search-result__pager__pager-num__cells__pager-cell__link" do
+            2
+        %li.search-result__pager__pager-num__cells__pager-cell
+          = link_to "#", class: "search-result__pager__pager-num__cells__pager-cell__link" do
+            3
+        %li.search-result__pager__pager-num__cells__pager-cell
+          = link_to "#", class: "search-result__pager__pager-num__cells__pager-cell__link" do
+            4
+        %li.search-result__pager__pager-num__cells__pager-cell
+          = link_to "#", class: "search-result__pager__pager-num__cells__pager-cell__link" do
+            5
+    %li.search-result__pager__pager-next
+      %ul.search-result__pager__pager-next__cells
+        %li.search-result__pager__pager-next__cells__pager-cell
+          = link_to "#", class: "search-result__pager__pager-next__cells__pager-cell__link" do
+            %i.fas.fa-chevron-right
+        %li.search-result__pager__pager-next__cells__pager-cell
+          = link_to "#", class: "search-result__pager__pager-next__cells__pager-cell__link" do
+            %i.fas.fa-chevron-right
+            %i.fas.fa-chevron-right
