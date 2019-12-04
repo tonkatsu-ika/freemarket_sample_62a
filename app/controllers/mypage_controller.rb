@@ -1,6 +1,8 @@
 class MypageController < ApplicationController
   require "payjp"
 
+  before_action :authenticate_user!
+
   def index
   end
 
