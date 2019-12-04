@@ -144,4 +144,9 @@ class ItemsController < ApplicationController
     @item = Item.includes(:category, :user, :item_images, :brand, :size, :item_condition, :ship_fee_bearer, :delivery_method, :days_before_ship).find(params[:id])
   end
 
+  # 商品検索用のbefore_action ransackサーチを使う場合はtrue(デフォはfalse)
+  def use_ransack_search?
+    true
+  end
+  
 end

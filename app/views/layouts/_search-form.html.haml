@@ -1,0 +1,5 @@
+= search_form_for @q do |f|
+  = f.label :name_cont
+  = f.search_field :name_cont, html={class: "header__upper__form__search", id: "search-box", placeholder: "何かお探しですか？"}
+  = f.submit do
+    %i.fas.fa-search
