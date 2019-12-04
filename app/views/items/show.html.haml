@@ -93,6 +93,9 @@
       - else
         .item-buy-btn__soldout
           売り切れました
+      .item-buy-btn 
+        = link_to transaction_path(@item), class:"item-buy-btn" do
+          購入画面へ進む
       .item-description
         %p.item-description__inner
           = simple_format(@item.description)
@@ -129,9 +132,11 @@
         %span 送料無料！ナラ100%乾燥薪20キロ！サービス有り！
         %i.fas.fa-chevron-right
   .item-social-media-box
-    - if current_user.id == @item.user_id
-      .item-edit-btn 商品を編集する
-      .item-delete-btn.js-modal-open 商品を削除する
+    - if user_signed_in? and current_user.id == @item.user_id
+      .item-edit-btn
+        = link_to '商品を編集する', edit_item_path(@item), class: 'item-social-media-box__link'
+      .item-delete-btn.js-modal-open
+        = link_to '商品を削除する', item_path(@item), method: :delete, class: 'item-social-media-box__link'
     .modal.js-modal
       .modal__bg.js-modal-close
       .modal__content

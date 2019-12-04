@@ -1,4 +1,6 @@
 # README
+[![Build Status](https://travis-ci.org/tonkatsu-ika/freemarket_sample_62a.svg?branch=push_branch)](https://travis-ci.org/tonkatsu-ika/freemarket_sample_62a)
+[![Coverage Status](https://coveralls.io/repos/github/tonkatsu-ika/freemarket_sample_62a/badge.svg?branch=push_branch)](https://coveralls.io/github/tonkatsu-ika/freemarket_sample_62a?branch=push_branch)
 
 # Versions
 - Rails 5.2.3

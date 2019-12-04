@@ -24,18 +24,23 @@
           = link_to "#", class: "header__bottom__user-menu__li" do
             %i.far.fa-heart
             いいね！一覧
-        %li.header__bottom__user-menu__li
+        %li.header__bottom__user-menu__li.header-notice
           = link_to "#", class: "header__bottom__user-menu__li" do
             %i.far.fa-bell
             お知らせ
-        %li.header__bottom__user-menu__li
+        %li.header__bottom__user-menu__li.header-todo
           = link_to "#", class: "header__bottom__user-menu__li" do
             %i.fas.fa-check
             やることリスト
-        %li.header__bottom__user-menu__li
+        %li.header__bottom__user-menu__li.header-mypage
           = link_to :mypage_index, class: "header__bottom__user-menu__li" do
             %i.far.fa-user-circle.gray
             マイページ
+        
+        = render "layouts/noticebar"      
+        = render "layouts/todobar"
+        = render "layouts/mypagebar"
+
     -else
       %ul.header__bottom__login-block
         %li

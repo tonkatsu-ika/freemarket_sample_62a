@@ -24,7 +24,7 @@ class CreditCardController < ApplicationController
           
           redirect_to done_signup_index_path
         else
-          redirect_to action: "pay"
+          redirect_to root_path
         end
       end
     end
@@ -41,16 +41,16 @@ class CreditCardController < ApplicationController
         redirect_to action: "new"
     end
   
-    def show #Cardのデータpayjpに送り情報を取り出します
-      card = CreditCard.where(user_id: current_user.id).first
-      if card.blank?
-        redirect_to action: "new" 
-      else
-        Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-        customer = Payjp::Customer.retrieve(card.customer_id)
-        @default_card_information = customer.cards.retrieve(card.card_id)
-      end
-    end
+    # def show #Cardのデータpayjpに送り情報を取り出します
+    #   card = CreditCard.where(user_id: current_user.id).first
+    #   if card.blank?
+    #     redirect_to action: "new" 
+    #   else
+    #     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    #     customer = Payjp::Customer.retrieve(card.customer_id)
+    #     @default_card_information = customer.cards.retrieve(card.card_id)
+    #   end
+    # end
 
     private
   # 許可するキーを設定
