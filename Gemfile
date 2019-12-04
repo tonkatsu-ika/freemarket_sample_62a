@@ -53,6 +53,9 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'scss_lint', require: false
   gem 'haml_lint', require: false
+
+  # N+1
+  gem 'bullet'  
 end
 
 group :development do
@@ -110,3 +113,9 @@ gem "gretel"
 
 # Coveralls
 gem 'coveralls', require: false
+
+#検索機能関連
+gem 'ransack'
+gem 'kaminari'
+
+
