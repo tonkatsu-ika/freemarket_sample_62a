@@ -10,9 +10,7 @@
         = item.name.truncate(25)
       .item-box__item-num
         .item-box__item-num--price 
-          ¥
-          %span
-            = item.price
+          =format_currency(item.price)
         .item-box__item-num--like
           %i.far.fa-heart
           %span 8  
@@ -25,9 +23,7 @@
         = item.name.truncate(25)
       .item-box__item-num
         .item-box__item-num--price 
-          ¥
-          %span
-            = item.price
+          =format_currency(item.price)
         .item-box__item-num--like
           %i.far.fa-heart
           %span 8
