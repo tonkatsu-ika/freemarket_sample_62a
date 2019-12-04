@@ -11,6 +11,7 @@ class Item < ApplicationRecord
   belongs_to :size, optional: true
   has_many :item_images, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :liking_users, through: :likes, source: :user
   has_many :comments, dependent: :destroy
   has_one :process, class_name: "Transaction"
 
