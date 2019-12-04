@@ -1,2 +1,42 @@
 @import '../../config/variables';
 @import '../../mixin/mixin';
+
+.search-result {
+  background-color: white;
+  width: $width-container-search-main;
+  &__headear {
+    &__text {
+
+    }
+  }
+  &__number {
+
+  }
+
+  &__results {
+
+  }
+
+  &__pager {
+    &__pager-num {
+      &__pager-cell {
+          &__link {
+            &:hover {
+
+            }
+          }
+      }
+    }
+
+    &__pager-next {
+      &__pager-cell {
+          &__link {
+            &:hover {
+
+            }
+          }
+      }
+    } 
+  }
+
+}
