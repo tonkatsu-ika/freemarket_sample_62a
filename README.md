@@ -1,8 +1,6 @@
 # README
-
-[![Build Status](https://travis-ci.org/tea3/js-test-practice.svg?branch=master)](https://travis-ci.org/tea3/js-test-practice) 
-[![Coverage Status](https://img.shields.io/coveralls/tea3/js-test-practice.svg)](https://coveralls.io/r/tea3/js-test-practice?branch=master)
-
+[![Build Status](https://travis-ci.org/tonkatsu-ika/freemarket_sample_62a.svg?branch=push_branch)](https://travis-ci.org/tonkatsu-ika/freemarket_sample_62a)
+[![Coverage Status](https://coveralls.io/repos/github/tonkatsu-ika/freemarket_sample_62a/badge.svg?branch=push_branch)](https://coveralls.io/github/tonkatsu-ika/freemarket_sample_62a?branch=push_branch)
 
 # Versions
 - Rails 5.2.3
