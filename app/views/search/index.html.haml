@@ -1,2 +1,6 @@
-= render partial: "main"
-= render partial: "sidebar"
+.search
+  .search__wrapper
+    %article.search__wrapper__main
+      = render partial: "main"
+    %nav.search__wrapper__sidebar
+      = render partial: "sidebar"

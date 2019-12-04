@@ -1,2 +1,27 @@
 @import '../../config/variables';
 @import '../../mixin/mixin';
+
+
+.search {
+
+  height: 100%;
+  width: 100vw;
+  background-color: $bg-mypage;
+  &__wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    height: 100%;
+    justify-content: space-between;
+    width: $width-content-pc;
+    margin: 0 auto;
+    padding: 40px 0 88px;
+    &__main {
+      background-color: red;
+      width: $width-container-search-main;
+    }
+    &__sidebar {
+      background-color: white;
+      width: $width-sidebar-search;
+    }
+  }
+}
