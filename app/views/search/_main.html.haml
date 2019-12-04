@@ -1,5 +1,5 @@
 .search-result
-  %h2.search-result__headear
+  %h2.search-result__header
     レディースの
     %span.search-result__header__text
       検索結果
@@ -9,16 +9,28 @@
     検索結果
   %ul.search-result__pager
     %li.search-result__pager__pager-num
-      %ul
-        %li.search-result__pager__pager-num__pager-cell
-          = link_to "#", class: "search-result__pager__pager-num__pager-cell__link" do
+      %ul.search-result__pager__pager-num__cells
+        %li.search-result__pager__pager-num__cells__pager-cell
+          = link_to "#", class: "search-result__pager__pager-num__cells__pager-cell__link search-result__pager__pager-num__cells__pager-cell__link--active" do
             1
+        %li.search-result__pager__pager-num__cells__pager-cell
+          = link_to "#", class: "search-result__pager__pager-num__cells__pager-cell__link" do
+            2
+        %li.search-result__pager__pager-num__cells__pager-cell
+          = link_to "#", class: "search-result__pager__pager-num__cells__pager-cell__link" do
+            3
+        %li.search-result__pager__pager-num__cells__pager-cell
+          = link_to "#", class: "search-result__pager__pager-num__cells__pager-cell__link" do
+            4
+        %li.search-result__pager__pager-num__cells__pager-cell
+          = link_to "#", class: "search-result__pager__pager-num__cells__pager-cell__link" do
+            5
     %li.search-result__pager__pager-next
-      %ul
-        %li.search-result__pager__pager-next__pager-cell
-          = link_to "#", class: "search-result__pager__pager-next__pager-cell__link" do
+      %ul.search-result__pager__pager-next__cells
+        %li.search-result__pager__pager-next__cells__pager-cell
+          = link_to "#", class: "search-result__pager__pager-next__cells__pager-cell__link" do
             %i.fas.fa-chevron-right
-        %li.search-result__pager__pager-next__pager-cell
-          = link_to "#", class: "search-result__pager__pager-next__pager-cell__link" do
+        %li.search-result__pager__pager-next__cells__pager-cell
+          = link_to "#", class: "search-result__pager__pager-next__cells__pager-cell__link" do
             %i.fas.fa-chevron-right
             %i.fas.fa-chevron-right
