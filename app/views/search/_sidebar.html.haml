@@ -1,1 +1,24 @@
-.search-sidebar
+= form_for (@item) do |f|
+  .search-sidebar
+    =f.select :name, [["価格安い順","価格安い順"],["価格高い順","価格高い順"],["価格安い順","価格安い順"]], {prompt: "洗濯してください"}, {class: "search-sidebar__upper"}
+    
+    .search-sidebar__bottom
+      %h2.search-sidebar__bottom__top 詳細検索
+      .search-sidebar__bottom__type
+        %span キーワードを追加する
+        = f.text_field :name, class: 'search-sidebar__bottom__type__keyword', placeholder: '例）値下げ'
+
+      .search-sidebar__bottom__type
+        %span カテゴリーを選択する
+      .search-sidebar__bottom__type
+        %span ブランド名から探す
+      .search-sidebar__bottom__type
+        %span サイズを指定する
+      .search-sidebar__bottom__type
+        %span 価格
+      .search-sidebar__bottom__type
+        %span 商品の状態
+      .search-sidebar__bottom__type
+        %span 配送料の負担
+      .search-sidebar__bottom__type
+        %span 販売状況
