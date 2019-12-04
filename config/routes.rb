@@ -50,15 +50,12 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
   end
 
-  resources :transactions, only: [:index, :show] do
+  resources :transactions, only: [:show] do
     collection do
-      get 'index', to: 'transactions#index'
       get 'pay', to: 'transactions#pay'
       get 'done', to: 'transactions#done'
-      get 'new', to: 'transactions#new'
     end
   end
-  resources :users, only: :show
 
   post   '/like/:item_id', to: 'likes#create', as: :like
   delete '/like/:item_id', to: 'likes#destroy', as: :unlike
