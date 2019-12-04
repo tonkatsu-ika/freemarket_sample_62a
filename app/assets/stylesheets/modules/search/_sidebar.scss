@@ -19,6 +19,13 @@
     }
     &__type {
       margin-top: 24px;
+      & i {
+        font-size: 16px;
+        color: #888;
+      }
+      & span {
+        font-weight: bold;
+      }
       &__keyword {
         @include text-box();
         margin-top: 8px;
