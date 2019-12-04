@@ -1,6 +1,6 @@
 = form_for (@item) do |f|
   .search-sidebar
-    =f.select :name, [["価格安い順","価格安い順"],["価格高い順","価格高い順"],["価格安い順","価格安い順"]], {prompt: "洗濯してください"}, {class: "search-sidebar__upper"}
+    =f.select :name, [["価格安い順","価格安い順"],["価格高い順","価格高い順"],["価格安い順","価格安い順"]], {prompt: "並び替え"}, {class: "search-sidebar__upper"}
     
     .search-sidebar__bottom
       %h2.search-sidebar__bottom__top 詳細検索
@@ -10,12 +10,24 @@
 
       .search-sidebar__bottom__type
         %span カテゴリーを選択する
+        =f.collection_select :category_id, Category.roots, :id, :category_name, {prompt: "洗濯してください"}, {class: "search-sidebar__bottom__type__category"}
+      
       .search-sidebar__bottom__type
         %span ブランド名から探す
+        =f.collection_select :brand_id, Brand.all, :id, :brand_name, {prompt: "洗濯してください"}, {class: "search-sidebar__bottom__type__brand"}
+
       .search-sidebar__bottom__type
         %span サイズを指定する
+        =f.select :name, [["洋服のサイズ","価格安い順"],["価格高い順","価格高い順"],["価格安い順","価格安い順"]], {prompt: "洗濯してください"}, {class: "search-sidebar__bottom__type__size"}
+
       .search-sidebar__bottom__type
         %span 価格
+        =f.select :name, [[" 300~1000","価格安い順"],["価格高い順","価格高い順"],["価格安い順","価格安い順"]], {prompt: "洗濯してください"}, {class: "search-sidebar__bottom__type__price"}
+        .search-sidebar__bottom__type__price__text-box
+          = f.text_field :name, class: 'search-sidebar__bottom__type__price__text-box__min', placeholder: '¥ Min'
+          %span.search-sidebar__bottom__type__price__text-box__range ~
+          = f.text_field :name, class: 'search-sidebar__bottom__type__price__text-box__max', placeholder: '¥ Max'
+
       .search-sidebar__bottom__type
         %span 商品の状態
       .search-sidebar__bottom__type

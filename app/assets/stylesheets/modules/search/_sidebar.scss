@@ -4,14 +4,16 @@
 .search-sidebar {
   width: 280px;
   height: 100%;
+  background-color: $bg-mypage;
   &__upper {
     @include select();
+    margin-top: 0px;
     border-radius: 5px;
   }
   &__bottom {
-    background-color: green;
     margin-top: 40px;
     padding: 16px;
+    background-color: $fm-white;
     &__top {
       font-size: 16px;
     }
@@ -20,6 +22,32 @@
       &__keyword {
         @include text-box();
         margin-top: 8px;
+      }
+      &__category {
+        @include select();
+      }
+      &__brand {
+        @include select();
+      }
+      &__size {
+        @include select();
+      }
+      &__price {
+        @include select();
+        &__text-box {
+          display: flex;
+          margin-top: 8px;
+          &__min {
+            @include text-box();
+          }
+          &__range {
+            line-height: 45px;
+            margin: 0 10px;
+          }
+          &__max {
+            @include text-box();
+          }
+        }
       }
     }
   }
