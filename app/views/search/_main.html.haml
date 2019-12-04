@@ -1,1 +1,24 @@
-main
+.search-result
+  %h2.search-result__headear
+    レディースの
+    %span.search-result__header__text
+      検索結果
+  .search-result__number
+    1-10件表示
+  .search-result__results
+    検索結果
+  %ul.search-result__pager
+    %li.search-result__pager__pager-num
+      %ul
+        %li.search-result__pager__pager-num__pager-cell
+          = link_to "#", class: "search-result__pager__pager-num__pager-cell__link" do
+            1
+    %li.search-result__pager__pager-next
+      %ul
+        %li.search-result__pager__pager-next__pager-cell
+          = link_to "#", class: "search-result__pager__pager-next__pager-cell__link" do
+            %i.fas.fa-chevron-right
+        %li.search-result__pager__pager-next__pager-cell
+          = link_to "#", class: "search-result__pager__pager-next__pager-cell__link" do
+            %i.fas.fa-chevron-right
+            %i.fas.fa-chevron-right
