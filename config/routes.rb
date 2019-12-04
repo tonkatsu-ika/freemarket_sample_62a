@@ -60,6 +60,8 @@ Rails.application.routes.draw do
   end
   resources :users, only: :show
 
+  post   '/like/:item_id', to: 'likes#like',   as: 'like'
+  delete '/like/:item_id', to: 'likes#unlike', as: 'unlike'
   
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
