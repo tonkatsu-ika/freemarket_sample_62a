@@ -59,11 +59,6 @@ Rails.application.routes.draw do
   end
   resources :users, only: :show
 
-  resources :search, only: [:index] do
-    collection do
-      get 'index', to: 'search#index'
-      get 'search', to: 'search#search'
-    end
-  end
+  resources :search, only: [:index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
