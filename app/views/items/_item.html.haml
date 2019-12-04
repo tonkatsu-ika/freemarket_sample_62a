@@ -4,7 +4,7 @@
       .item-box__image
         = image_tag "#{item.item_images[0].image_url}", size: "220x220", alt: "商品イメージ"
         .item-box__image-soldtag
-          sold
+          SOLD
         .item-box__image-sold-triangle  
       %h3.item-box__item-name 
         = item.name.truncate(25)
