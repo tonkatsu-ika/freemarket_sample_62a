@@ -2,7 +2,25 @@
 @import '../../mixin/mixin';
 
 .search-sidebar {
-  background-color: yellow;
-  width: 100px;
-  height: 100px;
+  width: 280px;
+  height: 100%;
+  &__upper {
+    @include select();
+    border-radius: 5px;
+  }
+  &__bottom {
+    background-color: green;
+    margin-top: 40px;
+    padding: 16px;
+    &__top {
+      font-size: 16px;
+    }
+    &__type {
+      margin-top: 24px;
+      &__keyword {
+        @include text-box();
+        margin-top: 8px;
+      }
+    }
+  }
 }
