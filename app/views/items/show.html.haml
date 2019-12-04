@@ -86,6 +86,13 @@
           = "¥#{@item.price.to_s(:delimited)}円"
         %span.item-tax (税込)
         %span.item-shipping-fee 送料込み
+      - if current_user.id != @item.user_id&&@item.transaction_status!=3
+        .item-buy-btn 
+          = link_to transaction_path(@item), class:"item-buy-btn" do
+            購入画面へ進む
+      - else
+        .item-buy-btn__soldout
+          売り切れました
       .item-buy-btn 
         = link_to transaction_path(@item), class:"item-buy-btn" do
           購入画面へ進む
@@ -95,7 +102,7 @@
       .item-button-container
         %ul.item-button-left
           %li.item-button-like
-            = link_to "#", class:"item-button-like" do
+            = link_to item_likes_path(@item), method: :post, remote: true, class:"item-button-like" do
               %i.far.fa-heart
               %span いいね！
               %span.fade-in-down 0
