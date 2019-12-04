@@ -107,3 +107,6 @@ gem 'omniauth-google-oauth2'
 
 # パンくず
 gem "gretel"
+
+# Coveralls
+gem 'coveralls', require: false
