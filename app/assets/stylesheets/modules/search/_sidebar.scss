@@ -4,14 +4,16 @@
 .search-sidebar {
   width: 280px;
   height: 100%;
+  background-color: $bg-mypage;
   &__upper {
     @include select();
+    margin-top: 0px;
     border-radius: 5px;
   }
   &__bottom {
-    background-color: green;
     margin-top: 40px;
     padding: 16px;
+    background-color: $fm-white;
     &__top {
       font-size: 16px;
     }
@@ -25,6 +27,12 @@
         @include select();
       }
       &__brand {
+        @include select();
+      }
+      &__size {
+        @include select();
+      }
+      &__price {
         @include select();
       }
     }
