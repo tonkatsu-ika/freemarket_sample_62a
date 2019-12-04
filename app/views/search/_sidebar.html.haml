@@ -5,32 +5,93 @@
     .search-sidebar__bottom
       %h2.search-sidebar__bottom__top 詳細検索
       .search-sidebar__bottom__type
+        %i.fas.fa-plus
         %span キーワードを追加する
         = f.text_field :name, class: 'search-sidebar__bottom__type__keyword', placeholder: '例）値下げ'
 
       .search-sidebar__bottom__type
+        %i.fas.fa-list-ul
         %span カテゴリーを選択する
-        =f.collection_select :category_id, Category.roots, :id, :category_name, {prompt: "洗濯してください"}, {class: "search-sidebar__bottom__type__category"}
+        =f.collection_select :category_id, Category.roots, :id, :category_name, {prompt: "選択してください"}, {class: "search-sidebar__bottom__type__category"}
       
       .search-sidebar__bottom__type
+        %i.fas.fa-tag
         %span ブランド名から探す
-        =f.collection_select :brand_id, Brand.all, :id, :brand_name, {prompt: "洗濯してください"}, {class: "search-sidebar__bottom__type__brand"}
+        =f.collection_select :brand_id, Brand.all, :id, :brand_name, {prompt: "選択してください"}, {class: "search-sidebar__bottom__type__brand"}
 
       .search-sidebar__bottom__type
+        %i.fas.fa-vector-square
         %span サイズを指定する
-        =f.select :name, [["洋服のサイズ","価格安い順"],["価格高い順","価格高い順"],["価格安い順","価格安い順"]], {prompt: "洗濯してください"}, {class: "search-sidebar__bottom__type__size"}
+        =f.select :name, [["洋服のサイズ","価格安い順"],["価格高い順","価格高い順"],["価格安い順","価格安い順"]], {prompt: "選択してください"}, {class: "search-sidebar__bottom__type__size"}
 
       .search-sidebar__bottom__type
+        %i.fas.fa-coins
         %span 価格
-        =f.select :name, [[" 300~1000","価格安い順"],["価格高い順","価格高い順"],["価格安い順","価格安い順"]], {prompt: "洗濯してください"}, {class: "search-sidebar__bottom__type__price"}
+        =f.select :name, [[" 300~1000","価格安い順"],["価格高い順","価格高い順"],["価格安い順","価格安い順"]], {prompt: "選択してください"}, {class: "search-sidebar__bottom__type__price"}
         .search-sidebar__bottom__type__price__text-box
           = f.text_field :name, class: 'search-sidebar__bottom__type__price__text-box__min', placeholder: '¥ Min'
           %span.search-sidebar__bottom__type__price__text-box__range ~
           = f.text_field :name, class: 'search-sidebar__bottom__type__price__text-box__max', placeholder: '¥ Max'
 
       .search-sidebar__bottom__type
+        %i.fas.fa-star
         %span 商品の状態
+        .search-sidebar__bottom__type__item-condition
+          -# = f.collection_check_boxes :item_condition_id, ItemCondition.all, :id, :item_condition, class: 'search-sidebar__bottom__type__item-condition'
+          .search-sidebar__bottom__type__item-condition__check-wrapper
+            = f.check_box :item_condition_id, {}, 0, ''
+            = f.label :item_condition_id, 'すべて'
+          .search-sidebar__bottom__type__item-condition__check-wrapper
+            = f.check_box :item_condition_id, {}, 1, ''
+            = f.label :item_condition_id, '新品、未使用'
+          .search-sidebar__bottom__type__item-condition__check-wrapper
+            = f.check_box :item_condition_id, {}, 2, ''
+            = f.label :item_condition_id, '未使用に近い'
+          .search-sidebar__bottom__type__item-condition__check-wrapper
+            = f.check_box :item_condition_id, {}, 3, ''
+            = f.label :item_condition_id, '目立った傷や汚れなし'
+          .search-sidebar__bottom__type__item-condition__check-wrapper
+            = f.check_box :item_condition_id, {}, 4, ''
+            = f.label :item_condition_id, 'やや傷や汚れあり'
+          .search-sidebar__bottom__type__item-condition__check-wrapper
+            = f.check_box :item_condition_id, {}, 5, ''
+            = f.label :item_condition_id, '傷や汚れあり'
+          .search-sidebar__bottom__type__item-condition__check-wrapper
+            = f.check_box :item_condition_id, {}, 6, ''
+            = f.label :item_condition_id, '全体的に状態が悪い'
+          .clearfix
+
       .search-sidebar__bottom__type
+        %i.fas.fa-truck-moving
         %span 配送料の負担
+        .search-sidebar__bottom__type__ship-fee-bearer
+          .search-sidebar__bottom__type__item-condition__check-wrapper
+            = f.check_box :ship_fee_bearer_id, {}, 0, ''
+            = f.label :ship_fee_bearer_id, 'すべて'
+          .search-sidebar__bottom__type__item-condition__check-wrapper
+            = f.check_box :ship_fee_bearer_id, {}, 1, ''
+            = f.label :ship_fee_bearer_id, '着払い（購入者負担）'
+          .search-sidebar__bottom__type__item-condition__check-wrapper
+            = f.check_box :ship_fee_bearer_id, {}, 2, ''
+            = f.label :ship_fee_bearer_id, '送料込み（出品者負担）'
+          .clearfix
+
       .search-sidebar__bottom__type
+        %i.fas.fa-shopping-cart
         %span 販売状況
+        .search-sidebar__bottom__type__item-status
+          .search-sidebar__bottom__type__item-condition__check-wrapper
+            = f.check_box :ship_fee_bearer_id, {}, 0, ''
+            = f.label :ship_fee_bearer_id, 'すべて'
+          .search-sidebar__bottom__type__item-condition__check-wrapper
+            = f.check_box :ship_fee_bearer_id, {}, 1, ''
+            = f.label :ship_fee_bearer_id, '販売中'
+          .search-sidebar__bottom__type__item-condition__check-wrapper
+            = f.check_box :ship_fee_bearer_id, {}, 2, ''
+            = f.label :ship_fee_bearer_id, '売り切れ'
+          .clearfix
+
+      .search-sidebar__bottom__type
+        .search-sidebar__bottom__type__btn-wrapper
+          = f.submit 'クリア', class: 'search-sidebar__bottom__type__btn-wrapper__clear'
+          = f.submit '完了', class: 'search-sidebar__bottom__type__btn-wrapper__ok'
