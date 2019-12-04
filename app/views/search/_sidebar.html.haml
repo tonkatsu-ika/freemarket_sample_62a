@@ -1,3 +1,4 @@
+-# = search_form_for(@q, url:search_index_path) do |f|
 = form_for (@item) do |f|
   .search-sidebar
     =f.select :name, [["価格安い順","価格安い順"],["価格高い順","価格高い順"],["価格安い順","価格安い順"]], {prompt: "並び替え"}, {class: "search-sidebar__upper"}
@@ -7,6 +8,7 @@
       .search-sidebar__bottom__type
         %i.fas.fa-plus
         %span キーワードを追加する
+        -# = f.text_field :name_or_description_cont, class: 'search-sidebar__bottom__type__keyword', placeholder: '例）値下げ'
         = f.text_field :name, class: 'search-sidebar__bottom__type__keyword', placeholder: '例）値下げ'
 
       .search-sidebar__bottom__type
