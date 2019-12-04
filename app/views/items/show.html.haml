@@ -93,9 +93,6 @@
       - else
         .item-buy-btn__soldout
           売り切れました
-      .item-buy-btn 
-        = link_to transaction_path(@item), class:"item-buy-btn" do
-          購入画面へ進む
       .item-description
         %p.item-description__inner
           = simple_format(@item.description)
