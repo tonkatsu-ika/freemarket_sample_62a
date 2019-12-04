@@ -237,7 +237,6 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
     images = $('.dropzone-container').find('.img_view').map(function(){
       return $(this);
     });
-    console.log(inputs);
   }
 
   // 画像追加時
@@ -257,8 +256,6 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
 
     reader.readAsDataURL(file); //ファイルの読み込みをしている（この一行がなければ画像の枠しか表示されない）
     images.push(img); // 配列imagesにimgを追加する（この時のimgにはsrc属性にurlがある）
-
-    console.log(images.length);
 
     if(images.length >= 5) { // もし配列imagesの要素が5つ以上なら
       dropzone2.css({ // 変数dropzone2のcssに
