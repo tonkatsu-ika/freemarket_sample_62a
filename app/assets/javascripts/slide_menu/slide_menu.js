@@ -2,10 +2,18 @@
 $(document).on('turbolinks:load', function () {
 
   $('#slide_brands').mouseover(function() {
-    $(this).find('.slide-brands-wrapper').addClass('active');
+    $('.slide-brands-wrapper').show();
   });
   $('#slide_brands').mouseout(function() {
-    $(this).find('.slide-brands-wrapper').removeClass('active');
+    $('.slide-brands-wrapper').hide();
+  });
+
+  $('.slide-brands-wrapper').mouseover(function() {
+    $('.slide-brands-wrapper').show();
+  });
+
+  $('.slide-brands-wrapper').mouseout(function() {
+    $('.slide-brands-wrapper').hide();
   });
 
 });
