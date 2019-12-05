@@ -1,0 +1,42 @@
+@import '../../mixin/mixin';
+@import '../../config/variables';
+
+.like-wrapper {
+  .like-title {
+    font-size: 24px;
+    font-weight: bold;
+    background-color: #fff;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+  }
+  .like-item-wrapper {
+    background-color: #fff;
+    margin-top: 1px;
+    padding: 16px;
+    .like-item {
+      display: flex;
+      list-style: none;
+      &__image {
+        margin-right: 20px;
+        size:'48x48';
+      }
+      &__info {
+        left: 16px;
+        font-size: 14px;
+        &--name {
+          margin-top: 5px;
+          width: 500px;
+        }
+        &--price {
+          margin-top: 15px;
+        }
+      }
+      i {
+        margin-left: 90px;
+        font-size: 20px;
+        line-height: 50px;
+      }
+    }
+  }
+}
