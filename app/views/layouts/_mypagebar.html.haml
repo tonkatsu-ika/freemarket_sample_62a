@@ -41,6 +41,10 @@
           %span.header__bottom__user-menu__li__mypage__top__list__item__link__name 出品する
           = fa_icon "chevron-right", class: "header__bottom__user-menu__li__mypage__top__list__item__link__arrow"
       %li.header__bottom__user-menu__li__mypage__top__list__item
+        = link_to :new_item, class: "header__bottom__user-menu__li__mypage__top__list__item__link" do
+          %span.header__bottom__user-menu__li__mypage__top__list__item__link__name 出品した商品 - 出品中
+          = fa_icon "chevron-right", class: "header__bottom__user-menu__li__mypage__top__list__item__link__arrow"
+      %li.header__bottom__user-menu__li__mypage__top__list__item
         = link_to :profile_mypage_index, class: "header__bottom__user-menu__li__mypage__top__list__item__link" do
           %span.header__bottom__user-menu__li__mypage__top__list__item__link__name プロフィール
           = fa_icon "chevron-right", class: "header__bottom__user-menu__li__mypage__top__list__item__link__arrow"

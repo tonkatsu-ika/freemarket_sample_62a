@@ -13,7 +13,7 @@ class Item < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liking_users, through: :likes, source: :user
   has_many :comments, dependent: :destroy
-  has_one :process, class_name: "Transaction"
+  has_one :process, dependent: :destroy, class_name: "Transaction"
 
 
   accepts_nested_attributes_for :item_images, allow_destroy: true
