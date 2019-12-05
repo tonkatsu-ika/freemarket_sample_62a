@@ -121,8 +121,10 @@ class ItemsController < ApplicationController
 
   def update
     @item.update!(item_params)
-    params[:item_images][:image_url].each do |a|
-      @item.item_images.create!(image_url: a)
+    unless params[:item_images].blank?
+      params[:item_images][:image_url].each do |a|
+        @item.item_images.create!(image_url: a)
+      end
     end
     redirect_to item_path
   end

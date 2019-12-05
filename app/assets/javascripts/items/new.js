@@ -348,7 +348,7 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
       })
       $.each(images, function(index, image) {
         // image.attr('data-image', index);
-        preview2.append(image);
+        //preview2.append(image);
       })
       dropzone2.css({
         'width': `calc(100% - (126px * ${images.length - 5}))`
@@ -370,7 +370,7 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
       })
       $.each(images, function(index, image) {
         // image.attr('data-image', index);
-        preview.append(image);
+        //preview.append(image);
       })
       dropzone.css({
         'width': `calc(100% - (126px * ${images.length}))`
