@@ -60,7 +60,12 @@ class MypageController < ApplicationController
       end
   end
 
+
+  def listing
+    @lists  = Item.where(user_id: current_user.id).includes(:item_images)
+
   def like
+
   end
 
   def identification
