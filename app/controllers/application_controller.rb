@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :basic_auth, if: :production?
   before_action :get_brand_category_all
   before_action :configure_permitted_parameters, if: :devise_controller?
   protect_from_forgery with: :exception
@@ -19,12 +20,21 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
+  def production?
+    Rails.env.production?
+  end
+
+
+  def basic_auth
+    authenticate_or_request_with_http_basic do |username, password|
+      username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
+    end
+  end
+
   def get_brand_category_all
     @brand_all = Brand.all
     @category_all = Category.roots
   end
-
-  
 
   protected
 
