@@ -113,6 +113,10 @@ class ItemsController < ApplicationController
 
   def edit
     @item_images = @item.item_images
+    @item_image_ids_current = []
+    @item_images.each_with_index do |item_image, i|
+      @item_image_ids_current << i
+    end
   end
 
   def update
