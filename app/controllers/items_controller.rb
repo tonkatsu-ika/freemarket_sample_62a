@@ -113,7 +113,6 @@ class ItemsController < ApplicationController
 
   def edit
     @item_images = @item.item_images
-    binding.pry
   end
 
   def update
