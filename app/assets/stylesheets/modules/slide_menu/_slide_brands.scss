@@ -2,6 +2,7 @@
 
 .header-brand-all{
   position: relative;
+  right: 20px;
   .slide-brands-wrapper{
     position: absolute;
     z-index: 1;
@@ -10,7 +11,7 @@
     .brands-list__item__link{
         height: 702px;
         width: 210px;
-        margin-left: 300px;   
+        // margin-left: 300px;   
         border-width: 0px 1px 0px 1px;
         border-style: solid;
         border-color: #eeeded;
@@ -24,6 +25,7 @@
         line-height: 44px;
         font-size: 14px;     
         color: black;
+        font-weight: normal;
         &:hover{
           background-color: $fm-red;
           border-width: 0px 1px 0px 1px;
