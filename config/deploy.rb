@@ -71,7 +71,7 @@ after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
   task :restart do
     #set :default_environment, Dotenv::Parser.call(capture("cat #{shared_path}/.env.production")) 
-    #invoke 'unicorn:restart'
-    invoke 'unicorn:reload'
+    invoke 'unicorn:restart'
+    #invoke 'unicorn:reload'
   end
 end
