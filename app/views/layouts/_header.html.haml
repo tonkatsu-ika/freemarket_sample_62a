@@ -17,7 +17,6 @@
         = link_to "#", class: "header__bottom__search-items__li__link" do
           %i.fas.fa-tag
           ブランドから探す
-        = render 'layouts/slide_menu/slide_brands'
     -if user_signed_in?
       %ul.header__bottom__user-menu
         %li.header__bottom__user-menu__li
@@ -58,3 +57,6 @@
       カテゴリー一覧
   .header-category-list-child
   .header-category-list-grandchild
+
+.slide-brands-wrapper
+  = render partial:'layouts/slide_menu/slide_brands',collection: @brand_all,as: "brand"
