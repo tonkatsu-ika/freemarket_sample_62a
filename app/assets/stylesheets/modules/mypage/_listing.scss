@@ -37,6 +37,7 @@
       height: 85px;
       background-color: #fff;
       margin-bottom: 1px;
+      text-decoration: none;
       .listing-image {
         margin: 8px 0 0 15px;
       }
@@ -45,10 +46,13 @@
         margin: 21px 0 0 20px;
         font-size: 16px;
         font-weight: bold;
+        text-decoration: none;
+        color: #333;
         .listing-icon {
           display: flex;
           margin-top: 15px;
           font-weight: normal;
+          color: #333;
           span {
             margin: 1px 5px 0 5px;
           }
@@ -70,6 +74,7 @@
       }
       i.fas.fa-chevron-right {
         margin: 38px 0 0 50px;
+        color: #333;
       }
     }
   }

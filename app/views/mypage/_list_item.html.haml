@@ -1,12 +1,15 @@
 .listing-box
-  .listing-image
-    = image_tag  'footer_image.png', size: "70x70"
-  .listing-name 
-    田中太郎
-    .listing-icon
-      %i.far.fa-heart
-      %span 2
-      %i.far.fa-comment-alt
-      %span 2
-      .listing-sign 出品中
-  %i.fas.fa-chevron-right
+  = link_to item_path(list), class: "listing-box" do
+    .listing-image
+      = image_tag  "#{list.item_images.first.image_url}", size: "70x70"
+    .listing-name 
+      = list.name
+      .listing-icon
+        %i.far.fa-heart
+        %span
+          = list.likes_count.to_i
+        %i.far.fa-comment-alt
+        %span
+          0
+        .listing-sign 出品中
+    %i.fas.fa-chevron-right
