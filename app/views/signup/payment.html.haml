@@ -54,4 +54,4 @@
           = text_field_tag "cvc", "",class: 'input-default', placeholder: "カード背面4桁もしくは３桁の番号", maxlength: "4", id: "cvc"
           #card_token
           =link_to 'カード裏面の番号とは？','#',class: 'link-block'
-          = submit_tag "次へ進む", id: "token_submit", class: 'btn-default'
+          = submit_tag "次へ進む", id: "token_submit", class: 'btn-default',"data-disable-with": "送信中..."

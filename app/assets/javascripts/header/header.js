@@ -68,6 +68,77 @@ $(document).on('turbolinks:load', function(){
     });
   });
 
+//  ヘッダーカテゴリリスト
 
+  $("#slide_categories").on("mouseover", function(){
+    $(".header-category-list").show()
+  });
+
+  $("#slide_categories").on("mouseout", function(){
+    $(".header-category-list").hide()
+  });
+
+  $(".header-category-list").on("mouseover", function(){
+    $(".header-category-list").show()
+  });
+
+  $(".header-category-list").on("mouseout", function(){
+    $(".header-category-list").hide()
+  });
+
+  $(".header-category-list-child").on("mouseover", function(){
+    $(".header-category-list").show()
+  });
+
+  $(".header-category-list-child").on("mouseout", function(){
+    $(".header-category-list").hide()
+  });
+
+
+// ヘッダー子カテゴリリスト
+
+  $(".header-category-list").on("mouseover", function(){
+    $(".header-category-list-child").show()
+  });
+
+  $(".header-category-list").on("mouseout", function(){
+    $(".header-category-list-child").hide()
+  });
+
+  $(".header-category-list-child").on("mouseover", function(){
+    $(".header-category-list-child").show()
+  });
+
+  $(".header-category-list-child").on("mouseout", function(){
+    $(".header-category-list-child").hide()
+  });
+
+// ヘッダー孫カテゴリリスト
   
+  $(".header-category-list-child").on("mouseover", function(){
+    $(".header-category-list-grandchild").show()
+  });
+
+  $(".header-category-list-child").on("mouseout", function(){
+    $(".header-category-list-grandchild").hide()
+  });
+
+  $(".header-category-list-grandchild").on("mouseover", function(){
+    $(".header-category-list-grandchild").show()
+  });
+
+  $(".header-category-list-grandchild").on("mouseout", function(){
+    $(".header-category-list-grandchild").hide()
+  });
+
+  $(".header-category-list-grandchild").on("mouseover", function(){
+    $(".header-category-list").show();
+    $(".header-category-list-child").show();
+  });
+
+  $(".header-category-list-grandchild").on("mouseout", function(){
+    $(".header-category-list").hide();
+    $(".header-category-list-child").hide();
+  });
+
 });
