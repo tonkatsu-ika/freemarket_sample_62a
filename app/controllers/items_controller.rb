@@ -116,11 +116,9 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if @item.update!(item_params) and params[:item_images].present?
-      @item.item_images.delete_all
-      params[:item_images][:image_url].each do |a|
-        @item.item_images.create!(image_url: a)
-      end
+    @item.update!(item_params)
+    params[:item_images][:image_url].each do |a|
+      @item.item_images.create!(image_url: a)
     end
     redirect_to item_path
   end
