@@ -347,7 +347,7 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
         'display': 'block'
       })
       $.each(images, function(index, image) {
-        image.attr('data-image', index);
+        // image.attr('data-image', index);
         preview2.append(image);
       })
       dropzone2.css({
@@ -369,7 +369,7 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
         'display': 'block'
       })
       $.each(images, function(index, image) {
-        image.attr('data-image', index);
+        // image.attr('data-image', index);
         preview.append(image);
       })
       dropzone.css({
