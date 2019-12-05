@@ -84,6 +84,12 @@ RSpec.describe Item, type: :model do
       expect(item.errors[:prefecture_id]).to include("を入力してください")
     end
 
+    # it "配送方法のidがないと出品できない" do
+    #   item = FactoryBot.build(:item, delivery_method_id: nil)
+    #   item.valid?
+    #   expect(item.errors[:delivery_method_id]).to include("を入力してください")
+    # end
+
     it "配送までの日数のidがないと出品できない" do
       item = FactoryBot.build(:item, days_before_ship_id: nil)
       item.valid?

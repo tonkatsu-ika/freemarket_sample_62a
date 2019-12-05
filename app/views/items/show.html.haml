@@ -86,19 +86,24 @@
           = "¥#{@item.price.to_s(:delimited)}円"
         %span.item-tax (税込)
         %span.item-shipping-fee 送料込み
-      .item-buy-btn 
-        = link_to transaction_path(@item), class:"item-buy-btn" do
-          購入画面へ進む
+      - if @item.transaction_status == 3
+        .item-buy-btn__soldout
+          売り切れました
+      - elsif !user_signed_in? && @item.transaction_status!=3
+        .item-buy-btn
+          = link_to transaction_path(@item), class: 'item-buy-btn' do
+            購入画面へ進む
+      - elsif current_user.id != @item.user_id && @item.transaction_status!=3
+        .item-buy-btn
+          = link_to transaction_path(@item), class: 'item-buy-btn' do
+            購入画面へ進む
+      - else
       .item-description
         %p.item-description__inner
           = simple_format(@item.description)
       .item-button-container
         %ul.item-button-left
-          %li.item-button-like
-            = link_to "#", class:"item-button-like" do
-              %i.far.fa-heart
-              %span いいね！
-              %span.fade-in-down 0
+          = render "/likes/like", collection:@item, as: :item
           %li.item-button-report
             = link_to "#", class:"item-button-report" do
               %i.far.fa-flag
@@ -125,7 +130,7 @@
         %span 送料無料！ナラ100%乾燥薪20キロ！サービス有り！
         %i.fas.fa-chevron-right
   .item-social-media-box
-    - if user_signed_in? and current_user.id == @item.user_id
+    - if user_signed_in? and current_user.id == @item.user_id and @item.transaction_status!=3
       .item-edit-btn
         = link_to '商品を編集する', edit_item_path(@item), class: 'item-social-media-box__link'
       .item-delete-btn.js-modal-open

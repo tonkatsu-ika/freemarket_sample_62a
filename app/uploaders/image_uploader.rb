@@ -21,11 +21,11 @@ class ImageUploader < CarrierWave::Uploader::Base
     csv = CSV.read(csv_path)
 
     # 開発環境のシード投入時はpathを変更する
-    if Rails.env.development? && model.class.to_s.underscore == 'item_image' && ItemImage.count <= csv.count("\n")
-      "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.item_id}"    
-    else
+    # if Rails.env.development? && model.class.to_s.underscore == 'item_image' && ItemImage.count <= csv.count("\n")
+    #   "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.item_id}"    
+    # else
       "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-    end
+    # end
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:

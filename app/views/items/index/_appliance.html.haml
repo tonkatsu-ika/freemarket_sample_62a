@@ -6,8 +6,7 @@
         .new-items-by-category__wrapper--list__bottom__image
           = image_tag "#{appliance.item_images.first.image_url}", size: "188x188", alt: "商品イメージ"
           %span
-            ¥
-            = appliance.price
+            =format_currency(appliance.price)
         .new-items-by-category__wrapper--list__bottom__item-name 
           =appliance.name.truncate(25)
     

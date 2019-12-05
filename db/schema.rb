@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_27_010421) do
+ActiveRecord::Schema.define(version: 2019_12_04_041248) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "post_code", null: false
@@ -121,6 +121,8 @@ ActiveRecord::Schema.define(version: 2019_11_27_010421) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "prefecture_id"
+    t.integer "transaction_status", default: 1
+    t.integer "likes_count"
     t.index ["brand_id"], name: "fk_rails_36708b3aa6"
     t.index ["category_id"], name: "fk_rails_89fb86dc8b"
     t.index ["days_before_ship_id"], name: "fk_rails_91824208cc"
@@ -178,7 +180,6 @@ ActiveRecord::Schema.define(version: 2019_11_27_010421) do
     t.string "comment_by_buyer"
     t.bigint "grade_by_seller_id"
     t.string "comment_by_seller"
-    t.integer "transaction_status", null: false
     t.bigint "payment_method_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

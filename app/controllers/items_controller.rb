@@ -12,24 +12,24 @@ class ItemsController < ApplicationController
       parente_id = Category.find(ancestor_id).find_all_by_generation(2)
       array = parente_id .ids
     end
+
     #レディース新着のアイテム取得  
-      @ladies = Item.where(category_id:get_categoryid(1)).order("created_at DESC").limit(10).includes(:item_images)
+      @ladies  = Item.where(category_id:get_categoryid(1),transaction_status:[1,2]).order("created_at DESC").limit(10).includes(:item_images)
     #メンズ新着アイテムの取得
-      @mens  = Item.where(category_id:get_categoryid(2)).order("created_at DESC").limit(10).includes(:item_images)
+      @mens  = Item.where(category_id:get_categoryid(2),transaction_status:[1,2]).order("created_at DESC").limit(10).includes(:item_images)
     #家電・スマホ・カメラ新着アイテムの取得
-      @appliances  = Item.where(category_id:get_categoryid(8)).order("created_at DESC").limit(10).includes(:item_images)
+      @appliances  = Item.where(category_id:get_categoryid(8),transaction_status:[1,2]).order("created_at DESC").limit(10).includes(:item_images)
     #おもちゃ・ホビー・グッズ新着アイテムの取得
-      @hobbies  = Item.where(category_id:get_categoryid(6)).order("created_at DESC").limit(10).includes(:item_images)
+      @hobbies  = Item.where(category_id:get_categoryid(6),transaction_status:[1,2]).order("created_at DESC").limit(10).includes(:item_images)
   #人気のブランド取得
     #シャネル新着アイテムの取得
-      @chanels = Item.where(brand_id: 1).order("created_at DESC").limit(10).includes(:item_images)
+      @chanels = Item.where(brand_id: 1,transaction_status:[1,2]).order("created_at DESC").limit(10).includes(:item_images)
     #ルイヴィトン新着アイテムの取得
-      @louises = Item.where(brand_id: 3).order("created_at DESC").limit(10).includes(:item_images)
+      @louises = Item.where(brand_id: 3,transaction_status:[1,2]).order("created_at DESC").limit(10).includes(:item_images)
     #シュプリーム新着アイテムの取得
-      @supremes = Item.where(brand_id: 4).order("created_at DESC").limit(10).includes(:item_images)
+      @supremes = Item.where(brand_id: 4,transaction_status:[1,2]).order("created_at DESC").limit(10).includes(:item_images)
     #ナイキ新着アイテムの取得
-      @nikes = Item.where(brand_id: 2).order("created_at DESC").limit(10).includes(:item_images)
-      
+      @nikes = Item.where(brand_id: 2,transaction_status:[1,2]).order("created_at DESC").limit(10).includes(:item_images)
   end
 
   def new
@@ -63,6 +63,12 @@ class ItemsController < ApplicationController
         params[:item_images][:image_url].each do |a|
           @item.item_images.create!(image_url: a)
         end
+          Transaction.create(buyer_id: current_user.id,
+            seller_id: current_user.id,
+            item_id: @item.id,
+            grade_by_buyer_id: 2,
+            grade_by_seller_id: 2,
+            payment_method_id: 1)  
         redirect_to items_path, notice: '商品を出品しました'
       end
     else

@@ -1,6 +1,8 @@
 class MypageController < ApplicationController
   require "payjp"
 
+  before_action :authenticate_user!
+
   def index
   end
 
@@ -36,7 +38,6 @@ class MypageController < ApplicationController
   end
 
   def create
-    binding.pry
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       if params['payjp-token'].blank?
         redirect_to action: "card"

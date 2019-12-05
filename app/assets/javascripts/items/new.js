@@ -237,7 +237,6 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
     images = $('.dropzone-container').find('.img_view').map(function(){
       return $(this);
     });
-    console.log(inputs);
   }
 
   // 画像追加時
@@ -258,14 +257,15 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
     reader.readAsDataURL(file); //ファイルの読み込みをしている（この一行がなければ画像の枠しか表示されない）
     images.push(img); // 配列imagesにimgを追加する（この時のimgにはsrc属性にurlがある）
 
-    console.log(images.length);
-
     if(images.length >= 5) { // もし配列imagesの要素が5つ以上なら
       dropzone2.css({ // 変数dropzone2のcssに
         'display': 'block'  // display: blockを追加（初めはdisplay:noneを設定）
       })
       dropzone.css({ // 変数dropzoneのcssに
         'display': 'none' // display: noneを追加
+      })
+      $('.boxFileSelect p').css({
+        'margin-top': '55px'
       })
       $.each(images, function(index, image) {  // imagesという配列のそれぞれの要素に対して(indexは番号,imageは一つ一つ取り出した時の変数)
 
@@ -300,6 +300,9 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
     }
     if(images.length == 4) {
       dropzone.find('p').replaceWith('<p>ドロップ&ドラッグ<br>もしくはクリックしてください</p>')
+      $('.boxFileSelect p').css({
+        'margin-top': '35px'
+      })
     }
     if(images.length == 10) {
       dropzone2.css({
@@ -380,9 +383,15 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
       $('.dropzone-area').css({
         'margin-left': '10px'
       })
+      $('.boxFileSelect p').css({
+        'margin-top': '35px'
+      })
     }
     if(images.length == 3) {
       dropzone.find('p').replaceWith('<p>ドロップ&ドラッグ<br>もしくはクリックしてください</p>')
+      $('.boxFileSelect p').css({
+        'margin-top': '55px'
+      })
     }
     if (images.length == 0) {
       $('.dropzone-area').css({
