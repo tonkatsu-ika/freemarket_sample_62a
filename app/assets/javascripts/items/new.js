@@ -314,6 +314,12 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
     input_area.prepend(new_image); // input_areaの子要素に追加する
   });
 
+  // 画面ロード時に
+  var dataImageIndices = $('.img_view').map(function() {
+    return $(this).data('image');
+  })
+  console.log(dataImageIndices);
+
   // 画像削除時
   $(document).on('click', '.delete', function() {  // 追加要素の削除ボタンを押したら
 
