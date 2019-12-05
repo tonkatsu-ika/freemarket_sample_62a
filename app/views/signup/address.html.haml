@@ -6,17 +6,6 @@
     = form_for @user ,url: payment_signup_index_path, method: :post do |f|
       .login-header-registration__form-content
         .form-group
-        -#   = f.label 'お名前' ,class: 'login-header-registration__label'
-        -#   %span.login-header-registration__form--must 必須
-        -#   %br/
-        -#   = f.text_field :last_name, placeholder: '例）山田',required: true, class: 'input-default'
-        -#   = f.text_field :first_name, placeholder: '例）彩',required: true, class: 'input-default'
-        -# .form-group
-        -#   = f.label 'お名前カナ' ,class: 'login-header-registration__label'
-        -#   %span.login-header-registration__form--must 必須
-        -#   %br/
-        -#   = f.text_field :last_name_kana, placeholder: '例）ヤマダ',required: true, class: 'input-default'
-        -#   = f.text_field :first_name_kana, placeholder: '例）アヤ',required: true, class: 'input-default'
         = f.fields_for :address do |i|
           .form-group 
             = i.label '郵便番号' ,class: 'login-header-registration__label' 
