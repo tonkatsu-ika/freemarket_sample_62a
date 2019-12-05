@@ -1,0 +1,11 @@
+.mypage
+  %nav.mypage__breadcrumb
+    - breadcrumb :logout
+    = render "layouts/breadcrumb"
+  .mypage__main
+    .mypage__main__wrapper
+      %article.mypage__main__wrapper__main
+        = render "listing"
+      %nav.mypage__main__wrapper__sidebar
+        = render "layouts/sidebar_mypage"
+    
