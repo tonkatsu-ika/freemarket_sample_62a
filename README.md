@@ -150,20 +150,23 @@
 |price|integer|null: false, index: true|
 |item_condition_id|bigint|foreign_key: true|
 |ship_fee_bearer_id|bigint|foreign_key: true|
-|prefecture_id|integer|
 |days_before_ship_id|bigint|foreign_key: true|
 |delivery_method_id|bigint|foreign_key: true|
 |user_id|bigint|foreign_key: true|
 |brand_id|bigint|foreign_key: true|
 |category_id|bigint|foreign_key: true|
 |size_id|bigint|foreign_key: true|
+|prefecture_id|integer|
+|transaction_status|integer|default: 1|
+|likes_count|integer|
+
 
 
 
 ### Association
 - belongs_to :item_condition
 - belongs_to :ship_fee_bearer
-- belongs_to :prefecture
+- belongs_to_active_hash :prefecture
 - belongs_to :days_before_ship
 - belongs_to :delivery_method
 
@@ -174,7 +177,10 @@
 
 - has_many :item_images, dependent: :destroy
 - has_many :likes, dependent: :destroy
+- has_many :liking_users, through: :likes, source: :user
 - has_many :comments, dependent: :destroy
+
+- has_one :process, class_name: "Transaction"
 
 
 ## item_images table
@@ -182,7 +188,7 @@
 |Field|Type|Options|
 |---|:---:|---|
 |image_url|string|null: false|
-|item_id|bigint|foreign_key: true|
+|item_id|bigint|foreign_key: true, index: true|
 
 ### Association
 - belongs_to :item
