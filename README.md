@@ -13,7 +13,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|email|string|default: "", null: false, unique: true|
+|email|string|default: "", null: false, unique: true, index: true|
 |encrypted_password|string|default: "", null: false|
 |last_name|string|null: false|
 |first_name|string|null: false|
@@ -23,18 +23,22 @@
 |profile_image|string||
 |birthday|date|null: false|
 |telephone|string|null: false|
-|reset_password_token|string|unique: true|
+|reset_password_token|string|unique: true, index: true|
 |reset_password_sent_at|datetime||
 |remember_created_at|datetime||
-|profile|text|null: false|
+|uid|string||
+|provider|string||
+|profile|text||
 
 ### Association
 - has_many :comments, dependent: :destroy
 - has_many :likes, dependent: :destroy
+- has_many :like_items, through: :likes, source: :item
 - has_many :items, dependent: :destroy
 
 - has_many :sold_to, class_name: "Transaction", foreign_key: "buyer_id", dependent: destroy
 - has_many :buyers, through: bought_from
+
 - has_many :bought_from, class_name: "Transaction", foreign_key: "seller_id", dependent: destroy
 - has_many :sellers, through: sold_to
 
@@ -43,33 +47,31 @@
 - accepts_nested_attributes_for :address
 - has_one :credit_card, dependent: :destroy
 
+- has_many :sns_credentials, dependent: :destroy
+
 
 ## addresses table
 
 |Column|Type|Options|
 |------|----|-------|
 |post_code|integer|null: false|
-|prefecture|string|null: false|
 |address|string|null: false|
 |building|string|null: false|
-|user_id|bigint|foreign_key: true|
+|user_id|bigint|foreign_key: true, index: true|
+|prefecture_id|integer||
 
 
 ### Association
 - belongs_to :user
+- belongs_to :prefecture
 
 
 ## credit_cards table
 |Column|Type|Options|
 |------|----|-------|
-|user_id|bigint|foreign_key: true|
+|user_id|bigint|foreign_key: true, index: true|
 |customer_id|string||
 |card_id|string||
-|number|integer|null: false|
-|expiration_month|date|null: false|
-|expiration_year|year|null: false|
-|security_code|integer|null: false|
-|main_card_flag|boolean|null: false|
 
 ### Association
 - belongs_to :user
@@ -89,8 +91,8 @@
 ## comments table
 |Column|Type|Options|
 |------|----|-------|
-|user_id|bigint|foreign_key: true|
-|item_id|bigint|foreign_key: true|
+|user_id|bigint|foreign_key: true, index: true|
+|item_id|bigint|foreign_key: true, index: true|
 |comment|text|null: false|
 
 ### Association
@@ -247,9 +249,10 @@
 
 
 ### Association
-- has_many :sizes, through: :category_sizes
-- has_many :category_sizes
 - has_many :items
+- has_many :category_sizes
+- has_many :sizes, through: :category_sizes
+
 
 
 ## category_hierarchies table
@@ -259,7 +262,7 @@
 
 |Field|Type|Options|
 |---|:---:|---|
-|ancestor_id|integer|null: false|
+|ancestor_id|integer|null: false, index: true|
 |descendant_id|integer|null: false, index: true|
 |generations|integer|null: false|
 
@@ -274,8 +277,8 @@ add_index :category_hierarchies, [:ancestor_id, :descendant_id,     :generations
 
 |Field|Type|Options|
 |---|:---:|---|
-|category_id|bigint|foreign_key: true|
-|size_id|bigint|foreign_key: true|
+|category_id|bigint|foreign_key: true, index: true|
+|size_id|bigint|foreign_key: true, index: true|
 
 ### Association
 - belongs_to :category
