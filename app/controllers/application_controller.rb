@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :basic_auth
+  before_action :basic_auth, if: :production?
   before_action :configure_permitted_parameters, if: :devise_controller?
   protect_from_forgery with: :exception
   :layout_by_resource
@@ -18,6 +18,11 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource_or_scope)
     root_path
   end
+
+  def production?
+    Rails.env.production?
+  end
+
 
   def basic_auth
     authenticate_or_request_with_http_basic do |username, password|
