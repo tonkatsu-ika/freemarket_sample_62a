@@ -131,10 +131,10 @@
         %i.fas.fa-chevron-right
   .item-social-media-box
     - if user_signed_in? and current_user.id == @item.user_id and @item.transaction_status!=3
-      .item-edit-btn
-        = link_to '商品を編集する', edit_item_path(@item), class: 'item-social-media-box__link'
-      .item-delete-btn.js-modal-open
-        = link_to '商品を削除する', item_path(@item), method: :delete, class: 'item-social-media-box__link'
+      = link_to  edit_item_path(@item), class: 'item-social-media-box__link' do
+        .item-edit-btn 編集する
+      = link_to item_path(@item), method: :delete, class: 'item-social-media-box__link' do
+        .item-delete-btn.js-modal-open 商品を削除する
     .modal.js-modal
       .modal__bg.js-modal-close
       .modal__content
