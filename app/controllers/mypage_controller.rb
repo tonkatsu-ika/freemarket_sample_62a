@@ -10,7 +10,7 @@ class MypageController < ApplicationController
     
     user=User.find(current_user.id)
     #プロフィールの変更
-    user.update_without_password(nickname:params[:mypage][:nickname],profile: params[:mypage][:profile])
+    # user.update_without_password(nickname:params[:mypage][:nickname],profile: params[:mypage][:profile])
     
     redirect_to root_path,notice: 'プロフィールが変更されました'
   end
