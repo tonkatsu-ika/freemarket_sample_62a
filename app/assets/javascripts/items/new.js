@@ -409,9 +409,24 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
     }
   })
 
+  // item id を取得
+  var itemId = location;
+  console.log(itemId);
   // 「変更する」ボタン押し下げのイベント
   $('#item-update-btn').on('click', function(){
-    console.log('update clicked');
+
+    $.ajax({
+      url: "",
+      type: "POST",
+      data: "",
+      datatype: ""
+    })
+    .done(function(){
+      // 成功時の処理
+    })
+    .fail(function(){
+      console.log('item-update-ajax failed');
+    })
 
   })
 
