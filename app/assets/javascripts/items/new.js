@@ -314,16 +314,22 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
     input_area.prepend(new_image); // input_areaの子要素に追加する
   });
 
-  // 画面ロード時に
-  var dataImageIndices = $('.img_view').map(function() {
-    return $(this).data('image');
-  })
-  console.log(dataImageIndices);
+  // // 画面ロード時に
+  // var dataImageIndices = $('.img_view').map(function() {
+  //   return $(this).data('image');
+  // })
+  // console.log(dataImageIndices);
+
+  // 削除した商品画像idを貯めておく配列を作成
+  var deletedImageIds = [];
 
   // 画像削除時
   $(document).on('click', '.delete', function() {  // 追加要素の削除ボタンを押したら
-
+    
     var target_image = $(this).parent().parent();  // 変数target_imageに.deleteの親の親の要素を代入
+    deletedImageId = target_image.attr('data-image-id');  // 削除する画像のimage_idを取得
+    deletedImageIds.push(deletedImageId);   // 削除した画像のimage_idを配列に貯める
+    console.log(deletedImageIds);
     $.each(inputs, function(index, input) { //配列inputsの一つ一つ(input)に対して
       if ($(this).data('image') == target_image.data('image')){  // input要素のdata-imageの値と、投稿した画像のdata-imageの値が同じものに対して
         $(this).remove(); // 次のinputタグ(thisの中身)を削除
