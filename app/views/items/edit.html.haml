@@ -12,7 +12,7 @@
           .preview
             - if @item.item_images.count < 5
               - @item.item_images.each_with_index do |item_image, index|
-                .img_view{data: {image: index}}
+                .img_view{data: {image: index, image_id: item_image.id}}
                   = image_tag "#{item_image.image_url}"
                   .btn_wrapper
                     .btn.edit 編集
@@ -30,7 +30,7 @@
           .preview2
             - if @item_images.count >= 5
               - @item.item_images.each_with_index do |item_image, index| 
-                .img_view{data: {image: index}}
+                .img_view{data: {image: index, image_id: item_image.id}}
                   = image_tag "#{item_image.image_url}"
                   .btn_wrapper
                     .btn.edit 編集
@@ -136,7 +136,7 @@
               = format_currency(calc_fm_profit(@item.price))
     .sell-wrapper__form.sell-wrapper__form__sell-btn
       .sell-wrapper__form__sell-btn__upper
-      = f.submit '変更する', class: 'sell-wrapper__form__sell-btn__sent'
+      = f.submit '変更する', class: 'sell-wrapper__form__sell-btn__sent', id: 'item-update-btn'
       .sell-wrapper__form__sell-btn__back
         =link_to item_path, class: "sell-wrapper__form__sell-btn__back__link" do
           キャンセル

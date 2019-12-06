@@ -113,15 +113,28 @@ class ItemsController < ApplicationController
 
   def edit
     @item_images = @item.item_images
+    @item_image_ids_current = []
+    @item_images.each_with_index do |item_image, i|
+      @item_image_ids_current << i
+    end
   end
 
   def update
-    if @item.update!(item_params) and params[:item_images].present?
-      @item.item_images.delete_all
+
+    deleted_image_ids = params[:deleted_image_ids]
+    unless deleted_image_ids.blank?
+      deleted_image_ids.each do |deleted_image_id|
+        @item.item_images.destroy(deleted_image_id)
+      end
+    end
+
+    @item.update(item_params)
+    unless params[:item_images].blank?
       params[:item_images][:image_url].each do |a|
         @item.item_images.create!(image_url: a)
       end
     end
+
     redirect_to item_path
   end
 

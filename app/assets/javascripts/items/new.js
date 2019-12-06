@@ -314,10 +314,19 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
     input_area.prepend(new_image); // input_areaの子要素に追加する
   });
 
+
+  // 削除した商品画像idを貯めておく配列を作成
+  var deletedImageIds = [];
+
   // 画像削除時
   $(document).on('click', '.delete', function() {  // 追加要素の削除ボタンを押したら
-
+    
     var target_image = $(this).parent().parent();  // 変数target_imageに.deleteの親の親の要素を代入
+    deletedImageId = target_image.attr('data-image-id');  // 削除する画像のimage_idを取得
+    // 既存の画像（data-image-id）を持つ場合のみ
+    if (typeof deletedImageId !== "undefined") {
+      deletedImageIds.push(deletedImageId);   // 削除した画像のimage_idを配列に貯める
+    }
     $.each(inputs, function(index, input) { //配列inputsの一つ一つ(input)に対して
       if ($(this).data('image') == target_image.data('image')){  // input要素のdata-imageの値と、投稿した画像のdata-imageの値が同じものに対して
         $(this).remove(); // 次のinputタグ(thisの中身)を削除
@@ -347,8 +356,8 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
         'display': 'block'
       })
       $.each(images, function(index, image) {
-        image.attr('data-image', index);
-        preview2.append(image);
+        // image.attr('data-image', index);
+        //preview2.append(image);
       })
       dropzone2.css({
         'width': `calc(100% - (126px * ${images.length - 5}))`
@@ -369,8 +378,8 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
         'display': 'block'
       })
       $.each(images, function(index, image) {
-        image.attr('data-image', index);
-        preview.append(image);
+        // image.attr('data-image', index);
+        //preview.append(image);
       })
       dropzone.css({
         'width': `calc(100% - (126px * ${images.length}))`
@@ -400,5 +409,31 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
     }
   })
 
+  
+
+  // item id を取得
+  var patternForItemId = new RegExp('\\d{1,}');
+  var itemId = location.pathname.match(patternForItemId)[0];
+
+  // ajaxの送信先urlを生成
+  var url = 'http://' + location.host + '/items/' + itemId;
+  console.log(url);
+
+  // 「変更する」ボタン押し下げのイベント
+  $('#item-update-btn').on('click', function(e){
+    $.ajax({
+      url: url,
+      type: "POST",
+      data: { "deleted_image_ids": deletedImageIds, "_method": "PUT"},
+//      datatype: ""
+    })
+    .done(function(){
+      console.log(deletedImageIds);
+    })
+    .fail(function(){
+      console.log('item-update-ajax failed');
+    })
+
+  })
 
 })
