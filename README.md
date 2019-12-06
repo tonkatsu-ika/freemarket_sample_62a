@@ -33,7 +33,6 @@
 ### Association
 - has_many :comments, dependent: :destroy
 - has_many :likes, dependent: :destroy
-- has_many :like_items, through: :likes, source: :item
 - has_many :items, dependent: :destroy
 
 - has_many :sold_to, class_name: "Transaction", foreign_key: "buyer_id", dependent: destroy
@@ -46,8 +45,6 @@
 - belongs_to_active_has :prefecutre
 - accepts_nested_attributes_for :address
 - has_one :credit_card, dependent: :destroy
-
-- has_many :sns_credentials, dependent: :destroy
 
 
 ## addresses table
@@ -80,8 +77,8 @@
 ## likes 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|bigint|foreign_key: true|
-|item_id|bigint|foreign_key: true|
+|user_id|bigint|foreign_key: true, index: true|
+|item_id|bigint|foreign_key: true, index: true|
 
 ### Association
 - belongs_to :user
@@ -105,18 +102,18 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|buyer_id|bigint|foreign_key: true|
-|seller_id|bigint|foreign_key: true|
-|item_id|bigint|foreign_key: true|
-|grade_by_buyer_id|bigint|foreign_key: true|
+|buyer_id|bigint|foreign_key: true, index: true|
+|seller_id|bigint|foreign_key: true, index: true|
+|item_id|bigint|foreign_key: true, index: true|
+|grade_by_buyer_id|bigint|foreign_key: true, index: true|
 |comment_by_buyer|string||
-|grade_by_seller_id|bigint|foreign_key: true|
+|grade_by_seller_id|bigint|foreign_key: true, index: true|
 |comment_by_seller|string||
-|transaction_status|integer|null: false|
-|payment_method_id|bigint|foreign_key: true|
+|payment_method_id|bigint|foreign_key: true, index: true|
 
 ### Association
-- belongs_to :grade
+- belongs_to :grade_by_buyer, class_name: "Grade", foreign_key: grade_by_buyer
+- belongs_to :grade_by_seller, class_name: "Grade", foreign_key: grade_by_seller
 - belongs_to :buyer, class_name: "User", foreign_key: buyer_id
 - belongs_to :seller, class_name: "User", foreign_key: seller_id
 - belongs_to :item
@@ -150,14 +147,14 @@
 |name|string|null: false, index: true|
 |description|text|null: false|
 |price|integer|null: false, index: true|
-|item_condition_id|bigint|foreign_key: true|
-|ship_fee_bearer_id|bigint|foreign_key: true|
-|days_before_ship_id|bigint|foreign_key: true|
-|delivery_method_id|bigint|foreign_key: true|
-|user_id|bigint|foreign_key: true|
-|brand_id|bigint|foreign_key: true|
-|category_id|bigint|foreign_key: true|
-|size_id|bigint|foreign_key: true|
+|item_condition_id|bigint|foreign_key: true, index: true|
+|ship_fee_bearer_id|bigint|foreign_key: true, index: true|
+|days_before_ship_id|bigint|foreign_key: true, index: true|
+|delivery_method_id|bigint|foreign_key: true, index: true|
+|user_id|bigint|foreign_key: true, index: true|
+|brand_id|bigint|foreign_key: true, index: true|
+|category_id|bigint|foreign_key: true, index: true|
+|size_id|bigint|foreign_key: true|, index: true
 |prefecture_id|integer|
 |transaction_status|integer|default: 1|
 |likes_count|integer|
