@@ -12,7 +12,7 @@
           .preview
             - if @item.item_images.count < 5
               - @item.item_images.each_with_index do |item_image, index|
-                .img_view{data: {image: index}}
+                .img_view{data: {image: index, image_id: item_image.id}}
                   = image_tag "#{item_image.image_url}"
                   .btn_wrapper
                     .btn.edit 編集
@@ -30,7 +30,7 @@
           .preview2
             - if @item_images.count >= 5
               - @item.item_images.each_with_index do |item_image, index| 
-                .img_view{data: {image: index}}
+                .img_view{data: {image: index, image_id: item_image.id}}
                   = image_tag "#{item_image.image_url}"
                   .btn_wrapper
                     .btn.edit 編集
