@@ -35,9 +35,9 @@ class User < ApplicationRecord
   validates :first_name_kana, presence: true
   validates :birthday, presence: true
   validates :email, uniqueness: true
-  validates :password, length: { minimum: 6 }
-  validates :password_confirmation, presence: true
-  validates :password, presence: true, unless: :uid?
+  validates :password, length: { minimum: 6 }, on: :create
+  validates :password_confirmation, presence: true, on: :create
+  validates :password, presence: true, unless: :uid?, on: :create
 
   ##sns auth
  
@@ -80,6 +80,7 @@ class User < ApplicationRecord
        end
        
     end
+
 
     # protected
     # #パスワードなしでユーザー情報を更新する
