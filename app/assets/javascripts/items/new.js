@@ -409,28 +409,39 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
     }
   })
 
-  
-
   // item id を取得
   var patternForItemId = new RegExp('\\d{1,}');
-  var itemId = location.pathname.match(patternForItemId)[0];
+  var patternMatched;
+  if (location.pathname.match(patternForItemId) === null) {
+    patternMatched = false;
+  } else {
+    patternMatched = true;
+  }
 
-  // ajaxの送信先urlを生成
-  var url = 'http://' + location.host + '/items/' + itemId;
+  
+  // 商品編集画面でのみ動かすスクリプト
+  if (isItemEditPath) {
 
-  // 「変更する」ボタン押し下げのイベント
-  $('#item-update-btn').on('click', function(e){
-    $.ajax({
-      url: url,
-      type: "POST",
-      data: { "deleted_image_ids": deletedImageIds, "_method": "PUT"},
-//      datatype: ""
-    })
-    .done(function(){
-    })
-    .fail(function(){
-    })
+    if (patternMatched){
+      var itemId = location.pathname.match(patternForItemId)[0];
+    }
 
-  })
+    // ajaxの送信先urlを生成
+    var url = 'http://' + location.host + '/items/' + itemId;
+
+    // 「変更する」ボタン押し下げのイベント
+    $('#item-update-btn').on('click', function(){
+      $.ajax({
+        url: url,
+        type: "POST",
+        data: { "deleted_image_ids": deletedImageIds, "_method": "PUT"},
+      })
+      .done(function(){
+      })
+      .fail(function(){
+      })
+
+    })
+  }
 
 })
