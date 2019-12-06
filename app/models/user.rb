@@ -76,10 +76,16 @@ class User < ApplicationRecord
     def   valid_email(email)
        user = User.where(email: email)
        if email.present?
-       　　 = '入力されたメールアドレスはすでに登録されています'
+        　　= '入力されたメールアドレスはすでに登録されています'
        end
        
     end
+
+    # protected
+    # #パスワードなしでユーザー情報を更新する
+    # def self.update_resource(resource, params)
+    #   resource.update_without_current_password(params)
+    # end
 
 
 end
