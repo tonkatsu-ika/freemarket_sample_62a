@@ -2,26 +2,29 @@
 
 .header-category-all{
   display: flex;
+  position: relative;
   .header-category-list{
     height: 702px;
     width: 210px;
-    margin-left: 140px; 
     box-shadow: 0px 2px 4px #ddd;
     display: none;
+    position: absolute;
     &__content{
       border-width: 0px 1px 0px 1px;
       border-style: solid;
       border-color: #eeeded;
-      height: auto;
+      height: 28px;
       width: 210px;
       background-color: #fff;
       z-index: 1;
+      padding-bottom: 17px;
       position: relative;
       padding-left: 20px;
-      display: inline-block;
+      display: block;
       text-decoration: none;
-      line-height: 44px;
-      font-size: 14px;     
+      line-height: 45px;
+      font-size: 14px;
+      font-weight: normal;  
       color: black;
       &:hover{
         background-color: $fm-red;
@@ -41,16 +44,19 @@
     z-index: 1;
     box-shadow: 0px 2px 4px #ddd;
     display: none;
+    position: absolute;
+    left:210px;
     &__content{
       border-width: 0px 1px 0px 1px;
       border-style: solid;
       border-color: #eeeded;
       width: 210px;
       padding-left: 20px;
-      display: inline-block;
+      display: block;
       text-decoration: none;
       line-height: 35px;
-      font-size: 14px;     
+      font-size: 14px;   
+      font-weight: normal;  
       color: black;
       &:hover{
         background-color: #efefef;
@@ -68,14 +74,17 @@
     border-style: solid;
     border-color: #eeeded;
     display: none;
+    position: absolute;
+    left:461px;
     &__content{
       width: 249px;
       padding-left: 20px;
-      display: inline-block;
+      display: block;
       text-decoration: none;
       line-height: 35px;
       font-size: 14px;     
       color: black;
+      font-weight: normal;
       &:hover{
         background-color: #efefef;
       }

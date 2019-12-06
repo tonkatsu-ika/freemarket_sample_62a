@@ -18,6 +18,8 @@ Rails.application.routes.draw do
       get :card
       get :identification
       get :logout
+      get :listing
+      get :like
     end
   end
 

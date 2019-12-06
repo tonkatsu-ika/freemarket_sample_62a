@@ -314,6 +314,9 @@
       padding: 20px 0;
       margin: 20px 0;
     }
+    .item-delete-btn:hover {
+      cursor: pointer;
+    }
     .modal {
       max-height: 100vh;
       background-color: transparent;

@@ -1,0 +1,8 @@
+.listing-wrapper
+  .listing-title 出品した商品
+  .listing-tab
+    .listing-tab__listing 出品中
+    .listing-tab__in-progress 取引中
+    .listing-tab__completed 売却済み
+  .listing-list
+    = render partial: 'list_item', collection: @lists, as: "list"

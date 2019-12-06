@@ -11,7 +11,7 @@
           %br/
           %p.userloginform-into__sub-sms
             本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。  
-          = f.text_field :telephone, placeholder: '携帯電話の番号を入力',class: 'input-default'
+          = f.text_field :telephone, placeholder: '携帯電話の番号を入力',class: 'input-default',required: true
           = f.submit class: 'btn-default',value:'SMSを送信する',"data-disable-with": "送信中..."
           %p.sms_form__into-text
             ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
