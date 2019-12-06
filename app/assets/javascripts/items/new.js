@@ -415,14 +415,18 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
   var patternForItemId = new RegExp('\\d{1,}');
   var itemId = location.pathname.match(patternForItemId)[0];
 
+  // ajaxの送信先urlを生成
+  var url = 'http://' + location.host + '/items/' + itemId;
+  console.log(url);
+
   // 「変更する」ボタン押し下げのイベント
   $('#item-update-btn').on('click', function(){
 
     $.ajax({
-      url: "",
+      url: url,
       type: "POST",
-      data: "",
-      datatype: ""
+      data: { "deleted_image_id": deletedImageIds, "_method": "PUT"},
+//      datatype: ""
     })
     .done(function(){
       // 成功時の処理
