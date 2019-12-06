@@ -122,13 +122,12 @@ class ItemsController < ApplicationController
   def update
 
     deleted_image_ids = params[:deleted_image_ids]
-    binding.pry
     unless deleted_image_ids.blank?
       deleted_image_ids.each do |deleted_image_id|
         @item.item_images.destroy(deleted_image_id)
       end
     end
-    
+
     @item.update(item_params)
     unless params[:item_images].blank?
       params[:item_images][:image_url].each do |a|
