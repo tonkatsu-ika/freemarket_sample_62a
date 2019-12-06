@@ -323,8 +323,10 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
     
     var target_image = $(this).parent().parent();  // 変数target_imageに.deleteの親の親の要素を代入
     deletedImageId = target_image.attr('data-image-id');  // 削除する画像のimage_idを取得
-    deletedImageIds.push(deletedImageId);   // 削除した画像のimage_idを配列に貯める
-    console.log(deletedImageIds);
+    // 既存の画像（data-image-id）を持つ場合のみ
+    if (typeof deletedImageId !== "undefined") {
+      deletedImageIds.push(deletedImageId);   // 削除した画像のimage_idを配列に貯める
+    }
     $.each(inputs, function(index, input) { //配列inputsの一つ一つ(input)に対して
       if ($(this).data('image') == target_image.data('image')){  // input要素のdata-imageの値と、投稿した画像のdata-imageの値が同じものに対して
         $(this).remove(); // 次のinputタグ(thisの中身)を削除
