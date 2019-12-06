@@ -13,10 +13,8 @@ $(document).on('turbolinks:load', function(){
  
   $(".header-category-list__content").on("mouseover", function(){
     var id = this.id
-    console.log(id)
     $(".header-category-list-child__content").remove();
     var parent_category = $(this).text()
-    console.log(parent_category)
     $.ajax({
       type: 'GET',
       url: '/items/get_category_children',
@@ -27,9 +25,7 @@ $(document).on('turbolinks:load', function(){
         var html = buildChildHTML(category_children);
         $(".header-category-list-child").append(html);
       })
-
     }).fail(function(){
-      console.log("失敗")
     });
     
   })
@@ -42,10 +38,8 @@ $(document).on('turbolinks:load', function(){
 
   $(document).on("mouseover",".header-category-list-child__content", function(){
     var id = this.id
-    console.log(id)
     $(".header-category-list-grandchild__content").remove();
     var parent_category = $(this).text()
-    console.log(parent_category)
     $.ajax({
       type: 'GET',
       url: '/items/get_category_grandchildren',
@@ -58,7 +52,6 @@ $(document).on('turbolinks:load', function(){
       })
 
     }).fail(function(){
-      console.log("失敗")
     });
     
   })

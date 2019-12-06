@@ -417,7 +417,6 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
 
   // ajaxの送信先urlを生成
   var url = 'http://' + location.host + '/items/' + itemId;
-  console.log(url);
 
   // 「変更する」ボタン押し下げのイベント
   $('#item-update-btn').on('click', function(e){
@@ -428,10 +427,8 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
 //      datatype: ""
     })
     .done(function(){
-      console.log(deletedImageIds);
     })
     .fail(function(){
-      console.log('item-update-ajax failed');
     })
 
   })
