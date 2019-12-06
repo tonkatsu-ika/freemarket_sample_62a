@@ -314,11 +314,6 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
     input_area.prepend(new_image); // input_areaの子要素に追加する
   });
 
-  // // 画面ロード時に
-  // var dataImageIndices = $('.img_view').map(function() {
-  //   return $(this).data('image');
-  // })
-  // console.log(dataImageIndices);
 
   // 削除した商品画像idを貯めておく配列を作成
   var deletedImageIds = [];
@@ -412,5 +407,10 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
     }
   })
 
+  // 「変更する」ボタン押し下げのイベント
+  $('#item-update-btn').on('click', function(){
+    console.log('update clicked');
+
+  })
 
 })
