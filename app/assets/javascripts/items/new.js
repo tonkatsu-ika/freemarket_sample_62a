@@ -420,16 +420,15 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
   console.log(url);
 
   // 「変更する」ボタン押し下げのイベント
-  $('#item-update-btn').on('click', function(){
-
+  $('#item-update-btn').on('click', function(e){
     $.ajax({
       url: url,
       type: "POST",
-      data: { "deleted_image_id": deletedImageIds, "_method": "PUT"},
+      data: { "deleted_image_ids": deletedImageIds, "_method": "PUT"},
 //      datatype: ""
     })
     .done(function(){
-      // 成功時の処理
+      console.log(deletedImageIds);
     })
     .fail(function(){
       console.log('item-update-ajax failed');
