@@ -31,6 +31,16 @@ crumb :logout do
   parent :mypage
 end
 
+crumb :like do
+  link "いいね！一覧", like_mypage_index_path
+  parent :mypage
+end
+
+crumb :listing do
+  link "出品した商品-出品中", listing_mypage_index_path
+  parent :mypage
+end
+
 
 # If you want to split your breadcrumbs configuration over multiple files, you
 # can create a folder named `config/breadcrumbs` and put your configuration
