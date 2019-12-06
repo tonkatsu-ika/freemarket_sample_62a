@@ -409,9 +409,12 @@ var isItemEditPath = patternForEditItemPath.test(location.pathname);
     }
   })
 
+  
+
   // item id を取得
-  var itemId = location;
-  console.log(itemId);
+  var patternForItemId = new RegExp('\\d{1,}');
+  var itemId = location.pathname.match(patternForItemId)[0];
+
   // 「変更する」ボタン押し下げのイベント
   $('#item-update-btn').on('click', function(){
 
