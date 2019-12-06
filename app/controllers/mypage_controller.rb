@@ -7,6 +7,11 @@ class MypageController < ApplicationController
   end
 
   def update
+    
+    user=User.find(current_user.id)
+    user.update_without_password(password:@user.password,nickname:params[:mypage][:nickname],profile: params[:mypage][:profile])
+    
+    redirect_to root_path
   end
 
   def profile
